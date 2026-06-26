@@ -22,7 +22,7 @@
 
     <div class="tagCloud-tags">
         {{ with $categoriesPage }}
-            {{ range (sort .Pages "Title") }}
+            {{ range (sort .Pages "Weight") }}
                 <a href="{{ .RelPermalink }}">
                     {{ .Title }}
                 </a>
