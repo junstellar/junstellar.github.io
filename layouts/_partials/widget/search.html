@@ -1,0 +1,28 @@
+{{/*
+  검색 위젯 (커스텀 override)
+  - 기본 Stack 위젯은 "검색" 라벨이 입력 박스 안쪽에 들어가 다른 위젯과 정렬이 안 맞음.
+    → 다른 위젯처럼 아이콘+제목을 박스 바깥 위로 빼고, 박스엔 placeholder만 둠.
+  - 또한 기본 위젯은 위젯 호출 컨텍스트 문제로 data-json(검색 인덱스)이 비어 검색이 동작하지 않음.
+    → 검색 페이지(layout: search)의 json 출력을 data-json으로 직접 연결해 수정.
+*/}}
+{{- $query := first 1 (where .Context.Site.Pages "Layout" "==" "search") -}}
+{{- if $query -}}
+    {{- $searchPage := index $query 0 -}}
+    <section class="widget search">
+        <div class="widget-icon">
+            {{ partial "helper/icon" "search" }}
+        </div>
+        <h2 class="widget-title section-title">{{ T "search.title" }}</h2>
+
+        <form action="{{ $searchPage.RelPermalink }}" class="search-form" {{ with $searchPage.OutputFormats.Get "json" -}}data-json="{{ .RelPermalink }}"{{- end }}>
+            <p>
+                <input name="keyword" required placeholder="{{ T `search.placeholder` }}" />
+                <button title="{{ T `search.title` }}">
+                    {{ partial "helper/icon" "search" }}
+                </button>
+            </p>
+        </form>
+    </section>
+{{- else -}}
+    {{- warnf "Search page not found. Create a page with layout: search." -}}
+{{- end -}}
