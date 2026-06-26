@@ -1,0 +1,60 @@
+# baseURL은 7단계(GitHub 연결) 때 실제 주소로 바꿉니다. 예: https://내계정.github.io/
+baseURL = "https://example.github.io/"
+locale = "ko-kr"
+title = "내 공부 블로그"
+theme = "PaperMod"
+
+defaultContentLanguage = "ko"
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+pygmentsUseClasses = true
+
+[pagination]
+  pagerSize = 10
+
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+[params]
+  env = "production"
+  description = "매일 공부한 내용을 정리하는 블로그"
+  author = "나"
+  defaultTheme = "auto"        # auto / light / dark
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+
+  [params.homeInfoParams]
+    Title = "환영합니다 👋"
+    Content = "공부하면서 정리한 메모를 블로그 글로 남깁니다."
+
+  [params.label]
+    text = "Home"
+
+# 상단 메뉴
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "글"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    identifier = "tags"
+    name = "태그"
+    url = "/tags/"
+    weight = 20
+  [[menu.main]]
+    identifier = "archive"
+    name = "보관함"
+    url = "/archives/"
+    weight = 30
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
