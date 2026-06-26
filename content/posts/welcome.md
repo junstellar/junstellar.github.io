@@ -3,7 +3,6 @@ title: "블로그를 시작합니다"
 date: 2026-06-26T12:00:00+09:00
 draft: false
 tags: ["잡담"]
-categories: ["기록"]
 ---
 
 안녕하세요 👋
