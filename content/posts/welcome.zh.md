@@ -3,7 +3,7 @@ title: "开始写博客"
 slug: "hello"
 date: 2026-06-26T12:00:00+09:00
 draft: false
-categories: ["日常"]
+categories: ["일상"]
 tags: ["开始", "博客", "挑战", "决心"]
 ---
 

@@ -3,7 +3,7 @@ title: "I'm Starting a Blog"
 slug: "hello"
 date: 2026-06-26T12:00:00+09:00
 draft: false
-categories: ["Daily"]
+categories: ["일상"]
 tags: ["start", "blog", "challenge", "resolution"]
 ---
 
