@@ -1,5 +1,5 @@
 ---
 title: "도전"
-description: "쏘아올리는 도전 🚀"
+description: "기회를 향한 도약 🚀"
 weight: 2
 ---
