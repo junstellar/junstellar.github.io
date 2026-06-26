@@ -3,7 +3,7 @@ title: "ブログを始めます"
 slug: "hello"
 date: 2026-06-26T12:00:00+09:00
 draft: false
-categories: ["挑戦"]
+categories: ["日常"]
 tags: ["はじめに", "ブログ", "挑戦", "決意"]
 ---
 

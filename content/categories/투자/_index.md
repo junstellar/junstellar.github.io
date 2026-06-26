@@ -1,5 +1,5 @@
 ---
-title: "도전"
+title: "투자"
 description: "기회를 향한 도약 🚀"
 weight: 2
 ---
