@@ -1,5 +1,6 @@
 ---
 title: "블로그를 시작합니다"
+slug: "hello"
 date: 2026-06-26T12:00:00+09:00
 draft: false
 categories: ["도전"]

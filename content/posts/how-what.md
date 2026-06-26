@@ -1,5 +1,6 @@
 ---
 title: "어떻게(How)는 풀렸고, 이제 뭘(What) 할지가 고민이다"
+slug: "how-and-what"
 date: 2026-06-26T20:00:00+09:00
 draft: false
 categories: ["AI"]
