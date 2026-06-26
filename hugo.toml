@@ -1,59 +1,84 @@
 baseURL = "https://junstellar.github.io/"
 locale = "ko-kr"
 title = "내 공부 블로그"
-theme = "PaperMod"
+theme = "hugo-theme-stack"
 
+# 한국어(CJK) 단어 수/요약 계산을 위해 필요
 defaultContentLanguage = "ko"
+hasCJKLanguage = true
+
 enableRobotsTXT = true
 buildDrafts = false
 buildFuture = false
 buildExpired = false
-pygmentsUseClasses = true
 
 [pagination]
-  pagerSize = 10
+  pagerSize = 5
 
-[minify]
-  disableXML = true
-  minifyOutput = true
+[permalinks]
+  posts = "/p/:slug/"
+  page = "/:slug/"
 
 [params]
-  env = "production"
-  description = "매일 공부한 내용을 정리하는 블로그"
-  author = "나"
-  defaultTheme = "auto"        # auto / light / dark
-  ShowReadingTime = true
-  ShowShareButtons = false
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowToc = true
-  TocOpen = false
+  mainSections = ["posts"]
+  rssFullContent = true
 
-  [params.homeInfoParams]
-    Title = "환영합니다 👋"
-    Content = "공부하면서 정리한 메모를 블로그 글로 남깁니다."
+  [params.footer]
+    since = 2026
 
-  [params.label]
-    text = "Home"
+  [params.sidebar]
+    emoji = "🌌"
+    subtitle = "공부한 내용을 차곡차곡 기록합니다"
+    # avatar 이미지를 넣고 싶으면 static/img/avatar.png 추가 후 아래 주석 해제
+    # avatar = "img/avatar.png"
 
-# 상단 메뉴
-[menu]
-  [[menu.main]]
-    identifier = "posts"
-    name = "글"
-    url = "/posts/"
-    weight = 10
-  [[menu.main]]
-    identifier = "tags"
-    name = "태그"
-    url = "/tags/"
-    weight = 20
-  [[menu.main]]
-    identifier = "archive"
-    name = "보관함"
-    url = "/archives/"
-    weight = 30
+  [params.article]
+    math = false
+    toc = true
+    readingTime = true
+    [params.article.license]
+      enabled = true
+      default = "이 글은 CC BY-NC-SA 4.0 라이선스를 따릅니다."
 
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
+  [params.colorScheme]
+    toggle = true
+    default = "auto"   # auto / light / dark
+
+  [params.comments]
+    enabled = false
+
+  [params.widgets]
+    homepage = [
+      { type = "search" },
+      { type = "archives", params = { limit = 5 } },
+      { type = "categories", params = { limit = 10 } },
+      { type = "tag-cloud", params = { limit = 10 } },
+    ]
+    page = [
+      { type = "toc" },
+    ]
+
+# 사이드바 소셜 링크
+[[menu.social]]
+  identifier = "github"
+  name = "GitHub"
+  url = "https://github.com/junstellar"
+  [menu.social.params]
+    icon = "brand-github"
+
+# 메뉴(보관함/검색)는 각 페이지(content/page/...)가 직접 정의합니다.
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = true
+    startLevel = 2
+  [markup.highlight]
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
+    tabWidth = 4
