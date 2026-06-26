@@ -8,3 +8,21 @@
 .widget.search .search-form input {
     padding: var(--spacing-md) var(--button-size) var(--spacing-md) var(--spacing-lg);
 }
+
+/* 위젯 헤더: 아이콘과 제목을 세로로 쌓지 않고 한 줄로 (아이콘 + 제목) */
+.widget {
+    display: block;            /* 기본 flex-column 해제 → 인라인 배치 허용 */
+}
+.widget > .widget-icon {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: var(--spacing-sm);
+}
+.widget > .widget-icon svg {
+    width: 1.8rem;             /* 제목 글자 크기에 맞춰 축소 */
+    height: 1.8rem;
+}
+.widget > .widget-title {
+    display: inline-flex;
+    vertical-align: middle;
+}
