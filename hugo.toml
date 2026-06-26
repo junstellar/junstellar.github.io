@@ -1,5 +1,4 @@
-# baseURL은 7단계(GitHub 연결) 때 실제 주소로 바꿉니다. 예: https://내계정.github.io/
-baseURL = "https://example.github.io/"
+baseURL = "https://junstellar.github.io/"
 locale = "ko-kr"
 title = "내 공부 블로그"
 theme = "PaperMod"
