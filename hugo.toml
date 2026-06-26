@@ -28,7 +28,7 @@ buildExpired = false
 
   [params.sidebar]
     emoji = "🚀"
-    subtitle = "AI로 배우고, 주식으로 도전하고, 캠핑으로 숨 고르는 곳. 천천히, 그러나 분명히 투더문."
+    subtitle = "AI로 배우고,\n주식으로 도전하고,\n캠핑으로 숨 고르는 곳.\n천천히, 그러나 분명히 투더문."
     avatar = "img/avatar.png"
 
   [params.article]

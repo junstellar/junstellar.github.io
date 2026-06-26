@@ -1,0 +1,4 @@
+/* 사이드바 한 줄 소개: subtitle 안의 줄바꿈(\n)을 실제 줄바꿈으로 표시 */
+.site-description {
+    white-space: pre-line;
+}
