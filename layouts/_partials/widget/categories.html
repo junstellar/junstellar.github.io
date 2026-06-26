@@ -1,0 +1,32 @@
+{{/*
+  카테고리 위젯 (커스텀)
+  - 기본 Stack 위젯은 글이 1개 이상인 카테고리만 표시한다.
+  - 이 override는 content/categories/<이름>/_index.md 로 "정의해둔" 카테고리는
+    글이 0개여도 항상 사이드바에 표시한다.
+*/}}
+{{- $context := .Context -}}
+{{- $categoriesPage := $context.Site.GetPage "categories" -}}
+{{- $widgetTitle := T "widget.categoriesCloud.title" -}}
+
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        {{ partial "helper/icon" "categories" }}
+    </div>
+    <h2 class="widget-title section-title">
+        {{ if $categoriesPage }}
+            <a href="{{ $categoriesPage.RelPermalink }}">{{ $widgetTitle }}</a>
+        {{ else }}
+            {{ $widgetTitle }}
+        {{ end }}
+    </h2>
+
+    <div class="tagCloud-tags">
+        {{ with $categoriesPage }}
+            {{ range (sort .Pages "Title") }}
+                <a href="{{ .RelPermalink }}">
+                    {{ .Title }}
+                </a>
+            {{ end }}
+        {{ end }}
+    </div>
+</section>
