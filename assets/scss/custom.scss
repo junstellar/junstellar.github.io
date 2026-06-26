@@ -2,3 +2,9 @@
 .site-description {
     white-space: pre-line;
 }
+
+/* 검색 위젯: 제목을 박스 바깥으로 뺐으므로(override) 입력 박스의
+   안쪽 라벨 자리(위 여백)를 일반 위젯 입력처럼 줄인다. */
+.widget.search .search-form input {
+    padding: var(--spacing-md) var(--button-size) var(--spacing-md) var(--spacing-lg);
+}
