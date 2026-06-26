@@ -1,6 +1,6 @@
 baseURL = "https://junstellar.github.io/"
 locale = "ko-kr"
-title = "Luna Log"
+title = "준스텔라, To the Moon"
 theme = "hugo-theme-stack"
 
 # 한국어(CJK) 단어 수/요약 계산을 위해 필요
