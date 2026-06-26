@@ -1,6 +1,6 @@
 baseURL = "https://junstellar.github.io/"
 locale = "ko-kr"
-title = "내 공부 블로그"
+title = "Luna Log"
 theme = "hugo-theme-stack"
 
 # 한국어(CJK) 단어 수/요약 계산을 위해 필요
@@ -27,10 +27,9 @@ buildExpired = false
     since = 2026
 
   [params.sidebar]
-    emoji = "🌌"
-    subtitle = "공부한 내용을 차곡차곡 기록합니다"
-    # avatar 이미지를 넣고 싶으면 static/img/avatar.png 추가 후 아래 주석 해제
-    # avatar = "img/avatar.png"
+    emoji = "🚀"
+    subtitle = "AI로 배우고, 주식으로 도전하고, 캠핑으로 숨 고르는 곳. 천천히, 그러나 분명히 투더문."
+    avatar = "img/avatar.png"
 
   [params.article]
     math = false
