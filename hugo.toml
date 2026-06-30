@@ -20,6 +20,24 @@ buildExpired = false
   posts = "/p/:slug/"
   page = "/:slug/"
 
+# 관련글(Related posts) — tags/categories 기반으로 매칭 (Hugo 기본은 keywords만 봐서 미작동)
+# threshold: 0~100, 낮을수록 관련글이 더 많이 잡힘.
+#   현재 20 = 글이 적은 초기라 느슨하게 둠(80이면 매칭 0개라 관련글이 아예 안 떴음).
+#   ※ 글이 30~50편 이상으로 늘면 60~80으로 다시 올릴 것. 그래야 진짜 관련 높은 글만 노출됨.
+[related]
+  includeNewer = true
+  threshold = 20
+  toLower = false
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+  [[related.indices]]
+    name = "categories"
+    weight = 80
+  [[related.indices]]
+    name = "date"
+    weight = 10
+
 [params]
   mainSections = ["posts"]
   rssFullContent = true
@@ -31,6 +49,9 @@ buildExpired = false
   googleSiteVerification = "9NgIrz8IzCrCPsoZFAGZlqQs0k02xOwG484s9RtdK78"
   naverSiteVerification = "16fee6eaf726dec744074f4371a3da4fd9a01e34"
   bingSiteVerification = ""
+
+  # JSON-LD 구조화 데이터의 저자/발행처 이름
+  author = "Jun"
 
   [params.footer]
     since = 2026
@@ -81,7 +102,6 @@ buildExpired = false
 [languages]
   [languages.ko]
     label = "한국어"
-    languageName = "한국어"
     title = "Jun, To the Moon"
     weight = 1
     [languages.ko.params.sidebar]
@@ -89,7 +109,6 @@ buildExpired = false
 
   [languages.en]
     label = "English"
-    languageName = "English"
     title = "Jun, To the Moon"
     weight = 2
     [languages.en.params.sidebar]
@@ -97,7 +116,6 @@ buildExpired = false
 
   [languages.ja]
     label = "日本語"
-    languageName = "日本語"
     title = "Jun, To the Moon"
     weight = 3
     [languages.ja.params.sidebar]
@@ -105,7 +123,6 @@ buildExpired = false
 
   [languages.zh]
     label = "简体中文"
-    languageName = "简体中文"
     title = "Jun, To the Moon"
     weight = 4
     [languages.zh.params.sidebar]
