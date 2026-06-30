@@ -21,8 +21,6 @@ But the trip itself was genuinely great. Dokkebi-gol had plenty to see, and the 
 
 And the next morning, we caught the sunrise we'd come for.
 
-![Sunrise over the East Sea](sunrise.jpg)
-
 After the trip, a thought struck me: "For this money, wouldn't I be better off just buying a tent?" Spend the cost of one pension stay on gear once, and I could travel far more — to far more places — for much less than a pension. That was the beginning.
 
 From here on, this blog is where I'll share what I learn as I get into camping, and the things I figure out firsthand. Like what order to buy gear in so you don't regret it, the mistakes beginners commonly make, and how the campsites I've visited actually were. I hope it helps anyone who's just starting to wonder whether they should give camping a try.
