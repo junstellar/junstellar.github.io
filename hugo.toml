@@ -29,7 +29,7 @@ buildExpired = false
   # 네이버: 서치어드바이저 > 사이트 등록 > HTML 태그 방식의 content 값
   # 빙: Bing Webmaster Tools (구글 연동 시 불필요)
   googleSiteVerification = "9NgIrz8IzCrCPsoZFAGZlqQs0k02xOwG484s9RtdK78"
-  naverSiteVerification = ""
+  naverSiteVerification = "16fee6eaf726dec744074f4371a3da4fd9a01e34"
   bingSiteVerification = ""
 
   [params.footer]
