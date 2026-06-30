@@ -1,5 +1,6 @@
 ---
 title: "Redmine MCP サーバーを自作する — 一週間の記録"
+description: "社内ネットワークのRedmineをClaude Codeから直接操作させるため、ローカルMCPサーバーを自作した。単一ファイルからpipパッケージまで、MCPツール設計の一週間の記録。"
 slug: "redmine-mcp-server"
 date: 2026-06-29T22:00:00+09:00
 draft: false

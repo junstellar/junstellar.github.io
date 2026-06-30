@@ -1,5 +1,6 @@
 ---
 title: "Redmine MCP 서버 직접 만들기 — 일주일의 기록"
+description: "사설망 사내 Redmine을 Claude Code가 직접 다루게 하려고 로컬 MCP 서버를 만들었다. 단일 파일에서 pip 패키지까지, MCP 도구 설계 일주일의 기록."
 slug: "redmine-mcp-server"
 date: 2026-06-29T22:00:00+09:00
 draft: false

@@ -1,5 +1,6 @@
 ---
 title: "Building My Own Redmine MCP Server — A Week's Notes"
+description: "I built a local MCP server so Claude Code could drive our private-network Redmine directly — a week of building MCP tools, from one file to a pip package."
 slug: "redmine-mcp-server"
 date: 2026-06-29T22:00:00+09:00
 draft: false

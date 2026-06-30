@@ -1,5 +1,6 @@
 ---
 title: "自己动手做一个 Redmine MCP 服务器 —— 一周记录"
+description: "为了让 Claude Code 直接操作内网中的公司 Redmine，我自己搭建了本地 MCP 服务器。从单个文件到 pip 包，这是设计 MCP 工具的一周记录。"
 slug: "redmine-mcp-server"
 date: 2026-06-29T22:00:00+09:00
 draft: false

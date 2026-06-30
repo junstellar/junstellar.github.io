@@ -1,5 +1,6 @@
 ---
 title: "Google Builds 'Computer Use' Into Gemini 3.5 Flash — 'GPT-Level Performance at One-Third the Price'"
+description: "Google built 'Computer Use' natively into Gemini 3.5 Flash, letting it see the screen and click directly. A look at this observe-think-act automation agent."
 slug: "gemini-3-5-flash-computer-use"
 date: 2026-06-28T10:00:00+09:00
 draft: false

@@ -1,5 +1,6 @@
 ---
 title: "谷歌将「电脑操作（Computer Use）」内置进 Gemini 3.5 Flash —「性能比肩 GPT，价格仅三分之一」"
+description: "谷歌在 Gemini 3.5 Flash 中原生内置了“计算机操作”——直接查看屏幕并点击、输入。本文梳理了这一反复“观察—判断—执行”的自动化智能体功能。"
 slug: "gemini-3-5-flash-computer-use"
 date: 2026-06-28T10:00:00+09:00
 draft: false

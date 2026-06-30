@@ -1,5 +1,6 @@
 ---
 title: "🎨 Bluer Than Gold: The Story of Ultramarine"
+description: "Ultramarine, the Renaissance blue costlier than gold. Made from Afghan lapis lazuli, it was 'the color from beyond the sea,' saved for the Virgin Mary."
 slug: "ultramarine-blue"
 date: 2026-06-26T21:30:00+09:00
 draft: false

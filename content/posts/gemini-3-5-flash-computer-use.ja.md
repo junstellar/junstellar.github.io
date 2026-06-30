@@ -1,5 +1,6 @@
 ---
 title: "グーグル、Gemini 3.5 Flash に「コンピューター・ユース」を内蔵… 「性能はGPT級、価格は3分の1」"
+description: "グーグルがGemini 3.5 Flashに、画面を直接見てクリック・入力する「コンピューターユース」を標準搭載した。観察・判断・実行を繰り返す自動化エージェント機能を整理した。"
 slug: "gemini-3-5-flash-computer-use"
 date: 2026-06-28T10:00:00+09:00
 draft: false

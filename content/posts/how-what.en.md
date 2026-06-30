@@ -1,5 +1,6 @@
 ---
 title: "The 'How' Is Solved — Now the Real Question Is 'What'"
+description: "The GPT I once dismissed as a flimsy toy now does almost anything. With 'how' solved, the real question is 'what to do' — how my view of AI changed."
 slug: "how-and-what"
 date: 2026-06-26T20:00:00+09:00
 draft: false

@@ -1,5 +1,6 @@
 ---
 title: "🐝 Honeybees Talk by 'Dancing' — The Wonder of Animal Language"
+description: "A bee's 'waggle dance' encodes exact coordinates — direction is the angle to the sun, duration is distance. The Nobel-winning wonder of animal language."
 slug: "bee-waggle-dance"
 date: 2026-06-26T21:00:00+09:00
 draft: false
