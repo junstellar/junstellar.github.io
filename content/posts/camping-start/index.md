@@ -2,7 +2,7 @@
 title: "펜션에서 실망한 날, 캠핑을 시작하기로 했습니다"
 description: "낡은 펜션에 실망하고 돌아온 동해 여행. '이 돈이면 텐트를 사자'는 생각에서 캠핑이 시작됐습니다. 캠핑 카테고리 첫 글, 그 계기를 풀어봅니다."
 slug: "camping-start"
-date: 2026-06-30T22:00:00+09:00
+date: 2026-06-30T12:00:00+09:00
 draft: false
 image: "sunrise.jpg"
 categories: ["캠핑"]

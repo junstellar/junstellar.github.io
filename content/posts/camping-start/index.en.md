@@ -2,7 +2,7 @@
 title: "The Day a Rundown Pension Pushed Me Into Camping"
 description: "A trip to Korea's east coast, ruined by a worn-out pension. 'For this money, I could just buy a tent.' That thought started it all — the first post in my camping category."
 slug: "camping-start"
-date: 2026-06-30T22:00:00+09:00
+date: 2026-06-30T12:00:00+09:00
 draft: false
 image: "sunrise.jpg"
 categories: ["캠핑"]

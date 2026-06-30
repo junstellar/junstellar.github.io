@@ -2,7 +2,7 @@
 title: "对民宿失望的那天，我决定开始露营"
 description: "一次东海之行，却被破旧的民宿扫了兴。一句'这笔钱不如买顶帐篷'，露营就这样开始了。这是露营分类的第一篇文章。"
 slug: "camping-start"
-date: 2026-06-30T22:00:00+09:00
+date: 2026-06-30T12:00:00+09:00
 draft: false
 image: "sunrise.jpg"
 categories: ["캠핑"]
