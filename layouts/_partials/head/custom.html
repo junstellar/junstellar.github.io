@@ -4,6 +4,21 @@
 {{ end }}{{ with site.Params.bingSiteVerification }}<meta name="msvalidate.01" content="{{ . }}">
 {{ end }}
 
+{{/* favicon — assets/img/avatar.png(초승달)을 Hugo가 작게 리사이즈해 생성 */}}
+{{ with resources.Get "img/avatar.png" }}
+{{ $ico := .Resize "32x32 png" }}
+{{ $touch := .Resize "180x180 png" }}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ $ico.RelPermalink }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ $touch.RelPermalink }}">
+{{ end }}
+
+{{/* og:image 기본값 — cover 이미지 없는 글/페이지에 사이트 공통 썸네일(SNS 공유용) */}}
+{{ if not .Params.image }}{{ with resources.Get "img/avatar.png" }}
+{{ $og := .Resize "512x512 png" }}
+<meta property="og:image" content="{{ $og.Permalink }}">
+<meta name="twitter:image" content="{{ $og.Permalink }}">
+{{ end }}{{ end }}
+
 {{/* JSON-LD 구조화 데이터 — 검색엔진이 글의 제목/날짜/저자를 명확히 인식 */}}
 {{ $author := site.Params.author | default site.Title }}
 {{ if .IsPage }}
