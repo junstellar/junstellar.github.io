@@ -1,3 +1,9 @@
+{{/* 검색엔진 소유권 확인 메타태그 — hugo.toml [params] 에 코드 입력 시 자동 출력 */}}
+{{ with site.Params.googleSiteVerification }}<meta name="google-site-verification" content="{{ . }}">
+{{ end }}{{ with site.Params.naverSiteVerification }}<meta name="naver-site-verification" content="{{ . }}">
+{{ end }}{{ with site.Params.bingSiteVerification }}<meta name="msvalidate.01" content="{{ . }}">
+{{ end }}
+
 {{/* GoatCounter 방문자 통계 — 운영(production) 빌드에서만 로드 */}}
 {{ if hugo.IsProduction }}
 <script data-goatcounter="https://junstellar.goatcounter.com/count"
