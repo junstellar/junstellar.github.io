@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>얼굴 모자이크 — 브라우저에서 처리</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #1a1d24;
+    --border: #2a2f3a;
+    --text: #e6e8ec;
+    --muted: #9aa0ab;
+    --accent: #4f8cff;
+    --accent-2: #2563eb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  header { padding: 28px 20px 12px; text-align: center; }
+  header h1 { margin: 0 0 6px; font-size: 1.5rem; }
+  header p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+  .privacy {
+    display: inline-block; margin-top: 10px; padding: 4px 12px;
+    font-size: 0.78rem; color: #8ee6a8;
+    background: rgba(46,160,87,0.12);
+    border: 1px solid rgba(46,160,87,0.3); border-radius: 999px;
+  }
+  main { max-width: 900px; margin: 0 auto; padding: 16px 20px 60px; }
+  .controls {
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center;
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 14px; padding: 16px; margin-bottom: 14px;
+  }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field label { font-size: 0.75rem; color: var(--muted); }
+  select, button, input[type=file] { font: inherit; }
+  select {
+    background: #11141a; color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px;
+  }
+  .btn {
+    background: var(--accent-2); color: white; border: none;
+    border-radius: 8px; padding: 10px 16px; cursor: pointer; transition: background .15s;
+  }
+  .btn:hover { background: var(--accent); }
+  .btn:disabled { opacity: .5; cursor: not-allowed; }
+  .btn.secondary { background: #2a2f3a; }
+  .btn.secondary:hover { background: #353b48; }
+  .btn.active { background: var(--accent); box-shadow: 0 0 0 2px rgba(79,140,255,.4); }
+  .editbar {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+  }
+  .editbar .hint { color: var(--muted); font-size: 0.8rem; }
+  .drop {
+    border: 2px dashed var(--border); border-radius: 14px; padding: 40px 20px;
+    text-align: center; color: var(--muted); cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .drop.drag { border-color: var(--accent); background: rgba(79,140,255,0.06); }
+  .stage { margin-top: 6px; text-align: center; }
+  .canvas-wrap { display: inline-block; position: relative; line-height: 0; }
+  canvas {
+    max-width: 100%; border-radius: 12px; border: 1px solid var(--border);
+    background: #000; touch-action: none;
+  }
+  canvas.add { cursor: crosshair; }
+  canvas.del { cursor: pointer; }
+  .status {
+    text-align: center; color: var(--muted); font-size: 0.85rem;
+    min-height: 1.4em; margin-top: 10px;
+  }
+  .hidden { display: none; }
+  .range { display: flex; align-items: center; gap: 8px; }
+  input[type=range] { width: 110px; }
+  footer { text-align: center; color: var(--muted); font-size: 0.78rem; padding-bottom: 30px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🫥 얼굴 모자이크</h1>
+  <p>사진 속 얼굴을 자동으로 찾아 가려줍니다. 놓친 얼굴은 직접 추가하세요.</p>
+  <div class="privacy">🔒 사진은 서버로 전송되지 않고 브라우저 안에서만 처리됩니다</div>
+</header>
+
+<main>
+  <div class="controls">
+    <div class="field">
+      <label for="effect">효과</label>
+      <select id="effect">
+        <option value="mosaic">모자이크</option>
+        <option value="blur">블러</option>
+        <option value="box">검은 박스</option>
+        <option value="emoji">이모지</option>
+      </select>
+    </div>
+    <div class="field" id="emojiField">
+      <label for="emojiPick">이모지</label>
+      <select id="emojiPick">
+        <option>😀</option><option>🙂</option><option>😎</option>
+        <option>🐱</option><option>🐶</option><option>⭐</option>
+        <option>❓</option><option>🌸</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="strength">강도</label>
+      <div class="range"><input type="range" id="strength" min="1" max="100" value="50"></div>
+    </div>
+    <div class="field">
+      <label for="padding">영역 확장</label>
+      <div class="range"><input type="range" id="padding" min="0" max="60" value="20"></div>
+    </div>
+    <button class="btn" id="download" disabled>이미지 저장</button>
+  </div>
+
+  <div class="editbar hidden" id="editbar">
+    <button class="btn secondary active" id="modeAdd">➕ 추가 (드래그)</button>
+    <button class="btn secondary" id="modeDel">🗑 지우기 (클릭)</button>
+    <button class="btn secondary" id="redetect">🔄 자동 재검출</button>
+    <button class="btn secondary" id="clearAll">전체 지우기</button>
+    <span class="hint">놓친 얼굴은 드래그해서 영역을 추가하세요.</span>
+  </div>
+
+  <div class="drop" id="drop">
+    <strong>여기를 클릭</strong>하거나 사진을 끌어다 놓으세요
+    <input type="file" id="file" accept="image/*" class="hidden">
+  </div>
+
+  <div class="stage">
+    <div class="canvas-wrap">
+      <canvas id="canvas" class="hidden"></canvas>
+    </div>
+    <div class="status" id="status"></div>
+  </div>
+</main>
+
+<footer>브라우저에서 얼굴을 검출해 처리합니다 · MediaPipe Face Detector</footer>
+
+<script type="module">
+import { FaceDetector, FilesetResolver }
+  from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/vision_bundle.mjs";
+
+const $ = id => document.getElementById(id);
+const els = {
+  file: $('file'), drop: $('drop'), canvas: $('canvas'), status: $('status'),
+  effect: $('effect'), emojiField: $('emojiField'), emojiPick: $('emojiPick'),
+  strength: $('strength'), padding: $('padding'), download: $('download'),
+  editbar: $('editbar'), modeAdd: $('modeAdd'), modeDel: $('modeDel'),
+  redetect: $('redetect'), clearAll: $('clearAll'),
+};
+const ctx = els.canvas.getContext('2d');
+
+let detector = null;
+let currentImage = null;
+// 통합 영역 목록: {x,y,w,h,auto}  (캔버스 픽셀 좌표)
+let regions = [];
+let mode = 'add';            // 'add' | 'del'
+let dragBox = null;          // 드래그 중 미리보기
+
+const setStatus = m => els.status.textContent = m;
+
+// ---------- 얼굴 검출기 ----------
+async function loadDetector() {
+  if (detector) return detector;
+  setStatus('얼굴 검출 모델 불러오는 중…');
+  const vision = await FilesetResolver.forVisionTasks(
+    "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm");
+  detector = await FaceDetector.createFromOptions(vision, {
+    baseOptions: { modelAssetPath:
+      "https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite" },
+    runningMode: "IMAGE",
+    minDetectionConfidence: 0.3,
+  });
+  return detector;
+}
+
+async function autoDetect() {
+  await loadDetector();
+  setStatus('얼굴 검출 중…');
+  const res = detector.detect(currentImage);
+  const auto = res.detections.map(d => ({
+    x: d.boundingBox.originX, y: d.boundingBox.originY,
+    w: d.boundingBox.width, h: d.boundingBox.height, auto: true,
+  }));
+  // 기존 수동 영역은 유지하고 자동 영역만 교체
+  regions = regions.filter(r => !r.auto).concat(auto);
+  setStatus(auto.length
+    ? `얼굴 ${auto.length}개 자동 검출됨 · 놓친 얼굴은 드래그로 추가하세요`
+    : '자동 검출된 얼굴이 없습니다. 드래그로 직접 영역을 추가하세요.');
+  redraw();
+}
+
+// ---------- 파일 입력 ----------
+els.drop.addEventListener('click', () => els.file.click());
+els.file.addEventListener('change', e => e.target.files[0] && handleFile(e.target.files[0]));
+['dragover','dragenter'].forEach(ev => els.drop.addEventListener(ev,
+  e => { e.preventDefault(); els.drop.classList.add('drag'); }));
+['dragleave','drop'].forEach(ev => els.drop.addEventListener(ev,
+  e => { e.preventDefault(); els.drop.classList.remove('drag'); }));
+els.drop.addEventListener('drop', e => {
+  const f = e.dataTransfer.files[0];
+  if (f && f.type.startsWith('image/')) handleFile(f);
+});
+
+function handleFile(file) {
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = async () => {
+    URL.revokeObjectURL(url);
+    currentImage = img;
+    regions = [];
+    els.canvas.width = img.naturalWidth;
+    els.canvas.height = img.naturalHeight;
+    els.canvas.classList.remove('hidden');
+    els.editbar.classList.remove('hidden');
+    setMode('add');
+    try {
+      await autoDetect();
+      els.download.disabled = false;
+    } catch (err) {
+      console.error(err);
+      setStatus('검출 오류: ' + err.message + ' — 직접 드래그로 영역을 추가할 수 있습니다.');
+      redraw();
+      els.download.disabled = false;
+    }
+  };
+  img.src = url;
+}
+
+// ---------- 컨트롤 ----------
+[els.effect, els.emojiPick, els.strength, els.padding].forEach(el =>
+  el.addEventListener('input', () => { updateEmojiVisibility(); redraw(); }));
+function updateEmojiVisibility() {
+  els.emojiField.style.display = els.effect.value === 'emoji' ? '' : 'none';
+}
+updateEmojiVisibility();
+
+els.modeAdd.addEventListener('click', () => setMode('add'));
+els.modeDel.addEventListener('click', () => setMode('del'));
+els.redetect.addEventListener('click', () => currentImage && autoDetect());
+els.clearAll.addEventListener('click', () => { regions = []; setStatus('모든 영역을 지웠습니다.'); redraw(); });
+
+function setMode(m) {
+  mode = m;
+  els.modeAdd.classList.toggle('active', m === 'add');
+  els.modeDel.classList.toggle('active', m === 'del');
+  els.canvas.classList.toggle('add', m === 'add');
+  els.canvas.classList.toggle('del', m === 'del');
+}
+
+// ---------- 캔버스 편집 (pointer) ----------
+function toCanvasCoords(e) {
+  const rect = els.canvas.getBoundingClientRect();
+  return {
+    x: (e.clientX - rect.left) * (els.canvas.width / rect.width),
+    y: (e.clientY - rect.top) * (els.canvas.height / rect.height),
+  };
+}
+let startPt = null;
+els.canvas.addEventListener('pointerdown', e => {
+  if (!currentImage) return;
+  const p = toCanvasCoords(e);
+  if (mode === 'del') {
+    // 클릭 지점을 포함하는 가장 위 영역 제거
+    for (let i = regions.length - 1; i >= 0; i--) {
+      const r = regions[i];
+      if (p.x >= r.x && p.x <= r.x + r.w && p.y >= r.y && p.y <= r.y + r.h) {
+        regions.splice(i, 1); redraw(); return;
+      }
+    }
+    return;
+  }
+  els.canvas.setPointerCapture(e.pointerId);
+  startPt = p;
+  dragBox = { x: p.x, y: p.y, w: 0, h: 0 };
+});
+els.canvas.addEventListener('pointermove', e => {
+  if (!startPt) return;
+  const p = toCanvasCoords(e);
+  dragBox = {
+    x: Math.min(startPt.x, p.x), y: Math.min(startPt.y, p.y),
+    w: Math.abs(p.x - startPt.x), h: Math.abs(p.y - startPt.y),
+  };
+  redraw();
+});
+els.canvas.addEventListener('pointerup', () => {
+  if (dragBox && dragBox.w > 8 && dragBox.h > 8) {
+    regions.push({ ...dragBox, auto: false });
+    setStatus(`영역 추가됨 (총 ${regions.length}개)`);
+  }
+  startPt = null; dragBox = null; redraw();
+});
+
+// ---------- 렌더링 ----------
+function expanded(r) {
+  // 자동 검출 영역에만 '영역 확장' 적용, 수동 영역은 그대로
+  if (!r.auto) return roundRect(r.x, r.y, r.w, r.h);
+  const pad = +els.padding.value / 100;
+  const dx = r.w * pad, dy = r.h * pad;
+  let x = Math.max(0, r.x - dx), y = Math.max(0, r.y - dy);
+  let w = Math.min(els.canvas.width - x, r.w + dx * 2);
+  let h = Math.min(els.canvas.height - y, r.h + dy * 2);
+  return roundRect(x, y, w, h);
+}
+function roundRect(x, y, w, h) {
+  return { x: Math.round(x), y: Math.round(y), w: Math.round(w), h: Math.round(h) };
+}
+
+function paintEffects() {
+  ctx.drawImage(currentImage, 0, 0);
+  const effect = els.effect.value;
+  for (const r of regions) {
+    const { x, y, w, h } = expanded(r);
+    if (w <= 0 || h <= 0) continue;
+    if (effect === 'mosaic') drawMosaic(x, y, w, h);
+    else if (effect === 'blur') drawBlur(x, y, w, h);
+    else if (effect === 'box') { ctx.fillStyle = '#000'; ctx.fillRect(x, y, w, h); }
+    else if (effect === 'emoji') drawEmoji(x, y, w, h);
+  }
+}
+
+// 화면용: 효과 + 편집 외곽선
+function redraw() {
+  if (!currentImage) return;
+  paintEffects();
+  ctx.save();
+  ctx.lineWidth = Math.max(2, els.canvas.width / 400);
+  for (const r of regions) {
+    const { x, y, w, h } = expanded(r);
+    ctx.strokeStyle = r.auto ? 'rgba(79,140,255,.9)' : 'rgba(46,200,120,.95)';
+    ctx.setLineDash([8, 6]);
+    ctx.strokeRect(x, y, w, h);
+  }
+  if (dragBox) {
+    ctx.strokeStyle = 'rgba(255,255,255,.95)';
+    ctx.setLineDash([6, 4]);
+    ctx.strokeRect(dragBox.x, dragBox.y, dragBox.w, dragBox.h);
+  }
+  ctx.restore();
+}
+
+function drawMosaic(x, y, w, h) {
+  const level = +els.strength.value;
+  const small = Math.max(1, Math.round(2 + (100 - level) / 100 * 28));
+  const tmp = document.createElement('canvas');
+  const tctx = tmp.getContext('2d');
+  tmp.width = small; tmp.height = small;
+  tctx.imageSmoothingEnabled = false;
+  tctx.drawImage(els.canvas, x, y, w, h, 0, 0, small, small);
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(tmp, 0, 0, small, small, x, y, w, h);
+  ctx.imageSmoothingEnabled = true;
+}
+function drawBlur(x, y, w, h) {
+  const radius = Math.round(+els.strength.value / 100 * 30) + 4;
+  const tmp = document.createElement('canvas');
+  const tctx = tmp.getContext('2d');
+  tmp.width = w; tmp.height = h;
+  tctx.filter = `blur(${radius}px)`;
+  tctx.drawImage(els.canvas, x, y, w, h, 0, 0, w, h);
+  ctx.save();
+  ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  ctx.drawImage(tmp, x, y);
+  ctx.restore();
+}
+function drawEmoji(x, y, w, h) {
+  const size = Math.min(w, h) * 1.15;
+  ctx.font = `${size}px serif`;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(els.emojiPick.value, x + w / 2, y + h / 2);
+}
+
+// ---------- 저장 (외곽선 없이) ----------
+els.download.addEventListener('click', () => {
+  paintEffects();                       // 외곽선 제외하고 다시 그림
+  const a = document.createElement('a');
+  a.download = 'masked.png';
+  a.href = els.canvas.toDataURL('image/png');
+  a.click();
+  redraw();                             // 편집 화면 복원
+});
+</script>
+</body>
+</html>
