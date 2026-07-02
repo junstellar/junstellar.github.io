@@ -2,7 +2,7 @@
 title: "HBM이란? 왜 'AI 시대의 쌀'이라 불릴까 — AI 반도체 투자 교과서 ①"
 description: "요즘 뉴스마다 나오는 HBM, 정체가 뭘까요? 아파트처럼 쌓은 메모리가 왜 AI에 필수이고, 왜 SK하이닉스 주가를 움직이는지 비유로 쉽게 풀었습니다."
 slug: "what-is-hbm"
-date: 2026-07-02T22:00:00+09:00
+date: 2026-07-02T21:40:00+09:00
 draft: false
 image: "hbm-series-1-cover.png"
 categories: ["투자"]

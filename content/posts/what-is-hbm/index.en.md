@@ -2,7 +2,7 @@
 title: "What Is HBM? The 'Rice of the AI Era' — AI Chip Investing 101 ①"
 description: "HBM is all over the financial news — but what is it? A plain-language guide to the stacked memory behind the AI boom, and why it moves SK hynix's stock."
 slug: "what-is-hbm"
-date: 2026-07-02T22:00:00+09:00
+date: 2026-07-02T21:40:00+09:00
 draft: false
 image: "hbm-series-1-cover.png"
 categories: ["투자"]

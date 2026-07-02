@@ -2,7 +2,7 @@
 title: "HBM是什么？为何被称为\"AI时代的大米\" — AI半导体投资教科书 ①"
 description: "新闻里天天出现的HBM到底是什么？用通俗比喻讲清这种像公寓一样堆叠的内存为何是AI的必需品，又为何能撬动SK海力士的股价。"
 slug: "what-is-hbm"
-date: 2026-07-02T22:00:00+09:00
+date: 2026-07-02T21:40:00+09:00
 draft: false
 image: "hbm-series-1-cover.png"
 categories: ["투자"]
