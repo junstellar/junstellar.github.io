@@ -8,7 +8,7 @@ menu:
             icon: user
 ---
 
-## Jun, To the Moon
+## To the Moon
 
 学んだことを少しずつ記録する場所です。
 

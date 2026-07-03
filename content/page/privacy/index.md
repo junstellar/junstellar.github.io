@@ -1,7 +1,7 @@
 ---
 title: "개인정보처리방침"
 slug: "privacy"
-description: "Jun, To the Moon의 개인정보 수집·이용, 쿠키 및 광고(Google AdSense) 관련 안내입니다."
+description: "To the Moon의 개인정보 수집·이용, 쿠키 및 광고(Google AdSense) 관련 안내입니다."
 date: 2026-06-30
 menu:
     main:
@@ -11,7 +11,7 @@ menu:
 comments: false
 ---
 
-**Jun, To the Moon**(이하 "본 블로그", `https://junstellar.github.io`)은 방문자의 개인정보를 소중히 여기며, 어떤 정보가 수집·이용되는지 투명하게 안내합니다.
+**To the Moon**(이하 "본 블로그", `https://junstellar.github.io`)은 방문자의 개인정보를 소중히 여기며, 어떤 정보가 수집·이용되는지 투명하게 안내합니다.
 
 ## 1. 수집하는 개인정보
 

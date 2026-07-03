@@ -8,7 +8,7 @@ menu:
             icon: user
 ---
 
-## Jun, To the Moon
+## To the Moon
 
 记录所学点滴的小空间。
 

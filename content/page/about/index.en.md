@@ -8,7 +8,7 @@ menu:
             icon: user
 ---
 
-## Jun, To the Moon
+## To the Moon
 
 A little space where I keep notes on what I learn.
 
