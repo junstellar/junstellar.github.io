@@ -3,7 +3,7 @@ title: "도구"
 description: "브라우저에서 바로 쓰는 작은 도구 모음"
 menu:
     main:
-        weight: -60
+        weight: -65
         params:
             icon: tool
 links:

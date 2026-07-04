@@ -5,7 +5,8 @@ description: "To the Moon의 개인정보 수집·이용, 쿠키 및 광고(Goog
 date: 2026-06-30
 menu:
     main:
-        weight: -40
+        name: "개인정보"
+        weight: -55
         params:
             icon: copyright
 comments: false

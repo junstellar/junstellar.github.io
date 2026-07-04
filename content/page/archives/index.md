@@ -1,10 +1,10 @@
 ---
-title: "보관함"
+title: "글 목록"
 slug: "archives"
 layout: "archives"
 menu:
     main:
-        weight: -70
+        weight: -80
         params:
             icon: archives
 ---

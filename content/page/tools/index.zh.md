@@ -3,7 +3,7 @@ title: "工具"
 description: "在浏览器中即可使用的小工具集"
 menu:
     main:
-        weight: -60
+        weight: -65
         params:
             icon: tool
 links:

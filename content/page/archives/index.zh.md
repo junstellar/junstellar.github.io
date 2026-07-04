@@ -1,10 +1,10 @@
 ---
-title: "归档"
+title: "文章列表"
 slug: "archives"
 layout: "archives"
 menu:
     main:
-        weight: -70
+        weight: -80
         params:
             icon: archives
 ---

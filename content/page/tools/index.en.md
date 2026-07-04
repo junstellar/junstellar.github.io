@@ -3,7 +3,7 @@ title: "Tools"
 description: "Small tools that run right in your browser"
 menu:
     main:
-        weight: -60
+        weight: -65
         params:
             icon: tool
 links:

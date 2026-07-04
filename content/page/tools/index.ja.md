@@ -3,7 +3,7 @@ title: "ツール"
 description: "ブラウザですぐ使える小さなツール集"
 menu:
     main:
-        weight: -60
+        weight: -65
         params:
             icon: tool
 links:
