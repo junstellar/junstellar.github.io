@@ -3,7 +3,7 @@ title: "2回目のキャンプで出会った初めての雨 — 水原・光教
 description: "都心での退勤泊キャンプ、水原・光教湖水公園ファミリーキャンプ場のレビュー。2回目にして雨中キャンプ、雨の中の撤収、初めてのテント乾燥までの記録です。"
 slug: "gwanggyo-lake-camping"
 date: 2026-07-05T10:10:00+09:00
-draft: false
+draft: true
 image: "camp-night.jpg"
 categories: ["캠핑"]
 tags: ["キャンプ", "キャンプ場レビュー", "光教湖水公園", "雨中キャンプ", "退勤泊"]

@@ -3,7 +3,7 @@ title: "두 번째 캠핑에서 만난 첫 비 — 수원 광교호수공원 가
 description: "도심 속 퇴근박으로 다녀온 수원 광교호수공원 가족캠핑장 후기. 두 번째 캠핑 만에 만난 우중캠, 빗속 철수, 그리고 처음 해본 텐트 말리기까지의 기록입니다."
 slug: "gwanggyo-lake-camping"
 date: 2026-07-05T10:10:00+09:00
-draft: false
+draft: true
 image: "camp-night.jpg"
 categories: ["캠핑"]
 tags: ["캠핑", "캠핑장후기", "광교호수공원캠핑장", "우중캠핑", "퇴근박"]

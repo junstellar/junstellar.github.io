@@ -3,7 +3,7 @@ title: "ペンションにがっかりした日、キャンプを始めること
 description: "古びたペンションにがっかりして帰った東海旅行。「この金額ならテントを買おう」という思いからキャンプが始まりました。キャンプカテゴリ最初の記事です。"
 slug: "camping-start"
 date: 2026-06-30T12:00:00+09:00
-draft: false
+draft: true
 image: "sunrise.jpg"
 categories: ["캠핑"]
 tags: ["キャンプ", "キャンプ入門", "東海旅行", "キャンプ道具"]

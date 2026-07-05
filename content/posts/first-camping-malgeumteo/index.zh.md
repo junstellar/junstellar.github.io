@@ -3,7 +3,7 @@ title: "终于迎来第一次露营 — 乌山清爽园公园露营地"
 description: "记录我们一家的第一次露营:乌山清爽园公园露营地测评,加上事先做功课整理的露营必备清单和新手家庭的购买标准。"
 slug: "first-camping-malgeumteo"
 date: 2026-07-04T08:40:00+09:00
-draft: false
+draft: true
 image: "entrance.jpg"
 categories: ["캠핑"]
 tags: ["露营", "露营地测评", "乌山", "家庭露营", "首次露营"]

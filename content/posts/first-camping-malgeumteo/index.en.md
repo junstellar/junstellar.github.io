@@ -3,7 +3,7 @@ title: "Our First Camping Trip — Malgeumteo Park Campground in Osan"
 description: "Our family's first camping trip to Malgeumteo Park Campground in Osan — plus the essential-gear list I researched and the criteria we used to buy each item."
 slug: "first-camping-malgeumteo"
 date: 2026-07-04T08:40:00+09:00
-draft: false
+draft: true
 image: "entrance.jpg"
 categories: ["캠핑"]
 tags: ["camping", "campground-review", "osan", "family-camping", "first-camping"]
