@@ -2,7 +2,7 @@
 title: "I Built a Class Guide Library for Mabinogi Mobile Season 2"
 description: "What started as finding Priest guides for my wife grew, with cheers from my guildmates, into a guide library covering all 21 classes. Compiled from community posts with source links, refreshed weekly."
 slug: "mabi-guide-library"
-date: 2026-07-06T11:00:00+09:00
+date: 2026-07-06T09:00:00+09:00
 draft: false
 categories: ["일상"]
 tags: ["MabinogiMobile", "GameGuide", "Season2"]
