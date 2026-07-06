@@ -3,7 +3,7 @@ title: "구글, 제미나이 3.5 플래시에 '컴퓨터 유즈' 내장… \"성
 description: "구글이 제미나이 3.5 플래시에 화면을 직접 보고 클릭·입력하는 '컴퓨터 유즈'를 기본 내장했다. 관찰·판단·실행을 반복하는 자동화 에이전트 기능을 정리했다."
 slug: "gemini-3-5-flash-computer-use"
 date: 2026-06-28T10:00:00+09:00
-draft: false
+draft: true
 categories: ["AI"]
 tags: ["AI", "구글", "제미나이", "컴퓨터유즈"]
 ---
