@@ -8,6 +8,15 @@ categories: ["일상"]
 tags: ["玛奇手游", "游戏攻略", "第二赛季"]
 ---
 
+<a href="/tools/mabi-guide/" style="display:flex;align-items:center;gap:14px;margin:0 0 32px;padding:18px 22px;border:1px solid #d9c795;border-radius:14px;background:linear-gradient(135deg,#fbf6e6,#f6efd8);text-decoration:none;box-shadow:0 6px 20px -14px rgba(120,90,20,.5)">
+  <span style="font-size:30px;line-height:1">📚</span>
+  <span style="flex:1;min-width:0">
+    <span style="display:block;font-weight:800;font-size:17px;color:#5a4514">玛奇手游第二赛季攻略书库</span>
+    <span style="display:block;font-size:13px;color:#8a7440;margin-top:2px">全部21个职业攻略集 — 点击职业封面即可查看</span>
+  </span>
+  <span style="font-size:20px;color:#a9822a;flex:0 0 auto">→</span>
+</a>
+
 第二赛季（光与暗）开启后，妻子为了找牧师攻略折腾了好久。翻社区论坛会发现，好的攻略帖被淹没在提问帖和梗图之间，想只挑出有用的信息并不容易。于是我为了帮她，把牧师相关的帖子收集起来整理成了攻略集的形式 — 拉萨服"Friends"公会的成员们看到后纷纷说"我们的职业也做一个吧"，在大家的鼓励下，不知不觉就做出了**覆盖全部职业的合集**。
 
 当前版本收集了第二赛季上线日（6/25）至7/5期间发布在 Evan（玛奇手游）社区的**约200篇帖子和评论**，将**全部21个职业**各整理成一册攻略集。今后计划**每周自动重新收集社区内容并更新**。更新基准日期标注在每册底部。
@@ -19,7 +28,7 @@ tags: ["玛奇手游", "游戏攻略", "第二赛季"]
 
 每册结构相同：最上方是**一目了然的结论**（强度、流派、精工、属性目标摘要），下面按章节展开技能循环、精工·属性表格和符文配置，最后附**来源列表**。所有内容都标注了原帖编号，点击即可跳转到社区原文。
 
-攻略书库在[**工具 → 玛奇手游 S2 攻略书库**](/tools/mabi-guide/)中查看，点击职业封面即可打开对应攻略集。书库底部还提供离线收藏用的**全合一单文件**（内含21册+报告，约0.6MB），但下载版内容固定在保存时点，**想看每周更新的最新攻略，建议在博客上阅读**。（内容为韩语。）
+攻略书库可从上方按钮，或博客顶部菜单的[**工具**](/tools/mabi-guide/)随时打开。书库底部还提供离线收藏用的**全合一单文件**（内含21册，约0.5MB），但下载版内容固定在保存时点，**想看每周更新的最新攻略，建议在博客上阅读**。（内容为韩语。）
 
 如果能让妻子的牧师、还有公会成员们的角色变强一点，那就足够了。
 
