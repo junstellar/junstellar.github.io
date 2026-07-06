@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>육육이의 프렌즈를 위한 암술 공략모음</title>
+<style>
+  :root{
+    --paper:#efeef3;
+    --card:#f8f7fb;
+    --ink:#262233;
+    --ink-soft:#6b6579;
+    --obsid:#4a3d6b;
+    --obsid-deep:#342a4f;
+    --obsid-soft:#e4dff0;
+    --obsid-line:#c3b8dd;
+    --line:#e0dde9;
+    --warn:#8c3b2e;
+    --warn-soft:#f5e5df;
+    --cool:#3f5a6b;
+    --cool-soft:#e7edf0;
+    --serif:'Nanum Myeongjo','Batang','AppleMyungjo',Georgia,serif;
+    --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:radial-gradient(120% 60% at 50% -10%, #f5f4f9 0%, var(--paper) 55%);color:var(--ink);font-family:var(--sans);line-height:1.78;font-size:16px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 90px}
+  header.mast{text-align:center;padding:56px 0 30px}
+  .sigil{font-size:26px;color:var(--obsid);line-height:1;margin-bottom:14px}
+  .byline{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--obsid-deep);margin-bottom:6px}
+  h1.title{font-family:var(--serif);font-size:clamp(30px,6.5vw,46px);line-height:1.18;margin:0;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+  .mast .rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:22px auto 16px;max-width:440px;color:var(--obsid)}
+  .mast .rule::before,.mast .rule::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--obsid-line))}
+  .mast .rule::after{background:linear-gradient(90deg,var(--obsid-line),transparent)}
+  .mast .rule span{font-size:13px}
+  .submeta{font-size:13px;color:var(--ink-soft);max-width:560px;margin:0 auto;line-height:1.6}
+  .submeta a{color:var(--obsid-deep);font-weight:600;text-decoration:none}
+  .submeta b{color:var(--ink)}
+  .verdict-strip{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 0}
+  .badge{font-size:13px;font-weight:700;padding:5px 14px;border-radius:999px;background:var(--obsid-soft);color:var(--obsid-deep);border:1px solid var(--obsid-line)}
+  .badge.down{background:var(--warn-soft);color:var(--warn);border-color:#e5cec5}
+  .summary{background:var(--card);border:1px solid var(--obsid-line);border-radius:14px;padding:26px 28px;margin:36px 0 14px;box-shadow:0 1px 0 #fff inset, 0 6px 22px -18px rgba(50,40,90,.5)}
+  .summary h2{font-family:var(--serif);font-size:19px;margin:0 0 4px;color:var(--obsid-deep);display:flex;gap:9px}
+  .summary .lead{font-size:13px;color:var(--ink-soft);margin:0 0 16px}
+  .checklist{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+  .checklist li{display:flex;gap:11px;align-items:baseline;font-size:15px}
+  .checklist .k{flex:0 0 76px;font-weight:700;color:var(--obsid-deep);font-size:13px;text-align:right;padding-top:1px}
+  .checklist .v{flex:1}
+  .checklist .v b{color:var(--ink)}
+  nav.toc{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 4px;margin:34px 0 8px}
+  nav.toc .toch{font-family:var(--serif);font-size:14px;letter-spacing:.14em;color:var(--obsid-deep);text-transform:uppercase;margin-bottom:12px;text-align:center}
+  nav.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 26px}
+  nav.toc a{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink);font-size:14.5px;padding:5px 6px;border-radius:7px}
+  nav.toc a:hover{background:var(--obsid-soft);color:var(--obsid-deep)}
+  nav.toc .cn{font-family:var(--serif);color:var(--obsid);font-size:13px;min-width:20px}
+  @media(max-width:560px){nav.toc ol{grid-template-columns:1fr}}
+  .chapter{margin:56px 0 0;scroll-margin-top:16px}
+  .chapter .kicker{font-family:var(--serif);font-size:13px;letter-spacing:.22em;color:var(--obsid);text-transform:uppercase;margin-bottom:4px}
+  .chapter h3{font-family:var(--serif);font-size:clamp(22px,4vw,28px);margin:0;color:var(--ink);font-weight:700;line-height:1.25}
+  .chapter .chead{margin-bottom:22px}
+  .chapter .chead p{font-size:14px;color:var(--ink-soft);margin:7px 0 0}
+  .ornament{text-align:center;color:var(--obsid-line);font-size:15px;margin:52px 0 0;letter-spacing:.6em}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+  .card.hl{border-color:var(--obsid-line);background:linear-gradient(180deg,#efeaf8,#f8f7fb)}
+  .card h4{margin:0 0 9px;font-size:16.5px;font-weight:800;color:var(--ink);display:flex;gap:8px;align-items:baseline}
+  .card h4 .tag{font-size:11px;font-weight:700;color:var(--obsid-deep);background:var(--obsid-soft);border-radius:5px;padding:2px 7px;flex:0 0 auto}
+  .card p{margin:0 0 10px}
+  .card p:last-of-type{margin-bottom:0}
+  .card b{color:var(--obsid-deep)}
+  .card .plain b{color:var(--ink)}
+  .quote{border-left:3px solid var(--obsid);background:#ece6f5;padding:11px 16px;border-radius:0 9px 9px 0;font-size:14.5px;color:#3f3060;margin:12px 0}
+  .quote .who{display:block;font-size:11.5px;color:#877aa3;margin-top:5px}
+  .note{font-size:13.5px;border-radius:9px;padding:11px 15px;margin:12px 0;background:var(--warn-soft);color:var(--warn);border:1px solid #e8d1c8}
+  .note.info{background:var(--cool-soft);color:var(--cool);border-color:#cfdce3}
+  .note b{color:inherit;font-weight:800}
+  .tablebox{overflow-x:auto;margin:14px 0 4px;border-radius:10px;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:420px}
+  th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{background:#e7e2f0;font-weight:800;color:var(--obsid-deep);font-size:13px}
+  tr:last-child td{border-bottom:none}
+  td b{color:var(--obsid-deep)}
+  tbody tr:nth-child(even){background:#fbfafd}
+  .tnum{font-variant-numeric:tabular-nums}
+  .cyc{font-family:ui-monospace,Consolas,monospace;font-size:14px;background:#292338;color:#ddd4ee;border-radius:9px;padding:12px 16px;margin:12px 0;overflow-x:auto;line-height:1.9}
+  .cyc b{color:#b79af0;font-weight:700}
+  .cyc .lbl{color:#94899f;font-family:var(--sans);font-size:12px}
+  .refs{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px;padding-top:12px;border-top:1px dashed var(--line)}
+  .refs .rl{font-size:11px;letter-spacing:.1em;color:var(--ink-soft);font-weight:700;align-self:center;margin-right:3px}
+  a.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--obsid-deep);text-decoration:none;background:#ebe6f4;border:1px solid var(--obsid-line);border-radius:999px;padding:3px 10px;line-height:1.5}
+  a.chip:hover{background:var(--obsid);color:#fff;border-color:var(--obsid)}
+  a.chip .n{font-variant-numeric:tabular-nums;font-weight:700;opacity:.85}
+  .appendix{margin-top:54px}
+  .srclist{list-style:none;margin:0;padding:0}
+  .srclist li{display:flex;gap:11px;align-items:baseline;padding:8px 2px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .srclist li:last-child{border-bottom:none}
+  .srclist .num{color:var(--obsid);font-weight:700;font-variant-numeric:tabular-nums;min-width:66px;font-size:12.5px}
+  .srclist a{color:var(--ink);text-decoration:none;font-weight:600}
+  .srclist a:hover{color:var(--obsid-deep)}
+  .srclist .d{color:var(--ink-soft);font-size:12.5px;font-weight:400}
+  footer{margin-top:52px;padding-top:22px;border-top:2px solid var(--obsid-line);text-align:center;font-size:12.5px;color:var(--ink-soft);line-height:1.7}
+  footer .sign{font-family:var(--serif);font-size:15px;color:var(--obsid-deep);margin-bottom:4px}
+  a:focus-visible{outline:2px solid var(--obsid);outline-offset:2px;border-radius:4px}
+  @media (prefers-reduced-motion:no-preference){.card,.summary{animation:rise .5s ease both}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="sigil">☽</div>
+  <div class="byline">육육이의</div>
+  <h1 class="title">프렌즈를 위한 암술 공략모음</h1>
+  <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
+  <p class="submeta">
+    <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
+    암흑술사(암술) 글을 정리한 비공식 공략집 · 시즌 2 출시(2026-06-25)~7/5 본문·댓글 분석
+  </p>
+  <div class="verdict-strip">
+    <span class="badge down">불쾌 리스크 · 소수 직업</span>
+    <span class="badge">절구(절제·구속) 정배</span>
+    <span class="badge">함수 3,600만 실측</span>
+  </div>
+</header>
+
+<section class="summary">
+  <h2>☽ 한눈에 보는 결론</h2>
+  <p class="lead">바쁜 사람은 이것만 — 자세한 근거는 아래 각 장에.</p>
+  <ul class="checklist">
+    <li><span class="k">티어</span><span class="v">“리스크 둘둘인데 리턴 없음” — <b>불쾌하지만 딜은 그냥저냥 좋은</b> 소수 직업. 인구 적어 랭킹 이점</span></li>
+    <li><span class="k">조합</span><span class="v"><b>절제 · 구속 + @</b>(나락/타락/광기 택1) — 실험값 절구광 1600 &gt; 심타광 1500 &gt; 구타광 1300</span></li>
+    <li><span class="k">이유</span><span class="v">6패시브 흑요석수의(회복스킬 피해증) + 구속의 1스 추가딜 50% + 절제 태그변경 → <b>압축딜이 정신나감</b></span></li>
+    <li><span class="k">사이클</span><span class="v">42 스타트 → 531/534 → <b>5331 534 반복</b> (속나제 시절과 동일 감각)</span></li>
+    <li><span class="k">세공</span><span class="v"><b>소환=방해 ≫ 연타 &gt; 강타 &gt; 보조</b> · 장신구 3줄 <b>소방연</b></span></li>
+    <li><span class="k">개조</span><span class="v">절구나 기준 <b>134</b></span></li>
+    <li><span class="k">특이점</span><span class="v">시즌1 룬 ↔ 시즌2 룬 체급 차이가 거의 없음(지속딜 구조 덕) — 타 직업과 다른 점</span></li>
+  </ul>
+</section>
+
+<nav class="toc">
+  <div class="toch">목 차 · Contents</div>
+  <ol>
+    <li><a href="#c1"><span class="cn">壹</span> 티어 — 젠가의 직업</a></li>
+    <li><a href="#c2"><span class="cn">貳</span> 절구 조합의 원리</a></li>
+    <li><a href="#c3"><span class="cn">參</span> 실측 리포트 · 사이클</a></li>
+    <li><a href="#c4"><span class="cn">肆</span> 세공 · 마무리</a></li>
+    <li><a href="#src"><span class="cn">附</span> 출처</a></li>
+  </ol>
+</nav>
+
+<section class="chapter" id="c1">
+  <div class="chead">
+    <div class="kicker">제 1 장 · 壹</div>
+    <h3>티어 — 젠가의 직업</h3>
+    <p>“한번 자빠지면 스택 0부터 다시”</p>
+  </div>
+
+  <div class="card hl">
+    <p>암술의 인기가 없는 이유를 갤은 이렇게 정리한다 — <b>“온갖 리스크를 둘둘 했는데 그거 달고 시너지 내는 게 없고, 이로우라고 설계해둔 기믹조차 방해 요소로 적용됨. 걍 불편하게 겜 하면 남들만큼 성능 나옴.”</b> “젠가 같은 직업 — 한번 자빠지면 스택 0부터”, “모든 직업 중 가장 불쾌한 거 꼽자면 암술.” 실전에서도 “다른 직업 3천만 나올 때 2천만 턱걸이”라는 한탄이 나온다.</p>
+    <p class="plain">반면 소수 유저의 자부심도 있다 — “뉴비들은 직업 암술 해야 함, ㄹㅇ 고트직업”(팬심), “인구 적은 직업의 장점을 누리는 게 낫지. 어비스 랭킹 경쟁도 적고.” 떠날까 고민하는 글엔 “지금 잘하는 일을 소중히 하세요”라는 명언(?)이 달렸다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144103" target="_blank" rel="noopener"><span class="n">#1144103</span> 왜 인기가 없냐 (구조 진단)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1145264" target="_blank" rel="noopener"><span class="n">#1145264</span> 2천만 턱걸이</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142616" target="_blank" rel="noopener"><span class="n">#1142616</span> 인구수 분석</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133024" target="_blank" rel="noopener"><span class="n">#1133024</span> 암술 버려야 하나?</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">☽ ☽ ☽</div>
+
+<section class="chapter" id="c2">
+  <div class="chead">
+    <div class="kicker">제 2 장 · 貳</div>
+    <h3>절구 조합의 원리</h3>
+    <p>절제·구속이 고정, 나머지 한 자리가 취향</p>
+  </div>
+
+  <div class="card hl">
+    <p>정배는 <b>절제 · 구속 + @(나락/타락/광기)</b> — 절구나·절구타·절구광. 원리는 연구자(폭파전문가)의 설명이 명쾌하다: <b>“암술 6패시브 흑요석수의에 달린 회복스킬 피해량 증가(구속·절제), 구속에 달린 1스킬 사용 시 추가딜 50%(절제 사용), 절제의 태그 변경(연보방) 및 딜 증가 등등으로 압축딜이 정신나감.”</b> 차선은 심(구)타광.</p>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>조합</th><th>실험 허수값</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td><b>절구광</b></td><td class="tnum">1,600</td><td rowspan="3">폭파전문가 실험 (절구나·절구타 미실험)</td></tr>
+          <tr><td>심타광</td><td class="tnum">1,500</td></tr>
+          <tr><td>구타광</td><td class="tnum">1,300</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note info">스킬룬별 태그 참고 — 절제(연방보) · 구속(소강방) · 타락(소방연) · 죄어오는 죽음(방보). 조합에 따라 세공 최적이 소방연/소방보로 갈릴 수 있어 “아직 시기상조.”</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142714" target="_blank" rel="noopener"><span class="n">#1142714</span> 절구 정배 원리</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">☽ ☽ ☽</div>
+
+<section class="chapter" id="c3">
+  <div class="chead">
+    <div class="kicker">제 3 장 · 參</div>
+    <h3>실측 리포트 · 사이클</h3>
+    <p>갤 유일의 측정글(#1134612) 요약</p>
+  </div>
+
+  <div class="card">
+    <p><b>시즌1 룬 vs 시즌2 룬 — 체급 차이가 거의 없다.</b> “딴 직업들은 2배 이상 차이 나기도 하는데… 암술은 지속딜이라 시즌1 각성 폭딜 메타를 못 우겨넣는 대신, 룬을 갈아도 크게 안 변함.” 함수 허수 <b>3,600만</b> 실측(절구나·세공 2줄·개조 134), 시즌 스킬 직피 지분 약 3%. <b>악몽</b>(직피 트리거룬)은 회랑 포지션으로 채용 — “나쁘지 않음, 끝까지 갈 수도.”</p>
+    <div class="cyc">
+      <span class="lbl">사이클 (절구나 기준)</span><br>
+      <b>42</b> 스타트 → 첫 사이클 <b>531 / 534</b> (31534도 가능) → 이후 <b>5331 534 반복</b><br>
+      <span class="lbl">“속나제 시절 똑같이 굴리면 됨” — 개조 134</span>
+    </div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134612" target="_blank" rel="noopener"><span class="n">#1134612</span> 암술 측정글 (실측·사이클)</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">☽ ☽ ☽</div>
+
+<section class="chapter" id="c4">
+  <div class="chead">
+    <div class="kicker">제 4 장 · 肆</div>
+    <h3>세공 · 마무리</h3>
+    <p>소환과 방해의 나라</p>
+  </div>
+
+  <div class="card">
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>항목</th><th>기준</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>세공 서열</td><td><b>소환 = 방해 ≫ 연타 &gt; 강타 &gt; 보조</b></td><td>절구나 기준 — “소환수 그림자손 평타보다 1스가 세서 방해&gt;소환이지만 거의 차이 없음”</td></tr>
+          <tr><td>장신구 3줄</td><td><b>소방연</b></td><td>소방강 vs 소방연 → “소방연 걍 쓰는 중” (조합 따라 유동)</td></tr>
+          <tr><td>개조</td><td><b>134</b></td><td>절구나 기준</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="plain">결론 — 암술은 <b>불쾌함을 견디는 자의 직업</b>이다. 압축딜 원리(절구)와 사이클은 정립됐고, 시즌1 룬으로도 체급이 유지되는 특이한 직업이라 세팅 부담은 오히려 적다. 인구가 적어 연구글이 귀하니, 위 측정글 두 개(#1134612, #1142714)가 사실상 교과서다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134612" target="_blank" rel="noopener"><span class="n">#1134612</span> 세공 서열</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143841" target="_blank" rel="noopener"><span class="n">#1143841</span> 장신구 소방연</a>
+    </div>
+  </div>
+</section>
+
+<section class="chapter appendix" id="src">
+  <div class="chead">
+    <div class="kicker">부록 · 附</div>
+    <h3>출처 8건</h3>
+    <p>번호 클릭 시 디시 원문으로</p>
+  </div>
+  <ul class="srclist">
+    <li><span class="num">#1145264</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1145264" target="_blank" rel="noopener">암술 진짜 구리네</a><span class="d">07/05 · 2천만 턱걸이</span></li>
+    <li><span class="num">#1144905</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144905" target="_blank" rel="noopener">뉴비들은 직업 암술해야함</a><span class="d">07/05 · 팬심</span></li>
+    <li><span class="num">#1144103</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144103" target="_blank" rel="noopener">암술은 문제가 뭐길래 인기가 없냐??</a><span class="d">07/05 · 구조 진단</span></li>
+    <li><span class="num">#1143841</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143841" target="_blank" rel="noopener">장신구 룬 소방강 소방연 뭐가 3줄?</a><span class="d">07/05 · 세공</span></li>
+    <li><span class="num">#1142714</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142714" target="_blank" rel="noopener">암술 심타광?</a><span class="d">07/04 · 절구 원리·실험값</span></li>
+    <li><span class="num">#1142616</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142616" target="_blank" rel="noopener">암술은 왜 인구수가 적음</a><span class="d">07/04 · 인구 분석</span></li>
+    <li><span class="num">#1134612</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134612" target="_blank" rel="noopener">암술 이것저것 측정해본 것들</a><span class="d">07/02 · 실측 교과서</span></li>
+    <li><span class="num">#1133024</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133024" target="_blank" rel="noopener">암술 버려야 하나..?</a><span class="d">07/01 · 잔류 고민</span></li>
+  </ul>
+</section>
+
+<footer>
+  <div class="sign">☽ 육육이의 프렌즈를 위한 암술 공략모음 ☽</div>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  절구나/절구타 비교·세공 최적은 시기상조 — 갱신 필요 · 인용문은 원문 표현 유지
+</footer>
+
+</div>
+
+</body>
+</html>

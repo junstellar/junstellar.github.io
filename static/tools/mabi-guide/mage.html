@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>육육이의 프렌즈를 위한 법사 공략모음</title>
+<style>
+  :root{
+    --paper:#f0eff5;
+    --card:#f9f8fc;
+    --ink:#272433;
+    --ink-soft:#6b6579;
+    --arc:#5b3e96;
+    --arc-deep:#422a73;
+    --arc-soft:#e7dff3;
+    --arc-line:#c8b6e2;
+    --line:#e1dde9;
+    --warn:#8c3b2e;
+    --warn-soft:#f5e5df;
+    --cool:#3f5a6b;
+    --cool-soft:#e7edf0;
+    --serif:'Nanum Myeongjo','Batang','AppleMyungjo',Georgia,serif;
+    --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:radial-gradient(120% 60% at 50% -10%, #f6f4fa 0%, var(--paper) 55%);color:var(--ink);font-family:var(--sans);line-height:1.78;font-size:16px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 90px}
+  header.mast{text-align:center;padding:56px 0 30px}
+  .sigil{font-size:26px;color:var(--arc);line-height:1;margin-bottom:14px}
+  .byline{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--arc-deep);margin-bottom:6px}
+  h1.title{font-family:var(--serif);font-size:clamp(30px,6.5vw,46px);line-height:1.18;margin:0;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+  .mast .rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:22px auto 16px;max-width:440px;color:var(--arc)}
+  .mast .rule::before,.mast .rule::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--arc-line))}
+  .mast .rule::after{background:linear-gradient(90deg,var(--arc-line),transparent)}
+  .mast .rule span{font-size:13px}
+  .submeta{font-size:13px;color:var(--ink-soft);max-width:560px;margin:0 auto;line-height:1.6}
+  .submeta a{color:var(--arc-deep);font-weight:600;text-decoration:none}
+  .submeta b{color:var(--ink)}
+  .verdict-strip{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 0}
+  .badge{font-size:13px;font-weight:700;padding:5px 14px;border-radius:999px;background:var(--arc-soft);color:var(--arc-deep);border:1px solid var(--arc-line)}
+  .badge.down{background:var(--warn-soft);color:var(--warn);border-color:#e5cec5}
+  .summary{background:var(--card);border:1px solid var(--arc-line);border-radius:14px;padding:26px 28px;margin:36px 0 14px;box-shadow:0 1px 0 #fff inset, 0 6px 22px -18px rgba(70,40,120,.5)}
+  .summary h2{font-family:var(--serif);font-size:19px;margin:0 0 4px;color:var(--arc-deep);display:flex;gap:9px}
+  .summary .lead{font-size:13px;color:var(--ink-soft);margin:0 0 16px}
+  .checklist{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+  .checklist li{display:flex;gap:11px;align-items:baseline;font-size:15px}
+  .checklist .k{flex:0 0 76px;font-weight:700;color:var(--arc-deep);font-size:13px;text-align:right;padding-top:1px}
+  .checklist .v{flex:1}
+  .checklist .v b{color:var(--ink)}
+  nav.toc{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 4px;margin:34px 0 8px}
+  nav.toc .toch{font-family:var(--serif);font-size:14px;letter-spacing:.14em;color:var(--arc-deep);text-transform:uppercase;margin-bottom:12px;text-align:center}
+  nav.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 26px}
+  nav.toc a{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink);font-size:14.5px;padding:5px 6px;border-radius:7px}
+  nav.toc a:hover{background:var(--arc-soft);color:var(--arc-deep)}
+  nav.toc .cn{font-family:var(--serif);color:var(--arc);font-size:13px;min-width:20px}
+  @media(max-width:560px){nav.toc ol{grid-template-columns:1fr}}
+  .chapter{margin:56px 0 0;scroll-margin-top:16px}
+  .chapter .kicker{font-family:var(--serif);font-size:13px;letter-spacing:.22em;color:var(--arc);text-transform:uppercase;margin-bottom:4px}
+  .chapter h3{font-family:var(--serif);font-size:clamp(22px,4vw,28px);margin:0;color:var(--ink);font-weight:700;line-height:1.25}
+  .chapter .chead{margin-bottom:22px}
+  .chapter .chead p{font-size:14px;color:var(--ink-soft);margin:7px 0 0}
+  .ornament{text-align:center;color:var(--arc-line);font-size:15px;margin:52px 0 0;letter-spacing:.6em}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+  .card.hl{border-color:var(--arc-line);background:linear-gradient(180deg,#f1ebf9,#f9f8fc)}
+  .card h4{margin:0 0 9px;font-size:16.5px;font-weight:800;color:var(--ink);display:flex;gap:8px;align-items:baseline}
+  .card h4 .tag{font-size:11px;font-weight:700;color:var(--arc-deep);background:var(--arc-soft);border-radius:5px;padding:2px 7px;flex:0 0 auto}
+  .card p{margin:0 0 10px}
+  .card p:last-of-type{margin-bottom:0}
+  .card b{color:var(--arc-deep)}
+  .card .plain b{color:var(--ink)}
+  .quote{border-left:3px solid var(--arc);background:#eee7f6;padding:11px 16px;border-radius:0 9px 9px 0;font-size:14.5px;color:#463063;margin:12px 0}
+  .quote .who{display:block;font-size:11.5px;color:#8b7aa5;margin-top:5px}
+  .note{font-size:13.5px;border-radius:9px;padding:11px 15px;margin:12px 0;background:var(--warn-soft);color:var(--warn);border:1px solid #e8d1c8}
+  .note.info{background:var(--cool-soft);color:var(--cool);border-color:#cfdce3}
+  .note b{color:inherit;font-weight:800}
+  .tablebox{overflow-x:auto;margin:14px 0 4px;border-radius:10px;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:440px}
+  th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{background:#e9e2f2;font-weight:800;color:var(--arc-deep);font-size:13px}
+  tr:last-child td{border-bottom:none}
+  td b{color:var(--arc-deep)}
+  tbody tr:nth-child(even){background:#fcfbfe}
+  .tnum{font-variant-numeric:tabular-nums}
+  .refs{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px;padding-top:12px;border-top:1px dashed var(--line)}
+  .refs .rl{font-size:11px;letter-spacing:.1em;color:var(--ink-soft);font-weight:700;align-self:center;margin-right:3px}
+  a.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--arc-deep);text-decoration:none;background:#ede6f6;border:1px solid var(--arc-line);border-radius:999px;padding:3px 10px;line-height:1.5}
+  a.chip:hover{background:var(--arc);color:#fff;border-color:var(--arc)}
+  a.chip .n{font-variant-numeric:tabular-nums;font-weight:700;opacity:.85}
+  .appendix{margin-top:54px}
+  .srclist{list-style:none;margin:0;padding:0}
+  .srclist li{display:flex;gap:11px;align-items:baseline;padding:8px 2px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .srclist li:last-child{border-bottom:none}
+  .srclist .num{color:var(--arc);font-weight:700;font-variant-numeric:tabular-nums;min-width:66px;font-size:12.5px}
+  .srclist a{color:var(--ink);text-decoration:none;font-weight:600}
+  .srclist a:hover{color:var(--arc-deep)}
+  .srclist .d{color:var(--ink-soft);font-size:12.5px;font-weight:400}
+  footer{margin-top:52px;padding-top:22px;border-top:2px solid var(--arc-line);text-align:center;font-size:12.5px;color:var(--ink-soft);line-height:1.7}
+  footer .sign{font-family:var(--serif);font-size:15px;color:var(--arc-deep);margin-bottom:4px}
+  a:focus-visible{outline:2px solid var(--arc);outline-offset:2px;border-radius:4px}
+  @media (prefers-reduced-motion:no-preference){.card,.summary{animation:rise .5s ease both}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="sigil">✶</div>
+  <div class="byline">육육이의</div>
+  <h1 class="title">프렌즈를 위한 법사 공략모음</h1>
+  <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
+  <p class="submeta">
+    <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
+    마법사(법사) 글을 정리한 비공식 공략집 · 시즌 2 출시(2026-06-25)~7/5 본문·댓글 분석
+  </p>
+  <div class="verdict-strip">
+    <span class="badge down">약세 · 탈주 러시</span>
+    <span class="badge">우운빙 메타</span>
+    <span class="badge">빙창 논쟁</span>
+  </div>
+</header>
+
+<section class="summary">
+  <h2>✶ 한눈에 보는 결론</h2>
+  <p class="lead">바쁜 사람은 이것만 — 자세한 근거는 아래 각 장에.</p>
+  <ul class="checklist">
+    <li><span class="k">티어</span><span class="v"><b>“얻은 건 없이 잃은 것만.”</b> 딜 자체는 나쁘지 않으나 <b>“불쾌해서”</b> 이탈 — 화법 직변 러시</span></li>
+    <li><span class="k">조합</span><span class="v"><b>우운빙</b>(우레·운석·빙창) — 단 빙창 마나 문제로 사이클이 삐걱. 오토는 <b>서리가시</b>가 더 좋아 스왑 강요</span></li>
+    <li><span class="k">세공</span><span class="v"><b>원강방 3줄, 원 ≫ 강 ≫ 방</b> (2·3스가 강타 태그) — 시즌1 룬 유지면 원방강</span></li>
+    <li><span class="k">스탯</span><span class="v">스위 <b>6,000</b> / 치명 <b>7,000</b> / 빠스 <b>5,000</b> — 피증룬 떡칠 시대라 스위 하향 추세</span></li>
+    <li><span class="k">룬</span><span class="v">무기 <b>계시</b> · 방어구 <b>뼈인장 + 봉인술사 필수</b> · 아티 <b>신속 5개</b> · 엠블럼은 대체재 부재로 고민</span></li>
+    <li><span class="k">운용</span><span class="v">개조 1·2·3 / 오토는 2·3 켜고 1은 3스택에 수동 / 궁 중 4 한 번+2 난사</span></li>
+    <li><span class="k">펫</span><span class="v">햄찌(햄스터) — 스킬 신신신 또는 빠스·스위</span></li>
+  </ul>
+</section>
+
+<nav class="toc">
+  <div class="toch">목 차 · Contents</div>
+  <ol>
+    <li><a href="#c1"><span class="cn">壹</span> 티어 — 왜 떠나는가</a></li>
+    <li><a href="#c2"><span class="cn">貳</span> 우운빙과 빙창 논쟁</a></li>
+    <li><a href="#c3"><span class="cn">參</span> 세공 · 스탯 · 운용</a></li>
+    <li><a href="#c4"><span class="cn">肆</span> 룬 세팅</a></li>
+    <li><a href="#c5"><span class="cn">伍</span> 마무리</a></li>
+    <li><a href="#src"><span class="cn">附</span> 출처</a></li>
+  </ol>
+</nav>
+
+<section class="chapter" id="c1">
+  <div class="chead">
+    <div class="kicker">제 1 장 · 壹</div>
+    <h3>티어 — 왜 떠나는가</h3>
+    <p>성능보다 불쾌함이 문제다</p>
+  </div>
+
+  <div class="card hl">
+    <p>시즌 2 법사의 문제를 갤 스스로 네 줄로 정리했다 — ① 쓰던 캐속 엠블룬(대마법사급)이 없어짐 ② 시즌스킬 요구 스탯이 뜬금없는 빠스인데 딜량이 미미 ③ 신규 빙창은 마나 소모가 심해 안 굴러가고 불쾌 ④ 결국 시즌1과 같은 템·스킬로 <b>너프만 먹은 셈</b>. “여러모로 얻은 건 없이 잃은 것만 있는 모양새라 탈주각이 날카롭게 서 있음.”</p>
+    <div class="quote">“불쾌해져서 그렇지 딜 자체는 강할걸.” · “재미가 빙결급.” · “빙창 꼬라지 보고 직변함.” · (갤 잔류파의 절규) “안 돼 화법으로 가지마, 너네 떠나면 또 유기당해… 뿅뿅뿅하던 재미 없다고 가지마ㅏㅏ.”
+      <span class="who">— 「법사 망가짐?」·「별로인 부분」·「빙창은 잘못 만든 듯」 댓글</span></div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132407" target="_blank" rel="noopener"><span class="n">#1132407</span> 별로인 부분 4가지</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141290" target="_blank" rel="noopener"><span class="n">#1141290</span> 딜은 강한데 불쾌</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1119758" target="_blank" rel="noopener"><span class="n">#1119758</span> 기획 의도 비판</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">✶ ✶ ✶</div>
+
+<section class="chapter" id="c2">
+  <div class="chead">
+    <div class="kicker">제 2 장 · 貳</div>
+    <h3>우운빙과 빙창 논쟁</h3>
+    <p>“쓰면 세지는 건 맞는데 난사를 못 하게 됨”</p>
+  </div>
+
+  <div class="card">
+    <p>시즌 2 메타는 <b>우운빙(우레·운석·빙창)</b> — “바이바이 내 예쁜 서리가시야.” 문제는 빙창: <b>마나 소모가 극심해 “우레·운석·빙창을 쓰면 정상 사이클 자체가 굴러가질 않음.”</b> 긴 캐스팅 동안 아무것도 못 하고, 궁을 써도 빙창이 초기화되지 않으며, 파볼이 폐급이라 운석을 유기할 수도 없다.</p>
+    <p class="plain">그래서 갈림길 — “빙창 버리니까 너무 쾌적하고 재밌는데?” vs “그러면 사실상 간접 너프죠.” 게다가 <b>풀오토 어비스 뺑뺑이는 서리가시가 더 좋아서</b> 콘텐츠마다 빙창↔서리가시 스위칭이 강요된다(“개귀찮음”).</p>
+    <div class="quote">“법사 컨셉이 스킬 난사인데 난사를 못 하게 됨. 마나 딸려서. 1시즌 화법 청염이랑 비슷한 입지 — 쓰기도 안 쓰기도 애매.”
+      <span class="who">— 「빙창은 잘못 만든 듯」</span></div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135632" target="_blank" rel="noopener"><span class="n">#1135632</span> 우운빙 확정</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137724" target="_blank" rel="noopener"><span class="n">#1137724</span> 빙창 강제 메타의 모순</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139649" target="_blank" rel="noopener"><span class="n">#1139649</span> 빙창 버리면 쾌적 (간접너프)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132734" target="_blank" rel="noopener"><span class="n">#1132734</span> 빙창은 잘못 만든 듯</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">✶ ✶ ✶</div>
+
+<section class="chapter" id="c3">
+  <div class="chead">
+    <div class="kicker">제 3 장 · 參</div>
+    <h3>세공 · 스탯 · 운용</h3>
+    <p>“법사 정리해줄게, 이대로 해라 — 패치 전까지”</p>
+  </div>
+
+  <div class="card hl">
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>항목</th><th>기준</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>세공</td><td><b>원강방 3줄 · 원 ≫ 강 ≫ 방</b></td><td>우운빙 기준(2·3스가 강타 태그, 4스는 거의 안 씀). 시즌1 룬 그대로면 원방강</td></tr>
+          <tr><td>스탯</td><td class="tnum">스위 <b>6,000</b> / 치명 <b>7,000</b> / 빠스 <b>5,000</b></td><td>피증룬 떡칠이라 스위 하향 추세 — “스피증이랑 스위가 곱연산이었노”</td></tr>
+          <tr><td>프리즘</td><td>치명 우선 → 스위</td><td>—</td></tr>
+          <tr><td>아티팩트</td><td><b>신속 5개</b></td><td>캐스팅 속도 확보</td></tr>
+          <tr><td>개조</td><td><b>1 · 2 · 3</b></td><td>—</td></tr>
+          <tr><td>오토</td><td>2·3 켜고, 1은 3스택에 수동</td><td>“궁 켰을 땐 최초 4 한 번 누르고 2 난사” — 단 “오토로 하면 2를 다 못 날린다”는 수동 우위론</td></tr>
+          <tr><td>펫</td><td><b>햄찌</b> — 스킬 신신신 or 빠스·스위</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1130248" target="_blank" rel="noopener"><span class="n">#1130248</span> 법사 정리해줄게</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134623" target="_blank" rel="noopener"><span class="n">#1134623</span> 스탯 분배 (스위 하향)</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">✶ ✶ ✶</div>
+
+<section class="chapter" id="c4">
+  <div class="chead">
+    <div class="kicker">제 4 장 · 肆</div>
+    <h3>룬 세팅</h3>
+    <p>뼈인장·봉인술사는 필수 — 엠블럼이 구멍</p>
+  </div>
+
+  <div class="card">
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>부위</th><th>구성</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>무기</td><td><b>계시</b></td><td>“5신속 계시 봉인술사면 할만함”</td></tr>
+          <tr><td>방어구</td><td><b>뼈인장 · 봉인술사 (필수)</b></td><td>“두 개는 필수, 나머지는 알아서” — 단 30렙 시즌스킬 개방 후엔 “봉인술사+시즌스킬로 이미 모든 스킬 40% 딜증이라 뼈인장 효율이 떨어져 안 끼는 게 맞다”는 재평가도 (#1144772)</td></tr>
+          <tr><td>엠블럼</td><td>대마법사 계열 (구멍)</td><td>고결함 논쟁 — “스킬사용속도는 캐속이 아님” / “피증 48%? 방어구에 피증 이미 많아서 스위 올리는 법사한텐 별로” → “최악룬이네”</td></tr>
+          <tr><td>각성룬</td><td>잊힌 맹약 — 미묘</td><td>“각성룬 태그라 사슬·서약이랑 같이 못 씀. 결국 마지막엔 버릴 듯. 이걸 캐속룬이라고 하는 녀석들 대가리 깨버리고 싶음”</td></tr>
+          <tr><td>구룬</td><td>밤의축복 트리거는 好</td><td>“법사 밤축 트리거를 잘 받았음 — 가망 없는 수준은 아님”</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1130248" target="_blank" rel="noopener"><span class="n">#1130248</span> 계시·뼈인장·봉인술사</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1117211" target="_blank" rel="noopener"><span class="n">#1117211</span> 엠블럼 고결함 논쟁</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140761" target="_blank" rel="noopener"><span class="n">#1140761</span> 잊힌 맹약 미묘</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132407" target="_blank" rel="noopener"><span class="n">#1132407</span> 밤축 트리거 호평</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144772" target="_blank" rel="noopener"><span class="n">#1144772</span> 뼈인장 재평가 (30렙 후)</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">✶ ✶ ✶</div>
+
+<section class="chapter" id="c5">
+  <div class="chead">
+    <div class="kicker">제 5 장 · 伍</div>
+    <h3>마무리</h3>
+    <p>버티는 법사를 위한 요약</p>
+  </div>
+
+  <div class="card">
+    <p>법사의 시즌 2는 <b>성능의 위기가 아니라 재미의 위기</b>다. 원강방 세공 + 계시 + 뼈인장·봉인술사 + 신속 5개면 딜은 나온다. 다만 빙창의 마나 스트레스와 콘텐츠별 스위칭(레이드 빙창 ↔ 오토 서리가시)을 감수해야 한다. 갤의 처방은 둘 — 개선 패치를 기다리며 버티거나(“3스 마나 소모만 줄여줘도”), 직변권으로 화법에 합류하거나. 어느 쪽이든 <b>악세·룬은 모으고 움직이자</b>(화법 편 참조).</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1119758" target="_blank" rel="noopener"><span class="n">#1119758</span> 개선 요구 사항</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139916" target="_blank" rel="noopener"><span class="n">#1139916</span> 직변 하고싶네</a>
+    </div>
+  </div>
+</section>
+
+<section class="chapter appendix" id="src">
+  <div class="chead">
+    <div class="kicker">부록 · 附</div>
+    <h3>출처 12건</h3>
+    <p>번호 클릭 시 디시 원문으로</p>
+  </div>
+  <ul class="srclist">
+    <li><span class="num">#1144772</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144772" target="_blank" rel="noopener">마법사 뼈인장 그정돈가</a><span class="d">07/05 · 30렙 후 재평가</span></li>
+    <li><span class="num">#1141290</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141290" target="_blank" rel="noopener">뭐야 지금 법사 망가짐????</a><span class="d">07/04 · 불쾌 여론</span></li>
+    <li><span class="num">#1140761</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140761" target="_blank" rel="noopener">법사 잊힌 맹약 뭔가뭔가네</a><span class="d">07/03 · 각성룬 미묘</span></li>
+    <li><span class="num">#1139916</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139916" target="_blank" rel="noopener">법사 직변 하고싶네</a><span class="d">07/03 · 이탈 분위기</span></li>
+    <li><span class="num">#1139649</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139649" target="_blank" rel="noopener">빙창 버리니까 너무 쾌적하고 재밌는데?</a><span class="d">07/03 · 간접 너프</span></li>
+    <li><span class="num">#1137724</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137724" target="_blank" rel="noopener">룬 보면 무조건 빙창 강제 메타인데</a><span class="d">07/03 · 사이클 붕괴</span></li>
+    <li><span class="num">#1135632</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135632" target="_blank" rel="noopener">시즌2 법사는 우운빙이구나</a><span class="d">07/02 · 메타 확정</span></li>
+    <li><span class="num">#1134623</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134623" target="_blank" rel="noopener">법사 스탯 분배 어떻게들 함?</a><span class="d">07/02 · 스위 하향</span></li>
+    <li><span class="num">#1132734</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132734" target="_blank" rel="noopener">법사 빙창은 잘못 만든 듯</a><span class="d">07/01 · 난사 컨셉 붕괴</span></li>
+    <li><span class="num">#1132407</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132407" target="_blank" rel="noopener">지금 시점 법사가 별로인 부분</a><span class="d">07/01 · 약세 4대 이유</span></li>
+    <li><span class="num">#1130248</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1130248" target="_blank" rel="noopener">법사 정리해줄게 이대로 해라</a><span class="d">07/01 · 세팅 총정리</span></li>
+    <li><span class="num">#1119758</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1119758" target="_blank" rel="noopener">법사 시즌2 얼탱이가 없네</a><span class="d">06/29 · 구조 비판</span></li>
+  </ul>
+</section>
+
+<footer>
+  <div class="sign">✶ 육육이의 프렌즈를 위한 법사 공략모음 ✶</div>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  빙창 개선 패치·30렙 시즌스킬에 따라 크게 바뀔 수 있음 — 갱신 필요 · 인용문은 원문 표현 유지
+</footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>육육이의 프렌즈를 위한 장궁 공략모음</title>
+<style>
+  :root{
+    --paper:#eef2ee;
+    --card:#f8faf7;
+    --ink:#22301f;
+    --ink-soft:#5f6e5c;
+    --pine:#3c5f48;
+    --pine-deep:#28452f;
+    --pine-soft:#dcead e;
+    --pine-soft:#dceade;
+    --pine-line:#b4cdb9;
+    --line:#dae2d8;
+    --warn:#8c3b2e;
+    --warn-soft:#f5e5df;
+    --gold:#8a6d2f;
+    --gold-soft:#f1e9d5;
+    --serif:'Nanum Myeongjo','Batang','AppleMyungjo',Georgia,serif;
+    --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:radial-gradient(120% 60% at 50% -10%, #f4f8f3 0%, var(--paper) 55%);color:var(--ink);font-family:var(--sans);line-height:1.78;font-size:16px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 90px}
+  header.mast{text-align:center;padding:56px 0 30px}
+  .sigil{font-size:26px;color:var(--pine);line-height:1;margin-bottom:14px}
+  .byline{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--pine-deep);margin-bottom:6px}
+  h1.title{font-family:var(--serif);font-size:clamp(30px,6.5vw,46px);line-height:1.18;margin:0;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+  .mast .rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:22px auto 16px;max-width:440px;color:var(--pine)}
+  .mast .rule::before,.mast .rule::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--pine-line))}
+  .mast .rule::after{background:linear-gradient(90deg,var(--pine-line),transparent)}
+  .mast .rule span{font-size:13px}
+  .submeta{font-size:13px;color:var(--ink-soft);max-width:560px;margin:0 auto;line-height:1.6}
+  .submeta a{color:var(--pine-deep);font-weight:600;text-decoration:none}
+  .submeta b{color:var(--ink)}
+  .verdict-strip{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 0}
+  .badge{font-size:13px;font-weight:700;padding:5px 14px;border-radius:999px;background:var(--pine-soft);color:var(--pine-deep);border:1px solid var(--pine-line)}
+  .badge.hot{background:var(--pine);color:#fff;border-color:var(--pine)}
+  .summary{background:var(--card);border:1px solid var(--pine-line);border-radius:14px;padding:26px 28px;margin:36px 0 14px;box-shadow:0 1px 0 #fff inset, 0 6px 22px -18px rgba(30,70,40,.5)}
+  .summary h2{font-family:var(--serif);font-size:19px;margin:0 0 4px;color:var(--pine-deep);display:flex;gap:9px}
+  .summary .lead{font-size:13px;color:var(--ink-soft);margin:0 0 16px}
+  .checklist{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+  .checklist li{display:flex;gap:11px;align-items:baseline;font-size:15px}
+  .checklist .k{flex:0 0 76px;font-weight:700;color:var(--pine-deep);font-size:13px;text-align:right;padding-top:1px}
+  .checklist .v{flex:1}
+  .checklist .v b{color:var(--ink)}
+  nav.toc{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 4px;margin:34px 0 8px}
+  nav.toc .toch{font-family:var(--serif);font-size:14px;letter-spacing:.14em;color:var(--pine-deep);text-transform:uppercase;margin-bottom:12px;text-align:center}
+  nav.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 26px}
+  nav.toc a{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink);font-size:14.5px;padding:5px 6px;border-radius:7px}
+  nav.toc a:hover{background:var(--pine-soft);color:var(--pine-deep)}
+  nav.toc .cn{font-family:var(--serif);color:var(--pine);font-size:13px;min-width:20px}
+  @media(max-width:560px){nav.toc ol{grid-template-columns:1fr}}
+  .chapter{margin:56px 0 0;scroll-margin-top:16px}
+  .chapter .kicker{font-family:var(--serif);font-size:13px;letter-spacing:.22em;color:var(--pine);text-transform:uppercase;margin-bottom:4px}
+  .chapter h3{font-family:var(--serif);font-size:clamp(22px,4vw,28px);margin:0;color:var(--ink);font-weight:700;line-height:1.25}
+  .chapter .chead{margin-bottom:22px}
+  .chapter .chead p{font-size:14px;color:var(--ink-soft);margin:7px 0 0}
+  .ornament{text-align:center;color:var(--pine-line);font-size:15px;margin:52px 0 0;letter-spacing:.6em}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+  .card.hl{border-color:var(--pine-line);background:linear-gradient(180deg,#eef5ec,#f8faf7)}
+  .card h4{margin:0 0 9px;font-size:16.5px;font-weight:800;color:var(--ink);display:flex;gap:8px;align-items:baseline}
+  .card h4 .tag{font-size:11px;font-weight:700;color:var(--pine-deep);background:var(--pine-soft);border-radius:5px;padding:2px 7px;flex:0 0 auto}
+  .card p{margin:0 0 10px}
+  .card p:last-of-type{margin-bottom:0}
+  .card b{color:var(--pine-deep)}
+  .card .plain b{color:var(--ink)}
+  .quote{border-left:3px solid var(--pine);background:#e7efe4;padding:11px 16px;border-radius:0 9px 9px 0;font-size:14.5px;color:#33512f;margin:12px 0}
+  .quote .who{display:block;font-size:11.5px;color:#728a6e;margin-top:5px}
+  .note{font-size:13.5px;border-radius:9px;padding:11px 15px;margin:12px 0;background:var(--warn-soft);color:var(--warn);border:1px solid #e8d1c8}
+  .note.info{background:var(--gold-soft);color:var(--gold);border-color:#e0d3b2}
+  .note b{color:inherit;font-weight:800}
+  .tablebox{overflow-x:auto;margin:14px 0 4px;border-radius:10px;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:420px}
+  th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{background:#e3ece1;font-weight:800;color:var(--pine-deep);font-size:13px}
+  tr:last-child td{border-bottom:none}
+  td b{color:var(--pine-deep)}
+  tbody tr:nth-child(even){background:#fafcf9}
+  .tnum{font-variant-numeric:tabular-nums}
+  .refs{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px;padding-top:12px;border-top:1px dashed var(--line)}
+  .refs .rl{font-size:11px;letter-spacing:.1em;color:var(--ink-soft);font-weight:700;align-self:center;margin-right:3px}
+  a.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--pine-deep);text-decoration:none;background:#e8f0e6;border:1px solid var(--pine-line);border-radius:999px;padding:3px 10px;line-height:1.5}
+  a.chip:hover{background:var(--pine);color:#fff;border-color:var(--pine)}
+  a.chip .n{font-variant-numeric:tabular-nums;font-weight:700;opacity:.85}
+  .appendix{margin-top:54px}
+  .srclist{list-style:none;margin:0;padding:0}
+  .srclist li{display:flex;gap:11px;align-items:baseline;padding:8px 2px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .srclist li:last-child{border-bottom:none}
+  .srclist .num{color:var(--pine);font-weight:700;font-variant-numeric:tabular-nums;min-width:66px;font-size:12.5px}
+  .srclist a{color:var(--ink);text-decoration:none;font-weight:600}
+  .srclist a:hover{color:var(--pine-deep)}
+  .srclist .d{color:var(--ink-soft);font-size:12.5px;font-weight:400}
+  footer{margin-top:52px;padding-top:22px;border-top:2px solid var(--pine-line);text-align:center;font-size:12.5px;color:var(--ink-soft);line-height:1.7}
+  footer .sign{font-family:var(--serif);font-size:15px;color:var(--pine-deep);margin-bottom:4px}
+  a:focus-visible{outline:2px solid var(--pine);outline-offset:2px;border-radius:4px}
+  @media (prefers-reduced-motion:no-preference){.card,.summary{animation:rise .5s ease both}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="sigil">➳</div>
+  <div class="byline">육육이의</div>
+  <h1 class="title">프렌즈를 위한 장궁 공략모음</h1>
+  <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
+  <p class="submeta">
+    <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
+    장궁병 글을 정리한 비공식 공략집 · 시즌 2 출시(2026-06-25)~7/5 본문·댓글 분석
+  </p>
+  <div class="verdict-strip">
+    <span class="badge hot">역대급 장궁시즌</span>
+    <span class="badge">뼈인장 최대 수혜</span>
+    <span class="badge">DPS 4천만 논쟁</span>
+  </div>
+</header>
+
+<section class="summary">
+  <h2>➳ 한눈에 보는 결론</h2>
+  <p class="lead">바쁜 사람은 이것만 — 자세한 근거는 아래 각 장에.</p>
+  <ul class="checklist">
+    <li><span class="k">티어</span><span class="v"><b>“역대급 장궁시즌.”</b> “이번 시즌은 장궁병이 전격·검술·궁수를 뛰어넘었네” — 흑막 등극</span></li>
+    <li><span class="k">이유</span><span class="v"><b>3스 몰빵 직업 + 뼈인장</b>의 최고 궁합 + 이번 주 패시브 버프까지 중첩</span></li>
+    <li><span class="k">DPS</span><span class="v">뼈인장·영광 없이 <b>2,000만</b>(인증됨) · 뼈인장만으로 3,000만 · “완성 세팅 4,000만+”는 <b>진위 논쟁 중</b></span></li>
+    <li><span class="k">룬</span><span class="v"><b>호응룬 필수</b> · 뼈인장 + (타오르는) 영광 조합이 종결 방향</span></li>
+    <li><span class="k">세공</span><span class="v">2줄 <b>강방</b> · 3줄 <b>강방연</b></span></li>
+    <li><span class="k">참고</span><span class="v">갤 공인 <b>장궁 룬티어표</b> 존재 (#237053 공략글 — 본문 링크)</span></li>
+  </ul>
+</section>
+
+<nav class="toc">
+  <div class="toch">목 차 · Contents</div>
+  <ol>
+    <li><a href="#c1"><span class="cn">壹</span> 티어 — 흑막의 등극</a></li>
+    <li><a href="#c2"><span class="cn">貳</span> 왜 세졌나 — 뼈인장 구조</a></li>
+    <li><a href="#c3"><span class="cn">參</span> DPS 논쟁 — 2천만과 4천만</a></li>
+    <li><a href="#c4"><span class="cn">肆</span> 세공 · 룬</a></li>
+    <li><a href="#c5"><span class="cn">伍</span> 마무리</a></li>
+    <li><a href="#src"><span class="cn">附</span> 출처</a></li>
+  </ol>
+</nav>
+
+<section class="chapter" id="c1">
+  <div class="chead">
+    <div class="kicker">제 1 장 · 壹</div>
+    <h3>티어 — 흑막의 등극</h3>
+    <p>“꾸준한 약코로 상향 쌓다 보니 흑막 됨”</p>
+  </div>
+
+  <div class="card hl">
+    <p>7/4를 기점으로 갤이 뒤집혔다 — <b>“이번 시즌은 장궁병이 전격·검술·궁수를 뛰어넘었네… DPS 4천만 뭐죠?”</b> 만년 약체로 버프를 쌓아온 장궁이 시즌 2에서 한 번에 터진 것. “아 몰라 장궁병으로 직변 간다”는 반응이 줄을 이었고, “역대급 장궁시즌 — 뼈인장·칼바람·궁룬들이 전격·궁수·검술을 법부(법사 부캐)로 만들어버림”이라는 정리가 나온다.</p>
+    <div class="quote">“장궁병 ⟵ 꾸준한 약코로 상향 쌓다 보니 흑막 됨.” · “댄서가 대은서면 장궁병은 헤르페스임? ㅋㅋ” (별명 밈까지 등장)
+      <span class="who">— 7/4 갤 반응</span></div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142020" target="_blank" rel="noopener"><span class="n">#1142020</span> 전격·검술·궁수 뛰어넘음</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142079" target="_blank" rel="noopener"><span class="n">#1142079</span> 약코→흑막</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143705" target="_blank" rel="noopener"><span class="n">#1143705</span> 역대급 장궁시즌</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141170" target="_blank" rel="noopener"><span class="n">#1141170</span> 직변 러시</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">➳ ➳ ➳</div>
+
+<section class="chapter" id="c2">
+  <div class="chead">
+    <div class="kicker">제 2 장 · 貳</div>
+    <h3>왜 세졌나 — 뼈인장 구조</h3>
+    <p>3스에 모든 게 몰린 직업이 3스 뻥튀기를 받았다</p>
+  </div>
+
+  <div class="card">
+    <p>장궁이 갑자기 사기가 된 이유는 명확하다 — <b>“뼈인장 효과 잘 받고, 패시브 한 번 더 버프받아서.”</b> “뼈인장은 모든 3번 주력기 캐릭터에게 통용되는데, 장궁은 <b>3스 몰빵 직업이라 극단적으로 딜이 오른다.”</b> 이번 주 장궁만 패시브 패치를 받은 것도 겹쳤다(“장궁은 패치 받았는데 댄서는 못 받았거든”).</p>
+    <p class="note">억까 반론에 대한 정리 — “이번에 버프받은 패시브는 주력기인 3스·2스가 제외되어 있음. 그냥 버프받은 거 보고 분해하는 석궁놈들의 장혐일 뿐.” / 견제 측: “궁 게이지 너프 먹은 건 모르는 겜안분 ㅋㅋㅋ” — 버프·너프가 동시에 있었던 셈.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142067" target="_blank" rel="noopener"><span class="n">#1142067</span> 왜 갑자기 사기됐음?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1145030" target="_blank" rel="noopener"><span class="n">#1145030</span> 3스 몰빵 + 뼈인장</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143705" target="_blank" rel="noopener"><span class="n">#1143705</span> 궁 게이지 너프 (댓글)</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">➳ ➳ ➳</div>
+
+<section class="chapter" id="c3">
+  <div class="chead">
+    <div class="kicker">제 3 장 · 參</div>
+    <h3>DPS 논쟁 — 2천만과 4천만</h3>
+    <p>인증된 것과 엠바고 걸린 것</p>
+  </div>
+
+  <div class="card">
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>수치</th><th>조건</th><th>신뢰도</th></tr></thead>
+        <tbody>
+          <tr><td class="tnum"><b>2,000만</b></td><td>뼈인장·영광 <b>없이</b></td><td>“하자 세팅으로 2천만 인증까진 나왔네” — <b>인증 확인</b></td></tr>
+          <tr><td class="tnum">3,000만</td><td>뼈인장만 확보</td><td>“뼈인장만 먹어도 3천만 뚫더라” — 복수 증언</td></tr>
+          <tr><td class="tnum">4,000만+</td><td>“특정 세팅 완성”</td><td>“장번방(장궁 단톡)에서 엠바고 걸어서 인증은 못 함” — <b>진위 논쟁 중</b> (“잘 쳐도 2천 중반” 반론, “4천만 딜 인증 올라왔다 삭제됨” 소문)</td></tr>
+          <tr><td class="tnum">5,000만</td><td>뼈인장 + 고점 주장</td><td>“스샷이라도 가져오고 말해” — 미인증</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="quote">“장궁병 충격인 게 뼈인장·영광 없이도 2천만임. 뼈인장이랑 영광 있으면 4천만 넘길 듯.” — “개사기 직업 ㄷㄷ” / “함선 5천만 가져오면 내 해연완드로 뭐든 하는 거 올림.”
+      <span class="who">— 갤 DPS 논쟁의 양쪽 (영광 = 타오르는 영광 추정)</span></div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142209" target="_blank" rel="noopener"><span class="n">#1142209</span> 뼈인장 없이 2천만</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142052" target="_blank" rel="noopener"><span class="n">#1142052</span> 완성 시 4천만 주장</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141932" target="_blank" rel="noopener"><span class="n">#1141932</span> 엠바고·유동어그로 논란</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1145030" target="_blank" rel="noopener"><span class="n">#1145030</span> 5천만 주장 (미인증)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142010" target="_blank" rel="noopener"><span class="n">#1142010</span> 2천만 인증 확인</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">➳ ➳ ➳</div>
+
+<section class="chapter" id="c4">
+  <div class="chead">
+    <div class="kicker">제 4 장 · 肆</div>
+    <h3>세공 · 룬</h3>
+    <p>호응 필수 — 나머지는 갤 룬티어표를 참조</p>
+  </div>
+
+  <div class="card">
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>항목</th><th>기준</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>세공 2줄</td><td><b>강방</b></td><td rowspan="2">“2줄은 강방, 3줄은 강방연 맞나욤?” → 긍정 답변</td></tr>
+          <tr><td>세공 3줄</td><td><b>강방연</b></td></tr>
+          <tr><td>스킬룬</td><td><b>호응 필수</b></td><td>“이쑤시개(호응) 여전히 별로임?” → “호응 필수라던데” / “필수임”</td></tr>
+          <tr><td>핵심 강화</td><td><b>뼈인장 + 영광</b></td><td>3스 몰빵 구조의 종결 방향</td></tr>
+          <tr><td>무기룬 후보</td><td>별바라기 계열 논의</td><td>“장궁 같은 애는 별바라기보다 궁 쓸 때 발동이 더 좋지 않음?” (논의 중)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note info"><b>룬 전체는 갤 공인 티어표 참조.</b> “장궁 룬티어표 갱신” 글이 <a href="https://m.dcinside.com/board/enban/237053" target="_blank" rel="noopener" style="color:inherit;font-weight:700">공략글 #237053</a>을 가리킨다 — 장신구·방어구 질문에도 “장궁 룬 검색하면 공략글 나옴”으로 답변이 통일될 만큼 갤 표준 문서.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144703" target="_blank" rel="noopener"><span class="n">#1144703</span> 세공 강방/강방연</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144690" target="_blank" rel="noopener"><span class="n">#1144690</span> 호응룬 필수</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137976" target="_blank" rel="noopener"><span class="n">#1137976</span> 룬티어표 갱신</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143221" target="_blank" rel="noopener"><span class="n">#1143221</span> 별바라기 vs 궁발동</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143775" target="_blank" rel="noopener"><span class="n">#1143775</span> 장신구·방어구 문답</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">➳ ➳ ➳</div>
+
+<section class="chapter" id="c5">
+  <div class="chead">
+    <div class="kicker">제 5 장 · 伍</div>
+    <h3>마무리</h3>
+    <p>지금이 장궁의 시간 — 단, 4천만은 반쯤 걸러 듣자</p>
+  </div>
+
+  <div class="card">
+    <p>확실한 것: <b>뼈인장 없이 2,000만이 인증</b>됐고, 3스 몰빵 구조 덕에 뼈인장 확보 시 딜이 극단적으로 뛴다는 것, 그리고 호응 필수·강방(연) 세공이라는 것. 불확실한 것: 4,000만+ 주장(엠바고·미인증). 궁 게이지 너프가 함께 들어온 점, 아직 레이드룬이 안 풀린 점을 감안하면 최종 위치는 유동적이지만, <b>“이번 시즌 궁수계열의 답은 장궁”</b>이라는 게 7/5 시점 갤의 온도다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143694" target="_blank" rel="noopener"><span class="n">#1143694</span> 장궁 또 뒷짐진다 (여유)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141148" target="_blank" rel="noopener"><span class="n">#1141148</span> 뉴비: 석궁 vs 장궁?</a>
+    </div>
+  </div>
+</section>
+
+<section class="chapter appendix" id="src">
+  <div class="chead">
+    <div class="kicker">부록 · 附</div>
+    <h3>출처 14건</h3>
+    <p>번호 클릭 시 디시 원문으로</p>
+  </div>
+  <ul class="srclist">
+    <li><span class="num">#1145030</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1145030" target="_blank" rel="noopener">뼈인장 먹으니까 DPS 5천만 뚫네</a><span class="d">07/05 · 3스 몰빵 (미인증)</span></li>
+    <li><span class="num">#1144703</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144703" target="_blank" rel="noopener">장궁 보석세공 2줄 3줄</a><span class="d">07/05 · 강방/강방연</span></li>
+    <li><span class="num">#1144690</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144690" target="_blank" rel="noopener">장궁병 호응룬 어떰??</a><span class="d">07/05 · 호응 필수</span></li>
+    <li><span class="num">#1143775</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143775" target="_blank" rel="noopener">장궁 장신구랑 방어구 머 쓰나요?</a><span class="d">07/05 · 공략글 참조 안내</span></li>
+    <li><span class="num">#1143705</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143705" target="_blank" rel="noopener">역대급 장궁시즌</a><span class="d">07/05 · 티어 총평</span></li>
+    <li><span class="num">#1143694</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143694" target="_blank" rel="noopener">장궁 또 뒷짐진다</a><span class="d">07/05 · 분위기</span></li>
+    <li><span class="num">#1143221</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143221" target="_blank" rel="noopener">별바라기보다 궁발동이 낫지 않음?</a><span class="d">07/05 · 무기룬 논의</span></li>
+    <li><span class="num">#1142209</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142209" target="_blank" rel="noopener">뼈인장·영광 없이도 2천만</a><span class="d">07/04 · 기본 체급</span></li>
+    <li><span class="num">#1142079</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142079" target="_blank" rel="noopener">꾸준한 약코로 상향 쌓다 흑막</a><span class="d">07/04 · 서사</span></li>
+    <li><span class="num">#1142067</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142067" target="_blank" rel="noopener">장궁병 왜 갑자기 사기됐음?</a><span class="d">07/04 · 원인 분석</span></li>
+    <li><span class="num">#1142052</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142052" target="_blank" rel="noopener">특정세팅 완성하면 DPS 4천만</a><span class="d">07/04 · 고점 주장</span></li>
+    <li><span class="num">#1142020</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142020" target="_blank" rel="noopener">장궁병이 전격 검술 궁수 뛰어넘었네</a><span class="d">07/04 · 티어 반전</span></li>
+    <li><span class="num">#1142010</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142010" target="_blank" rel="noopener">하자 세팅으로 2천만 인증</a><span class="d">07/04 · 인증 확인</span></li>
+    <li><span class="num">#1137976</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137976" target="_blank" rel="noopener">장궁 룬티어표 갱신</a><span class="d">07/03 · 갤 표준 문서</span></li>
+  </ul>
+</section>
+
+<footer>
+  <div class="sign">➳ 육육이의 프렌즈를 위한 장궁 공략모음 ➳</div>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  DPS 4천만+ 주장은 미인증 — 레이드룬 공개 후 재평가 필요 · 인용문은 원문 표현 유지
+</footer>
+
+</div>
+
+</body>
+</html>

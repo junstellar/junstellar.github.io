@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>육육이의 탄붕을 위한 사제 공략모음</title>
+<style>
+  :root{
+    --paper:#f4f1e7;
+    --card:#faf8f1;
+    --ink:#2a2333;
+    --ink-soft:#6b6478;
+    --gold:#a97e22;
+    --gold-deep:#7f5d12;
+    --gold-soft:#efe4c1;
+    --gold-line:#d8c893;
+    --line:#e4ddc9;
+    --crimson:#9c3a2c;
+    --crimson-soft:#f3e5df;
+    --serif:'Nanum Myeongjo','Batang','AppleMyungjo',Georgia,serif;
+    --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(120% 60% at 50% -10%, #faf7ee 0%, var(--paper) 55%);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.78;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 90px}
+
+  /* ---------- Masthead ---------- */
+  header.mast{text-align:center;padding:56px 0 30px;position:relative}
+  .cross{font-size:26px;color:var(--gold);line-height:1;margin-bottom:14px}
+  .byline{
+    font-family:var(--serif);font-style:italic;font-size:17px;color:var(--gold-deep);
+    letter-spacing:.02em;margin-bottom:6px;
+  }
+  h1.title{
+    font-family:var(--serif);
+    font-size:clamp(30px,6.5vw,46px);
+    line-height:1.18;margin:0;font-weight:700;letter-spacing:-.01em;color:var(--ink);
+    text-wrap:balance;
+  }
+  .mast .rule{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    margin:22px auto 16px;max-width:420px;color:var(--gold);
+  }
+  .mast .rule::before,.mast .rule::after{
+    content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold-line));
+  }
+  .mast .rule::after{background:linear-gradient(90deg,var(--gold-line),transparent)}
+  .mast .rule span{font-size:13px}
+  .submeta{font-size:13px;color:var(--ink-soft);max-width:560px;margin:0 auto;line-height:1.6}
+  .submeta a{color:var(--gold-deep);font-weight:600;text-decoration:none}
+  .submeta b{color:var(--ink)}
+
+  /* ---------- Verdict strip ---------- */
+  .verdict-strip{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;
+    margin:26px 0 0;
+  }
+  .badge{
+    font-size:13px;font-weight:700;padding:5px 14px;border-radius:999px;
+    background:var(--gold-soft);color:var(--gold-deep);border:1px solid var(--gold-line);
+  }
+  .badge.warn{background:var(--crimson-soft);color:var(--crimson);border-color:#e3cabf}
+
+  /* ---------- Summary panel ---------- */
+  .summary{
+    background:var(--card);
+    border:1px solid var(--gold-line);
+    border-radius:14px;
+    padding:26px 28px;margin:36px 0 14px;
+    box-shadow:0 1px 0 #fff inset, 0 6px 22px -18px rgba(80,60,10,.5);
+  }
+  .summary h2{
+    font-family:var(--serif);font-size:19px;margin:0 0 4px;color:var(--gold-deep);
+    display:flex;align-items:center;gap:9px;
+  }
+  .summary .lead{font-size:13px;color:var(--ink-soft);margin:0 0 16px}
+  .checklist{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+  .checklist li{display:flex;gap:11px;align-items:baseline;font-size:15px}
+  .checklist .k{
+    flex:0 0 76px;font-weight:700;color:var(--gold-deep);font-size:13px;
+    text-align:right;padding-top:1px;
+  }
+  .checklist .v{flex:1}
+  .checklist .v b{color:var(--ink);font-weight:700}
+
+  /* ---------- Contents ---------- */
+  nav.toc{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:20px 4px;margin:34px 0 8px;
+  }
+  nav.toc .toch{font-family:var(--serif);font-size:14px;letter-spacing:.14em;color:var(--gold-deep);
+    text-transform:uppercase;margin-bottom:12px;text-align:center}
+  nav.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 26px}
+  nav.toc a{
+    display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink);
+    font-size:14.5px;padding:5px 6px;border-radius:7px;
+  }
+  nav.toc a:hover{background:var(--gold-soft);color:var(--gold-deep)}
+  nav.toc .cn{font-family:var(--serif);color:var(--gold);font-size:13px;flex:0 0 auto;min-width:20px}
+  @media(max-width:560px){nav.toc ol{grid-template-columns:1fr}}
+
+  /* ---------- Chapters ---------- */
+  .chapter{margin:56px 0 0;scroll-margin-top:16px}
+  .chapter > .chead{margin-bottom:22px}
+  .chapter .kicker{
+    font-family:var(--serif);font-size:13px;letter-spacing:.22em;color:var(--gold);
+    text-transform:uppercase;margin-bottom:4px;
+  }
+  .chapter h3{
+    font-family:var(--serif);font-size:clamp(22px,4vw,28px);margin:0;color:var(--ink);
+    font-weight:700;letter-spacing:-.01em;line-height:1.25;
+  }
+  .chapter .chead p{font-size:14px;color:var(--ink-soft);margin:7px 0 0}
+  .ornament{text-align:center;color:var(--gold-line);font-size:15px;margin:52px 0 0;letter-spacing:.6em}
+
+  /* ---------- Cards ---------- */
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:20px 22px;margin:16px 0;
+  }
+  .card.hl{border-color:var(--gold-line);background:linear-gradient(180deg,#fbf6e6,#faf8f1)}
+  .card h4{
+    margin:0 0 9px;font-size:16.5px;font-weight:800;color:var(--ink);
+    display:flex;gap:8px;align-items:baseline;
+  }
+  .card h4 .tag{
+    font-size:11px;font-weight:700;color:var(--gold-deep);background:var(--gold-soft);
+    border-radius:5px;padding:2px 7px;letter-spacing:.02em;flex:0 0 auto;
+  }
+  .card p{margin:0 0 10px}
+  .card p:last-of-type{margin-bottom:0}
+  .card b{color:var(--gold-deep)}
+  .card .plain b{color:var(--ink)}
+
+  .quote{
+    border-left:3px solid var(--gold);background:#f6efd8;
+    padding:11px 16px;border-radius:0 9px 9px 0;font-size:14.5px;color:#5f4c17;margin:12px 0;
+    position:relative;
+  }
+  .quote .who{display:block;font-size:11.5px;color:#93794a;margin-top:5px}
+
+  .note{
+    font-size:13.5px;border-radius:9px;padding:11px 15px;margin:12px 0;
+    background:var(--crimson-soft);color:var(--crimson);border:1px solid #e8d3ca;
+  }
+  .note.info{background:#eef0e9;color:#4d5a3f;border-color:#dbe0cf}
+  .note b{color:inherit;font-weight:800}
+
+  /* ---------- Tables ---------- */
+  .tablebox{overflow-x:auto;margin:14px 0 4px;border-radius:10px;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:420px}
+  th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{background:#efe9d6;font-weight:800;color:var(--gold-deep);font-size:13px;letter-spacing:.02em}
+  tr:last-child td{border-bottom:none}
+  td b{color:var(--gold-deep);font-weight:700}
+  tbody tr:nth-child(even){background:#fcfaf3}
+  .tnum{font-variant-numeric:tabular-nums}
+
+  /* ---------- Refs ---------- */
+  .refs{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px;padding-top:12px;border-top:1px dashed var(--line)}
+  .refs .rl{font-size:11px;letter-spacing:.1em;color:var(--ink-soft);font-weight:700;align-self:center;margin-right:3px}
+  a.chip{
+    display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;
+    color:var(--gold-deep);text-decoration:none;background:#f3ecd7;border:1px solid var(--gold-line);
+    border-radius:999px;padding:3px 10px;line-height:1.5;
+  }
+  a.chip:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
+  a.chip .n{font-variant-numeric:tabular-nums;font-weight:700;opacity:.85}
+
+  /* ---------- Appendix ---------- */
+  .appendix{margin-top:54px}
+  .srclist{list-style:none;margin:0;padding:0;column-count:1}
+  .srclist li{
+    display:flex;gap:11px;align-items:baseline;padding:8px 2px;border-bottom:1px solid var(--line);font-size:13.5px;
+  }
+  .srclist li:last-child{border-bottom:none}
+  .srclist .num{color:var(--gold);font-weight:700;font-variant-numeric:tabular-nums;min-width:66px;font-size:12.5px}
+  .srclist a{color:var(--ink);text-decoration:none;font-weight:600}
+  .srclist a:hover{color:var(--gold-deep)}
+  .srclist .d{color:var(--ink-soft);font-size:12.5px;font-weight:400}
+
+  footer{
+    margin-top:52px;padding-top:22px;border-top:2px solid var(--gold-line);
+    text-align:center;font-size:12.5px;color:var(--ink-soft);line-height:1.7;
+  }
+  footer .sign{font-family:var(--serif);font-size:15px;color:var(--gold-deep);margin-bottom:4px}
+
+  a:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+  @media (prefers-reduced-motion:no-preference){
+    .card,.summary{animation:rise .5s ease both}
+    @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<!-- ============ MASTHEAD ============ -->
+<header class="mast">
+  <div class="cross">✚</div>
+  <div class="byline">육육이의</div>
+  <h1 class="title">탄붕을 위한 사제 공략모음</h1>
+  <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
+  <p class="submeta">
+    <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
+    사제 글을 정리한 비공식 공략집 · 시즌 2 출시(2026-06-25)~7/5 · 사제 유니크 <b>115건 스윕</b> ·
+    <b>7/4~7/5 최신 여론까지 반영</b>
+  </p>
+  <div class="verdict-strip">
+    <span class="badge">서폿 1황</span>
+    <span class="badge warn">너프 거론</span>
+    <span class="badge">집행 · 결집심 메타</span>
+  </div>
+</header>
+
+<!-- ============ SUMMARY ============ -->
+<section class="summary">
+  <h2>✚ 한눈에 보는 결론</h2>
+  <p class="lead">바쁜 사람은 이것만 — 자세한 근거는 아래 각 장에.</p>
+  <ul class="checklist">
+    <li><span class="k">티어</span><span class="v"><b>서폿 1황.</b> 힐·딜·불사를 다 챙겨 7월 초 여론이 “역대급 사제시즌·너프 대상”으로 급상승</span></li>
+    <li><span class="k">빌드</span><span class="v">홀스 / <b>집행</b> / 하이브리드 중 대세는 <b>집행</b>(힐하면서 딜, 사이클 쉬움). 보스 고점은 홀스</span></li>
+    <li><span class="k">악세</span><span class="v">스킬룬 <b>집행+심판 고정 + @</b> → <b>결집심</b>(결속·집행·심판)이 정배</span></li>
+    <li><span class="k">무기룬</span><span class="v"><b>바위칼날·광채·죽음</b> / 홀스면 <b>계시</b> / 집행 사제는 <b>오랜광기</b>도 후보</span></li>
+    <li><span class="k">핵심템</span><span class="v"><b>뼈인장 + 칼바람</b>이 사제 “수저” — 3스(심판) 브레이크딜을 폭발시킴</span></li>
+    <li><span class="k">세공</span><span class="v">집행이면 <b>방보(보조·방해)</b> · <b>강보방 20개</b> · <b>235 개조</b></span></li>
+    <li><span class="k">스탯</span><span class="v">강타 <b>5,000+</b> / 추가타 <b>4,000+</b> / 치명 최대 1만 · 장비 피증 <b>40%</b></span></li>
+    <li><span class="k">방어구</span><span class="v"><b>밤의축복 세트</b> +@ / 엠블럼(무방엠)은 아직 연구 중</span></li>
+    <li><span class="k">불사</span><span class="v">소생은 파티 <b>전원 생존·개별 쿨 180초</b>, 파티원 불사룬을 무의미하게 만듦</span></li>
+  </ul>
+</section>
+
+<!-- ============ CONTENTS ============ -->
+<nav class="toc">
+  <div class="toch">목 차 · Contents</div>
+  <ol>
+    <li><a href="#c1"><span class="cn">壹</span> 티어와 여론 변화</a></li>
+    <li><a href="#c2"><span class="cn">貳</span> 빌드 선택</a></li>
+    <li><a href="#c3"><span class="cn">參</span> 스킬 운용과 사이클</a></li>
+    <li><a href="#c4"><span class="cn">肆</span> 스탯 · 세공</a></li>
+    <li><a href="#c5"><span class="cn">伍</span> 룬 세팅</a></li>
+    <li><a href="#c6"><span class="cn">陸</span> 불사 · 소생 메커니즘</a></li>
+    <li><a href="#c7"><span class="cn">柒</span> 마무리 · 홀스 vs 집행</a></li>
+    <li><a href="#src"><span class="cn">附</span> 출처 43건</a></li>
+  </ol>
+</nav>
+
+<!-- ============ 제1장 ============ -->
+<section class="chapter" id="c1">
+  <div class="chead">
+    <div class="kicker">제 1 장 · 壹</div>
+    <h3>티어와 여론 변화</h3>
+    <p>시즌 초 “결국 서폿” → 7월 초 “역대급 사제시즌·너프 대상”으로 반전</p>
+  </div>
+
+  <div class="card hl">
+    <h4><span class="tag">여론 변화</span>6/25 출시 → 7/5</h4>
+    <p>시즌 초(6/25~7/1)엔 “딜은 시즌1 옆그레, 결국 서폿”이라는 미지근한 평이었다. 그런데 <b>집행 세팅이 정립된 7/4~7/5엔 “역대급 사제시즌”, “서폿 1황”, “너프 무조건 먹어야 함”</b>으로 확 뒤집혔다. 힐러 직군에 힐·딜·불사를 다 주는 게 과하다는 것 — “사제 패치되고 힐러·수도사가 그냥 엉망이 됐다”.</p>
+    <p class="plain">“사제 미만잡”이라며 깎아내리는 글조차 실제론 <b>딜 고점 2,500만 + 힐 + 부활</b>이라 결국 강함을 인정한다.</p>
+    <div class="quote">“힐러는 딜세팅하면 힐을 어느 정도 포기해야 하는데, 지금 사제는 힐·딜 전부 챙길 수 있고 애초에 힐러 직군에 불사를 달아주는 것 자체가 말이 안 됨.”
+      <span class="who">— 「사제는 너프 무조건 먹어야함」</span></div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143741" target="_blank" rel="noopener"><span class="n">#1143741</span> 역대급 사제시즌</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143569" target="_blank" rel="noopener"><span class="n">#1143569</span> 서폿 1황</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142442" target="_blank" rel="noopener"><span class="n">#1142442</span> 너프 먹어야함</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144938" target="_blank" rel="noopener"><span class="n">#1144938</span> 딜 2500만+부활</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ============ 제2장 ============ -->
+<section class="chapter" id="c2">
+  <div class="chead">
+    <div class="kicker">제 2 장 · 貳</div>
+    <h3>빌드 선택</h3>
+    <p>먼저 “뭘 하고 싶은지”부터 정하자 — 세 갈래로 갈린다</p>
+  </div>
+
+  <div class="card">
+    <h4>세 갈래 — “딜도 집행, 힐도 집행”</h4>
+    <p>갤러리 시즌 요약이 정리한 기준은 이렇다.</p>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>목적</th><th>채용</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>서브딜러(2줄작)</td><td>기존 <b>홀스</b> 유지</td><td>보스 딜 고점은 여전히 홀스</td></tr>
+          <tr><td>힐사제</td><td><b>집행</b></td><td>힐하면서 딜, 사이클 편함</td></tr>
+          <tr><td>힐+딜 하이브리드</td><td><b>집행 + 강보방 20개</b></td><td>딜 지분 저지먼트+심판 80%↑</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>집행 사제는 딜 지분의 <b>80% 이상이 저지먼트+심판</b>에 몰리고 둘 다 강보방 태그라, 세공을 하나로 통일할 수 있는 게 큰 장점. 그래서 “딜도 집행, 힐도 집행”이라 부른다.</p>
+    <div class="quote">“전처럼 2줄작으로 서브딜러 하고 싶으면 홀스 / 힐사제 하고 싶으면 집행 / 힐딜 둘 다면 집행 + 강보방 20개.”
+      <span class="who">— 「사제 이번 시즌 요약 이거인듯」</span></div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132766" target="_blank" rel="noopener"><span class="n">#1132766</span> 시즌 요약</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142274" target="_blank" rel="noopener"><span class="n">#1142274</span> 3스 지분 50~60%</a>
+    </div>
+  </div>
+
+  <div class="note info"><b>용어 짚기.</b> 흔히 “집행 빌드”라 부르지만 <b>집행은 무기룬이 아니라 악세(장신구) 스킬룬</b>이다. 집행·심판·성전·날개·결속이 전부 장신구 스킬룬이고, 무기룬은 따로(5장 참고).</div>
+</section>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ============ 제3장 ============ -->
+<section class="chapter" id="c3">
+  <div class="chead">
+    <div class="kicker">제 3 장 · 參</div>
+    <h3>스킬 운용과 사이클</h3>
+    <p>집행이 왜 빠른가, 어떻게 돌리나, 스킬별 주의점</p>
+  </div>
+
+  <div class="card">
+    <h4><span class="tag">핵심</span>집행이 빠른 이유 — 강타 쿨감 + 저지먼트</h4>
+    <p>집행(스킬룬)은 <b>강타가 뜰 때마다 스킬 쿨이 감소</b>한다. 그래서 강타 5,000 + 장비 피증으로 보스 강타율을 90%대로 올리면 때리는 족족 쿨이 당겨진다. 여기에 <b>저지먼트가 심판 쿨을 거의 초기화급으로</b> 되돌려 “심판 → 저지먼트 → 심판” 회전이 성립한다. “스킬 쓰는 속도가 쿨을 못 따라간다”는 말이 나올 정도.</p>
+    <div class="quote">딜 사이클 예시: 1(링크) → 5(베네딕션) → 3 → 4 → 2 → 2 → 3, 이후 베네딕션 유지 + 심판 주딜. “저지먼트는 추가타 조금 챙기면 심판을 쿨초기화급으로 돌려줘서 심판–저지먼트–심판이 좋다.”
+      <span class="who">— 「사제 집행 메모장」</span></div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1116858" target="_blank" rel="noopener"><span class="n">#1116858</span> 집행 메모장</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1097569" target="_blank" rel="noopener"><span class="n">#1097569</span> 강타 프록 쿨감</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>개조 · 오토</h4>
+    <p>홀스가 아니면 <b>235 개조 고정</b>(홀스는 555). 오토는 집행을 쓰면 스킬을 다 켜고 돌려도 되고(쿨이 알아서 돎), 집행을 안 쓰면 1·5스킬만 켠다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137968" target="_blank" rel="noopener"><span class="n">#1137968</span> 235 개조</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136617" target="_blank" rel="noopener"><span class="n">#1136617</span> 오토 스킬 세팅</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>스킬별 포인트</h4>
+    <p class="plain"><b>3스 심판</b> — 캐스팅·차징이 아니라 모션만 긴 즉발기. 캐차 스탯은 홀스 쓸 때만 필요. 브레이크딜 주력이라 칼바람·뼈인장과 궁합.</p>
+    <p class="plain"><b>2스(비둘기)</b> — 신규 시즌 룬으로 사실상 무한 시전, 힐 회전의 핵심.</p>
+    <p class="plain"><b>장판(생츄어리)</b> — 논쟁. “솔플이면 생츄 깔 시간에 비둘기+심판 한 번 더”가 낫다는 파와, <b>밤의축복 세트는 생츄어리가 버프 트리거</b>라 쿨마다 써야 한다는 파.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138229" target="_blank" rel="noopener"><span class="n">#1138229</span> 심판=즉발</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140226" target="_blank" rel="noopener"><span class="n">#1140226</span> 생츄어리 논쟁</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140070" target="_blank" rel="noopener"><span class="n">#1140070</span> 2스 무한</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>필드·오토 몹밀이 = 신규 5스룬 + 수레바퀴</h4>
+    <p>집행이 강타마다 수레 쿨을 줄여줘 “무한 수레”가 돈다. 신성력·강타 수급용이라 오토·솔플 몹밀이에 최적 — “집수 오토는 쿨삑 없이 무한으로 돌아간다(딜은 땅바닥이지만 안 죽음)”.</p>
+    <div class="note"><b>주의.</b> 파티에선 넉백으로 몹을 밀어 민폐 — “수레바퀴 사제면 강퇴” 소리가 나온다. 레이드 힐사제는 수레 대신 심판. 즉 수레는 <b>솔플·오토 전용</b>.</div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135434" target="_blank" rel="noopener"><span class="n">#1135434</span> 오토 수레 인증</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1101237" target="_blank" rel="noopener"><span class="n">#1101237</span> 파티 반응</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ============ 제4장 ============ -->
+<section class="chapter" id="c4">
+  <div class="chead">
+    <div class="kicker">제 4 장 · 肆</div>
+    <h3>스탯 · 세공</h3>
+    <p>집행 기준 방보·강보방, 장비 피증 40%가 관문</p>
+  </div>
+
+  <div class="card">
+    <h4>세공</h4>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>상황</th><th>세공</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>집행 사용</td><td>2줄 <b>보·방</b> → <b>방보(보조·방해)</b></td><td>수레·저지먼트가 보조방해 태그</td></tr>
+          <tr><td>집행 미사용</td><td>2줄 <b>보·강</b></td><td>—</td></tr>
+          <tr><td>3줄</td><td><b>강보방 20개</b></td><td>집행 사제 필수</td></tr>
+          <tr><td>프리즘</td><td><b>강타 5,000</b></td><td>시즌 스킬 도트뎀 기준점</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141749" target="_blank" rel="noopener"><span class="n">#1141749</span> 강보→방보</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137758" target="_blank" rel="noopener"><span class="n">#1137758</span> 세공 변경점</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142274" target="_blank" rel="noopener"><span class="n">#1142274</span> 강보방 20개</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>스탯 목표치 · 아티팩트</h4>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>스탯</th><th>목표</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>강타</td><td class="tnum"><b>5,000 +</b></td><td>가중치 대략 강 0.5</td></tr>
+          <tr><td>추가타</td><td class="tnum"><b>4,000 +</b></td><td>가중치 대략 추 0.4</td></tr>
+          <tr><td>치명</td><td class="tnum">최대 <b>1만</b></td><td>가중치 치 1 (최우선)</td></tr>
+          <tr><td>장비 피증</td><td class="tnum"><b>40%</b></td><td>시즌 스킬은 직피 판정 → 피증만 먹음</td></tr>
+          <tr><td>아티팩트</td><td>치명·추가·공퍼·피증·강타</td><td>집행 사제는 <b>신속 뺌</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note info">시즌 스킬은 직접피해(직피) 판정이라 <b>스킬위력(스위)은 안 먹고 장비 피증만</b> 적용된다. 실측으로 피증 5% → 보스 강타율 43%, 피증 32% → 91%. 피증 섞인 장비를 버리지 말 것.</div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144675" target="_blank" rel="noopener"><span class="n">#1144675</span> 추가타·치명 목표</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141810" target="_blank" rel="noopener"><span class="n">#1141810</span> 아티 신속 뺌</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140057" target="_blank" rel="noopener"><span class="n">#1140057</span> 피증 40% 실측</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ============ 제5장 ============ -->
+<section class="chapter" id="c5">
+  <div class="chead">
+    <div class="kicker">제 5 장 · 伍</div>
+    <h3>룬 세팅</h3>
+    <p>악세 스킬룬 · 무기룬 · 핵심템 · 방어구를 나눠서</p>
+  </div>
+
+  <div class="card hl">
+    <h4><span class="tag">정배</span>악세(스킬룬): 집행+심판 고정 + @ → 결집심</h4>
+    <p>장신구 스킬룬은 <b>집행·심판 2개 고정 + 나머지 한 자리</b> 구조. 7/5 시점엔 <b>결집심(결속+집행+심판)이 사실상 고정</b>이라는 평이 강하다. <b>결속</b>이 ① 신성력 자동회복 ② 스킬 사용 시 확률 재발동으로 “집행이 가끔 찐빠 나는 걸 보완”해주고, 피증이 많아 성전 효율이 떨어지니 결속으로 신성력을 채우는 게 이득. 역할에 따라 <b>날집심 / 성집심 / 축집심</b>으로 갈린다(파티 솔힐 축심집, 서폿 많으면 성심집).</p>
+    <div class="quote">“해보니까 결집심이 고정이야. 결속이 가끔 집행 찐빠나는 거 보완해줌. 2스는 그냥 디바인윙 날리는 게 저지먼트 잘 터져서 좋아.”
+      <span class="who">— 「사제 세팅 이제 어떻게」·「보방→강 순임?」</span></div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142506" target="_blank" rel="noopener"><span class="n">#1142506</span> 결집심 고정</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138235" target="_blank" rel="noopener"><span class="n">#1138235</span> 성전 vs 결속</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141352" target="_blank" rel="noopener"><span class="n">#1141352</span> 결속 효과</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>무기룬: 바위칼날 · 광채 · 죽음 (홀스면 계시)</h4>
+    <p>집행 빌드 기준 무기룬 후보는 <b>바위칼날·광채·죽음</b>. 억눌린충동은 “죽음보다 별로”라 탈락. 스위가 안 먹히는 게 확인되며 <b>광채가 죽음보다 나을 수도</b> 있다는 재평가. 홀스 빌드면 <b>계시</b>. 집행 사제라면 <b>오랜광기</b>(서리바람 피증 버전, 피가 까이지만 장판 깔면 고행 패시브로 감당)도 쓸 만.</p>
+    <div class="quote">“바위칼날, 억눌린충동, 광채, 죽음 이 중에 쓸 듯 (집행 기준임). 홀스면 계시가 나을 듯?”
+      <span class="who">— 「사제 무기룬 최종으론 머쓰려나」</span></div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139992" target="_blank" rel="noopener"><span class="n">#1139992</span> 무기룬 후보</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141587" target="_blank" rel="noopener"><span class="n">#1141587</span> 오랜광기</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4><span class="tag">수저</span>핵심템: 뼈인장 + 칼바람</h4>
+    <p>사제의 <b>수저 조합은 뼈인장 + 칼바람</b>. 집행 사제는 3스(심판)가 브레이크딜 주력이라, 브레이크 스킬피해+크뎀을 주는 <b>칼바람</b>과 주력기 딜을 폭발시키는 <b>뼈인장</b>을 받으면 “3무한난사”로 미터기가 터진다. 3스 딜 지분이 뼈인장 없이도 50~60%, 뼈인장을 먹으면 더 오른다.</p>
+    <div class="note info"><b>참고.</b> 뼈인장의 정확한 분류(룬/인장/인챈트)는 갤 내에서도 표현이 엇갈려 이 공략집에선 “핵심 강화 요소”로만 표기한다. 효과(주력 스킬 딜을 크게 키움)는 이견이 없다.</div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143569" target="_blank" rel="noopener"><span class="n">#1143569</span> 뼈인장·칼바람 수저</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142274" target="_blank" rel="noopener"><span class="n">#1142274</span> 3스 지분</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>방어구 · 엠블럼 · 날개룬 주의</h4>
+    <p>방어구는 <b>밤의축복 세트 +@</b>. 엠블럼(무방엠)은 “다들 연구 중”이라 미확정. <b>날개룬은 주의</b> — 집행+날개 시 2스 비둘기 메커니즘이 꼬인다는 설(문 생기고 거기서만 비둘기)과, 집날심으로 잘 쓰는 사람도 있어 논쟁 중이다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140414" target="_blank" rel="noopener"><span class="n">#1140414</span> 방어구·장신구 선호</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142042" target="_blank" rel="noopener"><span class="n">#1142042</span> 날개룬 주의</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ============ 제6장 ============ -->
+<section class="chapter" id="c6">
+  <div class="chead">
+    <div class="kicker">제 6 장 · 陸</div>
+    <h3>불사 · 소생 메커니즘</h3>
+    <p>사제를 1황으로 만든 진짜 이유</p>
+  </div>
+
+  <div class="card hl">
+    <h4>불사 패시브 — 사실상 상시 죽음 면제</h4>
+    <p>“심판 타이밍만 맞추면 파티원 전원 불사”, 사실상 상시 <b>죽음 1회 면제권</b>. 메커니즘 확정: 3스·궁에 묻은 <b>소생은 파티 전원 생존, 개별 쿨타임 180초</b>. 소생 지속(약 20초) 안에 위험 패턴을 넘긴다.</p>
+    <p class="plain"><b>결정타</b> — 사제 부활이 있으면 파티원의 <b>불사룬이 무의미</b>해진다(쿨 공유). 부캐 GOAT룬이던 불사룬을 사제가 통째로 대체하는 셈이라, “불사룬 이제 필요 없냐? 사기”라는 반응.</p>
+    <div class="quote">“어비스 틱택토 패턴 때 오토충 있어도 겜 안 터짐 ㅋㅋㅋ” · “사제가 공팟에서 진짜 개고트임.”
+      <span class="who">— 「사제 불사 패시브 좋네」</span></div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143213" target="_blank" rel="noopener"><span class="n">#1143213</span> 소생 전원·쿨180</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143964" target="_blank" rel="noopener"><span class="n">#1143964</span> 불사룬 무의미</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141079" target="_blank" rel="noopener"><span class="n">#1141079</span> 불사 패시브</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ============ 제7장 ============ -->
+<section class="chapter" id="c7">
+  <div class="chead">
+    <div class="kicker">제 7 장 · 柒</div>
+    <h3>마무리 · 홀스 vs 집행</h3>
+    <p>결국 뭘 골라야 하나</p>
+  </div>
+
+  <div class="card">
+    <p><b>보스 딜 고점은 홀스, 범용성·편의성은 집행(집심).</b> 엔드 세팅은 결국 홀스로 갈 수도 있다는 유보가 있지만, 대부분은 “힐이 되면서 스트레스 없이 딜이 나오는” 집행을 재밌어한다. 홀스는 555라 사이클이 쉽고, 집행 사이클도 다른 딜러에 비하면 쉬운 편.</p>
+    <p class="plain">한 줄 요약 — <b>서폿·유틸·재미까지 원하면 집행(결집심), 순수 보스 딜 고점만 보면 홀스.</b> 둘 다 룬이 없다면 집행/폭격 먹을 때까지 하던 거 하며 대기.</p>
+    <div class="quote">“홀스는 555라 쉽고 집행 사이클도 딜러 중엔 쉬운 편. 집행도 뼈인장 세팅하면 홀스랑 비빌 것 같은데 이건 힐이 돼서 좋음. 근데 엔드 딜 세팅은 결국 홀스가 될 수도.”
+      <span class="who">— 「사제 개재밌네 그냥」</span></div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136327" target="_blank" rel="noopener"><span class="n">#1136327</span> 홀스 vs 집행 체감</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142506" target="_blank" rel="noopener"><span class="n">#1142506</span> 범용성은 집심</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 부록 ============ -->
+<section class="chapter appendix" id="src">
+  <div class="chead">
+    <div class="kicker">부록 · 附</div>
+    <h3>출처 43건</h3>
+    <p>사제 유니크 115건 스윕 중 정리에 인용한 글 — 번호 클릭 시 원문으로</p>
+  </div>
+  <ul class="srclist">
+    <li><span class="num">#1144938</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144938" target="_blank" rel="noopener">이번 시즌 사제 미만잡인듯?</a><span class="d">07/05 · 딜 2500만+부활 인정</span></li>
+    <li><span class="num">#1144675</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144675" target="_blank" rel="noopener">사제들 추가타 최소 몇까지?</a><span class="d">07/05 · 스탯 목표치</span></li>
+    <li><span class="num">#1143964</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143964" target="_blank" rel="noopener">사제는 불사룬 더 필요없나</a><span class="d">07/05 · 불사룬 무의미화</span></li>
+    <li><span class="num">#1143916</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143916" target="_blank" rel="noopener">불사룬 끼면 2번 살아남?</a><span class="d">07/05 · 부활 쿨 공유</span></li>
+    <li><span class="num">#1143741</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143741" target="_blank" rel="noopener">역대급 사제시즌인 이유</a><span class="d">07/05 · 여론 반전</span></li>
+    <li><span class="num">#1143569</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143569" target="_blank" rel="noopener">사제 이번시즌 서폿 1황</a><span class="d">07/05 · 뼈인장·칼바람 수저</span></li>
+    <li><span class="num">#1143213</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143213" target="_blank" rel="noopener">소생 3스·궁 메커니즘</a><span class="d">07/05 · 전원생존·쿨180초</span></li>
+    <li><span class="num">#1142506</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142506" target="_blank" rel="noopener">사제 세팅 이제 어떻게</a><span class="d">07/04 · 결집심 고정</span></li>
+    <li><span class="num">#1142442</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142442" target="_blank" rel="noopener">사제는 너프 무조건 먹어야함</a><span class="d">07/04 · 힐·딜·불사 과다</span></li>
+    <li><span class="num">#1142274</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142274" target="_blank" rel="noopener">집행사제 3스 딜지분?</a><span class="d">07/04 · 50~60%</span></li>
+    <li><span class="num">#1142042</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142042" target="_blank" rel="noopener">집행룬+날개룬 안된다며?</a><span class="d">07/04 · 2스 비둘기 꼬임</span></li>
+    <li><span class="num">#1141810</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141810" target="_blank" rel="noopener">집행 사제 아티 신속 빼나요?</a><span class="d">07/04 · 아티 세팅</span></li>
+    <li><span class="num">#1141749</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141749" target="_blank" rel="noopener">집행쓸거면 강보→방보?</a><span class="d">07/04 · 세공 전환</span></li>
+    <li><span class="num">#1141587</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141587" target="_blank" rel="noopener">오랜광기 집행 사제 쓸만해?</a><span class="d">07/04 · 무기룬</span></li>
+    <li><span class="num">#1141352</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141352" target="_blank" rel="noopener">결속이 스킬쓰면 1스 자동갱신?</a><span class="d">07/04 · 결속 효과</span></li>
+    <li><span class="num">#1141079</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141079" target="_blank" rel="noopener">사제 불사 패시브 좋네</a><span class="d">07/04 · 불사 운용</span></li>
+    <li><span class="num">#1140736</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140736" target="_blank" rel="noopener">사제 펫 뭐쓰냐</a><span class="d">07/04 · 시츄 치강</span></li>
+    <li><span class="num">#1140414</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140414" target="_blank" rel="noopener">사제 룬 1티어가 뭔가요?</a><span class="d">07/04 · 장신구·방어구</span></li>
+    <li><span class="num">#1140226</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140226" target="_blank" rel="noopener">집행 사제 장판 안쓰는게 나은가</a><span class="d">07/03 · 생츄어리 논쟁</span></li>
+    <li><span class="num">#1140070</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140070" target="_blank" rel="noopener">사제 신규룬 개좋은데?</a><span class="d">07/03 · 2스 무한</span></li>
+    <li><span class="num">#1140057</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140057" target="_blank" rel="noopener">사제놈들 팁준다 (정보글)</a><span class="d">07/03 · 피증 40% 실측</span></li>
+    <li><span class="num">#1139992</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139992" target="_blank" rel="noopener">사제 무기룬 최종으론 머쓰려나</a><span class="d">07/03 · 무기룬 후보</span></li>
+    <li><span class="num">#1138235</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138235" target="_blank" rel="noopener">사제는 보방→강 순임?</a><span class="d">07/03 · 성전 vs 결속·축복</span></li>
+    <li><span class="num">#1138229</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138229" target="_blank" rel="noopener">사제 3스 심판 질문</a><span class="d">07/03 · 심판=즉발</span></li>
+    <li><span class="num">#1137968</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137968" target="_blank" rel="noopener">집행사제 23개조 필수임?</a><span class="d">07/03 · 235 개조</span></li>
+    <li><span class="num">#1137758</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137758" target="_blank" rel="noopener">이번시즌 사제 세공 두줄 변경점</a><span class="d">07/03 · 집행 기준 세공</span></li>
+    <li><span class="num">#1136617</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136617" target="_blank" rel="noopener">사제 오토할 때 꺼야하는 스킬</a><span class="d">07/02 · 오토 세팅</span></li>
+    <li><span class="num">#1136327</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136327" target="_blank" rel="noopener">사제 개재밌네 그냥</a><span class="d">07/02 · 홀스 vs 집행</span></li>
+    <li><span class="num">#1135434</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135434" target="_blank" rel="noopener">사제 오토는 수레가 꿀잼이굱</a><span class="d">07/02 · 집수 오토 인증</span></li>
+    <li><span class="num">#1134254</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134254" target="_blank" rel="noopener">사제 시즌 스킬 이제 봤는데 뭐임</a><span class="d">07/02 · 전원 불사</span></li>
+    <li><span class="num">#1133171</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133171" target="_blank" rel="noopener">사제 뭐가 좋다고 난리임?</a><span class="d">07/01 · 세공 결론</span></li>
+    <li><span class="num">#1132766</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132766" target="_blank" rel="noopener">사제 이번 시즌 요약 이거인듯</a><span class="d">07/01 · 빌드 3갈래</span></li>
+    <li><span class="num">#1130749</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1130749" target="_blank" rel="noopener">죽음 룬은 사제랑 상관 없네</a><span class="d">07/01 · 죽음 룬 해석</span></li>
+    <li><span class="num">#1128081</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1128081" target="_blank" rel="noopener">사제 장신구 룬 뭐쓰는거야?</a><span class="d">06/30 · 역할별 조합</span></li>
+    <li><span class="num">#1120587</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1120587" target="_blank" rel="noopener">사제 집행룬 좋음?</a><span class="d">06/29 · 뼈인장 조건</span></li>
+    <li><span class="num">#1116858</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1116858" target="_blank" rel="noopener">사제 집행 메모장</a><span class="d">06/28 · 사이클 상세</span></li>
+    <li><span class="num">#1108006</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1108006" target="_blank" rel="noopener">사제 결론 나옴</a><span class="d">06/25 · 초기 평가</span></li>
+    <li><span class="num">#1106680</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1106680" target="_blank" rel="noopener">사제 세공 2줄은 이제 보방인가</a><span class="d">06/25 · 보방 전환</span></li>
+    <li><span class="num">#1106103</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1106103" target="_blank" rel="noopener">(최종) 전 캐릭 시즌 스킬 정리</a><span class="d">06/25 · 시즌 스킬 스펙</span></li>
+    <li><span class="num">#1105011</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1105011" target="_blank" rel="noopener">사제 집행룬 재밌는거갓은디</a><span class="d">06/26 · 체감 사용기</span></li>
+    <li><span class="num">#1101237</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1101237" target="_blank" rel="noopener">사제 설마 수레바퀴 쓰냐</a><span class="d">06/26 · 파티 반응</span></li>
+    <li><span class="num">#1097569</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1097569" target="_blank" rel="noopener">집행룬 설명만 들으면 수레바퀴</a><span class="d">06/24 · 강타 쿨감 구조</span></li>
+    <li><span class="num">#1097143</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1097143" target="_blank" rel="noopener">시즌 2 사제공략</a><span class="d">06/24 · 5스룬+수레</span></li>
+  </ul>
+</section>
+
+<footer>
+  <div class="sign">✚ 육육이의 탄붕을 위한 사제 공략모음 ✚</div>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  시즌 2 초기 여론이라 엠블럼·뼈인장 분류 등 미확정 항목은 추후 갱신 필요 · 인용문은 원문 표현 유지
+</footer>
+
+</div>
+
+</body>
+</html>

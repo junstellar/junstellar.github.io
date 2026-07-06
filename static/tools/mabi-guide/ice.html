@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>육육이의 프렌즈를 위한 빙결 공략모음</title>
+<style>
+  :root{
+    --paper:#eef2f5;
+    --card:#f8fafc;
+    --ink:#1f2a33;
+    --ink-soft:#5d6c78;
+    --frost:#2e6285;
+    --frost-deep:#1d4560;
+    --frost-soft:#dce9f2;
+    --frost-line:#b3cede;
+    --line:#dae2e8;
+    --warn:#8c3b2e;
+    --warn-soft:#f5e5df;
+    --mint:#3d6b5f;
+    --mint-soft:#e2efe9;
+    --serif:'Nanum Myeongjo','Batang','AppleMyungjo',Georgia,serif;
+    --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:radial-gradient(120% 60% at 50% -10%, #f5f9fb 0%, var(--paper) 55%);
+    color:var(--ink);font-family:var(--sans);line-height:1.78;font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 90px}
+
+  header.mast{text-align:center;padding:56px 0 30px}
+  .sigil{font-size:26px;color:var(--frost);line-height:1;margin-bottom:14px}
+  .byline{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--frost-deep);margin-bottom:6px}
+  h1.title{font-family:var(--serif);font-size:clamp(30px,6.5vw,46px);line-height:1.18;margin:0;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+  .mast .rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:22px auto 16px;max-width:440px;color:var(--frost)}
+  .mast .rule::before,.mast .rule::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--frost-line))}
+  .mast .rule::after{background:linear-gradient(90deg,var(--frost-line),transparent)}
+  .mast .rule span{font-size:13px}
+  .submeta{font-size:13px;color:var(--ink-soft);max-width:560px;margin:0 auto;line-height:1.6}
+  .submeta a{color:var(--frost-deep);font-weight:600;text-decoration:none}
+  .submeta b{color:var(--ink)}
+  .verdict-strip{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 0}
+  .badge{font-size:13px;font-weight:700;padding:5px 14px;border-radius:999px;background:var(--frost-soft);color:var(--frost-deep);border:1px solid var(--frost-line)}
+  .badge.hot{background:var(--frost);color:#fff;border-color:var(--frost)}
+
+  .summary{background:var(--card);border:1px solid var(--frost-line);border-radius:14px;padding:26px 28px;margin:36px 0 14px;box-shadow:0 1px 0 #fff inset, 0 6px 22px -18px rgba(20,60,90,.5)}
+  .summary h2{font-family:var(--serif);font-size:19px;margin:0 0 4px;color:var(--frost-deep);display:flex;gap:9px}
+  .summary .lead{font-size:13px;color:var(--ink-soft);margin:0 0 16px}
+  .checklist{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+  .checklist li{display:flex;gap:11px;align-items:baseline;font-size:15px}
+  .checklist .k{flex:0 0 76px;font-weight:700;color:var(--frost-deep);font-size:13px;text-align:right;padding-top:1px}
+  .checklist .v{flex:1}
+  .checklist .v b{color:var(--ink)}
+
+  nav.toc{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 4px;margin:34px 0 8px}
+  nav.toc .toch{font-family:var(--serif);font-size:14px;letter-spacing:.14em;color:var(--frost-deep);text-transform:uppercase;margin-bottom:12px;text-align:center}
+  nav.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 26px}
+  nav.toc a{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink);font-size:14.5px;padding:5px 6px;border-radius:7px}
+  nav.toc a:hover{background:var(--frost-soft);color:var(--frost-deep)}
+  nav.toc .cn{font-family:var(--serif);color:var(--frost);font-size:13px;min-width:20px}
+  @media(max-width:560px){nav.toc ol{grid-template-columns:1fr}}
+
+  .chapter{margin:56px 0 0;scroll-margin-top:16px}
+  .chapter .kicker{font-family:var(--serif);font-size:13px;letter-spacing:.22em;color:var(--frost);text-transform:uppercase;margin-bottom:4px}
+  .chapter h3{font-family:var(--serif);font-size:clamp(22px,4vw,28px);margin:0;color:var(--ink);font-weight:700;line-height:1.25}
+  .chapter .chead{margin-bottom:22px}
+  .chapter .chead p{font-size:14px;color:var(--ink-soft);margin:7px 0 0}
+  .ornament{text-align:center;color:var(--frost-line);font-size:15px;margin:52px 0 0;letter-spacing:.6em}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+  .card.hl{border-color:var(--frost-line);background:linear-gradient(180deg,#eff5fa,#f8fafc)}
+  .card h4{margin:0 0 9px;font-size:16.5px;font-weight:800;color:var(--ink);display:flex;gap:8px;align-items:baseline}
+  .card h4 .tag{font-size:11px;font-weight:700;color:var(--frost-deep);background:var(--frost-soft);border-radius:5px;padding:2px 7px;flex:0 0 auto}
+  .card p{margin:0 0 10px}
+  .card p:last-of-type{margin-bottom:0}
+  .card b{color:var(--frost-deep)}
+  .card .plain b{color:var(--ink)}
+
+  .quote{border-left:3px solid var(--frost);background:#e6eef5;padding:11px 16px;border-radius:0 9px 9px 0;font-size:14.5px;color:#2c4d66;margin:12px 0}
+  .quote .who{display:block;font-size:11.5px;color:#6e8ba0;margin-top:5px}
+
+  .note{font-size:13.5px;border-radius:9px;padding:11px 15px;margin:12px 0;background:var(--warn-soft);color:var(--warn);border:1px solid #e8d1c8}
+  .note.info{background:var(--mint-soft);color:var(--mint);border-color:#c9ded5}
+  .note b{color:inherit;font-weight:800}
+
+  .tablebox{overflow-x:auto;margin:14px 0 4px;border-radius:10px;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:420px}
+  th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{background:#e3ebf1;font-weight:800;color:var(--frost-deep);font-size:13px}
+  tr:last-child td{border-bottom:none}
+  td b{color:var(--frost-deep)}
+  tbody tr:nth-child(even){background:#fafcfd}
+
+  .refs{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px;padding-top:12px;border-top:1px dashed var(--line)}
+  .refs .rl{font-size:11px;letter-spacing:.1em;color:var(--ink-soft);font-weight:700;align-self:center;margin-right:3px}
+  a.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--frost-deep);text-decoration:none;background:#e6eef4;border:1px solid var(--frost-line);border-radius:999px;padding:3px 10px;line-height:1.5}
+  a.chip:hover{background:var(--frost);color:#fff;border-color:var(--frost)}
+  a.chip .n{font-variant-numeric:tabular-nums;font-weight:700;opacity:.85}
+
+  .appendix{margin-top:54px}
+  .srclist{list-style:none;margin:0;padding:0}
+  .srclist li{display:flex;gap:11px;align-items:baseline;padding:8px 2px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .srclist li:last-child{border-bottom:none}
+  .srclist .num{color:var(--frost);font-weight:700;font-variant-numeric:tabular-nums;min-width:66px;font-size:12.5px}
+  .srclist a{color:var(--ink);text-decoration:none;font-weight:600}
+  .srclist a:hover{color:var(--frost-deep)}
+  .srclist .d{color:var(--ink-soft);font-size:12.5px;font-weight:400}
+
+  footer{margin-top:52px;padding-top:22px;border-top:2px solid var(--frost-line);text-align:center;font-size:12.5px;color:var(--ink-soft);line-height:1.7}
+  footer .sign{font-family:var(--serif);font-size:15px;color:var(--frost-deep);margin-bottom:4px}
+  a:focus-visible{outline:2px solid var(--frost);outline-offset:2px;border-radius:4px}
+  @media (prefers-reduced-motion:no-preference){
+    .card,.summary{animation:rise .5s ease both}
+    @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="sigil">❄</div>
+  <div class="byline">육육이의</div>
+  <h1 class="title">프렌즈를 위한 빙결 공략모음</h1>
+  <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
+  <p class="submeta">
+    <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
+    빙결(빙결술사) 글을 정리한 비공식 공략집 · 시즌 2 출시(2026-06-25)~7/5 본문·댓글 분석
+  </p>
+  <div class="verdict-strip">
+    <span class="badge hot">숨은 사기 (간접 찌라시)</span>
+    <span class="badge">어비스 쾌적 1황</span>
+    <span class="badge">오토 강자</span>
+  </div>
+</header>
+
+<section class="summary">
+  <h2>❄ 한눈에 보는 결론</h2>
+  <p class="lead">바쁜 사람은 이것만 — 자세한 근거는 아래 각 장에.</p>
+  <ul class="checklist">
+    <li><span class="k">티어</span><span class="v"><b>“간접 찌라시 중 빙결 사기 맞는 듯.”</b> 스탯 펌핑으로 체급이 오른 데다 어비스 쾌적함은 독보적</span></li>
+    <li><span class="k">시즌스킬</span><span class="v">약점이던 <b>브레이크 압축딜을 자동 날먹딜로 보완</b> — “브익 되면 자동으로 들어가는데 그 딜도 엄청 셈”</span></li>
+    <li><span class="k">세공 2줄</span><span class="v"><b>원소 · 소환</b></span></li>
+    <li><span class="k">세공 3줄</span><span class="v"><b>원소생 · 원소강</b>까지 유효 (+원소원쿨 거론) — <b>원생강은 버림</b></span></li>
+    <li><span class="k">무기룬</span><span class="v">계시 vs 광채 → <b>“무조건 광채”</b> (5스 주력이 캐스팅기라 계시 편의성 비교글 있었으나 광채 우세)</span></li>
+    <li><span class="k">운용</span><span class="v">어비스 뺑뺑이 = 오토 + 기믹만 신경. “엥 그게 머에요 난 오토 넣고 기믹함”</span></li>
+    <li><span class="k">미확정</span><span class="v">악세 정배·프리즘 목표치는 갤 답변 미형성 (자료 없음)</span></li>
+  </ul>
+</section>
+
+<nav class="toc">
+  <div class="toch">목 차 · Contents</div>
+  <ol>
+    <li><a href="#c1"><span class="cn">壹</span> 티어 — 숨은 사기론</a></li>
+    <li><a href="#c2"><span class="cn">貳</span> 시즌스킬과 스킬 운용</a></li>
+    <li><a href="#c3"><span class="cn">參</span> 세공 · 스탯</a></li>
+    <li><a href="#c4"><span class="cn">肆</span> 룬 세팅</a></li>
+    <li><a href="#c5"><span class="cn">伍</span> 마무리 — 누구에게 맞나</a></li>
+    <li><a href="#src"><span class="cn">附</span> 출처</a></li>
+  </ol>
+</nav>
+
+<section class="chapter" id="c1">
+  <div class="chead">
+    <div class="kicker">제 1 장 · 壹</div>
+    <h3>티어 — 숨은 사기론</h3>
+    <p>기갱 상위권의 빙결 부캐·뜬금 직변이 찌라시가 아니었다</p>
+  </div>
+
+  <div class="card hl">
+    <h4><span class="tag">여론</span>“이번 시즌은 탱·빙결 밀어주는 시즌”</h4>
+    <p>화·빙·법·전 4법사를 모두 키우는 유저의 결론 — “10성 룬 성능이 구리든 말든 <b>스탯 펌핑으로 알아서 체급이 좋아지는</b> 쪽을 밀어주는 느낌”이고 그 수혜가 빙결. 특히 <b>어비스 쾌적함이 남다르다</b>: 이번 어비스는 장판·기믹·자리이동이 많아 전격 등은 “개바쁨”인데, 빙결은 “엥 그게 머에요, 난 오토 넣고 기믹함, 앙 기믹띠~”로 끝. “이번 시즌 부캐들 전부 빙결로 해서 10성 아무거나 박고 시즌 마감시켜야 하나 싶다”.</p>
+    <div class="quote">“빙결이 또 좋아진 게, 유일하게 검방보다 브익딜 조금 밀린다 도르였는데 시즌스킬로 그것도 그냥 브레이크되면 자동으로 들어가는 날먹딜이라… 그 딜도 또 엄청 셈. 그냥 체급이 말이 안 됨.”
+      <span class="who">— 「간접찌라시중에 빙결사기 ← 이거 맞는듯」 댓글</span></div>
+    <p class="plain">유저 수는 적지만 단단하다 — “검술·빙결 유저수는 진짜 걍 콘크리트 수준”. 대검 유저가 “이번 시즌 빙결로 렛잇고 어떻게 생각함?”이라 물을 정도로 외부 인식도 좋아짐(“지금 대검 개좋지 않혼”이라는 만류와 함께).</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143510" target="_blank" rel="noopener"><span class="n">#1143510</span> 간접찌라시 빙결사기 맞는듯</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144031" target="_blank" rel="noopener"><span class="n">#1144031</span> 검술·빙결 유저 콘크리트</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141069" target="_blank" rel="noopener"><span class="n">#1141069</span> 대검→빙결 렛잇고?</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">❄ ❄ ❄</div>
+
+<section class="chapter" id="c2">
+  <div class="chead">
+    <div class="kicker">제 2 장 · 貳</div>
+    <h3>시즌스킬과 스킬 운용</h3>
+    <p>브레이크 압축딜이라는 마지막 약점이 메워졌다</p>
+  </div>
+
+  <div class="card">
+    <h4>시즌스킬 — 브익 자동딜</h4>
+    <p>시즌 2 이전 빙결의 약점은 <b>브레이크 타임 압축딜</b>이었는데, 시즌스킬이 이를 정확히 메워줌 — 브레이크만 되면 자동으로 들어가는 구조라 “날먹딜”이라 불리고, 그 딜 자체도 강력하다는 평. 검방(탱커)과의 비교글에서도 “빙결은 부족했던 브익 딜압축을 시즌스킬로 메꿔줬다”고 정리된다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143510" target="_blank" rel="noopener"><span class="n">#1143510</span> 브익 날먹딜 (댓글)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1145068" target="_blank" rel="noopener"><span class="n">#1145068</span> 검방·빙결 비교</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>스킬 채용 논의 — 붕괴 대신 참격 스왑설</h4>
+    <p>광역이 아쉬운 콘텐츠에선 “<b>붕괴 빼고 참격</b>을 쓰자”는 의견이 연구 중 — “궁 개조 빼고 2·3·4 쓰면서 방마다·맵마다 스왑해서 쓰는 것”. 5스가 주력인데 캐스팅기라, 캐스팅 편의(계시류) 논의도 여기서 나왔다(4장 참고). 다만 확정 사이클 정리글은 아직 없음.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1145068" target="_blank" rel="noopener"><span class="n">#1145068</span> 붕괴↔참격 스왑 의견</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135691" target="_blank" rel="noopener"><span class="n">#1135691</span> 5스=주력 캐스팅기</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">❄ ❄ ❄</div>
+
+<section class="chapter" id="c3">
+  <div class="chead">
+    <div class="kicker">제 3 장 · 參</div>
+    <h3>세공 · 스탯</h3>
+    <p>원소·소환 기반 — 원생강은 버려라</p>
+  </div>
+
+  <div class="card">
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>항목</th><th>기준</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>세공 2줄</td><td><b>원소 · 소환</b></td><td>“빙결 원소 소환 데미지” (부캐 2줄작 문답)</td></tr>
+          <tr><td>세공 3줄</td><td><b>원소생 · 원소강</b></td><td>“원소생 원소강까지는 쓸만 — <b>원생강은 버리고</b>” + “원소원쿨”도 거론</td></tr>
+          <tr><td>강타 태그</td><td>재평가 중</td><td>“이번에 강타 태그도 꽤 좋아졌다” → 원소강 유효화</td></tr>
+          <tr><td>프리즘·목표 수치</td><td>자료 없음</td><td>갤 내 정립글 미확인 — 악세 정배 질문(#1142096)도 무응답</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136427" target="_blank" rel="noopener"><span class="n">#1136427</span> 3줄 원소생/원소강</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143984" target="_blank" rel="noopener"><span class="n">#1143984</span> 2줄 원소·소환</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142096" target="_blank" rel="noopener"><span class="n">#1142096</span> 악세 정배? (무응답)</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">❄ ❄ ❄</div>
+
+<section class="chapter" id="c4">
+  <div class="chead">
+    <div class="kicker">제 4 장 · 肆</div>
+    <h3>룬 세팅</h3>
+    <p>계시 vs 광채 — 결론은 광채</p>
+  </div>
+
+  <div class="card hl">
+    <h4><span class="tag">무기룬</span>“무조건 광채”</h4>
+    <p>신규 계시룬과 광채를 놓고 고민하는 글에서 여론은 <b>광채</b>로 기욺. 계시는 “주절먹(주력기) 5스가 캐스팅기라 쓰고 안 쓰고 편의성 차이가 확 난다”는 옹호가 있었지만, 최종 답변은 “무조건 광채”. (10성 확보 전이라 실측 병행 권장 — “어비스 뺑이 좀 쳐보고 허수라도 쳐봐야”)</p>
+    <p class="note info"><b>자료 없음 항목.</b> 방어구룬·엠블럼·장신구 정배는 7/5 기준 갤 정리글이 아직 없다. 티어글의 뉘앙스상 “10성 아무거나 박아도 체급으로 굴러간다”는 게 현재 분위기.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135691" target="_blank" rel="noopener"><span class="n">#1135691</span> 빙결 계시 쓸만함? (→광채)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143510" target="_blank" rel="noopener"><span class="n">#1143510</span> 10성 아무거나 (체급론)</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">❄ ❄ ❄</div>
+
+<section class="chapter" id="c5">
+  <div class="chead">
+    <div class="kicker">제 5 장 · 伍</div>
+    <h3>마무리 — 누구에게 맞나</h3>
+    <p>부캐·오토·쾌적파의 최적해</p>
+  </div>
+
+  <div class="card">
+    <p>빙결은 이번 시즌 <b>“최고 DPS”가 아니라 “최고 쾌적함”</b>으로 사기 소리를 듣는 직업이다. 어비스 뺑뺑이를 풀오토+기믹만으로 처리하고, 브익딜은 시즌스킬이 자동으로 넣어준다. 그래서 본캐 고점러보다는 <b>부캐·오토 파밍·직장인 플레이</b>에 압도적으로 맞는다. “사제 빙결 화법 중 추천 좀” 같은 직변 상담이 늘어나는 것도 이 맥락.</p>
+    <p class="plain">주의 — 세공·룬 정배가 아직 정리되지 않은 직업이라(질문글에 무응답이 많음), 세팅 정보를 원하면 갤 연구 진행을 지켜봐야 한다. 지금은 <b>원소·소환 세공 + 광채 무기 + 10성 체급</b>이면 충분히 굴러간다는 게 중론.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143510" target="_blank" rel="noopener"><span class="n">#1143510</span> 쾌적함 사기론</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144403" target="_blank" rel="noopener"><span class="n">#1144403</span> 직변 상담 유입</a>
+    </div>
+  </div>
+</section>
+
+<section class="chapter appendix" id="src">
+  <div class="chead">
+    <div class="kicker">부록 · 附</div>
+    <h3>출처 8건</h3>
+    <p>번호 클릭 시 디시 원문으로</p>
+  </div>
+  <ul class="srclist">
+    <li><span class="num">#1143510</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143510" target="_blank" rel="noopener">간접찌라시중에 빙결사기 ← 이거 맞는듯</a><span class="d">07/05 · 티어·쾌적함·브익 날먹딜</span></li>
+    <li><span class="num">#1145068</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1145068" target="_blank" rel="noopener">이번시즌 검방 빙결 좀 반대가 된 게</a><span class="d">07/05 · 시즌스킬 보완·참격 스왑</span></li>
+    <li><span class="num">#1136427</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136427" target="_blank" rel="noopener">빙결 이번시즌 3줄도 원소생이야?</a><span class="d">07/02 · 3줄 세공</span></li>
+    <li><span class="num">#1143984</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143984" target="_blank" rel="noopener">빙결·기사·수도사·힐러 2줄작 뭐임?</a><span class="d">07/05 · 2줄 원소·소환</span></li>
+    <li><span class="num">#1135691</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135691" target="_blank" rel="noopener">빙결 계시 쓸만함?</a><span class="d">07/02 · 무기룬 광채 결론</span></li>
+    <li><span class="num">#1142096</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142096" target="_blank" rel="noopener">시즌2 빙결 악세 뭘로 정배났음?</a><span class="d">07/04 · 무응답(미정)</span></li>
+    <li><span class="num">#1144031</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144031" target="_blank" rel="noopener">검술 빙결 유저수는 콘크리트</a><span class="d">07/05 · 유저층</span></li>
+    <li><span class="num">#1141069</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141069" target="_blank" rel="noopener">대검인데 빙결로 렛잇고 어캐생각?</a><span class="d">07/04 · 외부 인식</span></li>
+  </ul>
+</section>
+
+<footer>
+  <div class="sign">❄ 육육이의 프렌즈를 위한 빙결 공략모음 ❄</div>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  빙결은 세팅 연구가 덜 된 직업이라 자료 없음 항목이 많음 — 갤 연구 진행에 따라 갱신 필요 · 인용문은 원문 표현 유지
+</footer>
+
+</div>
+
+</body>
+</html>

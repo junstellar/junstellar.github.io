@@ -1,0 +1,1008 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>마비노기 모바일 시즌2 직업 분석 — 8개 직업</title>
+<style>
+  :root{
+    --paper:#f7f6f2;
+    --card:#ffffff;
+    --ink:#232838;
+    --ink-soft:#5b6172;
+    --gold:#a67c1e;
+    --gold-soft:#f3ead2;
+    --navy:#2c3a5c;
+    --green:#3d6b4f;
+    --red:#8c3b2e;
+    --line:#e3e0d6;
+    --warn:#9c4a2f;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+    line-height:1.75;
+    font-size:16px;
+  }
+  .wrap{max-width:800px;margin:0 auto;padding:48px 20px 80px}
+
+  header.hero{border-bottom:3px double var(--gold);padding-bottom:28px;margin-bottom:28px}
+  .eyebrow{
+    display:inline-block;font-size:12px;letter-spacing:.18em;color:var(--gold);
+    font-weight:700;text-transform:uppercase;margin-bottom:10px;
+  }
+  h1{
+    font-size:clamp(26px,5vw,36px);line-height:1.3;margin:0 0 12px;
+    font-weight:800;letter-spacing:-.01em;text-wrap:balance;color:var(--navy);
+  }
+  .meta{font-size:13.5px;color:var(--ink-soft)}
+  .meta a{color:var(--gold);font-weight:600}
+
+  nav.toc{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 32px}
+  nav.toc a{
+    text-decoration:none;font-weight:700;font-size:14px;color:var(--navy);
+    background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 18px;
+  }
+  nav.toc a:hover{border-color:var(--gold);color:var(--gold)}
+
+  .tldr{
+    background:var(--navy);color:#eef0f6;border-radius:10px;
+    padding:22px 24px;margin:0 0 48px;
+  }
+  .tldr .label{font-size:12px;letter-spacing:.16em;color:#d9bf78;font-weight:700;margin-bottom:8px}
+  .tldr ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+  .tldr li{font-size:15px}
+  .tldr b{color:#f0d99a;font-weight:700}
+
+  .part{
+    display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+    border-bottom:3px double var(--gold);
+    margin:64px 0 8px;padding-bottom:10px;
+  }
+  .part:first-of-type{margin-top:0}
+  .part h2{font-size:26px;font-weight:800;color:var(--navy);margin:0;letter-spacing:-.01em}
+  .part .verdict{font-size:14px;font-weight:700;padding:3px 12px;border-radius:999px}
+  .v-supp{background:#e7ecf6;color:var(--navy)}
+  .v-down{background:#f5e3df;color:var(--red)}
+  .v-top{background:#e3efe7;color:var(--green)}
+  .v-mid{background:var(--gold-soft);color:#7a5a10}
+  .partsub{font-size:14px;color:var(--ink-soft);margin:0 0 26px}
+
+  section{margin-bottom:44px}
+  h3.sec{
+    font-size:19px;font-weight:800;color:var(--navy);
+    margin:0 0 4px;letter-spacing:-.01em;
+  }
+  h3.sec .no{color:var(--gold);font-variant-numeric:tabular-nums;margin-right:8px}
+  .h2sub{font-size:13.5px;color:var(--ink-soft);margin:0 0 18px}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:20px 22px;margin-bottom:14px;
+  }
+  .card h4{margin:0 0 8px;font-size:16px;font-weight:700;color:var(--ink)}
+  .card p{margin:0 0 10px}
+  .card p:last-of-type{margin-bottom:0}
+  .quote{
+    border-left:3px solid var(--gold);background:var(--gold-soft);
+    padding:10px 14px;border-radius:0 8px 8px 0;font-size:14.5px;
+    color:#5a4a20;margin:10px 0;
+  }
+  .quote .who{font-size:12px;color:#8a7440;display:block;margin-top:4px}
+
+  .refs{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
+  .refs .rlabel{font-size:11.5px;letter-spacing:.12em;color:var(--ink-soft);font-weight:700;align-self:center;margin-right:2px}
+  a.chip{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:12.5px;font-weight:600;color:var(--navy);text-decoration:none;
+    background:#eef0f5;border:1px solid #dcdfe8;border-radius:999px;
+    padding:3px 11px;line-height:1.5;
+  }
+  a.chip:hover{background:var(--gold-soft);border-color:var(--gold);color:#7a5a10}
+  a.chip .n{color:var(--gold);font-variant-numeric:tabular-nums;font-weight:700}
+
+  .tablebox{overflow-x:auto;margin:12px 0 4px}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:440px}
+  th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top}
+  th{background:#f0eee6;font-weight:700;color:var(--navy);font-size:13.5px}
+  td b{color:var(--gold);font-weight:700}
+  tbody tr:nth-child(even){background:#fbfaf7}
+
+  .note{
+    font-size:13.5px;color:var(--warn);background:#f8ede8;border:1px solid #ecd5ca;
+    border-radius:8px;padding:10px 14px;margin-top:10px;
+  }
+
+  .srcgroup{font-size:14px;font-weight:800;color:var(--navy);margin:22px 0 4px;letter-spacing:.06em}
+  ul.srclist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+  ul.srclist li{
+    display:flex;gap:12px;align-items:baseline;
+    padding:8px 2px;border-bottom:1px solid var(--line);font-size:14px;
+  }
+  ul.srclist li:last-child{border-bottom:none}
+  ul.srclist .num{color:var(--gold);font-weight:700;font-variant-numeric:tabular-nums;min-width:64px;font-size:13px}
+  ul.srclist a{color:var(--ink);text-decoration:none;font-weight:600}
+  ul.srclist a:hover{color:var(--gold)}
+  ul.srclist .d{color:var(--ink-soft);font-size:13px;font-weight:400}
+
+  footer{margin-top:40px;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:16px}
+  a:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="hero">
+  <span class="eyebrow">DC Gallery Research · 2026-07-04</span>
+  <h1>마비노기 모바일 — 시즌 2 직업 분석<br>사제·궁수·화법·검술사·대검·도적·수도사·마법사</h1>
+  <p class="meta">
+    출처: <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a> ·
+    시즌 2 출시(2026-06-25)~7/5 게시글 분석(사제는 유니크 115건 전수 스윕) ·
+    시즌 2 초반이라 갤러리 내에서도 <b>“아직 자료 부족, 시간이 더 지나야 함”</b>이라는 전제가 붙어 있음
+  </p>
+</header>
+
+<nav class="toc">
+  <a href="#priest">⛪ 사제</a>
+  <a href="#archer">🏹 궁수</a>
+  <a href="#fire">🔥 화법</a>
+  <a href="#sword">⚔️ 검술사</a>
+  <a href="#gs">🗡️ 대검</a>
+  <a href="#rogue">🔪 도적</a>
+  <a href="#monk">👊 수도사</a>
+  <a href="#mage">🪄 마법사</a>
+  <a href="#sources">📎 출처</a>
+</nav>
+
+<div class="tldr">
+  <div class="label">한 줄 요약</div>
+  <ul>
+    <li><b>사제</b> — 7월 초 “서폿 1황·너프 거론”으로 급부상(힐·딜·불사 다 챙김). 악세 결집심(집행+심판 고정), 수저룬 뼈인장+칼바람, 세공 방보·강보방 20개, 235 개조</li>
+    <li><b>궁수</b> — 하향세 여론. 딜은 여전히 날매닻 사이클, 무기룬 바위칼날, 숲길잡이 고정, 세공 연·강·방</li>
+    <li><b>화법</b> — 시즌 2 최상위 딜러(“화법의 시대”). 조합은 폭분청, 세공 원·강, 스킬위력 5,000 우선</li>
+    <li><b>검술사</b> — 여전히 1티어지만 하락세. 이번 시즌 <b>연타 강제 메타</b>(교차하는 사슬), 세공 강연 → 연타 전환</li>
+    <li><b>대검</b> — 화석대 상위권. 광전사+오랜광기, 세공 강보방 vs 뎀뎀쿨 논쟁(강보방 나오면 킵), 신규룬 미채용</li>
+    <li><b>도적</b> — 비주류·약세(유저 적음). 평캔(평타) 메타, 덫땅폭 사이클, 거대한분노·백금천칭</li>
+    <li><b>수도사</b> — 이번 시즌 쾌적·부캐 인기. 쇄도 몰빵 보연이 세공, <b>빠스 5,000 필수</b>, 힐·오토 강점</li>
+    <li><b>마법사</b> — 약세·탈주 러시. 우운빙 메타지만 빙창 마나 문제로 불쾌, 세공 원&gt;강&gt;방, 뼈인장·봉인술사 필수</li>
+  </ul>
+</div>
+
+<!-- ============================================================ 사제 -->
+<div class="part" id="priest">
+  <h2>⛪ 사제</h2>
+  <span class="verdict v-top">서폿 1황 · 너프 거론</span>
+</div>
+<p class="partsub">“딜도 집행, 힐도 집행” — 힐·딜·불사 다 챙겨 7월 초 여론이 “역대급 사제시즌 / 너프 무조건 먹어야 함”으로 급상승</p>
+
+<div class="card" style="border-color:var(--gold);background:var(--gold-soft)">
+  <h4>📈 여론 변화 (6/25 출시 → 7/5)</h4>
+  <p>시즌 초(6/25~7/1)엔 “딜은 시즌1 옆그레, 결국 서폿”이라는 미지근한 평이었으나, <b>집행 룬 세팅이 정립된 7/4~7/5엔 “역대급 사제시즌”, “서폿 1황”, “너프 무조건 먹어야 함”으로 급반전.</b> 힐러 직군에 힐·딜·불사를 다 주는 게 과하다는 게 요지 — “사제 패치되고 힐러·수도사가 엉망이 됐다”. 이 아래 내용은 7/5 시점 최신 여론까지 반영.</p>
+  <div class="refs"><span class="rlabel">근거</span>
+    <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143741" target="_blank" rel="noopener"><span class="n">#1143741</span> 역대급 사제시즌인 이유</a>
+    <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143569" target="_blank" rel="noopener"><span class="n">#1143569</span> 사제 이번시즌 서폿 1황</a>
+    <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142442" target="_blank" rel="noopener"><span class="n">#1142442</span> 사제는 너프 무조건 먹어야함</a>
+    <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144938" target="_blank" rel="noopener"><span class="n">#1144938</span> 딜 고점 2500만+부활 인정</a>
+  </div>
+</div>
+
+<section>
+  <h3 class="sec"><span class="no">01</span>스킬 — 뭘 쓰나</h3>
+  <p class="h2sub">집행 기반 회전이 표준, 필드는 5스룬+수레바퀴, 레이드 가치는 불사 패시브</p>
+
+  <div class="card">
+    <h4>빌드는 세 갈래 — “딜도 집행, 힐도 집행”</h4>
+    <p>갤러리의 시즌 요약 글이 기준을 이렇게 정리함: <b>① 서브딜러(2줄작)를 하고 싶으면 기존 홀스 유지 ② 힐사제는 집행 ③ 힐·딜 다 챙기는 하이브리드는 집행 + 강보방 20개</b>. 집행 사제의 딜 지분은 <b>저지먼트 + 심판이 80% 이상</b>이고 둘 다 강보방 태그가 동일해서 세공이 하나로 통일됨.</p>
+    <div class="quote">“전처럼 2줄작으로 서브딜러 하고 싶으면 기존 홀스 / 힐사제 하고 싶으면 집행 / 힐딜 둘 다 챙기고 싶으면 집행 + 강보방 20개.” <span class="who">— 「사제 이번 시즌 요약 이거인듯」 (댓글: “ㄹㅇ 하이브리드네”, “딜도 집행 힐도 집행”)</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132766" target="_blank" rel="noopener"><span class="n">#1132766</span> 사제 이번 시즌 요약 이거인듯</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>스킬별 운용 포인트</h4>
+    <p><b>3스 심판</b>: 캐스팅·차징 아님, 모션만 긴 즉발 스킬. “홀스 안 쓸 거면 캐스팅·차징 필요 없음 — 캐스팅·차징은 홀스 하나 보고 쓰는 것.”</p>
+    <p><b>2스(비둘기)</b>: 신규 시즌 룬으로 사실상 무한 시전 — 힐·유틸 회전의 핵심.</p>
+    <p><b>장판(생츄어리)</b>: 의견 갈림. “어려움 솔플이면 생츄 깔 시간에 비둘기 날리고 심판 한 번 더가 낫다”는 주장 vs <b>밤의축복 세트 착용 시 생츄어리 사용이 버프 트리거라 쿨마다 써줘야 한다</b>는 반론(“밤의 축복이 생츄라 써야 됨”).</p>
+    <p><b>소생</b>: 지속 약 20초 — 위험 패턴 전에 미리 발라 불사 패시브를 유지.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138229" target="_blank" rel="noopener"><span class="n">#1138229</span> 사제 3스 심판 질문</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140226" target="_blank" rel="noopener"><span class="n">#1140226</span> 집행 사제 장판 안 쓰는 게 나은가</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140070" target="_blank" rel="noopener"><span class="n">#1140070</span> 신규룬 — 2스 무한</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141079" target="_blank" rel="noopener"><span class="n">#1141079</span> 불사 패시브 — 소생 운용</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>핵심 세팅은 “집행” 기반</h4>
+    <p>오토·사냥 모두 집행 룬을 쓰는 게 표준. “집행 쓰면 스킬 쓰는 속도가 쿨을 못 따라간다”는 말이 나올 정도로 쿨 회전이 빠름.</p>
+    <div class="quote">“집행 안 쓰면 1, 5(스킬)만 키고 / 집행 쓰면 다 켜도 돼요. 갠적으로 집행 쓰고 오토 다 키는 게 좋은 거 같아요.”
+      <span class="who">— 댓글, 「사제 오토할 때 꺼야하는 스킬 있습니까」</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136617" target="_blank" rel="noopener"><span class="n">#1136617</span> 사제 오토할 때 꺼야하는 스킬</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139992" target="_blank" rel="noopener"><span class="n">#1139992</span> 사제 무기룬 최종 (댓글)</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>필드·어비스 몹 밀이 = 신규 5스룬 + 수레바퀴 (솔플·오토 한정)</h4>
+    <p>「시즌 2 사제공략」 글의 결론이 그대로 “신규 5스룬과 수레바퀴 채용 — 초창기 때처럼 몹을 겁나 민다!” 교차 검증 결과 근거가 뚜렷함: <b>집행 룬이 강타가 뜰 때마다 수레 쿨을 줄여주는 구조</b>라 “무한 수레”가 돌아가고, 신규 5스룬의 2·3스킬 쿨감이 회전을 더 앞당김. 수레는 딜용이 아니라 <b>신성력·강타 수급용</b>이라는 게 채용 논리.</p>
+    <div class="quote">“집수(집행+수레) 오토는 쿨삑 없이 걍 무한으로 돌아가는 재미가 있넹. 물론 딜은 땅바닥에 처박히지만 어차피 죽을 일은 없잖아.”
+      <span class="who">— 「사제 오토는 수레가 꿀잼이굱」 (어비스 우만 파밍 오토 실사용 인증)</span></div>
+    <p class="note">단, 파티 콘텐츠에서는 넉백으로 몹을 밀어버려 민폐 취급 — “수레바퀴 사제면 강퇴하고 다시 구할 거임”이라는 글이 있을 정도. 레이드 힐사제는 수레 대신 <b>심판</b>을 채용(“힐사제면 심판 쓰겠지만”). 즉 수레바퀴는 솔플·오토·필드 세팅이고, 파티플 세팅이 아님.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1097143" target="_blank" rel="noopener"><span class="n">#1097143</span> 시즌 2 사제공략</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1097569" target="_blank" rel="noopener"><span class="n">#1097569</span> 집행룬 설명만 들으면 수레바퀴 쓰라는 건데</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135434" target="_blank" rel="noopener"><span class="n">#1135434</span> 사제 오토는 수레가 꿀잼이굱</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1101237" target="_blank" rel="noopener"><span class="n">#1101237</span> 사제 설마 수레바퀴 쓰냐 (파티 반응)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1097898" target="_blank" rel="noopener"><span class="n">#1097898</span> 심판 버리고 무한 수레 드가쟈</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>시즌 2 시즌 스킬 구성</h4>
+    <p>① 신성력 소모 강화 스킬 적중 시 30초 도트뎀 부여(강타 스탯 약 5,000 기준 스케일링, 쿨감 최대 1.5초) ② 4스킬 사용 시 15초간 공증 15%(내부쿨 60초) ③ 신성력 100 달성 시 1스킬 재사용 + 주변 4타겟 추가타 + 아군 힐 + 이동속도 + 최종딜 5%.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1106103" target="_blank" rel="noopener"><span class="n">#1106103</span> (최종) 전 캐릭 시즌 스킬 정리</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>불사 패시브 — 시즌 2 사제 최대 화제</h4>
+    <p>“심판 타이밍만 맞추면 파티원 전원 불사”, 사실상 상시 <b>죽음 1회 면제권</b> 취급. 메커니즘 확정(7/5): 3스·궁에 묻은 <b>소생은 파티 전원 생존, 개별 쿨타임 180초</b>. 소생 지속(약 20초) 안에 위험 패턴을 넘기는 식으로 씀. <b>사제 부활이 파티원의 불사룬을 무의미하게 만든다</b>(쿨 공유) — “불사룬 이제 필요 없냐? 사기”라는 반응. 부캐 GOAT룬이던 불사룬을 사제가 대체해버리는 셈.</p>
+    <div class="quote">“어비스 틱택토 패턴 때 오토충 있어도 겜 안 터짐 ㅋㅋㅋ” · “사제가 공팟에서 진짜 개고트임”
+      <span class="who">— 「사제 불사 패시브 좋네」 본문·댓글</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141079" target="_blank" rel="noopener"><span class="n">#1141079</span> 사제 불사 패시브 좋네</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134254" target="_blank" rel="noopener"><span class="n">#1134254</span> 사제 시즌 스킬 이제 봤는데 뭐임</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">02</span>스탯 — 세공·장비 세팅</h3>
+  <p class="h2sub">집행 채용 여부에 따라 세공 2줄이 갈리고, 장비 피증 40%가 핵심 기준선</p>
+
+  <div class="card">
+    <h4>세공 정리 (갤러리 결론)</h4>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>상황</th><th>세공 옵션</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>집행 룬 사용</td><td>2줄 <b>보·방</b></td><td>집행이 강타를 채워주므로 강타 대신 방어 계열</td></tr>
+          <tr><td>집행 미사용</td><td>2줄 <b>보·강</b></td><td>—</td></tr>
+          <tr><td>3줄</td><td><b>보·강·방</b></td><td>집행 여부 무관하게 동일</td></tr>
+          <tr><td>프리즘</td><td><b>강타 5,000</b></td><td>시즌 스킬 도트뎀 스케일 기준점</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="quote">“집행 꼭 쓴다 → 보방 / 집행 안 쓴다 → 보강 / 세 줄은 보강방 동일 / 프리즘 강타 5000”
+      <span class="who">— 댓글, 「사제 뭐가 좋다고 그렇게 난리임?」</span></div>
+    <p class="note">추가 디테일(7/5): 집행이면 강보 두줄도 <b>방보(보조·방해)로 전환</b>이 유리 — 수레·저지먼트가 보조방해 태그라. <b>강보방 20개 필수</b>, <b>235 개조 고정</b>(홀스는 555), 아티는 다른 딜러처럼 신속 빼고 치명·추가·공퍼·피증·강타. 목표 스탯은 <b>강타 5,000+ / 추가타 4,000+ / 치명 최대 1만</b>(가중치 대략 치1·강0.5·추0.4). 시즌 1에 쿨감으로 맞춘 유저는 다시 파야 함.</p>
+    <div class="refs"><span class="rlabel">근거(추가)</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141749" target="_blank" rel="noopener"><span class="n">#1141749</span> 강보→방보 전환</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137968" target="_blank" rel="noopener"><span class="n">#1137968</span> 235 개조 고정</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144675" target="_blank" rel="noopener"><span class="n">#1144675</span> 추가타·치명 목표치</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142274" target="_blank" rel="noopener"><span class="n">#1142274</span> 강보방 20개·3스 지분 50~60%</a>
+    </div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133171" target="_blank" rel="noopener"><span class="n">#1133171</span> 사제 뭐가 좋다고 난리임? (댓글)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137758" target="_blank" rel="noopener"><span class="n">#1137758</span> 이번 시즌 사제 세공 두 줄 변경점</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1106680" target="_blank" rel="noopener"><span class="n">#1106680</span> 사제 세공 2줄은 이제 보방인가</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>장비 피해증가(피증) 40% 이상 확보</h4>
+    <p>시즌 스킬은 직접피해(직피) 판정이라 <b>스킬위력(스위)은 적용되지 않고 장비 피증만 먹는 것</b>이 실측으로 확인됨. 피증 5% → 보스 강타율 43%, 피증 32% → 91%로 차이가 큼. “피증 섞인 장비 버리지 말라”가 결론.</p>
+    <p>같은 글에서 어비스 어려움(맵1) 솔플 기준선으로 <b>마저 5,260 + 방깎펫</b>을 제시. 파티플은 방깎 10%·축복 35%를 받으므로 다소 낮춰도 될 수 있다는 단서.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140057" target="_blank" rel="noopener"><span class="n">#1140057</span> 사제놈들 팁준다 (정보글)</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">03</span>룬 — 뭘 쓰나</h3>
+  <p class="h2sub">룬은 세 갈래 — 악세(스킬룬) 집행 계열, 무기룬 바위칼날/광채/죽음, 방어구 밤의축복</p>
+
+  <div class="card">
+    <h4>⚠️ 용어 정리 — 집행은 무기룬이 아니라 “악세(장신구) 스킬룬”</h4>
+    <p>사제 세팅에서 자주 나오는 <b>집행·심판·성전·날개(디바인윙)·결속</b>은 전부 <b>장신구에 박는 스킬룬</b>이다. 이걸 조합한 게 집성심(집행+성전+심판), 집날심(집행+날개+심판) 등. <b>무기룬은 따로</b>이며 후보는 바위칼날·광채·죽음(홀스 빌드면 계시). 즉 “집행 빌드”라 부를 때 집행은 스킬룬이고, 그 빌드의 무기룬을 아래에서 고르는 구조.</p>
+  </div>
+
+  <div class="card">
+    <h4>무기룬: 바위칼날 · 광채 · 죽음 (홀스면 계시)</h4>
+    <p>집행(스킬룬) 빌드 기준 무기룬 후보는 바위칼날·광채·죽음. 억눌린충동은 “죽음보다 살짝 별로”라 탈락. 주력 스킬을 홀스로 가져가면 <b>계시</b>가 낫다는 의견 — “사제가 피증을 별로 안 받는 편이라”.</p>
+    <div class="quote">“바위칼날, 억눌린충동, 광채, 죽음 이 중에 쓸 듯 (집행 기준임). 홀스면 계시가 나을 듯?”
+      <span class="who">— 댓글, 「사제 무기룬 최종으론 머쓰려나」 (‘집행 기준’ = 집행 스킬룬 빌드 기준이라는 뜻)</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139992" target="_blank" rel="noopener"><span class="n">#1139992</span> 사제 무기룬 최종으론 머쓰려나</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>집행 스킬룬이 빠른 이유 — 강타 프록 쿨감 + 저지먼트</h4>
+    <p>집행(스킬룬)은 <b>강타가 뜰 때마다 스킬 쿨타임이 감소</b>하는 구조. 그래서 강타 5,000(프리즘)과 장비 피증(보스 강타율 90%대)을 맞추면 때리는 족족 쿨이 당겨짐. 여기에 <b>저지먼트가 심판 쿨을 거의 초기화급으로 감소</b>시켜 “심판 → 저지먼트 → 심판” 회전이 성립하고, 디바인윙·링크·저지먼트는 “오로지 심판 쿨감을 위해” 사용. 신규 5스룬의 2·3스킬 쿨감과 시즌 스킬의 쿨감(최대 1.5초)까지 겹쳐 “스킬 쓰는 속도가 쿨을 못 따라간다”는 말이 나옴.</p>
+    <div class="quote">“저지먼트는 추가타를 조금 챙기면 심판을 거의 쿨초기화급으로 쿨감시켜주기 때문에 심판–저지먼트–심판 이런 식으로 사용하는 게 좋은 거 같음.” · 딜 사이클: 1(링크) → 5(베네딕션) → 3 → 4 → 2 → 2 → 3, 이후 베네딕션 유지 + 심판 주딜
+      <span class="who">— 「사제 집행 메모장」</span></div>
+    <p class="note">집행 딜사제는 <b>뼈인장</b>이 있어야 무한홀스보다 확실히 우위(“강타 5천 세공 3줄작 뼈인장 기준 무한홀스보다 좋음”). 뼈인장을 못 먹었으면 홀스 쪽이 낫다는 의견.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1116858" target="_blank" rel="noopener"><span class="n">#1116858</span> 사제 집행 메모장</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1097569" target="_blank" rel="noopener"><span class="n">#1097569</span> 강타 프록 쿨감 해석</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1120587" target="_blank" rel="noopener"><span class="n">#1120587</span> 사제 집행룬 좋음? (뼈인장 조건)</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>무기룬 중 광채 재평가 — 스위 미적용 여파</h4>
+    <p>시즌 스킬이 스킬위력(스위)을 안 먹는다는 게 확인되면서 무기룬 중 <b>“광채가 오히려 죽음보다 나을 수도 있다”</b>는 재평가가 나옴 — “이러면 광채가 엄청 좋은 거네”.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140057" target="_blank" rel="noopener"><span class="n">#1140057</span> 사제놈들 팁준다 (댓글)</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>신규 시즌 룬: “2스가 무한이 된다”</h4>
+    <p>무한힐 + 불사 조합으로 “신규 레이드 나오면 사제 필수겠네”라는 기대가 다수. 다만 “2스 딜이고 힐이고 별로라는 게 문제”라는 반론도 있어 평가가 갈림.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140070" target="_blank" rel="noopener"><span class="n">#1140070</span> 사제 신규룬 개좋은데?</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>장신구(스킬룬): 집행+심판 고정 + @, 결집심이 사실상 정배</h4>
+    <p>장신구 스킬룬은 <b>집행·심판 2개 고정 + 나머지 한 자리</b> 구조. 7/5 시점엔 <b>결집심(결속+집행+심판)이 고정</b>이라는 평이 강함 — <b>결속</b>이 ① 신성력 자동회복 ② 스킬 사용 시 확률 재발동으로 “집행이 가끔 찐빠 나는 걸 보완”해주고, 신성력 수급이 빨라 성전보다 낫다는 것(피증이 많아 성전 효율이 떨어짐). 나머지 조합은 역할에 따라 <b>날집심 / 성집심 / 축집심</b>(하이브리드) vs 홀스파로 갈림 — 파티 솔힐이면 축심집, 서폿 많으면 성심집.</p>
+    <div class="quote">“해보니까 결집심이 고정이야. 결속이 가끔 집행 찐빠나는 거 보완해줌.” · “장신구도 결집심·날집심·성집심·축집심 같은 하이브리드랑 홀스파로 나뉨.”
+      <span class="who">— 댓글, 「사제 세팅 이제 어떻게」·「보방→강 순임?」</span></div>
+    <p class="note">사제 <b>수저룬 = 뼈인장 + 칼바람</b>. 집행 사제는 3스(심판)가 브레이크댐 주력이라, 브레이크 스킬피해+크뎀을 주는 칼바람과 스킬딜을 뻥튀기하는 뼈인장을 “접대”받으면 폭발(“3무한난사”). 무기룬은 <b>오랜광기</b>(서리바람 피증 버전, 피가 까이지만 장판 깔면 사제 고행 패시브로 감당)도 집행 사제에 쓸 만.</p>
+    <p>방어구는 <b>밤의축복 세트 +@</b>. 엠블럼(무방엠)은 여전히 “다들 연구 중”이라 미확정.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142506" target="_blank" rel="noopener"><span class="n">#1142506</span> 사제 세팅 이제 어떻게 (결집심 고정)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138235" target="_blank" rel="noopener"><span class="n">#1138235</span> 보방→강·성전 vs 결속</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143569" target="_blank" rel="noopener"><span class="n">#1143569</span> 뼈인장·칼바람 수저</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141587" target="_blank" rel="noopener"><span class="n">#1141587</span> 오랜광기 집행 사제</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141352" target="_blank" rel="noopener"><span class="n">#1141352</span> 결속 = 신성력 회복+재발동</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>참고: “죽음 룬은 사제(불사 패시브)랑 상관없다”</h4>
+    <p>죽음 룬이 막는 건 행동불능 <b>방지 룬</b>이지 스킬이 아니라는 해석. 다만 “데브캣 행실 생각하면 찐빠(버그)일 가능성이 크다”는 댓글도 있어 확정은 아님.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1130749" target="_blank" rel="noopener"><span class="n">#1130749</span> 죽음 룬은 사제랑 상관 없네</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">04</span>종합 평가</h3>
+  <p class="h2sub">딜러가 아니라 서폿 — 대신 파티 유틸은 최상급</p>
+
+  <div class="card">
+    <p>시즌 초엔 “결국 서폿, 닥치고 힐”이 결론이었으나, 집행 세팅이 자리잡은 7/4~7/5엔 평가가 <b>“서폿 1황·너프 대상”</b>으로 격상. 힐·딜·불사를 다 챙기는 게 과하다는 것. <b>홀스 vs 집행</b>은 “보스 딜 고점은 홀스, 범용성은 집행(집심)” — 엔드 세팅은 결국 홀스로 갈 수도 있다는 유보가 공존하나, 대부분은 힐이 되면서 편한 집행을 재밌어함.</p>
+    <p>펫은 방깎펫 장착이 기본이고, 펫 질문 글에는 “시츄 치강” 세팅 답변이 달림.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1108006" target="_blank" rel="noopener"><span class="n">#1108006</span> 사제 결론 나옴</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141079" target="_blank" rel="noopener"><span class="n">#1141079</span> 불사 패시브 (댓글 여론)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140736" target="_blank" rel="noopener"><span class="n">#1140736</span> 사제 펫 뭐쓰냐</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 궁수 -->
+<div class="part" id="archer">
+  <h2>🏹 궁수</h2>
+  <span class="verdict v-down">하향세 · 세팅 연구 중</span>
+</div>
+<p class="partsub">딜은 여전히 날매닻 사이클, 나선/나날닻은 재평가 중 — “관짝 간 검·전·궁”이라는 자조 속 최적 세팅 미정</p>
+
+<section>
+  <h3 class="sec"><span class="no">01</span>스킬 — 사이클과 신규 요소</h3>
+  <p class="h2sub">보스 고점은 날매닻, 잡몹·범용은 나날닻으로 갈리는 중</p>
+
+  <div class="card">
+    <h4>주력은 여전히 “날매닻” 사이클</h4>
+    <p>“아무리 계산해봐도 나선이 날매닻 사이클을 못 이긴다, 나선은 쫄방 스왑용이고 딜은 날매닻 압승”이 기본 여론. 실전 입력 순서로 “5413105131012 돌아감”, “공허 낀 다음 5413015101 난사”가 공유됨.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135115" target="_blank" rel="noopener"><span class="n">#1135115</span> 아무리 봐도 시즌2도 궁수는 날매닻임</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136084" target="_blank" rel="noopener"><span class="n">#1136084</span> 궁수들 템 세팅 논의 (커맨드)</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>신규 룬 스킬 “나선” — 재평가 진행 중</h4>
+    <p>10성 나선 실사용자들은 <b>“나날닻(나선+날매닻 변형)도 나쁘지 않다 — 잡몹방은 개고트고 보스방에서도 날매닻 뺨치는 딜”</b>이라고 반박. 나날닻 세팅은 재사용감소(재감) 룬과 빠른 시전(빠스)이 중요하다는 분석이 따라붙음 — 단 “재감룬은 시즌1 망각 포지션, 고점용이 아니라 오토·회전 편의용”.</p>
+    <p class="note">여담: 나선은 “화살이 총처럼 탕! 탕! 나가서 엄청 시끄럽다”는 소음 불만이 큼 (“ㄹㅇ 개거슬림 ㅋㅋㅋ”).</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135115" target="_blank" rel="noopener"><span class="n">#1135115</span> 날매닻 vs 나날닻 (댓글)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139605" target="_blank" rel="noopener"><span class="n">#1139605</span> 나날닻 궁수는 재감룬·빠스 중요</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135312" target="_blank" rel="noopener"><span class="n">#1135312</span> 나선 소음 불만</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>시즌 2 패시브 “그림자 사격” — 추가타 룬 없는 세팅 실험</h4>
+    <p>시즌 패시브가 <b>연타 강화에 비례한 그림자 화살(최소 10% ~ 최대 50%)</b>. 이 패시브 덕에 “추가타 7,000 + 연타 5,000이면 추가타 룬 0개로도 날매닻 사이클이 돌아가는 것 같다, 테스트 요망”이라는 실험 보고. 다만 “궁 썼을 때 매가 꺼지면 궁 사이클이 안 돌아간다”, “다발사격은 타수를 다 채우고 더 채우면 대미지가 올라가는 메커니즘이라 뭐가 나은지 모르겠다”는 신중론이 함께 달림.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136084" target="_blank" rel="noopener"><span class="n">#1136084</span> 궁수들 템 세팅 논의좀 하자</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">02</span>스탯·세공 — 목표 수치</h3>
+  <p class="h2sub">세공은 연·강·방, 치명 몰빵은 아님</p>
+
+  <div class="card">
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>항목</th><th>갤러리 기준치</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>세공</td><td><b>연·강·방</b></td><td>“연방이 말고 연강방” — 강타는 <b>다발사격</b> 때문에 채용</td></tr>
+          <tr><td>세공 배분</td><td>“추6 연5 치8 최적”</td><td>—</td></tr>
+          <tr><td>추가타</td><td>약 <b>7,000~7,100</b></td><td>그림자 사격 패시브로 추가타 룬 의존도 감소 실험 중</td></tr>
+          <tr><td>연타</td><td>3,300 (파티 +500~700 → 4,000대)</td><td>“파티는 연강 550 버프 있어서 4,450만 찍어도 됨”</td></tr>
+          <tr><td>치명타</td><td><b>6,000~8,000</b> (몰빵 아님)</td><td>“치 8,000 찍고 나머지는 자유”</td></tr>
+          <tr><td>기타</td><td>아티팩트 지혜 + 4가속</td><td>스킬속도 확보</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140143" target="_blank" rel="noopener"><span class="n">#1140143</span> 궁수 세공은 강타를 왜 넣음?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140710" target="_blank" rel="noopener"><span class="n">#1140710</span> 최적 스탯 지켜봐야 (추6 연5 치8)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136084" target="_blank" rel="noopener"><span class="n">#1136084</span> 추가타·연타 수치 논의</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135391" target="_blank" rel="noopener"><span class="n">#1135391</span> 시즌2도 치명타 몰빵임?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132099" target="_blank" rel="noopener"><span class="n">#1132099</span> 지혜 아티팩트 + 4가속</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">03</span>룬 — 현시점 조합</h3>
+  <p class="h2sub">무기 바위칼날, 방어구 숲길잡이 고정, 엠블럼 영원한 밤</p>
+
+  <div class="card">
+    <h4>무기룬: 바위칼날(바칼)</h4>
+    <p>“검무 상위룬”으로 연타뎀증 계열이라 궁수 1순위. 나날닻 세팅이면 무기 <b>햇살 + 재감룬</b> 조합을 시도하는 분파도 있음.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138779" target="_blank" rel="noopener"><span class="n">#1138779</span> 궁수 무기룬 뭐가 좋아 보임?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141037" target="_blank" rel="noopener"><span class="n">#1141037</span> 방어구 룬조합 (햇살+재감 언급)</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>방어구·엠블럼 조합</h4>
+    <p><b>숲길잡이는 무조건 고정.</b> 여기에 “숲길잡이 + 용문장 2셋 + 회복 60% 감소, 이 4개는 낄 듯”이 현시점 답변. 엠블럼은 <b>영원한 밤</b>(공·추·치·연·강 7%씩 총 35%)이 “은근 맛도리”. 레이드룬 포함 완성형이 나오기 전까지는 “시즌1 방어구 + 바위칼날 + 10성 날매닻”으로 버티는 분위기.</p>
+    <div class="quote">“시즌2 검무인 바위칼날을 무기에 박고, 엠블렘에 영원한 밤, 침식 장비 2종으로 치추 30초 가동(10초 공백), 용 세트로 쿨감+딜, 공속 모자라면 기사단장, 딜 챙기려면 숲길잡이나 잠든땅. 뭔 최악인 세팅이냐고? 그럼 빨리 석박사들이 수치 기입해가면서 교복 세팅 마련좀.”
+      <span class="who">— 「이번 시즌 본캐궁수 목표 세팅」</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141037" target="_blank" rel="noopener"><span class="n">#1141037</span> 궁수 방어구 룬조합</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139883" target="_blank" rel="noopener"><span class="n">#1139883</span> 시즌2 궁수룬</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132099" target="_blank" rel="noopener"><span class="n">#1132099</span> 시즌2 궁수 룬세팅 이렇게 할 거임</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1127689" target="_blank" rel="noopener"><span class="n">#1127689</span> 이번 시즌 본캐궁수 목표 세팅</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">04</span>종합 평가</h3>
+  <p class="h2sub">너프 체감 여론 속 최적 세팅은 아직 미정</p>
+
+  <div class="card">
+    <p>“20강 끼고 온몸 비틀기해도 2,300만 — 화법은 코 파고 2,500만”이라는 자조가 여론을 대변. 사제 편에서 본 “관짝 간 검·전·궁” 묶음에도 포함됨. 다만 “룬도 많이 달라졌고 시즌스킬·나선 때문에 최적 룬세팅과 딜사이클은 좀 지켜봐야 안다”는 유보론이 공존 — 나선/나날닻 연구가 진행 중이라 세팅이 아직 굳지 않은 상태.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1125985" target="_blank" rel="noopener"><span class="n">#1125985</span> 궁수 너프 확정이구나..</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140710" target="_blank" rel="noopener"><span class="n">#1140710</span> 최적 스텟 지켜봐야겠네</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 화법 -->
+<div class="part" id="fire">
+  <h2>🔥 화법</h2>
+  <span class="verdict v-top">시즌 2 최상위 딜러</span>
+</div>
+<p class="partsub">“우리는 화법의 시대에 살고 있다” — 폭분청 조합으로 딜 1위, 대신 사이클 난이도 상승</p>
+
+<section>
+  <h3 class="sec"><span class="no">01</span>티어 — “화법의 시대”</h3>
+  <p class="h2sub">검술사·법사를 제치고 딜 1위 여론</p>
+
+  <div class="card">
+    <p>“검술사, 법사 다 이겨먹고 딜 1위 하노”에 “개사기 되긴 했네”, “너프해!”가 달리는 분위기. <b>“시즌2는 화석대(화법·석궁·대검)”</b>라는 티어 밈이 통용되고, 부캐로 대충 해도 체감된다는 후기가 다수 (“분명 길냥이였는데 폭격에 궁딜 오르는 10성 들고 가니까 5분대 가족사진 들어감”).</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141179" target="_blank" rel="noopener"><span class="n">#1141179</span> 화법사람들 왜케 쌔짐?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139745" target="_blank" rel="noopener"><span class="n">#1139745</span> “시즌2는 화석대래” (댓글)</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">02</span>스킬 — 조합과 사이클</h3>
+  <p class="h2sub">불분잿 → 폭분청으로 세대 교체, 사이클은 어려워짐</p>
+
+  <div class="card">
+    <h4>정배는 폭분청 (폭격 + 분출 + 청염)</h4>
+    <p>핵심 근거: <b>“뼈인장 없어도 청염 자체 체급이 많이 올라서 안 갈 이유가 없음 — 폭분잿 거칠 필요 없이 바로 폭분청.”</b> 시즌 1의 불분잿은 졸업 경로 취급. 딜 지분 구조는 강타=3스(청염), 연타=궁 관계로 분석되며, 뼈인장 인챈트를 껴야 청염 우위가 뚜렷해진다는 계산 논쟁이 있음.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141254" target="_blank" rel="noopener"><span class="n">#1141254</span> 뼈인장 없으면 폭분잿이 더 좋은가?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132010" target="_blank" rel="noopener"><span class="n">#1132010</span> 청분폭 세공 순서 논쟁</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134613" target="_blank" rel="noopener"><span class="n">#1134613</span> “이제 청염이 정배인 거 같긴 해”</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>사이클은 시즌 1보다 어려워짐</h4>
+    <div class="quote">“4213115 → 1131512(평)3 → 51131(평)3 → 1415 → 125 → 113 (폭분청)”
+      <span class="who">— 「시즌2 화법 사이클 어떰?」 댓글 (반응: “직변하고 싶었는데 마음이 싹 날아간다”, “시즌1이 선녀였네”, “어려워졌어, 신경 써야 할 요소가 많아져서”)</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138252" target="_blank" rel="noopener"><span class="n">#1138252</span> 시즌2 화법 사이클 어떰?</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">03</span>스탯·세공</h3>
+  <p class="h2sub">스킬위력 5,000 우선, 세공은 원·강 중심 재편</p>
+
+  <div class="card">
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>항목</th><th>갤러리 기준</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>세공 2줄</td><td><b>원·강</b></td><td>청염 메타 기준. “1스랑 궁은 원연이라 원연도 유효”</td></tr>
+          <tr><td>세공 3줄</td><td><b>원강연·원강방 1티어</b></td><td>원강보·원연보도 킵 — “사이클·템셋 정립 후 보석작해라”</td></tr>
+          <tr><td>스킬위력</td><td><b>최우선 5,000</b></td><td>프리즘 왼쪽1+오른쪽1 정배 (소울스트림에서 스위 약 420 수급)</td></tr>
+          <tr><td>치명타</td><td>유지 (내리지 말 것)</td><td>무기 광채 고정 + 신규 치피 패시브 + 방어구 치피(승전) 시너지. 장신구 프리즘 치스 2개(4천 후반까지) + 치강·치연·치추</td></tr>
+          <tr><td>추가타</td><td>약 3,000</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">6/28 시점 세공 순위 글은 “2줄 원소/연타, 3줄 원연강 &gt; 원연보 &gt; 원연방”이었으나, 청염 정배가 굳으면서 <b>연타 → 강타로 우선순위가 이동</b>한 것이 최근 흐름.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138911" target="_blank" rel="noopener"><span class="n">#1138911</span> 화법 2줄 세공 뭐임?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140285" target="_blank" rel="noopener"><span class="n">#1140285</span> 프리즘 뭘로 하면 좋음?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135829" target="_blank" rel="noopener"><span class="n">#1135829</span> 화법 스탯 추천점</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1118484" target="_blank" rel="noopener"><span class="n">#1118484</span> 화염(화법) 세공 순위 (6/28)</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">04</span>룬 — 조합과 주의점</h3>
+  <p class="h2sub">무기 광채 고정, 엠블럼은 위대한 → 영원한 밤 순, 룬 없이 직변 금지</p>
+
+  <div class="card">
+    <h4>룬 조합</h4>
+    <p><b>무기: 광채 고정</b> (치명피해 계열 — “치명은 무기가 광채 고정에 치피 패시브도 생겼다”). <b>엠블럼: 침식룬을 맞추기 전엔 위대한(위대함), 침식 장비를 갖추면 영원한 밤</b>으로 전환이 중론. 방어구는 치피(승전) 한 부위 정도 채용 예상. <b>뼈인장</b> 인챈트가 청염 딜의 키 — 있으면 폭분청 확정, 없어도 폭분청이 낫다는 게 다수.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135829" target="_blank" rel="noopener"><span class="n">#1135829</span> 무기 광채 고정 (댓글)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136950" target="_blank" rel="noopener"><span class="n">#1136950</span> 위대한 vs 영원한밤</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141254" target="_blank" rel="noopener"><span class="n">#1141254</span> 뼈인장·폭분청 판단</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>주의: 룬 없이 직변하면 오히려 약해짐</h4>
+    <div class="quote">“(법사→화법 직변) 룬이 하나도 없어서 더 구려짐 ㅅㄱ. 너희들은 룬 모아서 해라.”
+      <span class="who">— 「법사→화법 후기」 (댓글: “그래도 악세는 다 모으고 가야지”, “바보에게 더 가혹한 게임”)</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139745" target="_blank" rel="noopener"><span class="n">#1139745</span> 법사→화법 후기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 검술사 -->
+<div class="part" id="sword">
+  <h2>⚔️ 검술사</h2>
+  <span class="verdict v-mid">여전히 1티어 · 하락세</span>
+</div>
+<p class="partsub">시즌 1 체급으로 버티는 중 — 이번 시즌 연타 강제 메타로 세팅 갈아엎기, 갤 내 “검술 까는 문화” 감안해서 볼 것</p>
+
+<section>
+  <h3 class="sec"><span class="no">01</span>티어 — 버티지만 예전 같은 극사기는 아님</h3>
+  <div class="card">
+    <p>여전히 최상위권이라는 게 중론이지만 <b>“옛날처럼 독보적 극사기 직업은 아니다”</b>가 정확한 평. “시즌1 체급으로 지금까지 버티는 중인데 룬 더 풀리면 조금씩 다른 클래스한테 밀릴 예정”. 실측으로는 에이렐 솔플 1:01, “에이렐 0분침 끊는 직업”이라는 반박도 있어 성능 자체는 건재. 다만 “이번 시즌은 검술 &lt; 화법 같음”이라는 체감과 “갤에서 검술이라 하면 까는 문화”가 겹쳐 여론은 시끄러움.</p>
+    <div class="quote">“여전히 1티어인데 옛날처럼 독보적 극사기 직업은 아닌 거 같긴 함.” · “시즌1 체급으로 지금까지 버티는 중.”
+      <span class="who">— 「검술 좋은 거 맞음?」 댓글</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141234" target="_blank" rel="noopener"><span class="n">#1141234</span> 검술 좋은 거 맞음?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140886" target="_blank" rel="noopener"><span class="n">#1140886</span> 검술사 에이렐 솔플 1:01</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133064" target="_blank" rel="noopener"><span class="n">#1133064</span> 이번 시즌은 검술 &lt; 화법 같음</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132816" target="_blank" rel="noopener"><span class="n">#1132816</span> 화법이 아니라 뼈인장이 사기 (화석대 논쟁)</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">02</span>스킬 — 이번 시즌 연타 강제</h3>
+  <div class="card">
+    <p>시즌 스킬이 <b>연타</b>를 요구하면서 검술이 연타 쪽으로 강제 전환됨. 이 때문에 유일룬 <b>교차하는 사슬</b>(연타)을 섬세한 손놀림 대신 채용하는 게 정배. 신규룬 “거센바람”은 아직 미검증, 중검은 “안 땡긴다”며 비채용.</p>
+    <div class="quote">“검술 이번 시즌 연타 강제니 교차하는 사슬이 훨씬 좋을 듯.” · “있는 것 중엔 연타 계열 끼고, 룬 다 모이면 치확 맞추고 연타 챙기는 게 좋아 보임.”
+      <span class="who">— 「검술은 이 둘 중 무슨 룬 쓰냐?」 댓글</span></div>
+    <p class="note">상시 연타 유지에는 <b>회랑</b> 같은 룬이 필요 — “연타 트리거 꺼지는 순간 욕 나온다”. 대체 후보로 아귀룬(연타 트리거 + 공증 + 무방비 피해)이 거론됨.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134990" target="_blank" rel="noopener"><span class="n">#1134990</span> 검술은 이 둘 중 무슨 룬 쓰냐?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137708" target="_blank" rel="noopener"><span class="n">#1137708</span> 상시 연타 유지하려면 회랑 필요</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139562" target="_blank" rel="noopener"><span class="n">#1139562</span> 검술 신규룬 안 씀?</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">03</span>세공·스탯</h3>
+  <div class="card">
+    <p>세공은 강연·강보이 기반이었으나 <b>연타 메타 전환으로 프리즘 연타로 갈아엎어야</b> 함 — “남은 연타 없으면 싹 다 강이보·강연이로 바꿔야” (개조 456). 스탯은 <b>치명 8,000~9,000</b>(검술은 9,000 넘어가도 유효), 강타 기반이지만 시즌 스킬이 연타라 “눈물 머금고 연 5,000” 맞추는 딜레마. 치명타는 8,000 이후 효율이 급감하니 남는 스탯은 연강·추가타로.</p>
+    <div class="quote">“검술은 강타 기반으로 챙기는데 시즌 스킬이 연타임. 걍 눈물 머금고 연 5천 맞춰야 하는 거?” — “연타율 100%에 시즌 스킬 필수라면 강타 → 연타 이동이 나음.”
+      <span class="who">— 「시즌 2 룬에 따른 스탯 분배 팁」 댓글</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1110040" target="_blank" rel="noopener"><span class="n">#1110040</span> 검술 연타면 세공·증폭 다 바꿔야</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1112610" target="_blank" rel="noopener"><span class="n">#1112610</span> 검술 개조 456·세공 강연</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137290" target="_blank" rel="noopener"><span class="n">#1137290</span> 추천 스탯 (치명 8~9천)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136040" target="_blank" rel="noopener"><span class="n">#1136040</span> 시즌 2 룬에 따른 스탯 분배 팁</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">04</span>룬</h3>
+  <div class="card">
+    <p>실사용 조합 예시: <b>무기</b> 거대한 분노(피증 21·강타 12) 또는 죽음(공증 20·치피 20). <b>엠블럼</b> 영원한 밤. <b>방어구</b> 공세+(피증 33%)·무형(스피증 27%)·침식·용의 문장 2셋(별바라기·잠들지 않는 불). 연타 메타에선 밤의축복 자리에 교차하는 사슬, 침식오염 자리에 무너진 경계(추가타), 용문장으로 치확 100% 확보. <b>마도저항 1,600만</b> 맞추는 것도 이번 시즌 필수(안 맞추면 어비스·레이드 딜 손실).</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140505" target="_blank" rel="noopener"><span class="n">#1140505</span> 검술 룬 공책노기 (조합 예시)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134990" target="_blank" rel="noopener"><span class="n">#1134990</span> 교차하는 사슬·무너진 경계</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 대검 -->
+<div class="part" id="gs">
+  <h2>🗡️ 대검</h2>
+  <span class="verdict v-top">화석대 상위권</span>
+</div>
+<p class="partsub">“지금 대검 개좋지 않혼” — 광전사+오랜광기 축, 세공은 강보방 vs 뎀뎀쿨 논쟁이 핵심</p>
+
+<section>
+  <h3 class="sec"><span class="no">01</span>티어·스킬</h3>
+  <div class="card">
+    <p>“시즌2는 화석대(화법·석궁·대검)” 밈의 한 축으로 상위권. 주력은 <b>광전사 + 오랜광기</b>. <b>신규룬은 비채용</b>이 중론 — 처단은 “5스 15초 쿨이 진짜이라 안 씀”, 무자비는 “잡몹방 고트, 보스전 무쓸모 + 수시 스왑이 귀찮음”. 반격·라이징은 개조가 안 돼서 딜 비중이 낮음(라이징 3%, 신규 패시브 7% 수준). 태초룬(광전사)은 오토에서 초기화 문제로 못 씀.</p>
+    <div class="quote">“아무리 좋아도 5스 15초 쿨은 진짜이긴 해서 안 씀.” · 무자비 — “보스전엔 너무 무쓸모야… 잡몹방 고트.” · “차라리 그냥 광전사 쭉 쓰고 말지 귀찮게 뭔 스왑이야.”
+      <span class="who">— 「대검 신규룬 쓰나?」·「대검은 신규룬 아직 연구 안 됐나」 댓글</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141069" target="_blank" rel="noopener"><span class="n">#1141069</span> 지금 대검 개좋지 않혼</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136264" target="_blank" rel="noopener"><span class="n">#1136264</span> 대검 신규룬 쓰나?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140876" target="_blank" rel="noopener"><span class="n">#1140876</span> 대검은 신규룬 아직 연구 안 됐나</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141010" target="_blank" rel="noopener"><span class="n">#1141010</span> 태초룬 오토 초기화 문제</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">02</span>세공 — 강보방 vs 뎀뎀쿨 (킵 논쟁)</h3>
+  <div class="card">
+    <p>현시점 계산상 <b>강보보쿨·강보강쿨이 강보방보다 우위</b>(신규 패시브·라이징 딜 비중이 낮아 방해 태그 효율이 낮음). 그럼에도 <b>강보방이 나오면 갈지 말고 킵</b>하라는 게 핵심 조언 — 듀블·화법 때처럼 신규 장신구가 무자비 내부쿨을 줄이고 방해 태그를 달면 강보방이 떡상하고 쿨감 보석이 전부 폐기될 수 있기 때문. 3줄은 뎀뎀쿨 또는 강보방, “조금이라도 딜 올리려면 강보방”.</p>
+    <div class="quote">“지금 시점엔 강보방이 강보보쿨보다 밀리는 건 팩트… 다만 언제 세공 통수 칠지 모르니 강보방 나오면 갈지 말고 킵해라. 절대 킵해.”
+      <span class="who">— 「대검들 세공 2트랙으로 준비하셈」</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138070" target="_blank" rel="noopener"><span class="n">#1138070</span> 대검들 세공 2트랙으로 준비하셈</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1123063" target="_blank" rel="noopener"><span class="n">#1123063</span> 그래서 대검 세공 3줄 뭐냐?</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">03</span>스탯·룬</h3>
+  <div class="card">
+    <h4>스탯</h4>
+    <p>치명 <b>8,000</b>(치확 약 40%) + 광전사 생기폭발 약 15% → Base 55%, 방어구에서 치확 45% 더 챙겨 상시 100% 지향. 10성 룬 두르면 강타 8,000 / 치명 8,000 / 추가타 2,500~3,000 목표.</p>
+    <h4>룬</h4>
+    <p><b>무기</b> 오랜광기(유일 저주) 또는 부패룬(연타 100% — “대검이 먹은 게 이거뿐인데 진짜 괜찮다”) 또는 거대한 분노. 저주룬은 <b>오랜광기 vs 끓는피 택1</b>. <b>장신구</b> 광·탄 2자리 고정. <b>방어구</b> 각성(첫 번째 서약) + 용문 2셋(별바라기·잠불) + 침식(금 간 봉인·무너진 경계) + 피증룬. <b>엠블럼</b> 위대함(강타 25%, 밤축 시 40% 추가 + 직피). 공증 밸류가 바닥이라 용 세트를 아예 빼는 것도 고려 대상.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136640" target="_blank" rel="noopener"><span class="n">#1136640</span> 시즌 2 대검 룬 세팅 (개인 저장용)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136595" target="_blank" rel="noopener"><span class="n">#1136595</span> 대검 방어구룬 세팅</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136652" target="_blank" rel="noopener"><span class="n">#1136652</span> 거분+끓는피 조합</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140119" target="_blank" rel="noopener"><span class="n">#1140119</span> 대검 부패룬 무기</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137717" target="_blank" rel="noopener"><span class="n">#1137717</span> 별바라기 vs 용암비늘·용세트 논의</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 도적 -->
+<div class="part" id="rogue">
+  <h2>🔪 도적</h2>
+  <span class="verdict v-down">비주류 · 약세</span>
+</div>
+<p class="partsub">유저가 적어 “아무도 목소리 안 냄” — 평캔(평타) 메타로 재편, 고트 시절 그리워하는 분위기</p>
+
+<section>
+  <h3 class="sec"><span class="no">01</span>티어</h3>
+  <div class="card">
+    <p>이번 패치는 도적에게 <b>옆그레이드·억까</b>로 평가됨 — “투력 대비 dps 상승률은 하위권”. 기습 쿨이 안 돌게 너프됐고(고트 시절 회상 글 다수), 3스 뒤치기가 순간이동 → 무빙 이동 판정으로 바뀌어 오토 시 사망하는 등 미세 너프가 쌓임. 유저 수가 적어 “아무도 목소리 안 낸다”, 독성·무자비 등 버그도 방치되는 분위기.</p>
+    <div class="quote">“유저도 없어서 아무도 목소리 안 냄.” · “미터기 써봐야 알겠지만 투력 대비 dps 상승률은 하위권일 거 같음. 너무 옆그레이드임 이번 패치가 도적한테.”
+      <span class="who">— 「도적 억까 당한 패치」·「도적 룬 이렇게 끼는 거 생각 중」 댓글</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141285" target="_blank" rel="noopener"><span class="n">#1141285</span> 도적 억까 당한 패치</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141077" target="_blank" rel="noopener"><span class="n">#1141077</span> 다시 보는 도적 고트 시절</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1131403" target="_blank" rel="noopener"><span class="n">#1131403</span> 독성 버그 방치 불만</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">02</span>스킬 — 평캔(평타) 메타</h3>
+  <div class="card">
+    <p>“평캔 딜러로 다시 태어남” — <b>덫 + 땅거미 + 폭(덫땅폭) 사이클에 평타 캔슬을 섞는</b> 플레이가 주류. “덫 안 쓰면 개답답, 덫 쓰고 평캔까지 섞어야 괜찮아짐”. 평타 3대당 15% 쿨감 룬으로 무한 망각을 벗을 수 있는지 실험 중이나 “평타 공속룬 없으면 시원찮다”. 234 스킬 주력(칼바람) 가능성은 “지금은 2스를 아예 안 쓰는 게 더 세서” 다음 주 럭스 열리면 지켜봐야 한다는 유보.</p>
+    <div class="quote">“덫에 땅거미 쓰면 무한 망각 안 써도 됨.” · “평캔질 DPS 오르는 거 보면 빠져듦.”
+      <span class="who">— 「평타 3대당 15% 쿨감」·「도적 룬」 댓글</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1128302" target="_blank" rel="noopener"><span class="n">#1128302</span> 평타 3대당 15% 쿨감 = 망각 대체?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1123541" target="_blank" rel="noopener"><span class="n">#1123541</span> 도적 지금 평타 메타 (덫땅폭)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132153" target="_blank" rel="noopener"><span class="n">#1132153</span> 칼바람 룬·234 주력 논의</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141093" target="_blank" rel="noopener"><span class="n">#1141093</span> 독사 부활 고민</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">03</span>룬 (세공·스탯 자료 부족)</h3>
+  <div class="card">
+    <p>실사용 조합: <b>무기</b> 거대한 분노 — 강타가 아닌 공격이라 <b>평타로도 스피증 12%가 유지</b>되며 “깡공 차이가 커서 검무보다 셀 수도”. <b>방어구/장신구</b> 날선적의(저주) + 신화(용사냥꾼) + 잠들지 않는 불 + 별바라기 + 열의(기본공격 댐증). <b>엠블럼</b> 백금천칭·초기화룬 — “사냥터 기습 4번 꽂히고 타바 구슬 4개 부순다”는 재미 요소로 인기. 세공·스탯 목표치는 갤 내 명확한 정립글이 아직 없음(자료 부족).</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140760" target="_blank" rel="noopener"><span class="n">#1140760</span> 거대한 분노 — 평타로 스피증 유지</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1125978" target="_blank" rel="noopener"><span class="n">#1125978</span> 도적 룬 조합 (천칭·열의)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137821" target="_blank" rel="noopener"><span class="n">#1137821</span> 초기화룬 — 기습 4번</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 수도사 -->
+<div class="part" id="monk">
+  <h2>👊 수도사</h2>
+  <span class="verdict v-supp">쾌적 · 부캐 인기</span>
+</div>
+<p class="partsub">“이번 시즌은 수도사 좋네” — 세긴 약해도 오토 쾌적·힐 강점, 쇄도 몰빵에 빠스 5,000이 관문</p>
+
+<section>
+  <h3 class="sec"><span class="no">01</span>티어·스킬</h3>
+  <div class="card">
+    <p>버프로 <b>공속이 빨라져 오토가 쾌적</b>해지고 시즌 스킬이 빠스(빠른 시전)라 시너지가 좋음. “세긴 약한 건 둘째치고 개재밌음, 힐도 훨 잘하고, 수호진도 빨라서 3스 불 들어와도 스트레스 덜함 — 타바 숙제 빠스 5천으로도 2등”. 힐러 3인방 중 부캐로 특히 인기. 주력은 <b>쇄도 몰빵</b>, 축성과 정화는 “또이또이”.</p>
+    <div class="quote">“너무 쾌적하고 오토 개꿀딱이다. 시즌 스킬도 빠스라 시너지도 엄청남.” · “세공 약한 건 둘째, 개재밌음. 힐도 훨 잘하고 수호진도 빨라서 스트레스 덜 받음.”
+      <span class="who">— 「이번 시즌은 수도사 좋네」·「빠스 5천 찍었음?」 댓글</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140899" target="_blank" rel="noopener"><span class="n">#1140899</span> 이번 시즌은 수도사 좋네</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140741" target="_blank" rel="noopener"><span class="n">#1140741</span> 수도사 버프 개쩌네 (공속)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140188" target="_blank" rel="noopener"><span class="n">#1140188</span> 빠스 5천 실사용 후기</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">02</span>세공·스탯 — 보연이 + 빠스 5,000</h3>
+  <div class="card">
+    <p>세공은 시즌 1과 동일하게 <b>보연이</b>(보조·연타) — 2줄도 3줄도 “쇄도 몰빵이라 보연이”. 핵심 관문은 <b>빠스(빠른 시전) 5,000</b>: 시즌 스킬 요구치라 필수인데 맞추기가 빡셈. <b>무기·장신구를 치명빠스로</b> 맞추면 5천이 나오고(방어구엔 치명 확보), “어정쩡하게 맞출 거면 차라리 치연이 낫다”. 렙업 카드로 빠스를 찍으면 방어구·엠블만 빠스로 맞춰도 5,000 달성.</p>
+    <div class="quote">“빠스 어정쩡하게 맞출 거면 걍 치연이 나은 거 같고, 제대로 맞출 거면 5천 이상 필수인 듯.” · “무기·장신구 2개로도 증폭에서 빠스 두어 개 띄우면 5천 되더라.”
+      <span class="who">— 「빠스 5천 찍기 빡세네」 댓글</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140436" target="_blank" rel="noopener"><span class="n">#1140436</span> 수도사 세공 질문 (보연이)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1118463" target="_blank" rel="noopener"><span class="n">#1118463</span> 수도 세공 보연방/보연이</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140234" target="_blank" rel="noopener"><span class="n">#1140234</span> 빠스 5천 찍기 빡세네</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">03</span>룬·장신구</h3>
+  <div class="card">
+    <p><b>장신구</b>는 인과·뇌정·정화(인뇌정), 등불이 있으면 등불 채용 — 인·업화·뇌정도 거론. 정화 ↔ 축성은 성능 동일해서 교체 가능. <b>저주룬</b>은 대검·수도 공통으로 오랜광기 vs 끓는피 택1. 종합적으로 “풀오토 제일 편하고 할 만한 게 수도사”라는 편의성 평가가 강점.</p>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140804" target="_blank" rel="noopener"><span class="n">#1140804</span> 수도사 이번 시즌 장신구 뭐 씀?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140488" target="_blank" rel="noopener"><span class="n">#1140488</span> 축성 씀? (정화·축성 동일)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135695" target="_blank" rel="noopener"><span class="n">#1135695</span> 오랜광기 vs 끓는피</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140293" target="_blank" rel="noopener"><span class="n">#1140293</span> 힐러 vs 수도사 (부캐 추천)</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 마법사 -->
+<div class="part" id="mage">
+  <h2>🪄 마법사</h2>
+  <span class="verdict v-down">약세 · 탈주 러시</span>
+</div>
+<p class="partsub">“얻은 건 없이 잃은 것만” — 우운빙이 메타지만 신규 빙창의 마나 문제로 불쾌, 화법으로 이탈 다수</p>
+
+<section>
+  <h3 class="sec"><span class="no">01</span>티어 — 시즌 2 최대 약세 여론</h3>
+  <div class="card">
+    <p>“시즌 1이랑 쓰는 템·스킬 똑같은데 너프만 먹은 셈 — 얻은 건 없이 잃은 것만”이 여론 요약. 딜 자체는 강하다는 의견도 있으나 <b>“불쾌해서” 이탈하는 게 핵심</b>. 캐속룬·엠블룬 제약, 시즌 스킬(빠른 스킬)의 낮은 딜, 빙창의 조작감 문제가 겹쳐 “탈주각이 날카롭게 서 있음”. 실제 화법으로 직변하는 흐름이 뚜렷.</p>
+    <div class="quote">“불쾌해져서 그렇지 딜 자체는 강할걸.” · “결국 시즌1 대비 너프 먹은 셈… 얻은 건 없이 잃은 것만 있는 모양새.” · “빙창 꼬라지 보고 직변함.”
+      <span class="who">— 「법사 망가짐?」·「지금 시점 법사가 별로인 부분」 댓글</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132407" target="_blank" rel="noopener"><span class="n">#1132407</span> 지금 시점 법사가 별로인 부분</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141290" target="_blank" rel="noopener"><span class="n">#1141290</span> 뭐야 지금 법사 망가짐?</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1119758" target="_blank" rel="noopener"><span class="n">#1119758</span> 법사 시즌2 얼탱이가 없네</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">02</span>스킬 — 우운빙 강제, 그러나 빙창이 문제</h3>
+  <div class="card">
+    <p>시즌 2 메타는 <b>우운빙(우레·운석·빙창)</b>. 문제는 신규 <b>빙창</b>: 마나 소모가 심해 정상 사이클이 안 굴러가고, 긴 캐스팅 동안 아무것도 못 함. “쓰면 세지는 건 맞는데 난사를 못 하게 됨 — 시즌 1 청염이랑 비슷한 애매한 입지”. 빙창을 버리면 쾌적하고 재밌지만 약해서 <b>사실상 간접 너프</b>, 게다가 풀오토 어비스 뺑뺑이는 서리가시가 더 좋아 상황별 스위칭이 강요됨. 개조 1·2·3, 오토는 2·3 켜고 1번 3줄 찼을 때만 눌러줌.</p>
+    <div class="quote">“우레·운석·빙창을 쓰면 정상 사이클 자체가 굴러가질 않음.” · “빙창 버리니까 너무 쾌적하고 재밌는데? 근데 그러면 사실상 간접 너프죠.”
+      <span class="who">— 「빙창 강제 메타」·「빙창 버리니까 쾌적」 댓글</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135632" target="_blank" rel="noopener"><span class="n">#1135632</span> 시즌2 법사는 우운빙이구나</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137724" target="_blank" rel="noopener"><span class="n">#1137724</span> 무조건 빙창 강제 메타인데</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132734" target="_blank" rel="noopener"><span class="n">#1132734</span> 빙창은 잘못 만든 듯</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139649" target="_blank" rel="noopener"><span class="n">#1139649</span> 빙창 버리니까 쾌적 (간접 너프)</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3 class="sec"><span class="no">03</span>세공·스탯·룬</h3>
+  <div class="card">
+    <p><b>세공</b>은 우운빙 기준 <b>원강방 3줄, 원 &gt;&gt; 강 &gt;&gt; 방</b>(2·3스가 강타 태그, 4스는 거의 안 씀). 시즌 1 룬을 그대로 쓸 거면 원방강. <b>스탯</b>은 피증룬 떡칠이라 스위를 줄이는 추세 — 스위 6,000 / 치명 7,000 / 빠스 5,000, 아티 신속 5개. 빠스 5,000은 시즌 스킬 요구치. <b>룬</b>은 무기 계시, 방어구 <b>뼈인장·봉인술사 필수</b>, 엠블럼 대마법사 계열이나 이번 시즌 대체 엠블룬이 마땅찮아 고결함 논쟁 중. 신규 각성룬 “잊힌 맹약”은 사슬·서약과 못 겹쳐서 미묘.</p>
+    <div class="quote">“세공 딱 말한다. 원강방 3줄이고 원 &gt;&gt; 강 &gt;&gt; 방 순이다. 아티는 신속으로 5개 맞춰라. 무기 계시, 방어구 뼈인장·봉인술사(두 개는 필수).”
+      <span class="who">— 「법사 정리해줄게 이대로 해라」</span></div>
+    <div class="refs"><span class="rlabel">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1130248" target="_blank" rel="noopener"><span class="n">#1130248</span> 법사 정리해줄게 이대로 해라</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134623" target="_blank" rel="noopener"><span class="n">#1134623</span> 법사 스탯 분배</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1117211" target="_blank" rel="noopener"><span class="n">#1117211</span> 법사 엠블럼 룬 (고결함 논쟁)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140761" target="_blank" rel="noopener"><span class="n">#1140761</span> 잊힌 맹약 미묘</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 출처 -->
+<section id="sources">
+  <h3 class="sec"><span class="no">09</span>전체 출처 목록</h3>
+  <p class="h2sub">분석에 사용한 게시글 100여 건 — 번호 클릭 시 원문으로 이동</p>
+
+  <div class="srcgroup">⛪ 사제 (26건)</div>
+  <ul class="srclist">
+    <li><span class="num">#1097143</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1097143" target="_blank" rel="noopener">시즌 2 사제공략</a><span class="d">06/24 · 5스룬+수레바퀴 결론</span></li>
+    <li><span class="num">#1140057</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140057" target="_blank" rel="noopener">사제놈들 팁준다 (정보글)</a><span class="d">07/03 · 피증 40%·직피 판정 실측</span></li>
+    <li><span class="num">#1140414</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140414" target="_blank" rel="noopener">사제 룬 1티어가 뭔가요?</a><span class="d">07/04 · 장신구·방어구 선호</span></li>
+    <li><span class="num">#1139992</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139992" target="_blank" rel="noopener">사제 무기룬 최종으론 머쓰려나</a><span class="d">07/03 · 무기룬 후보군</span></li>
+    <li><span class="num">#1140070</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140070" target="_blank" rel="noopener">사제 신규룬 개좋은데?</a><span class="d">07/03 · 2스 무한</span></li>
+    <li><span class="num">#1141079</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141079" target="_blank" rel="noopener">사제 불사 패시브 좋네</a><span class="d">07/04 · 불사 운용 팁</span></li>
+    <li><span class="num">#1134254</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134254" target="_blank" rel="noopener">사제 시즌 스킬 이제 봤는데 뭐임</a><span class="d">07/02 · 전원 불사 확인</span></li>
+    <li><span class="num">#1106103</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1106103" target="_blank" rel="noopener">(최종) 전 캐릭 시즌 스킬 정리</a><span class="d">06/25 · 시즌 스킬 스펙</span></li>
+    <li><span class="num">#1133171</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133171" target="_blank" rel="noopener">사제 뭐가 좋다고 그렇게 난리임?</a><span class="d">07/01 · 세공 결론 댓글</span></li>
+    <li><span class="num">#1137758</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137758" target="_blank" rel="noopener">이번 시즌 사제 세공 두 줄 변경점</a><span class="d">07/03 · 집행 기준 세공</span></li>
+    <li><span class="num">#1106680</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1106680" target="_blank" rel="noopener">사제 세공 2줄은 이제 보방인가</a><span class="d">06/25 · 보방 전환 논의</span></li>
+    <li><span class="num">#1136617</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136617" target="_blank" rel="noopener">사제 오토할 때 꺼야하는 스킬 있습니까</a><span class="d">07/02 · 오토 스킬 세팅</span></li>
+    <li><span class="num">#1130749</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1130749" target="_blank" rel="noopener">죽음 룬은 사제랑 상관 없네</a><span class="d">07/01 · 죽음 룬 해석</span></li>
+    <li><span class="num">#1108006</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1108006" target="_blank" rel="noopener">사제 결론 나옴</a><span class="d">06/25 · 종합 평가</span></li>
+    <li><span class="num">#1140736</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140736" target="_blank" rel="noopener">사제 펫 뭐쓰냐</a><span class="d">07/03 · 펫 추천</span></li>
+    <li><span class="num">#1097569</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1097569" target="_blank" rel="noopener">사제 집행룬 설명만 들으면 수레바퀴 쓰라는 건데</a><span class="d">06/24 · 집행→수레 쿨감 구조</span></li>
+    <li><span class="num">#1097898</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1097898" target="_blank" rel="noopener">생각해보니 심판 버리라는 거네 무한 수레 드가쟈</a><span class="d">06/24 · 5스룬 쿨감 시너지</span></li>
+    <li><span class="num">#1101237</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1101237" target="_blank" rel="noopener">사제 설마 수레바퀴 쓰냐</a><span class="d">06/26 · 파티플 반응·수레 용도 논쟁</span></li>
+    <li><span class="num">#1135434</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135434" target="_blank" rel="noopener">사제 오토는 수레가 꿀잼이굱</a><span class="d">07/02 · 집수 오토 실사용 인증</span></li>
+    <li><span class="num">#1132766</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132766" target="_blank" rel="noopener">사제 이번 시즌 요약 이거인듯</a><span class="d">07/01 · 홀스/집행/하이브리드 빌드 분기</span></li>
+    <li><span class="num">#1138229</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138229" target="_blank" rel="noopener">사제 3스 심판 질문</a><span class="d">07/03 · 심판=즉발, 캐차 불필요</span></li>
+    <li><span class="num">#1140226</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140226" target="_blank" rel="noopener">집행 사제 장판 안 쓰는 게 더 나은 거 같은데</a><span class="d">07/03 · 생츄어리 채용 논쟁</span></li>
+    <li><span class="num">#1128081</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1128081" target="_blank" rel="noopener">사제 장신구 룬 뭐쓰는거야?</a><span class="d">06/30 · 역할별 장신구 조합</span></li>
+    <li><span class="num">#1116858</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1116858" target="_blank" rel="noopener">사제 집행 메모장</a><span class="d">06/28 · 집행 메커니즘·딜 사이클 상세</span></li>
+    <li><span class="num">#1120587</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1120587" target="_blank" rel="noopener">사제 집행룬 좋음?</a><span class="d">06/29 · 뼈인장 조건, 무한홀스 비교</span></li>
+    <li><span class="num">#1105011</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1105011" target="_blank" rel="noopener">사제 집행룬 재밌는거갓은디</a><span class="d">06/26 · 체감 사용기</span></li>
+  </ul>
+
+  <div class="srcgroup">🏹 궁수 (13건)</div>
+  <ul class="srclist">
+    <li><span class="num">#1135115</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135115" target="_blank" rel="noopener">아무리 봐도 시즌2도 궁수는 날매닻임</a><span class="d">07/02 · 날매닻 vs 나날닻</span></li>
+    <li><span class="num">#1136084</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136084" target="_blank" rel="noopener">궁뚜기들 궁수들 템 세팅 논의좀 하자</a><span class="d">07/02 · 그림자 사격·스탯 실험</span></li>
+    <li><span class="num">#1139605</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139605" target="_blank" rel="noopener">나날닻 궁수는 재감룬이랑 빠스 중요할 거 같음</a><span class="d">07/03 · 재감룬 포지션</span></li>
+    <li><span class="num">#1135312</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135312" target="_blank" rel="noopener">궁수 나선 ← 절대 쓰지마라</a><span class="d">07/02 · 나선 소음 불만</span></li>
+    <li><span class="num">#1140143</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140143" target="_blank" rel="noopener">궁수 세공은 강타를 왜 넣음??</a><span class="d">07/03 · 연강방 — 다발 채용 이유</span></li>
+    <li><span class="num">#1140710</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140710" target="_blank" rel="noopener">궁수 이번 시즌 최적 스텟을 좀 지켜봐야겠네</a><span class="d">07/03 · 추6 연5 치8</span></li>
+    <li><span class="num">#1135391</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135391" target="_blank" rel="noopener">시즌2도 치명타 몰빵임?</a><span class="d">07/02 · 치명 6~8천, 연타 기준</span></li>
+    <li><span class="num">#1138779</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138779" target="_blank" rel="noopener">궁수 무기룬 뭐가 좋아 보임?</a><span class="d">07/03 · 바위칼날(검무 상위)</span></li>
+    <li><span class="num">#1141037</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141037" target="_blank" rel="noopener">궁수 방어구 룬조합 이게 젤 나은가?</a><span class="d">07/04 · 숲길잡이 고정</span></li>
+    <li><span class="num">#1139883</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139883" target="_blank" rel="noopener">시즌2 궁수룬</a><span class="d">07/03 · 방어구 4룬 구성</span></li>
+    <li><span class="num">#1132099</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132099" target="_blank" rel="noopener">시즌2 궁수 룬세팅 이렇게 할 거임</a><span class="d">07/01 · 영원한 밤·침식·용문장</span></li>
+    <li><span class="num">#1127689</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1127689" target="_blank" rel="noopener">이번 시즌 본캐궁수 목표 세팅</a><span class="d">06/30 · 목표 세팅 청사진</span></li>
+    <li><span class="num">#1125985</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1125985" target="_blank" rel="noopener">궁수 너프 확정이구나..</a><span class="d">06/30 · 딜 격차 자조</span></li>
+  </ul>
+
+  <div class="srcgroup">🔥 화법 (11건)</div>
+  <ul class="srclist">
+    <li><span class="num">#1141179</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141179" target="_blank" rel="noopener">화법사람들 왜케 쌔짐?</a><span class="d">07/04 · 딜 1위 여론</span></li>
+    <li><span class="num">#1141254</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141254" target="_blank" rel="noopener">화법 뼈인장 없으면 폭분잿이 더 좋은가?</a><span class="d">07/04 · 바로 폭분청 결론</span></li>
+    <li><span class="num">#1138252</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138252" target="_blank" rel="noopener">시즌2 화법 사이클 어떰?</a><span class="d">07/03 · 실전 커맨드</span></li>
+    <li><span class="num">#1138911</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138911" target="_blank" rel="noopener">화법 2줄 세공 뭐임?</a><span class="d">07/03 · 원강 + 3줄 티어</span></li>
+    <li><span class="num">#1134613</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134613" target="_blank" rel="noopener">화법 이제 세공 두줄작 원강 씀?</a><span class="d">07/02 · 청염 정배 확인</span></li>
+    <li><span class="num">#1132010</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132010" target="_blank" rel="noopener">화법 청분폭 세공 원&gt;강&gt;연&gt;방&gt;보 순 아님?</a><span class="d">07/01 · 강타/연타 지분 분석</span></li>
+    <li><span class="num">#1118484</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1118484" target="_blank" rel="noopener">화염(화법) 세공 순위니까 참고행</a><span class="d">06/28 · 초기 세공 순위</span></li>
+    <li><span class="num">#1140285</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140285" target="_blank" rel="noopener">화법 이번에 프리즘 뭘로 하면 좋음?</a><span class="d">07/03 · 스위 5,000·치스 프리즘</span></li>
+    <li><span class="num">#1135829</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135829" target="_blank" rel="noopener">화법 스탯 추천점</a><span class="d">07/02 · 스위 프리즘·광채 고정·추가타 3천</span></li>
+    <li><span class="num">#1136950</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136950" target="_blank" rel="noopener">화법한테 위대한 vs 영원한밤 중 뭐가 낫나</a><span class="d">07/02 · 엠블럼 전환 기준</span></li>
+    <li><span class="num">#1139745</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139745" target="_blank" rel="noopener">법사→화법 후기</a><span class="d">07/03 · 룬 없이 직변 주의</span></li>
+  </ul>
+
+  <div class="srcgroup">⚔️ 검술사 (11건)</div>
+  <ul class="srclist">
+    <li><span class="num">#1141234</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141234" target="_blank" rel="noopener">검술 좋은 거 맞음?</a><span class="d">07/04 · 1티어지만 하락세</span></li>
+    <li><span class="num">#1140886</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140886" target="_blank" rel="noopener">검술사 에이렐 솔플 1:01</a><span class="d">07/03 · 성능 건재 실측</span></li>
+    <li><span class="num">#1133064</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133064" target="_blank" rel="noopener">이번 시즌은 검술 &lt; 화법 같음</a><span class="d">07/01 · 체감 하락</span></li>
+    <li><span class="num">#1132816</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132816" target="_blank" rel="noopener">화법이 아니라 뼈인장이 사기</a><span class="d">07/01 · 화석대·뼈인장 논쟁</span></li>
+    <li><span class="num">#1134990</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134990" target="_blank" rel="noopener">검술은 이 둘 중 무슨 룬 쓰냐?</a><span class="d">07/02 · 교차하는 사슬(연타)</span></li>
+    <li><span class="num">#1137708</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137708" target="_blank" rel="noopener">상시 연타 유지하려면 회랑 필요</a><span class="d">07/03 · 연타 트리거·아귀룬</span></li>
+    <li><span class="num">#1139562</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139562" target="_blank" rel="noopener">검술 신규룬 안 씀?</a><span class="d">07/03 · 거센바람 미검증</span></li>
+    <li><span class="num">#1140505</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140505" target="_blank" rel="noopener">검술 룬 공책노기</a><span class="d">07/03 · 룬 조합 예시</span></li>
+    <li><span class="num">#1137290</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137290" target="_blank" rel="noopener">추천 스탯 (오류 정정)</a><span class="d">07/03 · 치명 8~9천</span></li>
+    <li><span class="num">#1136040</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136040" target="_blank" rel="noopener">시즌 2 룬에 따른 스탯 분배 팁</a><span class="d">06/30 · 전 직업 스탯 이론</span></li>
+    <li><span class="num">#1110040</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1110040" target="_blank" rel="noopener">검술 연타면 세공·증폭 다 바꿔야</a><span class="d">06/27 · 프리즘 연타 전환</span></li>
+  </ul>
+
+  <div class="srcgroup">🗡️ 대검 (9건)</div>
+  <ul class="srclist">
+    <li><span class="num">#1141069</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141069" target="_blank" rel="noopener">지금 대검 개좋지 않혼</a><span class="d">07/04 · 상위권 체감</span></li>
+    <li><span class="num">#1138070</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138070" target="_blank" rel="noopener">대검들 세공 2트랙으로 준비하셈</a><span class="d">07/03 · 강보방 킵 경고</span></li>
+    <li><span class="num">#1123063</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1123063" target="_blank" rel="noopener">그래서 대검 세공 3줄 뭐냐?</a><span class="d">06/30 · 뎀뎀쿨/강보방</span></li>
+    <li><span class="num">#1136640</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136640" target="_blank" rel="noopener">시즌 2 대검 룬 세팅 (개인 저장용)</a><span class="d">07/02 · 룬·스탯 청사진</span></li>
+    <li><span class="num">#1136595</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136595" target="_blank" rel="noopener">대검 방어구룬 세팅</a><span class="d">07/02 · 각성·용문·침식</span></li>
+    <li><span class="num">#1136652</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136652" target="_blank" rel="noopener">거분+끓는피 조합</a><span class="d">07/02 · 저주룬 택1</span></li>
+    <li><span class="num">#1140119</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140119" target="_blank" rel="noopener">대검 부패룬 무기</a><span class="d">07/03 · 연타 100%</span></li>
+    <li><span class="num">#1136264</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136264" target="_blank" rel="noopener">대검 신규룬 쓰나?</a><span class="d">07/02 · 5스 15초 쿨 비채용</span></li>
+    <li><span class="num">#1140876</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140876" target="_blank" rel="noopener">대검은 신규룬 아직 연구 안 됐나</a><span class="d">07/03 · 무자비 잡몹 고트</span></li>
+  </ul>
+
+  <div class="srcgroup">🔪 도적 (9건)</div>
+  <ul class="srclist">
+    <li><span class="num">#1141285</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141285" target="_blank" rel="noopener">도적 억까 당한 패치</a><span class="d">07/04 · 3스 판정 변경 너프</span></li>
+    <li><span class="num">#1141077</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141077" target="_blank" rel="noopener">다시 보는 도적 고트 시절</a><span class="d">07/04 · 기습 쿨 너프 회상</span></li>
+    <li><span class="num">#1128302</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1128302" target="_blank" rel="noopener">평타 3대당 15% 쿨감 = 망각 대체?</a><span class="d">06/30 · 덫땅 평캔</span></li>
+    <li><span class="num">#1123541</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1123541" target="_blank" rel="noopener">도적 지금 평타 메타</a><span class="d">06/30 · 덫땅폭 사이클</span></li>
+    <li><span class="num">#1132153</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132153" target="_blank" rel="noopener">도적 칼바람 룬 어때!?</a><span class="d">07/01 · 234 주력 논의</span></li>
+    <li><span class="num">#1141093</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141093" target="_blank" rel="noopener">도적 독사 돌아가야 하나</a><span class="d">07/04 · 독사 재평가</span></li>
+    <li><span class="num">#1140760</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140760" target="_blank" rel="noopener">거대한 분노 무기룬</a><span class="d">07/03 · 평타 스피증 유지</span></li>
+    <li><span class="num">#1125978</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1125978" target="_blank" rel="noopener">도적 룬 조합</a><span class="d">06/30 · 천칭·열의·용사냥꾼</span></li>
+    <li><span class="num">#1131403</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1131403" target="_blank" rel="noopener">독성 버그 방치 불만</a><span class="d">07/01 · 방치 여론</span></li>
+  </ul>
+
+  <div class="srcgroup">👊 수도사 (9건)</div>
+  <ul class="srclist">
+    <li><span class="num">#1140899</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140899" target="_blank" rel="noopener">이번 시즌은 수도사 좋네</a><span class="d">07/03 · 오토 쾌적</span></li>
+    <li><span class="num">#1140741</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140741" target="_blank" rel="noopener">수도사 버프 개쩌네</a><span class="d">07/03 · 공속 상승</span></li>
+    <li><span class="num">#1140188</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140188" target="_blank" rel="noopener">빠스 5천 찍었음?</a><span class="d">07/03 · 실사용 후기·타바 2등</span></li>
+    <li><span class="num">#1140234</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140234" target="_blank" rel="noopener">빠스 5천 찍기 빡세네</a><span class="d">07/03 · 치명빠스 세팅</span></li>
+    <li><span class="num">#1140436</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140436" target="_blank" rel="noopener">수도사 세공 질문</a><span class="d">07/03 · 보연이·쇄도 몰빵</span></li>
+    <li><span class="num">#1118463</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1118463" target="_blank" rel="noopener">수도 세공 보연방임?</a><span class="d">06/28 · 3줄 보연이</span></li>
+    <li><span class="num">#1140804</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140804" target="_blank" rel="noopener">수도사 이번 시즌 장신구 뭐 씀?</a><span class="d">07/03 · 인뇌정·업화</span></li>
+    <li><span class="num">#1140488</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140488" target="_blank" rel="noopener">수도사 축성 씀?</a><span class="d">07/03 · 정화·축성 동일</span></li>
+    <li><span class="num">#1140293</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140293" target="_blank" rel="noopener">힐러 vs 수도사 추천</a><span class="d">07/03 · 부캐 선택</span></li>
+  </ul>
+
+  <div class="srcgroup">🪄 마법사 (11건)</div>
+  <ul class="srclist">
+    <li><span class="num">#1132407</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132407" target="_blank" rel="noopener">지금 시점 법사가 별로인 부분</a><span class="d">07/01 · 약세 4대 이유</span></li>
+    <li><span class="num">#1141290</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141290" target="_blank" rel="noopener">뭐야 지금 법사 망가짐?</a><span class="d">07/04 · 불쾌 여론</span></li>
+    <li><span class="num">#1119758</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1119758" target="_blank" rel="noopener">법사 시즌2 얼탱이가 없네</a><span class="d">06/29 · 기획 의도 비판</span></li>
+    <li><span class="num">#1135632</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135632" target="_blank" rel="noopener">시즌2 법사는 우운빙이구나</a><span class="d">07/02 · 메타 확정</span></li>
+    <li><span class="num">#1137724</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137724" target="_blank" rel="noopener">무조건 빙창 강제 메타인데</a><span class="d">07/03 · 사이클 붕괴</span></li>
+    <li><span class="num">#1132734</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132734" target="_blank" rel="noopener">빙창은 잘못 만든 듯</a><span class="d">07/01 · 마나·난사 문제</span></li>
+    <li><span class="num">#1139649</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139649" target="_blank" rel="noopener">빙창 버리니까 쾌적</a><span class="d">07/03 · 간접 너프</span></li>
+    <li><span class="num">#1130248</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1130248" target="_blank" rel="noopener">법사 정리해줄게 이대로 해라</a><span class="d">07/01 · 세공·룬·개조 총정리</span></li>
+    <li><span class="num">#1134623</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1134623" target="_blank" rel="noopener">법사 스탯 분배</a><span class="d">07/02 · 스위·스피증 곱연산</span></li>
+    <li><span class="num">#1117211</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1117211" target="_blank" rel="noopener">법사 엠블럼 룬</a><span class="d">06/28 · 고결함 논쟁</span></li>
+    <li><span class="num">#1140761</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140761" target="_blank" rel="noopener">법사 잊힌 맹약</a><span class="d">07/03 · 각성룬 미묘</span></li>
+  </ul>
+</section>
+
+<footer>
+  에반(마비노기 모바일) 마이너 갤러리 게시글·댓글을 2026-07-04 기준으로 수집·요약한 자료입니다.
+  시즌 2 초기 여론이므로 엠블럼·나선 세팅 등 미확정 항목은 추후 갱신이 필요합니다. 인용문은 원문 표현을 유지했습니다.
+</footer>
+
+</div>
+
+</body>
+</html>
