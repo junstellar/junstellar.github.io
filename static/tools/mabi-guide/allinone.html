@@ -41,7 +41,8 @@
   #bookframe{flex:1 1 auto;width:100%;border:0;background:#fff}
   button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px}
 </style>
-
+</head>
+<body>
 <div class="wrap">
 <header>
   <div class="sigil">&#128218;</div>
@@ -77,7 +78,7 @@
 <div class="shelf">
 <button class="book" onclick="openBook(&quot;archer&quot;)"><span class="ic">🏹</span><span><span class="t">궁수</span><span class="d">날매닻 vs 나날닻 · 숲길잡이</span><span class="tier down">하향세 · 연구 중</span></span></button>
 <button class="book" onclick="openBook(&quot;xbow&quot;)"><span class="ic">🎯</span><span><span class="t">석궁</span><span class="d">꿰화산 확정 · 잠불+별바라기</span><span class="tier up">석버지 컴백 · S급</span></span></button>
-<button class="book" onclick="openBook(&quot;longbow&quot;)"><span class="ic">🌲</span><span><span class="t">장궁</span><span class="d">뼈인장 최대 수혜 · 호응 필수</span><span class="tier up">역대급 장궁시즌</span></span></button>
+<button class="book" onclick="openBook(&quot;longbow&quot;)"><span class="ic">🌲</span><span><span class="t">장궁</span><span class="d">뼈인장 최대 수혜 · 호응 필수</span><span class="tier up">1티어 유지 · 너프 재조명</span></span></button>
 </div>
 <div class="grouph">마법 계열</div>
 <div class="shelf">
@@ -109,7 +110,6 @@ function openBook(id){
   var t = document.getElementById('tpl-'+id);
   if(!t) return;
   var fr = document.getElementById('bookframe');
-  fr.srcdoc = '<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body>' + t.innerHTML + '</body></html>';
   document.getElementById('vtitle').textContent = TITLES[id] || '';
   document.getElementById('viewer').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -330,7 +330,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    사제 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    사제 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge">서폿 1황</span>
@@ -635,6 +635,28 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 </section>
 
 <!-- ============ 부록 ============ -->
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 심판·성전·집행 (+날개·결속)</p>
+    <p><b>무기룬</b> 개시·광채 &nbsp;·&nbsp; <b>엠블럼</b> 위대함·영원한 밤 &nbsp;·&nbsp; <b>세공 정배</b> 보조·강타·연타</p>
+    <p>시즌 스킬이 어비스에서 <b>피증 40%+</b> 맞춰야 강타가 정상 발동 → <b>피증을 룬으로 확보</b>하는 게 관건. 일렁이는 불꽃 삭제로 <b>얼음발톱(추가타확률) 밸류 급등</b>. 용문장 세트(별바라기+얼음발톱)가 0순위.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=P1ZX7ZKNftU" target="_blank" rel="noopener"><span class="n">▶</span> 위지·사제 룬추천</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -690,7 +712,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">✚ 육육이의 탄붕을 위한 사제 공략모음 ✚</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   시즌 2 초기 여론이라 엠블럼·뼈인장 분류 등 미확정 항목은 추후 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -804,7 +826,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    힐러 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    힐러 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge">궁극기가 본체</span>
@@ -925,6 +947,28 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 광륜·가호·물결</p>
+    <p><b>무기룬</b> 바위 칼날·개시 &nbsp;·&nbsp; <b>엠블럼</b> 해방·초월·영원한 밤 &nbsp;·&nbsp; <b>세공 정배</b> 보조·연타</p>
+    <p><b>가호(루미너스) 패치</b>: 궁극기 게이지 3당 1중첩·중첩당 +3%·최대 300(총 +900%) → <b>대군주</b>로 게이지 빠르게 채워 극대화. 시즌2엔 <b>연타·보조·소환 빌드</b>가 강타보다 부상. 긍지·전투년지원 필수급.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=gB-BeGeDMcQ" target="_blank" rel="noopener"><span class="n">▶</span> 두나비·힐러 가이드</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -945,7 +989,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">❁ 육육이의 프렌즈를 위한 힐러 공략모음 ❁</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   보보연 vs 보연소는 논쟁 중 — 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -1060,7 +1104,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    수도사 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    수도사 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge hot">쾌적 · 부캐 인기</span>
@@ -1192,6 +1236,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 등불·뇌정·인과 (~30%)</p>
+    <p><b>무기룬</b> 바위 칼날·두 갈래뿔 &nbsp;·&nbsp; <b>엠블럼</b> 백금 천칭·고결함 &nbsp;·&nbsp; <b>세공 정배</b> 연타·보조</p>
+    <p>등불·뇌정·인과가 삼신기화(~30%). 방어구 별바라기·비늘 덮인 현자 채용.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -1215,7 +1280,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">✾ 육육이의 프렌즈를 위한 수도사 공략모음 ✾</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   보연이 vs 보연방 비교는 실험 중 — 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -1352,7 +1417,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    음유시인 글 18건을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    음유시인 글 18건을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge hot">궁극기 서폿 1황론</span>
@@ -1551,6 +1616,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 합주·무화·조롱</p>
+    <p><b>무기룬</b> 대군주·바위 칼날 &nbsp;·&nbsp; <b>엠블럼</b> 빗발엔별·해방 &nbsp;·&nbsp; <b>세공 정배</b> 방해·보조</p>
+    <p>무기 <b>대군주</b> 채용률이 높고, 방어구 뼈인장·비늘 덮인 현자 채용.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -1578,7 +1664,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">♪ 육육이의 프렌즈를 위한 음유 공략모음 ♪</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   방어구룬·엠블럼·30렙 이후 세팅은 자료 없음 — 갤 연구 진행에 따라 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -1696,7 +1782,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    악사 글 13건을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05 ·
+    악사 글 13건을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11 ·
     <b>악사 ≠ 음유시인</b> (별개 직업 — 음유는 별권 참조)
   </p>
   <div class="verdict-strip">
@@ -1851,6 +1937,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 조율·종장·속주 (~30%)</p>
+    <p><b>무기룬</b> 바위 칼날·개시 &nbsp;·&nbsp; <b>엠블럼</b> 초월·영원한 밤 &nbsp;·&nbsp; <b>세공 정배</b> 방해·연타·강타</p>
+    <p>조율·종장·속주 30%↑ + 순환·매혹 20%↑. 엠블럼 초월 채용률이 높은 편.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -1875,7 +1982,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">♬ 육육이의 프렌즈를 위한 악사 공략모음 ♬</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   악사는 연구 초기 단계 — 조합·룬 확정 시 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -1992,7 +2099,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    댄서 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    댄서 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge down">최약체 여론</span>
@@ -2122,6 +2229,28 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 전환·발걸음·환호 (~30%)</p>
+    <p><b>무기룬</b> 바위 칼날·타오르는 영광 &nbsp;·&nbsp; <b>엠블럼</b> 영원한 밤·초월 &nbsp;·&nbsp; <b>세공 정배</b> 연타·이동</p>
+    <p>신규룬 <b>‘환우’</b> — 5번 에드리브를 3단계로 분리(총 9스킬), <b>파티원 의존 제거로 솔로 딜 가능</b>. 대신 조작 복잡도 급증(‘전문직’). 어비스 미출시라 딜 평가는 보류.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=4BrxFmp1uAQ" target="_blank" rel="noopener"><span class="n">▶</span> 김염록·댄서 근황</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -2141,7 +2270,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">❀ 육육이의 프렌즈를 위한 댄서 공략모음 ❀</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   환호 태그·쿨초 패치 여부에 따라 크게 바뀔 수 있음 — 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -2256,7 +2385,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    검술사 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    검술사 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge">여전히 1티어</span>
@@ -2414,6 +2543,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 관통·평정·일섬 (관통 ~40%)</p>
+    <p><b>무기룬</b> 눈부신 자영·죽음 &nbsp;·&nbsp; <b>엠블럼</b> 위대함·해방 &nbsp;·&nbsp; <b>세공 정배</b> 강타·연타</p>
+    <p>이번 시즌 치명타 확률 선호로 <b>금간 봉인</b>(침식 치명타룬) 채용이 늘었다.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -2438,7 +2588,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">⚔ 육육이의 프렌즈를 위한 검술사 공략모음 ⚔</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   거센바람(신규룬)·장신구 조합은 연구 중 — 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -2553,7 +2703,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    대검전사 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    대검전사 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge hot">화석대 상위권</span>
@@ -2707,6 +2857,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 탄력·광전사·반격</p>
+    <p><b>무기룬</b> 거대한 분노·오랜 광기 &nbsp;·&nbsp; <b>엠블럼</b> 위대함·영원한 밤 &nbsp;·&nbsp; <b>세공 정배</b> 강타·보조</p>
+    <p>타수가 낮아 초월 엠블럼은 까다롭고, <b>오랜 광기</b>(명갑 시너지) 채용.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -2728,7 +2899,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">⚒ 육육이의 프렌즈를 위한 대검 공략모음 ⚒</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   세공 밸런스 패치 시 강보방 재평가 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -2861,7 +3032,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 · 신규 클래스 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    기사 글 23건(후보 178건 중)을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    기사 글 23건(후보 178건 중)을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge down">B급 · 기대→실망</span>
@@ -3026,6 +3197,28 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 용기·돌파·지진</p>
+    <p><b>무기룬</b> 눈부신 자영·거대한 분노 &nbsp;·&nbsp; <b>엠블럼</b> 영원한 밤·백금 천칭 &nbsp;·&nbsp; <b>세공 정배</b> 강타·보조</p>
+    <p><b>신규 장신구 ‘지진’</b> — 3번 방패돌격 범위↑·끌어당김, 5번 사기진작 강화 시 충격파+브레이크 1칸 → 핵심 스킬 평가. <b>6번 패시브 ‘무거운 방패’</b> 신규(방패 강타 강화). 룬 <b>135 정배</b>, 스탯은 빠른 스킬 5,000 → 치명타 6~7천 → 연타.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=T_wauTluFos" target="_blank" rel="noopener"><span class="n">▶</span> 엽이·기사 룬세팅</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -3055,7 +3248,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">⚜ 육육이의 프렌즈를 위한 기사 공략모음 ⚜</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   신규 클래스라 세팅 유동성이 큼 — 무기룬·3줄 세공 등 미확정 항목은 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -3169,7 +3362,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    도적 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    도적 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge down">옆그레이드 · 비주류</span>
@@ -3292,6 +3485,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 덫·폭발·땅거미</p>
+    <p><b>무기룬</b> 바위 칼날·부패 &nbsp;·&nbsp; <b>엠블럼</b> 백금 천칭·해방 &nbsp;·&nbsp; <b>세공 정배</b> 방해·강타·연타</p>
+    <p>투척·교활·독성 조합은 채용률이 낮고, <b>덫·폭발·땅거미</b>가 주류. 태초 룬은 미채용.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -3313,7 +3527,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">† 육육이의 프렌즈를 위한 도적 공략모음 †</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   세공·스탯 정배는 자료 없음 — 럭스 개방 후 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -3430,7 +3644,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    격투가(격가) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    격투가(격가) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge hot">유입 증가 중</span>
@@ -3580,6 +3794,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 전진·간격·승천</p>
+    <p><b>무기룬</b> 타오르는 영광·햇살 &nbsp;·&nbsp; <b>엠블럼</b> 영원한 밤·위대함 &nbsp;·&nbsp; <b>세공 정배</b> 강타·이동·보조</p>
+    <p>방어구 <b>금간 봉인(치명타룬)</b> 채용률 최상위. 단 신화 ‘여신’은 격투가만 예외 — 적주피가 낮아 재고 필요.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -3600,7 +3835,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">❖ 육육이의 프렌즈를 위한 격투가 공략모음 ❖</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   30렙 시즌스킬·프리즘 목표치는 자료 없음 — 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -3737,7 +3972,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    궁수 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    궁수 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge down">하향세 · 세팅 연구 중</span>
@@ -3928,6 +4163,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 닷·날렵함·나선 <span style="opacity:.7;font-size:.9em">(자막 불확실)</span></p>
+    <p><b>무기룬</b> 바위 칼날·영광 &nbsp;·&nbsp; <b>엠블럼</b> 영원한 밤·고결함 &nbsp;·&nbsp; <b>세공 정배</b> 강타·연타·방해</p>
+    <p>방어구 <b>숲 길잡이</b>(이속10%+피증) 선호. 무기는 두 갈래뿔보다 <b>바위 칼날</b>이 우위.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -3956,7 +4212,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">➶ 육육이의 프렌즈를 위한 궁수 공략모음 ➶</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   시즌 2 초기 여론이며 나선/나날닻 연구 결과에 따라 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -4074,7 +4330,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    석궁사수 글 34건을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    석궁사수 글 34건을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge hot">석버지 컴백 · S급</span>
@@ -4262,6 +4518,28 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 꿰뚫음·반전·균열 (꿰뚫음 ~40%)</p>
+    <p><b>무기룬</b> 바위 칼날·타오르는 영광 &nbsp;·&nbsp; <b>엠블럼</b> — &nbsp;·&nbsp; <b>세공 정배</b> 강타·원소·연타</p>
+    <p><b>사이클</b>: 궁 시작 → 화약으로 원소피해 발동 → 꿰뚫기 3회 → 불 붙으면 5번, 아니면 강화볼트 채우고 반복. <b>레벨 30 포커스 파이어 개조가 분기점</b>. 원소 추화(화염데미지)로 치명확률 굴레에서 상당 부분 해방.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=5XW0KmCMyAc" target="_blank" rel="noopener"><span class="n">▶</span> 꾸도현·석궁 완벽정리</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -4294,7 +4572,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">✛ 육육이의 프렌즈를 위한 석궁 공략모음 ✛</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   개조(134/146)·30렙 시즌스킬 이후 세팅은 논쟁 중 — 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -4410,12 +4688,13 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    장궁병 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    장궁병 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge hot">역대급 장궁시즌</span>
     <span class="badge">뼈인장 최대 수혜</span>
     <span class="badge">DPS 4천만 논쟁</span>
+    <span class="badge">7/11 너프 재조명</span>
   </div>
 </header>
 
@@ -4566,15 +4845,49 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141148" target="_blank" rel="noopener"><span class="n">#1141148</span> 뉴비: 석궁 vs 장궁?</a>
     </div>
   </div>
+
+  <div class="card hl">
+    <p><b>[7/11 추가 — 시즌 안착 후 여론]</b> 출시 직후의 “역대급 흑막” 기대는 시즌 2가 자리 잡으면서 한 단계 식었다. 티어표는 <b>여전히 장궁을 1티어로 유지</b>하지만(석궁·궁수·대검·장궁), 다른 한편에선 <b>“딜버프를 받았어도 주력기 쿨타임 증가 + 궁 게이지 너프가 겹쳐 지난 시즌 대비 오히려 너프”</b>라는 재평가가 나온다. “궁 게이지 너프는 즉흥적 패치”라는 성토, “트리아나가 장궁 차별한다 — 존재감조차 없다”는 반응까지 겹쳤다.</p>
+    <p class="note">정리 — <b>체급 1티어 평가는 유지</b>되나 초기의 과열된 “4천만·흑막” 기대치는 현실화 국면. 뼈인장·호응 종결 방향과 강방(연) 세공은 그대로 유효하며, 신규 장궁 유입에게는 <b>“체급은 여전히 상위, 다만 초기 밈만큼 압도적이진 않다”</b> 정도의 온도로 받아들이는 것이 적절.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1161993" target="_blank" rel="noopener"><span class="n">#1161993</span> 역대급 너프 재평가</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1162012" target="_blank" rel="noopener"><span class="n">#1162012</span> 궁 게이지 너프 성토</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1162431" target="_blank" rel="noopener"><span class="n">#1162431</span> 장궁 차별 · 존재감 논란</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 초음파·돌개·호응</p>
+    <p><b>무기룬</b> 바위 칼날·대군주 &nbsp;·&nbsp; <b>엠블럼</b> 영원한 밤·위대함 &nbsp;·&nbsp; <b>세공 정배</b> 강타·방해</p>
+    <p>방어구 1픽은 <b>뼈인장</b>(3스 몰빵 구조와 최고 궁합). 개조 2·3·6 계열.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
 </section>
 
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
-    <h3>출처 14건</h3>
+    <h3>출처 17건</h3>
     <p>번호 클릭 시 디시 원문으로</p>
   </div>
   <ul class="srclist">
+    <li><span class="num">#1162431</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1162431" target="_blank" rel="noopener">트리아나 그렇게 안봤는데 장궁차별하네</a><span class="d">07/11 · 존재감 논란</span></li>
+    <li><span class="num">#1162012</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1162012" target="_blank" rel="noopener">장궁병 궁 게이지 너프는 즉흥적인 패치</a><span class="d">07/11 · 너프 성토</span></li>
+    <li><span class="num">#1161993</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1161993" target="_blank" rel="noopener">장궁병은 역대급 너프를 먹었다</a><span class="d">07/11 · 너프 재평가</span></li>
     <li><span class="num">#1145030</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1145030" target="_blank" rel="noopener">뼈인장 먹으니까 DPS 5천만 뚫네</a><span class="d">07/05 · 3스 몰빵 (미인증)</span></li>
     <li><span class="num">#1144703</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144703" target="_blank" rel="noopener">장궁 보석세공 2줄 3줄</a><span class="d">07/05 · 강방/강방연</span></li>
     <li><span class="num">#1144690</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144690" target="_blank" rel="noopener">장궁병 호응룬 어떰??</a><span class="d">07/05 · 호응 필수</span></li>
@@ -4594,7 +4907,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">➳ 육육이의 프렌즈를 위한 장궁 공략모음 ➳</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 여론 갱신)<br>
   DPS 4천만+ 주장은 미인증 — 레이드룬 공개 후 재평가 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -4709,7 +5022,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    마법사(법사) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    마법사(법사) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge down">약세 · 탈주 러시</span>
@@ -4867,6 +5180,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 운석·우울·서리가시 (+빙창)</p>
+    <p><b>무기룬</b> 개시 &nbsp;·&nbsp; <b>엠블럼</b> 고결함·영원한 밤 &nbsp;·&nbsp; <b>세공 정배</b> 원소·방해</p>
+    <p>신규룬 <b>빙창</b> 채용률 높음. 무기 <b>개시</b>가 마법사 종결급(구 서리바람 계승).</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -4891,7 +5225,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">✶ 육육이의 프렌즈를 위한 법사 공략모음 ✶</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   빙창 개선 패치·30렙 시즌스킬에 따라 크게 바뀔 수 있음 — 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -5038,7 +5372,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    화법(화염술사) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    화법(화염술사) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge hot">시즌 2 딜 1위</span>
@@ -5236,6 +5570,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 분출·청염·폭격 (폭격=신규)</p>
+    <p><b>무기룬</b> 타오르는 영광·광채 &nbsp;·&nbsp; <b>엠블럼</b> 위대함·해방 &nbsp;·&nbsp; <b>세공 정배</b> 원소·강타·연타</p>
+    <p><b>뼈인장 시너지로 청염 세팅이 국민 세팅화</b>. 엠블럼은 위대함·해방 둘 다 채용률 높은 편.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -5261,7 +5616,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">🜂 육육이의 프렌즈를 위한 화법 공략모음 🜂</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   시즌 2 초기 여론이며 30레벨 시즌 패시브 적용 후 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -5393,7 +5748,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    빙결(빙결술사) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    빙결(빙결술사) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge hot">숨은 사기 (간접 찌라시)</span>
@@ -5545,6 +5900,28 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 빙하·북풍·설원 (설원 ~36%)</p>
+    <p><b>무기룬</b> 바위 칼날·광채 &nbsp;·&nbsp; <b>엠블럼</b> 해방·영원한 밤 &nbsp;·&nbsp; <b>세공 정배</b> 원소·소환</p>
+    <p><b>프로스트 가드 능동딜</b>로 전환(부익 의존 지속피해 탈피). 신규룬 <b>‘서원’(5번)</b> 핵심 — <b>빙검보다 서원을 먼저</b> 써야 손실 없음. <b>북빙설(4·5·6)</b> 빌드 추천(궁 지속피해로 저점 보완).</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=9BzBGB-5v1c" target="_blank" rel="noopener"><span class="n">▶</span> 꾸도현·빙결 개념정리</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -5565,7 +5942,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">❄ 육육이의 프렌즈를 위한 빙결 공략모음 ❄</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   빙결은 세팅 연구가 덜 된 직업이라 자료 없음 항목이 많음 — 갤 연구 진행에 따라 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -5680,7 +6057,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    전격술사 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    전격술사 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge">딜러 중상위권</span>
@@ -5825,6 +6202,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 섬광·도관·천둥</p>
+    <p><b>무기룬</b> 개시 &nbsp;·&nbsp; <b>엠블럼</b> 위대함·영원한 밤 &nbsp;·&nbsp; <b>세공 정배</b> 원소·강타·보조</p>
+    <p>섬광·폭풍우 포함 4종이 유효. 타수가 낮아 초월 엠블럼은 까다로움.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -5846,7 +6244,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">ϟ 육육이의 프렌즈를 위한 전격 공략모음 ϟ</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   도관/천둥·봉인술사 풀세팅은 연구 중 — 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -5960,7 +6358,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 · 전사(검+방패) ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    검방(전사) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    검방(전사) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge down">허수딜 최하위권</span>
@@ -6099,6 +6497,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 붕괴·극점·맹공</p>
+    <p><b>무기룬</b> 바위 칼날·대군주 &nbsp;·&nbsp; <b>엠블럼</b> 위대함·초월 &nbsp;·&nbsp; <b>세공 정배</b> 강타·방해</p>
+    <p>세팅 정보가 아직 적어 갱신 예정. 방어구는 서광·승전·칼바람 계열 채용.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -6121,7 +6540,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">⛨ 육육이의 프렌즈를 위한 검방 공략모음 ⛨</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   어비스 기갱 개방 후 광역 탱커 재평가 여지 — 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -6228,7 +6647,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    듀얼블레이드(듀블) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05 ·
+    듀얼블레이드(듀블) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11 ·
     <b>연구글이 적어 자료가 얇은 직업</b>
   </p>
   <div class="verdict-strip">
@@ -6317,6 +6736,28 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 천침·속행·질주</p>
+    <p><b>무기룬</b> 바위 칼날·타오르는 영광 &nbsp;·&nbsp; <b>엠블럼</b> 해방·초월 &nbsp;·&nbsp; <b>세공 정배</b> 연타·이동</p>
+    <p><b>회오리 빌드</b>: 뼈인장(3번 슬롯 주피 53%↑)+바다뱀(채널링 주피 31%↑) 세트가 핵심 — <b>광역 특화·단일딜 약해 예능용</b>. 질주와 병용 불가. 4번 하울링 템페스트가 캔슬용→강제 시전형으로 변경.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=M-Fj99XhKxo" target="_blank" rel="noopener"><span class="n">▶</span> 센터로드TV·듀블 회오리</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -6336,7 +6777,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">⚔⚔ 육육이의 프렌즈를 위한 듀블 공략모음 ⚔⚔</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   연구글 희소 직업 — 시즌스킬 30렙·레이드룬 공개 후 재조사 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -6454,7 +6895,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    암흑술사(암술) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-05
+    암흑술사(암술) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
   </p>
   <div class="verdict-strip">
     <span class="badge down">불쾌 리스크 · 소수 직업</span>
@@ -6585,6 +7026,27 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 광기·구속·타락 <span style="opacity:.7;font-size:.9em">(채용률 30%↑ 없음·실험 단계)</span></p>
+    <p><b>무기룬</b> 바위 칼날·개시 &nbsp;·&nbsp; <b>엠블럼</b> 영원한 밤·해방 &nbsp;·&nbsp; <b>세공 정배</b> 소환·방해</p>
+    <p>아직 정립된 삼신기가 없는 <b>실험 단계</b>. 방어구는 바다뱀(채널링 판정) 채용이 두드러짐.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
@@ -6605,11 +7067,10 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">☽ 육육이의 프렌즈를 위한 암술 공략모음 ☽</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
   절구나/절구타 비교·세공 최적은 시기상조 — 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
 </div>
 
 </template>
-

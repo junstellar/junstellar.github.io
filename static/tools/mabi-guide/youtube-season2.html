@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>육육이의 공략 서재 — 시즌2 유튜브 공략 총정리</title>
+<style>
+  :root{
+    --paper:#f2efe8;--card:#fbf9f4;--ink:#2a2620;--ink-soft:#6f685c;
+    --gold:#9a7a28;--gold-deep:#6f5514;--gold-soft:#f1e8cf;--gold-line:#d9c795;--line:#e5dfcf;
+    --serif:'Nanum Myeongjo','Batang','AppleMyungjo',Georgia,serif;
+    --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:radial-gradient(120% 60% at 50% -10%, #f8f5ec 0%, var(--paper) 55%);color:var(--ink);font-family:var(--sans);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px 80px}
+  header{text-align:center;padding:52px 0 20px}
+  .sigil{font-size:26px;color:var(--gold);margin-bottom:12px}
+  .byline{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--gold-deep);margin-bottom:6px}
+  h1{font-family:var(--serif);font-size:clamp(26px,5.4vw,40px);margin:0;font-weight:700;letter-spacing:-.01em}
+  .rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:18px auto 0;max-width:460px;color:var(--gold)}
+  .rule::before,.rule::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold-line))}
+  .rule::after{background:linear-gradient(90deg,var(--gold-line),transparent)}
+  .rule span{font-size:13px}
+  .sub{font-size:13px;color:var(--ink-soft);margin-top:13px;line-height:1.6}
+  .sub a{color:var(--gold-deep);font-weight:600;text-decoration:none}
+  .back{display:inline-block;margin:18px 0 0;font-size:12.5px;color:var(--gold-deep);text-decoration:none;font-weight:600}
+  .disclaim{background:#fbf4e6;border:1px solid var(--gold-line);border-radius:12px;padding:13px 16px;margin:26px 0 8px;font-size:12.5px;color:var(--ink-soft);line-height:1.65}
+  .disclaim b{color:var(--gold-deep)}
+  .grouph{font-family:var(--serif);font-size:15px;letter-spacing:.14em;color:var(--gold-deep);text-transform:uppercase;margin:40px 0 6px;display:flex;align-items:center;gap:10px}
+  .grouph .em{font-size:20px}
+  .lead{font-size:13.5px;color:var(--ink-soft);margin:0 0 14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:12px 0}
+  .card h3{margin:0 0 8px;font-size:16px;font-family:var(--serif);color:var(--ink)}
+  .card p{margin:7px 0;font-size:14px}
+  .card ul{margin:7px 0;padding-left:18px}
+  .card li{font-size:14px;margin:4px 0}
+  .k{display:inline-block;font-size:11px;font-weight:800;background:var(--gold-soft);color:var(--gold-deep);border-radius:999px;padding:1px 9px;margin-right:6px;vertical-align:1px}
+  .tierrow{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+  .pill{font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px;background:var(--gold-soft);color:var(--gold-deep)}
+  .pill.s{background:#e2efe6;color:#2e6b4a}
+  .pill.b{background:#f1ece0;color:#7a6a3c}
+  .pill.d{background:#f6e3de;color:#8c3b2e}
+  .tbl-wrap{overflow-x:auto;margin:10px 0;border:1px solid var(--line);border-radius:12px}
+  table{border-collapse:collapse;width:100%;min-width:620px;font-size:12.5px;background:var(--card)}
+  th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--gold-soft);color:var(--gold-deep);font-weight:800;position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td.job{font-weight:800;white-space:nowrap;color:var(--gold-deep)}
+  .src{font-size:12px;color:var(--ink-soft);margin-top:6px}
+  .src a{color:var(--gold-deep);text-decoration:none;font-weight:600}
+  .srclist{list-style:none;padding:0;margin:8px 0}
+  .srclist li{padding:7px 0;border-bottom:1px dashed var(--line);font-size:13px}
+  .srclist a{color:var(--gold-deep);text-decoration:none;font-weight:700}
+  .srclist .ch{color:var(--ink-soft);font-weight:400}
+  footer{margin-top:50px;padding-top:20px;border-top:2px solid var(--gold-line);text-align:center;font-size:12.5px;color:var(--ink-soft);line-height:1.7}
+  footer .sign{font-family:var(--serif);font-size:15px;color:var(--gold-deep);margin-bottom:4px}
+  a:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <div class="sigil">🎬</div>
+  <div class="byline">육육이의</div>
+  <h1>시즌2 유튜브 공략 총정리</h1>
+  <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
+  <p class="sub">
+    시즌2 시작(2026-07-01) 이후 올라온 주요 공략 유튜버 영상 <b>14편</b>을 요약 · 기준일 <b>2026-07-11</b><br>
+    갤러리 기반 <a href="./index.html">직업별 공략 서재</a>와 교차 참고용
+  </p>
+  <a class="back" href="./index.html">← 공략 서재로 돌아가기</a>
+</header>
+
+<div class="disclaim">
+  <b>참고</b> — 아래 내용은 각 영상의 <b>자동 생성 자막</b>을 요약한 것입니다. 자막 특성상 일부 <b>룬·스킬 이름은 실제와 다를 수 있으며</b>(예: 표기 흔들림), 티어·평가는 각 유튜버의 개인 기준입니다. 채용률 수치는 시즌2 <b>2주차</b> 기준이며 매주 변동합니다. 정확한 룬 명칭·수치는 원본 영상을 확인하세요.
+</div>
+
+<div class="grouph"><span class="em">📈</span> 시즌2 지표 — “진짜 터졌다”</div>
+<p class="lead">황산갈매기 채널이 모바일인덱스 지표로 분석한 시즌2 오픈 성적.</p>
+<div class="card">
+  <ul>
+    <li>오픈 첫 주 <b>주간 사용자수 +44.54%</b> 상승 — 순위 <b>22위(14계단↑)</b>. MMORPG 업데이트로는 이례적(과거 한복 +14~17%, 1주년 +10%, 파라파라 이벤트 +19.2% 대비 역대급).</li>
+    <li>추정 유입 <b>약 4만 명</b>(신규 ~1만 + 복귀 ~3만), MAU 약 30~37만.</li>
+    <li>상승 요인(시청자 투표): 콘텐츠 32% · 전설 천장 소급 적용 29% · <b>날개 가방+잠옷 패션 무료 배급</b> 23% · 넥슨플레이 16%.</li>
+    <li>콘텐츠 로드맵: 오픈 주 <b>어비스</b> → 다음 주 <b>레이드</b>, 난도는 “어려움” 다음 <b>“지옥 1”</b> 추가 예정.</li>
+  </ul>
+  <div class="src">출처: 황산갈매기 <a href="https://www.youtube.com/watch?v=_Jw0VafHbO4" target="_blank" rel="noopener">「44.54% 상승… 시즌2 진짜 터졌나?」</a></div>
+</div>
+
+<div class="grouph"><span class="em">🛡️</span> 방어구 룬 티어</div>
+<p class="lead">이번 시즌은 아득한 빛(엠블럼) 부재로 <b>치명타 확률·추가타 확률·치명타 피해</b>의 가치가 매우 높음 → 침식 계열이 최상위.</p>
+<div class="card">
+  <div class="tierrow">
+    <span class="pill s">S+ 침식 : 금간 봉인(치명확률)</span>
+    <span class="pill s">무너진 경계(추가타확률)</span>
+    <span class="pill s">여신(적주피·불사)</span>
+    <span class="pill s">용사냥꾼(치확+치피)</span>
+    <span class="pill s">무형(저주 발동 공29%)</span>
+  </div>
+  <ul>
+    <li><span class="k">각성 룬 택1</span> <b>첫 번째 서약</b>(강타+치명 — 강타 직업) · <b>교차하는 사슬</b>(연타+추가타 — 연타 직업). 3종 중 하나만 착용.</li>
+    <li><span class="k">역할 전용</span> <b>긍지</b>(힐러계 4직업 — 파티 필수급) · <b>위험·자석</b>(탱커 3직업 — 무방비 특화, “방어구 한 자리 졸업”).</li>
+    <li><span class="k">특화</span> 흐릿한 형상(강타피) · 잿빛 장막(연타피) · <b>숲 길잡이</b>(이속10% — 파밍/궁수 최상위).</li>
+    <li><span class="k">직업 특화</span> 수호자·가라앉은 왕국(궁극기 딜: 화법·듀블·검술) · <b>뼈인장</b>(3번 스킬 주력: 장궁·화법·사제) · 무한한 탐욕(자원 소모: 사제·화법).</li>
+  </ul>
+  <div class="src">출처: 새크리마 <a href="https://www.youtube.com/watch?v=DHbIZ_l7ly8" target="_blank" rel="noopener">「시즌2 방어구 티어리스트」</a></div>
+</div>
+
+<div class="grouph"><span class="em">⚔️</span> 무기 룬 티어</div>
+<div class="card">
+  <ul>
+    <li><span class="pill s">SSS</span> <b>바위 칼날</b> — 적중 시 치명확률 누적(최대 15%). 이번 시즌 치명확률이 귀해 타수 많은 직업 전반의 1픽(“신화보다 나을 수도”).</li>
+    <li><span class="pill s">SSS</span> <b>죽음</b>(신화, 공20%+치피20%) 거의 전 직업 종결급 · <b>창백한 기수</b>(궁극기 딜) · <b>대군주</b>(궁극기 게이지 회복 — 어비스 수합 핵심, “시즌2 무도가 포지션”).</li>
+    <li><span class="pill">S+</span> <b>타오르는 영광</b>(밤의 축복마다 공증 펌핑) · <b>눈부신 자영</b>(물결·광역 — 기사·수도사·검술) · <b>개시</b>(법사·전격 종결급).</li>
+    <li><span class="pill b">A~B</span> 거대한 분노(강타 직업) · 광채(치피+적주피) · 억눌린 충동(저주) · 오랜 광기(대검) · 햇살(쿨감).</li>
+  </ul>
+  <div class="src">출처: 새크리마 <a href="https://www.youtube.com/watch?v=jB8M_XxJ1hk" target="_blank" rel="noopener">「시즌2 무기 룬 티어리스트」</a></div>
+</div>
+
+<div class="grouph"><span class="em">💠</span> 엠블럼 룬 티어</div>
+<div class="card">
+  <p>핵심 대결: <b>아득한 빛 2초월(구시즌)</b> vs <b>시즌2 신규(해방·위대함·영원한 밤)</b>.</p>
+  <ul>
+    <li><b>아득한 빛 2초월</b> — 현 시점 <b>DPS 1위</b>. 각성 밸류가 폭발적이라 원브컷·짧은 전투에서 신규 엠블럼을 이김.</li>
+    <li><b>영원한 밤</b> — 상시 30.5~31%(침식 2개 시 34~35%). 밤의 축복에 안 맞춰도 되는 <b>편의성 최고</b> 룬, 솔플·긴 전투(2분+)에 강함.</li>
+    <li><b>해방</b>(연타 각성) · <b>위대함</b>(강타 각성) — 타이밍 맞추면 종결. 단 연/강타 <b>침식과 병용 시 효율 25%로 급락</b> → 그럴 바엔 아득한 빛.</li>
+    <li>빗발엔별(무방비 특화, 레이드 비중 낮음) · 백금 천칭·태초·고결함은 하위.</li>
+  </ul>
+  <p class="src">시즌2 엠블럼만 쓴다면 <b>해방·위대함·영원한 밤 중 택1</b>이 메타.<br>출처: 새크리마 <a href="https://www.youtube.com/watch?v=R2N7WCAVqtQ" target="_blank" rel="noopener">「시즌2 엠블럼 티어리스트」</a></p>
+</div>
+
+<div class="grouph"><span class="em">📋</span> 전 직업 삼신기 · 세공 요약</div>
+<p class="lead">황산갈매기 「컨닝페이퍼 1.0」 + 「룬 채용률 첫 분석」 기준. 장신구 삼신기 = 채용률 상위 3룬, 무기·엠블럼은 대표 채용, 세공은 보석 태그 정배.</p>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>직업</th><th>장신구 삼신기</th><th>무기 룬</th><th>엠블럼</th><th>세공 정배</th></tr></thead>
+<tbody>
+  <tr><td class="job">검술사</td><td>관통·평정·일섬 (관통 ~40%)</td><td>눈부신 자영·죽음</td><td>위대함·해방</td><td>강타·연타</td></tr>
+  <tr><td class="job">대검</td><td>탄력·광전사·반격</td><td>거대한 분노·오랜 광기</td><td>위대함·영원한 밤</td><td>강타·보조</td></tr>
+  <tr><td class="job">기사</td><td>용기·돌파·지진</td><td>눈부신 자영·거대한 분노</td><td>영원한 밤·백금 천칭</td><td>강타·보조</td></tr>
+  <tr><td class="job">검방</td><td>붕괴·극점·맹공</td><td>바위 칼날·대군주</td><td>위대함·초월</td><td>강타·방해</td></tr>
+  <tr><td class="job">도적</td><td>덫·폭발·땅거미</td><td>바위 칼날·부패</td><td>백금 천칭·해방</td><td>방해·강타·연타</td></tr>
+  <tr><td class="job">듀블</td><td>천침·속행·질주</td><td>바위 칼날·타오르는 영광</td><td>해방·초월</td><td>연타·이동</td></tr>
+  <tr><td class="job">격투가</td><td>전진·간격·승천</td><td>타오르는 영광·햇살</td><td>영원한 밤·위대함</td><td>강타·이동·보조</td></tr>
+  <tr><td class="job">궁수</td><td>닷·날렵함·나선 <span style="color:#a08">(불확실)</span></td><td>바위 칼날·영광</td><td>영원한 밤·고결함</td><td>강타·연타·방해</td></tr>
+  <tr><td class="job">석궁</td><td>꿰뚫음·반전·균열 (꿰뚫음 ~40%)</td><td>바위 칼날·타오르는 영광</td><td>—</td><td>강타·원소·연타</td></tr>
+  <tr><td class="job">장궁</td><td>초음파·돌개·호응</td><td>바위 칼날·대군주</td><td>영원한 밤·위대함</td><td>강타·방해</td></tr>
+  <tr><td class="job">법사</td><td>운석·우울·서리가시 (+빙창)</td><td>개시</td><td>고결함·영원한 밤</td><td>원소·방해</td></tr>
+  <tr><td class="job">화법</td><td>분출·청염·폭격 (폭격=신규)</td><td>타오르는 영광·광채</td><td>위대함·해방</td><td>원소·강타·연타</td></tr>
+  <tr><td class="job">빙결</td><td>빙하·북풍·설원 (설원 ~36%)</td><td>바위 칼날·광채</td><td>해방·영원한 밤</td><td>원소·소환</td></tr>
+  <tr><td class="job">전격</td><td>섬광·도관·천둥</td><td>개시</td><td>위대함·영원한 밤</td><td>원소·강타·보조</td></tr>
+  <tr><td class="job">암술</td><td>광기·구속·타락 <span style="color:#a08">(30%↑ 없음·실험)</span></td><td>바위 칼날·개시</td><td>영원한 밤·해방</td><td>소환·방해</td></tr>
+  <tr><td class="job">사제</td><td>심판·성전·집행 (+날개·결속)</td><td>개시·광채</td><td>위대함·영원한 밤</td><td>보조·강타·연타</td></tr>
+  <tr><td class="job">힐러</td><td>광륜·가호·물결</td><td>바위 칼날·개시</td><td>해방·초월·영원한 밤</td><td>보조·연타</td></tr>
+  <tr><td class="job">수도사</td><td>등불·뇌정·인과 (~30%)</td><td>바위 칼날·두 갈래뿔</td><td>백금 천칭·고결함</td><td>연타·보조</td></tr>
+  <tr><td class="job">음유</td><td>합주·무화·조롱</td><td>대군주·바위 칼날</td><td>빗발엔별·해방</td><td>방해·보조</td></tr>
+  <tr><td class="job">악사</td><td>조율·종장·속주 (~30%)</td><td>바위 칼날·개시</td><td>초월·영원한 밤</td><td>방해·연타·강타</td></tr>
+  <tr><td class="job">댄서</td><td>전환·발걸음·환호 (~30%)</td><td>바위 칼날·타오르는 영광</td><td>영원한 밤·초월</td><td>연타·이동</td></tr>
+</tbody>
+</table>
+</div>
+<div class="src">출처: 황산갈매기 <a href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener">「전 직업 컨닝페이퍼 1.0」</a> · <a href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener">「룬 채용률 첫 분석」</a> · <a href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener">「상위권 유저 룬 세팅」</a></div>
+
+<div class="grouph"><span class="em">🔎</span> 직업별 심화 영상 요약</div>
+<p class="lead">단일 직업을 깊게 다룬 영상 7편. 위 표보다 구체적인 운영·사이클 정보.</p>
+
+<div class="card">
+  <h3>🎯 석궁사수 <span style="font-weight:400;font-size:12px;color:var(--ink-soft)">— 꾸도현</span></h3>
+  <ul>
+    <li><b>사이클</b>: 궁 시작 → 화약으로 원소피해 발동 → 꿰뚫기 3회 → 불 붙으면 5번, 안 붙으면 강화볼트 채우고 반복. 3회 반복 시 궁 충전.</li>
+    <li><b>레벨 30</b> 포커스 파이어 개조가 핵심 분기점 — 이후 볼트 추가로 운영 질 급상승.</li>
+    <li><b>세공</b>: 강타+원소 필수, 스킬위력으로 주피가 과해 주피 한계효용 낮음 → 치명타·강타·연타 위주, 추가타는 낮게.</li>
+    <li><b>시즌2</b>: 원소 추화로 화염데미지(고변산) 생겨 치명확률 굴레에서 상당 부분 해방. 3번 스킬이 앞당김→뒤로 점프로 변경(적응 필요).</li>
+  </ul>
+  <div class="src"><a href="https://www.youtube.com/watch?v=5XW0KmCMyAc" target="_blank" rel="noopener">「시즌2 석궁사수 완벽정리」</a> · 교차: <a href="./crossbow.html">석궁 공략</a></div>
+</div>
+
+<div class="card">
+  <h3>💚 힐러 <span style="font-weight:400;font-size:12px;color:var(--ink-soft)">— 두나비</span></h3>
+  <ul>
+    <li><b>가호(루미너스) 패치</b>: 궁극기 게이지 3당 1중첩, 중첩당 +3% 데미지, 최대 300중첩(총 +900%). 궁극기 100% 유지 + <b>대군주</b>로 게이지 빠르게 채워 중첩 극대화.</li>
+    <li><b>세공</b>: 2줄이면 연타·보조 / 3줄이면 연타·보조·강타(또는 연타·보조·소환). 보조는 쿨감. 쿨감 8~10줄이면 사이클 무리 없음.</li>
+    <li><b>방어구</b>: 긍지(비태그 서포터 전용) · 교차하는 사슬 · 비늘 덮인 현자 · 전투년지원(공증25%+회복10%, 필수급).</li>
+    <li><b>시즌2</b>: 가호 장신구 등장으로 <b>연타·보조·소환 빌드</b>가 강타보다 인기 예상.</li>
+  </ul>
+  <div class="src"><a href="https://www.youtube.com/watch?v=gB-BeGeDMcQ" target="_blank" rel="noopener">「시즌2 힐러 가이드」</a> · 교차: <a href="./healer.html">힐러 공략</a></div>
+</div>
+
+<div class="card">
+  <h3>❄️ 빙결술사 <span style="font-weight:400;font-size:12px;color:var(--ink-soft)">— 꾸도현</span></h3>
+  <ul>
+    <li><b>패러다임 전환</b>: 부익 의존 지속피해 → “프로스트 가드” 능동 딜. 부익 영향력 절반 너프됐으나 직접타격 영향력 상승으로 노력한 만큼 딜 나오는 구조.</li>
+    <li><b>신규 룬 “서원”(5번)</b>이 핵심 — 지속피해 굴레 탈출, 어비스 저점 보완. <b>순서 중요</b>: 빙검보다 서원을 먼저(반대로 하면 DPS 큰 손실).</li>
+    <li><b>빌드</b>: ① 빙빙설(빙검·빙아·서원 — 궁 없음, 고난도) ② <b>북빙설(4·5·6 — 궁 지속피해로 저점 보완, 영상 추천)</b>.</li>
+    <li><b>세공</b>: 스킬위력+추가타+치명타, 연타·강타 소량. 원소+소환 태그 필수.</li>
+  </ul>
+  <div class="src"><a href="https://www.youtube.com/watch?v=9BzBGB-5v1c" target="_blank" rel="noopener">「시즌2 빙결술사 개념정리」</a> · 교차: <a href="./ice.html">빙결 공략</a></div>
+</div>
+
+<div class="card">
+  <h3>⛪ 사제 <span style="font-weight:400;font-size:12px;color:var(--ink-soft)">— 위지</span></h3>
+  <ul>
+    <li><b>핵심</b>: 시즌 스킬이 어비스에서 <b>피증 40%+</b> 맞춰야 강타 정상 발동 → 피증을 룬으로 확보하는 게 이번 시즌 관건.</li>
+    <li><b>무기</b>: 개시(홀스 전용)·광채(집행 종결급)·창백한 기수·죽음(신화). <b>방어구</b>: 용문장 세트(별바라기+얼음발톱, 0순위) + 서약(집행 필수)·뼈인장(집행 핵심)·긍지.</li>
+    <li><b>세공</b>: 강타 4,100~5,000 맞춘 뒤 치명타 몰빵, 남은 것 추가타. 홀스=보조·강타(방해/연타), 집행=보조·방해(강타/연타).</li>
+    <li><b>시즌2</b>: 일렁이는 불꽃 삭제로 홀스 추가타컷 상승 → <b>얼음발톱(추가타확률) 밸류 급등</b>.</li>
+  </ul>
+  <div class="src"><a href="https://www.youtube.com/watch?v=P1ZX7ZKNftU" target="_blank" rel="noopener">「시즌2 사제 룬추천」</a> · 교차: <a href="./priest.html">사제 공략</a></div>
+</div>
+
+<div class="card">
+  <h3>🗡️ 듀얼블레이드 <span style="font-weight:400;font-size:12px;color:var(--ink-soft)">— 센터로드TV (회오리 빌드)</span></h3>
+  <ul>
+    <li><b>회오리 빌드</b>: 뼈인장(3번 슬롯 주피 53%↑)+바다뱀(채널링 주피 31%↑) 세트가 핵심. 회오리 첫 사용 → 천침으로 공속↑ → 4버블마다 회오리 반복.</li>
+    <li><b>주의</b>: 회오리는 <b>광역 특화 — 단일딜은 약함</b>, 예능/재미용. 10성룬+뼈인장·바다뱀 전엔 성능 저조. 질주와 병용 불가.</li>
+    <li><b>시즌2</b>: 4번 하울링 템페스트가 캔슬용→강제 시전형으로 변경(밤의 축복 연동).</li>
+  </ul>
+  <div class="src"><a href="https://www.youtube.com/watch?v=M-Fj99XhKxo" target="_blank" rel="noopener">「듀블 룬추천 회오리 시대」</a> · 교차: <a href="./dualblade.html">듀블 공략</a></div>
+</div>
+
+<div class="card">
+  <h3>🛡️ 기사 <span style="font-weight:400;font-size:12px;color:var(--ink-soft)">— 엽이</span></h3>
+  <ul>
+    <li><b>신규 장신구 “지진”</b>(3번 방패돌격 범위↑·끌어당김, 5번 사기진작 강화 시 충격파+브레이크 1칸) → 기사 핵심 스킬로 평가.</li>
+    <li><b>6번 패시브 “무거운 방패”</b> 신규 — 방패 강타 강화(피해+브레이크+버티기).</li>
+    <li><b>룬 135 정배</b>. 스탯: 빠른 스킬 5,000 상한 → 치명타 6~7천 → 연타.</li>
+    <li><b>시즌2</b>: 브레이크 데미지 보강으로 세팅 방향이 시즌1보다 명확(탱커 정체성 강화).</li>
+  </ul>
+  <div class="src"><a href="https://www.youtube.com/watch?v=T_wauTluFos" target="_blank" rel="noopener">「시즌2 기사 룬 세팅 방향」</a> · 교차: <a href="./knight.html">기사 공략</a></div>
+</div>
+
+<div class="card">
+  <h3>💃 댄서 <span style="font-weight:400;font-size:12px;color:var(--ink-soft)">— 김염록</span></h3>
+  <ul>
+    <li><b>신규 룬 “환우”</b>: 5번 에드리브를 3단계로 분리(총 스킬 9개), 속성 3스택 쌓아 피니시. <b>파티원 의존 제거 → 댄서 혼자 딜 가능</b>하게 설계.</li>
+    <li><b>운영</b>: 우아 중심. 스택은 “직전 사용 스킬 속성”을 따라가 순서 꼬이기 쉬움 → 조작 복잡도 급증(“전문직” 수준).</li>
+    <li><b>평가</b>: 어비스 미출시라 데미지 확정 평가는 보류. 적응 난이도 매우 높음.</li>
+  </ul>
+  <div class="src"><a href="https://www.youtube.com/watch?v=4BrxFmp1uAQ" target="_blank" rel="noopener">「시즌2 댄서 근황」</a> · 교차: <a href="./dancer.html">댄서 공략</a></div>
+</div>
+
+<div class="grouph"><span class="em">🎞️</span> 요약에 사용한 영상 14편</div>
+<ul class="srclist">
+  <li><a href="https://www.youtube.com/watch?v=_Jw0VafHbO4" target="_blank" rel="noopener">44.54% 상승… 시즌2 진짜 터졌나?</a> <span class="ch">— 황산갈매기 · 07/01</span></li>
+  <li><a href="https://www.youtube.com/watch?v=DHbIZ_l7ly8" target="_blank" rel="noopener">시즌 2 방어구 티어리스트</a> <span class="ch">— 새크리마 · 07/01</span></li>
+  <li><a href="https://www.youtube.com/watch?v=jB8M_XxJ1hk" target="_blank" rel="noopener">시즌 2 무기 룬 티어리스트</a> <span class="ch">— 새크리마 · 07/04</span></li>
+  <li><a href="https://www.youtube.com/watch?v=R2N7WCAVqtQ" target="_blank" rel="noopener">시즌 2 엠블럼 티어리스트</a> <span class="ch">— 새크리마 · 07/09</span></li>
+  <li><a href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener">시즌2 룬 채용률 첫 분석, 직업별 삼신기</a> <span class="ch">— 황산갈매기 · 07/06</span></li>
+  <li><a href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener">전 직업 장신구·개조·세공 총정리 (컨닝페이퍼 1.0)</a> <span class="ch">— 황산갈매기 · 07/10</span></li>
+  <li><a href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener">상위권 유저 룬 세팅 보니까 시즌2 메타</a> <span class="ch">— 황산갈매기 · 07/06</span></li>
+  <li><a href="https://www.youtube.com/watch?v=5XW0KmCMyAc" target="_blank" rel="noopener">시즌2 석궁사수 완벽정리</a> <span class="ch">— 꾸도현 · 07/02</span></li>
+  <li><a href="https://www.youtube.com/watch?v=gB-BeGeDMcQ" target="_blank" rel="noopener">시즌2 힐러 가이드</a> <span class="ch">— 두나비 · 07/05</span></li>
+  <li><a href="https://www.youtube.com/watch?v=9BzBGB-5v1c" target="_blank" rel="noopener">시즌2 빙결술사 개념정리</a> <span class="ch">— 꾸도현 · 07/05</span></li>
+  <li><a href="https://www.youtube.com/watch?v=P1ZX7ZKNftU" target="_blank" rel="noopener">시즌2 사제 룬추천</a> <span class="ch">— 위지 · 07/05</span></li>
+  <li><a href="https://www.youtube.com/watch?v=M-Fj99XhKxo" target="_blank" rel="noopener">듀얼 블레이드 룬 추천, 회오리 시대</a> <span class="ch">— 센터로드TV · 07/07</span></li>
+  <li><a href="https://www.youtube.com/watch?v=T_wauTluFos" target="_blank" rel="noopener">시즌2 기사 룬 세팅 방향과 달라진 점</a> <span class="ch">— 엽이 · 07/03</span></li>
+  <li><a href="https://www.youtube.com/watch?v=4BrxFmp1uAQ" target="_blank" rel="noopener">스킬이 9개나 늘어난 시즌2 댄서 근황</a> <span class="ch">— 김염록 · 07/01</span></li>
+</ul>
+
+<footer>
+  <div class="sign">🎬 육육이의 공략 서재 · 유튜브 편 🎬</div>
+  정리: 육육이 · 영상 출처: 각 유튜버 채널 · 기준일 2026-07-11<br>
+  자동 자막 요약이라 룬·수치는 원본 영상으로 재확인 권장 · 매주 신규 영상 반영 예정
+</footer>
+
+</div>
+
+</body>
+</html>
