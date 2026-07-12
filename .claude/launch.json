@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "blog",
+      "runtimeExecutable": "hugo",
+      "runtimeArgs": ["server", "-D", "-p", "1313"],
+      "port": 1313
+    },
+    {
+      "name": "games-preview",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8899", "--directory", "static/games"],
+      "port": 8899
+    },
+    {
+      "name": "games-verify",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8900", "--directory", "static/games"],
+      "port": 8900
+    },
+    {
+      "name": "gamelab-src",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8901", "--directory", "C:/Project/ai-game-lab"],
+      "port": 8901
+    }
+  ]
+}

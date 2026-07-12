@@ -1,0 +1,19 @@
+I built an MCP server so Claude Code can work Redmine issues directly. No cloud connectors — it runs locally on your PC and connects to any Redmine with just an API key and URL. Built in about a week.
+
+📦 Install (two commands, any OS)
+pipx install git+https://github.com/junstellar/redmine-mcp-jun.git
+redmine-mcp-setup
+
+🔗 Code · MIT license
+https://github.com/junstellar/redmine-mcp-jun
+
+✍️ Full build write-up (blog · To the Moon)
+https://junstellar.github.io/en/p/redmine-mcp-server/
+
+Before writing any code, I listed what the AI should actually do and boiled it down to ten focused tools — list/create issues, comments, wiki read/update, a "my today" shortcut, and more. The hard part wasn't the code; it was making it easy for anyone to install, which I finally solved with pipx.
+
+With AI tools like Claude Code, you can build your own utilities like this fast. Give it a try!
+
+※ Some images and the voiceover were AI-generated.
+
+#ClaudeCode #MCP #Redmine #AI #DevTools #BuildInPublic #Productivity
