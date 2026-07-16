@@ -7,6 +7,9 @@ menu:
         params:
             icon: tool
 links:
+  - title: 🚀 AI 게임 랩
+    description: AI 코딩(바이브 코딩)으로 만드는 브라우저 미니게임 모음 — 🎨 AI 그림 맞히기, 🟩 한글 워들, 🍰 디저트 탑 쌓기. 설치 없이 바로 플레이!
+    website: /games/
   - title: 🫥 얼굴 모자이크
     description: 사진 속 얼굴을 자동으로 찾아 모자이크·블러·검은 박스·이모지로 가려줍니다. 사진은 서버로 전송되지 않고 브라우저 안에서만 처리됩니다.
     website: /tools/face-mosaic/

@@ -7,6 +7,9 @@ menu:
         params:
             icon: tool
 links:
+  - title: 🚀 AIゲームラボ
+    description: AIコーディング（バイブコーディング）で作るブラウザミニゲーム集 — AI絵当てクイズ、ハングル版ワードル、デザートタワー。インストール不要ですぐ遊べます。
+    website: /games/
   - title: 🫥 顔モザイク
     description: 写真の中の顔を自動で検出し、モザイク・ぼかし・黒い四角・絵文字で隠します。写真はサーバーに送信されず、ブラウザ内だけで処理されます。
     website: /tools/face-mosaic/

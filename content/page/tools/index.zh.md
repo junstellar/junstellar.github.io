@@ -7,6 +7,9 @@ menu:
         params:
             icon: tool
 links:
+  - title: 🚀 AI游戏实验室
+    description: 用AI编程（vibe coding）打造的浏览器小游戏合集 — 猜AI画、韩文版Wordle、甜点叠塔。无需安装即点即玩。
+    website: /games/
   - title: 🫥 人脸马赛克
     description: 自动检测照片中的人脸，并用马赛克、模糊、黑色方块或表情符号遮挡。照片不会上传服务器，只在浏览器内处理。
     website: /tools/face-mosaic/

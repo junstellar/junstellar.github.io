@@ -7,6 +7,9 @@ menu:
         params:
             icon: tool
 links:
+  - title: 🚀 AI Game Lab
+    description: A growing library of browser mini-games built with AI (vibe coding) — Guess the AI Picture, Korean Wordle, and Dessert Tower. Play instantly, no install.
+    website: /games/
   - title: 🫥 Face Mosaic
     description: Automatically detects faces in a photo and hides them with mosaic, blur, a black box, or an emoji. Photos never leave your browser.
     website: /tools/face-mosaic/
