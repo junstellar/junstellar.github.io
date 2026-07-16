@@ -2,7 +2,7 @@
 title: "KOSPI 9,385から6,820へ — 半導体2銘柄が振り回す指数の解剖 · AI半導体投資の教科書 ⑧"
 description: "6ヶ月で+123%、1ヶ月で-27%。KOSPIはなぜジェットコースターになったのか？時価総額55%・利益68%が2銘柄に集中した構造と、真っ二つに割れた専門家の診断を整理。"
 slug: "kospi-semiconductor"
-date: 2026-07-16T22:30:00+09:00
+date: 2026-07-16T20:30:00+09:00
 draft: false
 image: "hbm-series-8-cover.png"
 categories: ["투자"]

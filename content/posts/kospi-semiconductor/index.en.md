@@ -2,7 +2,7 @@
 title: "KOSPI from 9,385 to 6,820 — Anatomy of an Index Two Chips Control · AI Chip Investing 101 ⑧"
 description: "+123% in six months, -27% in one. Why did KOSPI become a rollercoaster? Dissecting a structure where two stocks hold 55% of market cap and 68% of profits, with experts split down the middle."
 slug: "kospi-semiconductor"
-date: 2026-07-16T22:30:00+09:00
+date: 2026-07-16T20:30:00+09:00
 draft: false
 image: "hbm-series-8-cover.png"
 categories: ["투자"]

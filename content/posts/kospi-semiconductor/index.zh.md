@@ -2,7 +2,7 @@
 title: "KOSPI从9385到6820 — 解剖被两只芯片股操纵的指数 · AI半导体投资教科书 ⑧"
 description: "6个月+123%，1个月-27%。KOSPI为何成了过山车？解剖市值55%、利润68%集中于两只股票的结构，以及分裂成两派的专家诊断。"
 slug: "kospi-semiconductor"
-date: 2026-07-16T22:30:00+09:00
+date: 2026-07-16T20:30:00+09:00
 draft: false
 image: "hbm-series-8-cover.png"
 categories: ["투자"]

@@ -2,7 +2,7 @@
 title: "코스피 9,385에서 6,820까지 — 반도체가 쥐고 흔드는 지수의 해부 · AI 반도체 투자 교과서 ⑧"
 description: "6개월 만에 +123%, 한 달 만에 -27%. 코스피는 왜 롤러코스터가 됐을까요? 시총 55%, 이익 68%가 두 종목에 쏠린 구조와 전문가들의 엇갈린 진단을 정리했습니다."
 slug: "kospi-semiconductor"
-date: 2026-07-16T22:30:00+09:00
+date: 2026-07-16T20:30:00+09:00
 draft: false
 image: "hbm-series-8-cover.png"
 categories: ["투자"]
