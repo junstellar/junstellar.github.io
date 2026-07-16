@@ -5,7 +5,7 @@ slug: "ai-game-lab-build-1"
 date: 2026-07-06T22:00:00+09:00
 draft: false
 categories: ["AI"]
-tags: ["AI", "vibe coding", "独立开发", "Pieter Levels", "游戏开发", "公开构建", "ComfyUI", "本地GPU"]
+tags: ["AI", "vibe coding", "独立开发", "Pieter Levels", "游戏开发", "公开构建", "ComfyUI", "本地GPU", "AI编程"]
 ---
 
 前几天我刷YouTube，偶然看到一个有意思的故事。有人用**AI在短短几天里做出的**一款浏览器飞行游戏，就赚了**一大笔钱**。那款游戏叫**fly.pieter.com**。画面并不惊艳，据说他是靠**卖游戏天空中漂浮的广告牌位**来赚钱的。

@@ -5,7 +5,7 @@ slug: "ai-game-lab-build-2"
 date: 2026-07-11T09:00:00+09:00
 draft: false
 categories: ["AI"]
-tags: ["AI", "vibe coding", "游戏开发", "公开构建", "Wordle", "韩文", "独立开发"]
+tags: ["AI", "vibe coding", "游戏开发", "公开构建", "Wordle", "韩文", "独立开发", "AI编程"]
 ---
 
 [上一篇](/p/ai-game-lab-build-1/)说过「一款一款不断往上加」，那就说到做到 —— 做了**第二款游戏**。这次是**韩文版 Wordle**：每天猜一个两个字的韩文单词。

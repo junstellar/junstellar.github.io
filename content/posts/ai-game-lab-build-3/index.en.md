@@ -5,7 +5,7 @@ slug: "ai-game-lab-build-3"
 date: 2026-07-16T20:00:00+09:00
 draft: false
 categories: ["AI"]
-tags: ["AI", "vibe coding", "game dev", "build in public", "arcade", "dessert", "indie hacker"]
+tags: ["AI", "vibe coding", "game dev", "build in public", "arcade", "dessert", "indie hacker", "AI coding"]
 ---
 
 Looking at the [first two games](/p/ai-game-lab-build-2/) (the picture quiz and the Korean Wordle), they had one thing in common — **both are thinking games**. A library full of quizzes gets boring. So for the third game I went the opposite way: something you play with pure **hand-feel**, no thinking required. It ended up as… a **Dessert Stacking Tower**. Why "dessert"? I'll get to that.

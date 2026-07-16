@@ -5,7 +5,7 @@ slug: "ai-game-lab-build-2"
 date: 2026-07-11T09:00:00+09:00
 draft: false
 categories: ["AI"]
-tags: ["AI", "vibe coding", "game dev", "build in public", "Wordle", "Hangul", "indie hacker"]
+tags: ["AI", "vibe coding", "game dev", "build in public", "Wordle", "Hangul", "indie hacker", "AI coding"]
 ---
 
 Last time I said I'd "keep stacking games one by one," so — as promised — I built the **second game**. This time it's a **Korean Wordle**: guess one two-syllable Korean word a day.

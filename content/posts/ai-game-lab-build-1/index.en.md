@@ -5,7 +5,7 @@ slug: "ai-game-lab-build-1"
 date: 2026-07-06T22:00:00+09:00
 draft: false
 categories: ["AI"]
-tags: ["AI", "vibe coding", "indie hacker", "Pieter Levels", "game dev", "build in public", "ComfyUI", "local GPU"]
+tags: ["AI", "vibe coding", "indie hacker", "Pieter Levels", "game dev", "build in public", "ComfyUI", "local GPU", "AI coding"]
 ---
 
 The other day I was watching YouTube and happened to catch an interesting story. Someone had made **big money** from a single browser-based flying game they'd built **with AI in just a few days**. The game was **fly.pieter.com**. The graphics weren't anything special — apparently they earned it by **selling ad-billboard space** floating in the game's sky.
