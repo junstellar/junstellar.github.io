@@ -110,6 +110,7 @@ function openBook(id){
   var t = document.getElementById('tpl-'+id);
   if(!t) return;
   var fr = document.getElementById('bookframe');
+  fr.srcdoc = '<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body>' + t.innerHTML + '</body></html>';
   document.getElementById('vtitle').textContent = TITLES[id] || '';
   document.getElementById('viewer').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -2385,7 +2386,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    검술사 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
+    검술사 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-19 (3주차 갱신)
   </p>
   <div class="verdict-strip">
     <span class="badge">여전히 1티어</span>
@@ -2436,6 +2437,18 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140886" target="_blank" rel="noopener"><span class="n">#1140886</span> 에이렐 솔플 1:01</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133064" target="_blank" rel="noopener"><span class="n">#1133064</span> 검술 &lt; 화법 같음</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132101" target="_blank" rel="noopener"><span class="n">#1132101</span> 갤 티어표 S급</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>🔄 3주차 갱신 — 하락 논쟁 격화(합의는 아직)<span class="tag">2026-07-19</span></h4>
+    <p>이번 주 검술사는 갤 티어 담론의 <b>최대 쟁점</b>이 됐다. 방법론을 명시한 <b>룬다 어비스 로그 기반 티어(#1188179)</b>에서 검술사는 공개 랭킹 TOP10에 <b>한 번도 못 든 직업군</b>으로 분류됐고, 다른 티어표(#1186722)도 4티어에 배치했다. “명확한 너프는 없었지만 <b>평정 계수·직피룬 삭제 + 보스 근접 기믹으로 체급이 계단식으로 내려왔다</b>”는 분석(#1190510)에 동조가 붙었다.</p>
+    <p class="plain">반면 <b>어비스 최고점 랭킹(#1188195)에선 46,617로 5위권</b>이라, “검술이 기록을 숨긴다 vs 약체 인증”으로 갈렸다(#1188259은 이 표를 두고 “검술이 티어 밖인 게 말이 되냐”며 주작 논란 제기). <b>즉 방향은 하락이지만 커뮤니티 합의는 미형성</b> — “고점은 여전히 최상위, 평균·범용성이 깎이는 중”으로 읽는 게 안전하다. 신규 룬·레이드 표본이 쌓이는 다음 주 재확인 필요.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1190510" target="_blank" rel="noopener"><span class="n">#1190510</span> 계단식 하락 분석</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1188179" target="_blank" rel="noopener"><span class="n">#1188179</span> 로그 기반 티어 (TOP10 미진입)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1188195" target="_blank" rel="noopener"><span class="n">#1188195</span> 어비스 최고점 5위 (46,617)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1188259" target="_blank" rel="noopener"><span class="n">#1188259</span> 티어표 주작 논란</a>
     </div>
   </div>
 </section>
@@ -2567,10 +2580,14 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
-    <h3>출처 12건</h3>
-    <p>번호 클릭 시 디시 원문으로</p>
+    <h3>출처 16건</h3>
+    <p>번호 클릭 시 디시 원문으로 · ★ 3주차 신규</p>
   </div>
   <ul class="srclist">
+    <li><span class="num">★#1190510</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1190510" target="_blank" rel="noopener">근데 검술 지금까지 명확한 너프가 있었나</a><span class="d">07/18 · 계단식 하락 분석</span></li>
+    <li><span class="num">★#1188179</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1188179" target="_blank" rel="noopener">룬다 어비스 직업 티어 + 산정기준</a><span class="d">07/17 · 로그 기반, TOP10 미진입</span></li>
+    <li><span class="num">★#1188195</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1188195" target="_blank" rel="noopener">직업별 어비스 랭킹 1위 점수 순위</a><span class="d">07/18 · 검술 최고점 5위(46,617)</span></li>
+    <li><span class="num">★#1188259</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1188259" target="_blank" rel="noopener">이거 티어표 주작임??</a><span class="d">07/17 · 검술 위치 논란</span></li>
     <li><span class="num">#1141234</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141234" target="_blank" rel="noopener">검술 좋은 거 맞음?</a><span class="d">07/04 · 1티어·하락세 여론</span></li>
     <li><span class="num">#1141176</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141176" target="_blank" rel="noopener">시즌2 검술 룬 질문좀</a><span class="d">07/04 · 마도저항 1600</span></li>
     <li><span class="num">#1141075</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141075" target="_blank" rel="noopener">검술 쉬운 장신구 룬조합?</a><span class="d">07/04 · 연구 중</span></li>
@@ -2588,8 +2605,8 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">⚔ 육육이의 프렌즈를 위한 검술사 공략모음 ⚔</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
-  거센바람(신규룬)·장신구 조합은 연구 중 — 갱신 필요 · 인용문은 원문 표현 유지
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-19 (3주차 갱신)<br>
+  거센바람(신규룬)·장신구 조합은 연구 중 · 하락 논쟁 합의 미형성 — 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
 </div>
@@ -5022,7 +5039,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    마법사(법사) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11
+    마법사(법사) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-19 (3주차 갱신)
   </p>
   <div class="verdict-strip">
     <span class="badge down">약세 · 탈주 러시</span>
@@ -5072,6 +5089,19 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132407" target="_blank" rel="noopener"><span class="n">#1132407</span> 별로인 부분 4가지</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141290" target="_blank" rel="noopener"><span class="n">#1141290</span> 딜은 강한데 불쾌</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1119758" target="_blank" rel="noopener"><span class="n">#1119758</span> 기획 의도 비판</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>🔄 3주차 갱신 — “시즌2 룬이 시즌1 룬을 못 넘는다”가 결정화<span class="tag">2026-07-19</span></h4>
+    <p>이번 주 법사는 <b>“룬 세대 교체 실패”</b>의 대표 사례로 굳어졌다. 조회 3,168의 핵심 글은 이렇게 정리한다 — <b>시즌2 엠블럼 룬에 캐스팅 속도가 하나도 없어 여전히 시즌1 룬(대마법사 계열)을 써야 하고</b>, 신규 빙창은 마나 소모 증가로 시즌1의 개선 패치가 사실상 원상복구됐다. 댓글도 “탈주 많이 했다”, “보스 밀기 그만두고 직변하라”로 동조.</p>
+    <p class="plain">다른 글에서도 <b>“시즌1 룬이 깡스펙으로 시즌2 룬을 압도한다(40% 강해진다더니 안 세짐)”</b>, <b>“대마법사를 대체할 룬이 없다”</b>, “태생 법사도 시즌1 룬 못 빼고 3스킬 마나가 부족하다”는 자조가 반복됐다. 즉 <b>지난주의 ‘불쾌해서 이탈’이 이번 주엔 ‘룬으로도 구제가 안 됨’으로 구체화</b>된 셈. (이 “시즌1룬 회귀” 현상은 음유·악사·화법·기사에서도 관측된 시즌2 공통 불만이다.)</p>
+    <div class="note info">참고 — 성능 자체가 최하위라는 뜻은 아니다. 어비스 최고점 랭킹(#1188195)에서 법사는 46,188로 중하위권이며, 문제의 본질은 “시즌2 룬 세트로 갈아탈 유인이 없다”는 <b>성장 정체</b>다.</div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1189097" target="_blank" rel="noopener"><span class="n">#1189097</span> 시즌2 룬 캐속 부재·빙창 원복 (조회 3168)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1189469" target="_blank" rel="noopener"><span class="n">#1189469</span> 시즌1룬이 깡스펙 압도</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1190504" target="_blank" rel="noopener"><span class="n">#1190504</span> 대마법사 대체 룬 없음</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1190039" target="_blank" rel="noopener"><span class="n">#1190039</span> 태생 법사도 시즌1룬 유지</a>
     </div>
   </div>
 </section>
@@ -5204,10 +5234,14 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 <section class="chapter appendix" id="src">
   <div class="chead">
     <div class="kicker">부록 · 附</div>
-    <h3>출처 12건</h3>
-    <p>번호 클릭 시 디시 원문으로</p>
+    <h3>출처 16건</h3>
+    <p>번호 클릭 시 디시 원문으로 · ★ 3주차 신규</p>
   </div>
   <ul class="srclist">
+    <li><span class="num">★#1189097</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1189097" target="_blank" rel="noopener">법사 이번 시즌 룬 세대교체 실패</a><span class="d">07/17 · 시즌1룬 회귀 (조회 3168)</span></li>
+    <li><span class="num">★#1189469</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1189469" target="_blank" rel="noopener">시즌1룬이 깡스펙으로 시즌2룬 압도</a><span class="d">07/18 · 룬 성능 역전</span></li>
+    <li><span class="num">★#1190504</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1190504" target="_blank" rel="noopener">시즌2룬은 아득보다 더 급한 게 있음</a><span class="d">07/18 · 대마법사 대체 부재</span></li>
+    <li><span class="num">★#1190039</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1190039" target="_blank" rel="noopener">법사 구리다는 애들 다 직변한 넘들이지</a><span class="d">07/18 · 태생 법사 자조</span></li>
     <li><span class="num">#1144772</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144772" target="_blank" rel="noopener">마법사 뼈인장 그정돈가</a><span class="d">07/05 · 30렙 후 재평가</span></li>
     <li><span class="num">#1141290</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141290" target="_blank" rel="noopener">뭐야 지금 법사 망가짐????</a><span class="d">07/04 · 불쾌 여론</span></li>
     <li><span class="num">#1140761</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140761" target="_blank" rel="noopener">법사 잊힌 맹약 뭔가뭔가네</a><span class="d">07/03 · 각성룬 미묘</span></li>
@@ -5225,7 +5259,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">✶ 육육이의 프렌즈를 위한 법사 공략모음 ✶</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-19 (3주차 갱신)<br>
   빙창 개선 패치·30렙 시즌스킬에 따라 크게 바뀔 수 있음 — 갱신 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -6647,7 +6681,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
   <p class="submeta">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    듀얼블레이드(듀블) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-11 ·
+    듀얼블레이드(듀블) 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-07-19 (3주차 갱신) ·
     <b>연구글이 적어 자료가 얇은 직업</b>
   </p>
   <div class="verdict-strip">
@@ -6748,12 +6782,13 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
     <p><b>삼신기(장신구)</b> — 천침·속행·질주</p>
     <p><b>무기룬</b> 바위 칼날·타오르는 영광 &nbsp;·&nbsp; <b>엠블럼</b> 해방·초월 &nbsp;·&nbsp; <b>세공 정배</b> 연타·이동</p>
     <p><b>회오리 빌드</b>: 뼈인장(3번 슬롯 주피 53%↑)+바다뱀(채널링 주피 31%↑) 세트가 핵심 — <b>광역 특화·단일딜 약해 예능용</b>. 질주와 병용 불가. 4번 하울링 템페스트가 캔슬용→강제 시전형으로 변경.</p>
+    <p class="note info" style="margin-top:12px"><b>🔄 3주차 변경</b> — 황산갈매기 「듀블 3신기가 바뀌었습니다」에서 <b>“교차 강화”가 “질주·속행”을 역전</b>했다고 짚었다. 질주 메타가 밀리고 교차 강화가 새 삼신기로 부상하는 흐름. <b>단 세부 3룬 구성은 자막 절단으로 아직 불확실</b>하니, 갤 여론(질주 유지)과 함께 다음 주 재확인 필요.</p>
     <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
     <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=S-IWRf6vRoI" target="_blank" rel="noopener"><span class="n">▶</span> ★듀블 3신기 변경·채용률</a>
       <a class="chip" href="https://www.youtube.com/watch?v=M-Fj99XhKxo" target="_blank" rel="noopener"><span class="n">▶</span> 센터로드TV·듀블 회오리</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=I4F7SXLe73Y" target="_blank" rel="noopener"><span class="n">▶</span> ★21직업 한장정리</a>
       <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
     </div>
   </div>
 </section>
@@ -6777,7 +6812,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
 <footer>
   <div class="sign">⚔⚔ 육육이의 프렌즈를 위한 듀블 공략모음 ⚔⚔</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-11 (7/11 유튜브 영상 반영)<br>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-19 (3주차 갱신)<br>
   연구글 희소 직업 — 시즌스킬 30렙·레이드룬 공개 후 재조사 필요 · 인용문은 원문 표현 유지
 </footer>
 
@@ -7074,3 +7109,6 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 </div>
 
 </template>
+
+</body>
+</html>
