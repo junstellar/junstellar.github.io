@@ -1,0 +1,11 @@
+{{- /* {{< mp4 src="clip.mp4" poster="poster.webp" >}} — 페이지 번들의 mp4를 자동재생·루프·음소거로 임베드 */ -}}
+{{- $v := $.Page.Resources.GetMatch (.Get "src") -}}
+{{- $poster := "" -}}
+{{- with .Get "poster" -}}{{- with $.Page.Resources.GetMatch . -}}{{- $poster = .RelPermalink -}}{{- end -}}{{- end -}}
+{{- if $v -}}
+<video autoplay loop muted playsinline preload="metadata"{{ with $poster }} poster="{{ . }}"{{ end }} style="width:100%;max-width:420px;display:block;margin:1.2rem auto;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.25)">
+  <source src="{{ $v.RelPermalink }}" type="video/mp4">
+</video>
+{{- else -}}
+<!-- mp4 not found: {{ .Get "src" }} -->
+{{- end -}}
