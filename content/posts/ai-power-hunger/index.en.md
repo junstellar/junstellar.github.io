@@ -5,7 +5,7 @@ slug: "ai-power-hunger"
 date: 2026-07-19T09:35:00+09:00
 draft: false
 image: "power-series-1-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["data center power", "AI electricity", "power stocks", "nuclear SMR", "AI infrastructure"]
 ---
 

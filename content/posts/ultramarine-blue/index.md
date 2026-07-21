@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "🎨 금보다 비쌌던 파란색, 울트라마린"
 description: "르네상스 시대 금보다 비쌌던 파란색 울트라마린. 아프가니스탄 보석 청금석에서 짜내 '바다 너머에서 온 색'으로 불렸고, 성모 마리아의 옷에만 아껴 썼다."
 slug: "ultramarine-blue"
 date: 2026-06-26T21:30:00+09:00
 draft: false
 image: "ultramarine.png"
-categories: ["지식"]
-tags: ["미술", "역사", "색", "잡학"]
+categories: []
+tags: []
 ---
 
 한때 화가들은 이 파란색 하나를 칠하려고 후원자에게 따로 돈을 받아야 했습니다.

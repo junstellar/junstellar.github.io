@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "第二次露营就遇上第一场雨 — 水原光教湖水公园家庭露营地"
 description: "城市里的下班露营:水原光教湖水公园家庭露营地测评。第二次露营就遇上雨中露营,冒雨撤营,还有第一次晾帐篷的记录。"
 slug: "gwanggyo-lake-camping"
 date: 2026-07-05T10:10:00+09:00
 draft: true
 image: "camp-night.jpg"
-categories: ["캠핑"]
-tags: ["露营", "露营地测评", "光教湖水公园", "雨中露营", "下班露营"]
+categories: []
+tags: []
 ---
 
 [第一次露营](/zh/p/first-camping-malgeumteo/)之后仅仅一周,我们家就出发去了第二次露营。这次是水原光教湖水公园里的**光教湖水公园家庭露营地**汽车营位,同样是周五下班出发、住一晚的"下班露营"。

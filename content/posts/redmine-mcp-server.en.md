@@ -4,7 +4,7 @@ description: "I built a local MCP server so Claude Code could drive our private-
 slug: "redmine-mcp-server"
 date: 2026-06-29T22:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["MCP", "Claude Code", "Python", "Redmine", "MCP server"]
 ---
 

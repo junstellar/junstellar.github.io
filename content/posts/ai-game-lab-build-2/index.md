@@ -4,7 +4,7 @@ description: "게임 랩에 두 번째 게임을 얹었습니다. 이번엔 두 
 slug: "ai-game-lab-build-2"
 date: 2026-07-11T09:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "바이브코딩", "게임개발", "공개빌드", "워들", "한글", "인디해커", "AI 코딩", "바이브 코딩", "AI 게임 만들기", "vibe coding"]
 ---
 

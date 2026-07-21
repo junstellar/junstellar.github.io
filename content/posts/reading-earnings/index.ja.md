@@ -5,7 +5,7 @@ slug: "reading-earnings"
 date: 2026-07-18T09:20:00+09:00
 draft: false
 image: "hbm-series-10-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["SKハイニックス決算", "決算の見方", "アーニングサプライズ", "コンセンサス", "AI半導体"]
 ---
 

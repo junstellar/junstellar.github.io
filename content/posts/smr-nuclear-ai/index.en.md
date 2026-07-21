@@ -5,7 +5,7 @@ slug: "smr-nuclear-ai"
 date: 2026-07-20T21:50:00+09:00
 draft: false
 image: "power-series-2-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["SMR stocks", "nuclear AI", "Doosan Enerbility", "small modular reactor", "AI power"]
 ---
 

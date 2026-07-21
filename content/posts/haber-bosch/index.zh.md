@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "🍞 用空气造出面包的人 — 哈伯-博施法"
 description: "占空气78%的氮，植物却用不了。1909年哈伯从空气中提取出氨（肥料），养活了半个人类；可同一双手也造出了一战的毒气。"
 slug: "haber-bosch"
 date: 2026-07-12T11:00:00+09:00
 draft: false
 image: "haber.png"
-categories: ["지식"]
-tags: ["化学", "历史", "科学", "人物"]
+categories: []
+tags: []
 ---
 
 你体内一半的氮，来自一百年前一位德国化学家的实验室。

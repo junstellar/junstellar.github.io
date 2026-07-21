@@ -5,7 +5,7 @@ slug: "ai-virtual-human"
 date: 2026-07-04T18:00:00+09:00
 draft: false
 image: "cover.png"
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "虚拟人", "SadTalker", "SDXL", "本地AI", "口型同步"]
 ---
 

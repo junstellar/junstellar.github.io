@@ -5,7 +5,7 @@ slug: "semiconductor-suppliers"
 date: 2026-07-14T21:50:00+09:00
 draft: false
 image: "hbm-series-7-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["소부장 관련주", "한미반도체", "HBM 장비주", "TC본더", "AI반도체"]
 ---
 

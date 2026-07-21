@@ -5,7 +5,7 @@ slug: "target-price-anatomy"
 date: 2026-07-17T11:20:00+09:00
 draft: false
 image: "hbm-series-9-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["목표주가 산정", "400만닉스", "SK하이닉스 목표주가", "PER PBR", "애널리스트 리포트"]
 ---
 

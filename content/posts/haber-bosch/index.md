@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "🍞 공기로 빵을 만든 남자 — 하버-보슈 공정"
 description: "공기의 78%인 질소를 식물은 못 쓴다. 1909년 하버가 공기에서 암모니아(비료)를 뽑아내 인류 절반을 먹여 살렸지만, 같은 손이 1차 대전의 독가스도 만들었다."
 slug: "haber-bosch"
 date: 2026-07-12T11:00:00+09:00
 draft: false
 image: "haber.png"
-categories: ["지식"]
-tags: ["화학", "역사", "과학", "인물"]
+categories: []
+tags: []
 ---
 
 당신 몸속 질소의 절반은, 100년 전 한 독일 화학자의 실험실에서 왔다.

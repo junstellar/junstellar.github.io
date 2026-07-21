@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "🐝 蜜蜂用「舞蹈」对话 — 动物语言的奇迹"
 description: "蜜蜂的“8 字摆尾舞”不是单纯的兴奋，而是精确的坐标。方向代表相对太阳的角度，时长代表距离——揭开这项荣获诺贝尔奖的动物语言奇迹。"
 slug: "bee-waggle-dance"
 date: 2026-06-26T21:00:00+09:00
 draft: false
 image: "waggle_dance.png"
-categories: ["지식"]
-tags: ["科学", "动物", "蜜蜂", "冷知识"]
+categories: []
+tags: []
 ---
 
 你有没有想过，动物也能像「句子」一样传递抽象信息？ 蜜蜂正是如此。

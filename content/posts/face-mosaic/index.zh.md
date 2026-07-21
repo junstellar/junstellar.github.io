@@ -4,7 +4,7 @@ description: "我做了一个小型网页工具，不把照片上传到任何服
 slug: "face-mosaic"
 date: 2026-07-01T07:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "网页", "隐私", "安全", "MediaPipe", "自己动手"]
 ---
 

@@ -1,11 +1,13 @@
 ---
+build:
+  list: never
 title: "블로그를 시작합니다"
 description: "소극적이던 제가 AI 시대에 뭐라도 도전해보려 블로그를 엽니다. 매일 밤 공부·생각 메모가 자동으로 글 초안이 되는 블로그, 그 첫걸음을 적었습니다."
 slug: "hello"
 date: 2026-06-26T12:00:00+09:00
 draft: false
-categories: ["일상"]
-tags: ["시작", "블로그", "도전", "다짐"]
+categories: []
+tags: []
 ---
 
 안녕하세요 👋

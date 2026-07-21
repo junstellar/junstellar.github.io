@@ -4,7 +4,7 @@ description: "社内ネットワークのRedmineをClaude Codeから直接操作
 slug: "redmine-mcp-server"
 date: 2026-06-29T22:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["MCP", "Claude Code", "Python", "Redmine", "MCPサーバー"]
 ---
 

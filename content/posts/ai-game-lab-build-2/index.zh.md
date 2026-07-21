@@ -4,7 +4,7 @@ description: "给游戏实验室加了第二款游戏。这次是猜两个字韩
 slug: "ai-game-lab-build-2"
 date: 2026-07-11T09:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "vibe coding", "游戏开发", "公开构建", "Wordle", "韩文", "独立开发", "AI编程"]
 ---
 

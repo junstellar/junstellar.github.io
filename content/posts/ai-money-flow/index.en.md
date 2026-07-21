@@ -5,7 +5,7 @@ slug: "ai-money-flow"
 date: 2026-07-11T11:00:00+09:00
 draft: false
 image: "hbm-series-6-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["AI chip stocks", "value chain", "Nvidia", "SK hynix", "hyperscaler capex"]
 ---
 

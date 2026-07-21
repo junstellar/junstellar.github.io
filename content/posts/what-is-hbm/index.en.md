@@ -5,7 +5,7 @@ slug: "what-is-hbm"
 date: 2026-07-02T21:40:00+09:00
 draft: false
 image: "hbm-series-1-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["HBM", "semiconductor", "SK hynix", "Samsung Electronics", "AI chips"]
 ---
 

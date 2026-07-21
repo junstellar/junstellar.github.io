@@ -4,7 +4,7 @@ description: "Can you run Claude- or ChatGPT-style AI on your own laptop with no
 slug: "llama-cpp-local-llm"
 date: 2026-07-06T20:45:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "llama.cpp", "local LLM", "LLM", "GGUF", "local AI", "open source"]
 ---
 

@@ -1,11 +1,13 @@
 ---
+build:
+  list: never
 title: "I'm Starting a Blog"
 description: "A reserved person takes on the AI era by starting a blog, where my nightly study and thought notes turn into draft posts automatically. Here's the first step."
 slug: "hello"
 date: 2026-06-26T12:00:00+09:00
 draft: false
-categories: ["일상"]
-tags: ["start", "blog", "challenge", "resolution"]
+categories: []
+tags: []
 ---
 
 Hello 👋

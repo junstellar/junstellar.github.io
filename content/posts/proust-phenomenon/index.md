@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "🍵 왜 냄새는 기억을 순식간에 소환할까 — '프루스트 현상'"
 description: "냄새 하나에 잊은 기억이 통째로 떠오르는 '프루스트 현상'. 후각만 시상을 건너뛰고 감정·기억 영역으로 직행하는 뇌 구조 때문이다. 그 지름길의 비밀."
 slug: "proust-phenomenon"
 date: 2026-06-26T22:00:00+09:00
 draft: false
 image: "proust.png"
-categories: ["지식"]
-tags: ["뇌과학", "심리", "후각", "잡학"]
+categories: []
+tags: []
 ---
 
 빵집 앞을 지나다 풍긴 냄새 하나에, 잊고 있던 할머니 부엌이 통째로 떠오른 적 있나요?

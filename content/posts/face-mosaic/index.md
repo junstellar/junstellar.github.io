@@ -4,7 +4,7 @@ description: "사진을 서버에 올리지 않고 브라우저 안에서만 얼
 slug: "face-mosaic"
 date: 2026-07-01T07:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "웹", "프라이버시", "보안", "MediaPipe", "만들기"]
 ---
 

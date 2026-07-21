@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "🎨 比黄金还贵的蓝，群青"
 description: "文艺复兴时期比黄金还贵的蓝色——群青。它从阿富汗的宝石青金石中提炼，被称为“来自海外的颜色”，只舍得用在圣母玛利亚的衣袍上。"
 slug: "ultramarine-blue"
 date: 2026-06-26T21:30:00+09:00
 draft: false
 image: "ultramarine.png"
-categories: ["지식"]
-tags: ["艺术", "历史", "颜色", "冷知识"]
+categories: []
+tags: []
 ---
 
 曾经，画家为了涂上这一种蓝色，得向赞助人另外要钱。

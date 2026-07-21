@@ -5,7 +5,7 @@ slug: "dram-nand-foundry"
 date: 2026-07-11T10:20:00+09:00
 draft: false
 image: "hbm-series-5-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["DRAM NAND 区别", "代工厂是什么", "半导体种类", "三星电子", "SK海力士"]
 ---
 

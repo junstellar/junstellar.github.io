@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "🍵 Why Does Smell Summon Memories Instantly? — The Proust Phenomenon"
 description: "The 'Proust phenomenon': one smell can revive a forgotten memory at once, because smell alone skips the thalamus and runs straight to emotion and memory."
 slug: "proust-phenomenon"
 date: 2026-06-26T22:00:00+09:00
 draft: false
 image: "proust.png"
-categories: ["지식"]
-tags: ["neuroscience", "psychology", "smell", "trivia"]
+categories: []
+tags: []
 ---
 
 Has the scent drifting from a bakery ever brought back your grandmother's kitchen — whole and complete — something you'd long forgotten?

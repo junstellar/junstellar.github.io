@@ -1,11 +1,13 @@
 ---
+build:
+  list: never
 title: "마비노기 모바일 시즌2 전직업 공략 서재를 만들었습니다"
 description: "아내의 사제 공략을 찾아주다 시작한 일이 프렌즈 길드원들의 응원에 힘입어 21개 전직업 공략 서재가 됐습니다. 에반 갤러리 여론을 근거 링크와 함께 정리했고, 매주 자동으로 갱신됩니다."
 slug: "mabi-guide-library"
 date: 2026-07-06T09:00:00+09:00
 draft: false
-categories: ["일상"]
-tags: ["마비노기모바일", "게임공략", "시즌2", "공략집"]
+categories: []
+tags: []
 ---
 
 <a href="/tools/mabi-guide/" style="display:flex;align-items:center;gap:14px;margin:0 0 32px;padding:18px 22px;border:1px solid #d9c795;border-radius:14px;background:linear-gradient(135deg,#fbf6e6,#f6efd8);text-decoration:none;box-shadow:0 6px 20px -14px rgba(120,90,20,.5)">

@@ -4,7 +4,7 @@ description: "Google built 'Computer Use' natively into Gemini 3.5 Flash, lettin
 slug: "gemini-3-5-flash-computer-use"
 date: 2026-06-28T10:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 트렌드"]
 tags: ["AI", "Google", "Gemini", "computer-use"]
 ---
 

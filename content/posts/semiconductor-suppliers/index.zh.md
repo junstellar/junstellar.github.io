@@ -5,7 +5,7 @@ slug: "semiconductor-suppliers"
 date: 2026-07-14T21:50:00+09:00
 draft: false
 image: "hbm-series-7-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["半导体设备股", "HBM设备", "TC键合机", "设备材料零部件", "AI半导体"]
 ---
 

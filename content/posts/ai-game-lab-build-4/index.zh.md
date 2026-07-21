@@ -4,7 +4,7 @@ description: "游戏实验室第四款是单手动作游戏「闪避」。左右
 slug: "ai-game-lab-build-4"
 date: 2026-07-21T09:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "vibe coding", "游戏开发", "公开构建", "街机", "动作", "独立开发", "AI编程"]
 ---
 

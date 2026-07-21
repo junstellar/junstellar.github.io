@@ -5,9 +5,11 @@ slug: "camping-start"
 date: 2026-06-30T12:00:00+09:00
 draft: true
 image: "sunrise.jpg"
-categories: ["캠핑"]
-tags: ["Camping", "Camping Beginner", "East Coast Trip", "Camping Gear"]
+categories: []
+tags: []
 ---
+build:
+  list: never
 
 Since this is the first post in my camping category, let me start with how I ended up deciding to take up camping in the first place.
 

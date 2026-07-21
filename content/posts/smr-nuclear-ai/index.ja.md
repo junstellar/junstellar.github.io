@@ -5,7 +5,7 @@ slug: "smr-nuclear-ai"
 date: 2026-07-20T21:50:00+09:00
 draft: false
 image: "power-series-2-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["SMR関連株", "原発 AI", "斗山エナビリティ", "小型モジュール炉", "AI電力"]
 ---
 

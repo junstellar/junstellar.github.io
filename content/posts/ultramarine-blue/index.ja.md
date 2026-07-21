@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "🎨 金より高かった青、ウルトラマリン"
 description: "ルネサンス時代、金より高価だった青「ウルトラマリン」。アフガニスタンの宝石ラピスラズリから採られ「海の彼方から来た色」と呼ばれ、聖母マリアの衣にだけ大切に使われた。"
 slug: "ultramarine-blue"
 date: 2026-06-26T21:30:00+09:00
 draft: false
 image: "ultramarine.png"
-categories: ["지식"]
-tags: ["美術", "歴史", "色", "雑学"]
+categories: []
+tags: []
 ---
 
 かつて画家たちは、この青ひとつを塗るために、パトロンから別途お金をもらわなければなりませんでした。

@@ -5,7 +5,7 @@ slug: "semiconductor-supercycle"
 date: 2026-07-06T19:45:00+09:00
 draft: false
 image: "hbm-series-4-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["半导体超级周期", "DRAM价格", "存储芯片", "SK海力士", "三星电子"]
 ---
 

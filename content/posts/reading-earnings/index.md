@@ -5,7 +5,7 @@ slug: "reading-earnings"
 date: 2026-07-18T09:20:00+09:00
 draft: false
 image: "hbm-series-10-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["SK하이닉스 실적", "실적발표 보는법", "어닝 서프라이즈", "컨센서스", "AI반도체"]
 ---
 

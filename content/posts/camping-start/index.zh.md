@@ -5,9 +5,11 @@ slug: "camping-start"
 date: 2026-06-30T12:00:00+09:00
 draft: true
 image: "sunrise.jpg"
-categories: ["캠핑"]
-tags: ["露营", "露营入门", "东海旅行", "露营装备"]
+categories: []
+tags: []
 ---
+build:
+  list: never
 
 这是露营分类的第一篇文章，所以先聊聊我当初是怎么决定开始露营的吧。
 

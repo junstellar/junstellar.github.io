@@ -5,7 +5,7 @@ slug: "ai-power-hunger"
 date: 2026-07-19T09:35:00+09:00
 draft: false
 image: "power-series-1-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["데이터센터 전력난", "AI 전력소비", "전력 관련주", "원전", "AI인프라"]
 ---
 

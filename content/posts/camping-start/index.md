@@ -5,9 +5,11 @@ slug: "camping-start"
 date: 2026-06-30T12:00:00+09:00
 draft: true
 image: "sunrise.jpg"
-categories: ["캠핑"]
-tags: ["캠핑", "캠핑입문", "동해여행", "캠핑장비"]
+categories: []
+tags: []
 ---
+build:
+  list: never
 
 캠핑 카테고리 첫 글이라, 제가 어쩌다 캠핑을 시작하기로 마음먹었는지 그 계기부터 풀어볼게요.
 

@@ -5,7 +5,7 @@ slug: "money-river-check"
 date: 2026-07-13T20:14:00+09:00
 draft: false
 image: "hbm-series-6x-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["AI泡沫", "OpenAI亏损", "Anthropic", "Meta数据中心", "AI资本开支"]
 ---
 

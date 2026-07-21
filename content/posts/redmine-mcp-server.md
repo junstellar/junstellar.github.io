@@ -4,7 +4,7 @@ description: "사설망 사내 Redmine을 Claude Code가 직접 다루게 하려
 slug: "redmine-mcp-server"
 date: 2026-06-29T22:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["MCP", "ClaudeCode", "Python", "Redmine", "MCP서버"]
 ---
 

@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "Our First Camping Trip — Malgeumteo Park Campground in Osan"
 description: "Our family's first camping trip to Malgeumteo Park Campground in Osan — plus the essential-gear list I researched and the criteria we used to buy each item."
 slug: "first-camping-malgeumteo"
 date: 2026-07-04T08:40:00+09:00
 draft: true
 image: "entrance.jpg"
-categories: ["캠핑"]
-tags: ["camping", "campground-review", "osan", "family-camping", "first-camping"]
+categories: []
+tags: []
 ---
 
 In my [last post](/en/p/camping-start/), I shared how we decided to start camping. Today is the story of that very first trip. In April 2023, my two daughters (11 and 9) and I headed to **Malgeumteo Park Campground** in Osan, Gyeonggi-do, for a Friday-to-Saturday overnight stay.

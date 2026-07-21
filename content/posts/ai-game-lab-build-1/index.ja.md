@@ -4,7 +4,7 @@ description: "YouTubeでたまたま、AIで数日で作ったゲーム一本で
 slug: "ai-game-lab-build-1"
 date: 2026-07-06T22:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "バイブコーディング", "個人開発", "Pieter Levels", "ゲーム開発", "ビルドインパブリック", "ComfyUI", "ローカルGPU", "AIコーディング"]
 ---
 

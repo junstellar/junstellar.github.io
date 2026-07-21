@@ -5,7 +5,7 @@ slug: "kospi-semiconductor"
 date: 2026-07-16T20:30:00+09:00
 draft: false
 image: "hbm-series-8-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["코스피 전망", "코스피 급락 이유", "삼성전자", "SK하이닉스", "반도체 쏠림"]
 ---
 

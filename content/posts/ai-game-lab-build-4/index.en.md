@@ -4,7 +4,7 @@ description: "The fourth game in the lab is a one-hand action game, 'Dodge'. Sli
 slug: "ai-game-lab-build-4"
 date: 2026-07-21T09:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "vibe coding", "game dev", "build in public", "arcade", "action", "indie hacker", "AI coding"]
 ---
 

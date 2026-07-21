@@ -4,7 +4,7 @@ description: "I built a small web tool that finds and mosaics faces entirely ins
 slug: "face-mosaic"
 date: 2026-07-01T07:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "web", "privacy", "security", "MediaPipe", "build-it-yourself"]
 ---
 

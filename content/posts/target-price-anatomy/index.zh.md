@@ -5,7 +5,7 @@ slug: "target-price-anatomy"
 date: 2026-07-17T11:20:00+09:00
 draft: false
 image: "hbm-series-9-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["目标价", "SK海力士目标价", "PER PBR", "分析师研报", "估值"]
 ---
 

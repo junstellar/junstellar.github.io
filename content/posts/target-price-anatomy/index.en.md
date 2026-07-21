@@ -5,7 +5,7 @@ slug: "target-price-anatomy"
 date: 2026-07-17T11:20:00+09:00
 draft: false
 image: "hbm-series-9-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["price target", "SK hynix target price", "PER PBR", "analyst reports", "valuation"]
 ---
 

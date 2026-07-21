@@ -5,7 +5,7 @@ slug: "samsung-vs-hynix"
 date: 2026-07-05T09:00:00+09:00
 draft: false
 image: "hbm-series-3-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["Samsung Electronics", "SK hynix", "semiconductor", "business structure", "AI chips"]
 ---
 

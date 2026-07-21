@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "💳 越贵越畅销 — “凡勃伦效应”的悖论"
 description: "价格上涨需求下降，是经济学教科书的铁律，但有些商品却恰恰相反：越贵越好卖。凡勃伦商品与炫耀性消费的心理，以及连大脑都被骗过的价格之力。"
 slug: "veblen-effect"
 date: 2026-07-01T17:15:00+09:00
 draft: false
 image: "veblen-effect.png"
-categories: ["지식"]
-tags: ["经济", "心理", "消费", "杂学"]
+categories: []
+tags: []
 ---
 
 经济学教科书的第一页画着一条向右下方倾斜的需求曲线：价格上涨，需求下降。然而在某些商品面前，这条铁律却被彻底颠倒。

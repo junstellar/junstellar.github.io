@@ -5,7 +5,7 @@ slug: "ai-money-flow"
 date: 2026-07-11T11:00:00+09:00
 draft: false
 image: "hbm-series-6-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["AI半导体概念股", "价值链", "英伟达", "SK海力士", "科技巨头资本开支"]
 ---
 

@@ -5,7 +5,7 @@ slug: "reading-earnings"
 date: 2026-07-18T09:20:00+09:00
 draft: false
 image: "hbm-series-10-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["SK海力士财报", "财报怎么看", "业绩超预期", "共识预期", "AI半导体"]
 ---
 

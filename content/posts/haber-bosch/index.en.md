@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "🍞 The Man Who Made Bread from Air — The Haber-Bosch Process"
 description: "Plants can't use the nitrogen that makes up 78% of air. In 1909 Fritz Haber pulled ammonia — fertilizer — from the air and now feeds half of humanity, yet the same hands built WWI's poison gas."
 slug: "haber-bosch"
 date: 2026-07-12T11:00:00+09:00
 draft: false
 image: "haber.png"
-categories: ["지식"]
-tags: ["chemistry", "history", "science", "people"]
+categories: []
+tags: []
 ---
 
 Half of the nitrogen in your body came from a German chemist's laboratory a hundred years ago.

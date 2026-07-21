@@ -1,11 +1,13 @@
 ---
+build:
+  list: never
 title: "マビノギモバイル シーズン2 全職業攻略書庫を作りました"
 description: "妻のためにプリースト攻略を探したのが始まりで、ギルドメンバーの応援を受けて全21職業の攻略書庫になりました。コミュニティの投稿を出典リンク付きで整理し、毎週自動更新されます。"
 slug: "mabi-guide-library"
 date: 2026-07-06T09:00:00+09:00
 draft: false
-categories: ["일상"]
-tags: ["マビノギモバイル", "ゲーム攻略", "シーズン2"]
+categories: []
+tags: []
 ---
 
 <a href="/tools/mabi-guide/" style="display:flex;align-items:center;gap:14px;margin:0 0 32px;padding:18px 22px;border:1px solid #d9c795;border-radius:14px;background:linear-gradient(135deg,#fbf6e6,#f6efd8);text-decoration:none;box-shadow:0 6px 20px -14px rgba(120,90,20,.5)">

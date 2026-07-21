@@ -4,7 +4,7 @@ description: "我在YouTube上偶然看到，有人用AI几天做出的一款游
 slug: "ai-game-lab-build-1"
 date: 2026-07-06T22:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "vibe coding", "独立开发", "Pieter Levels", "游戏开发", "公开构建", "ComfyUI", "本地GPU", "AI编程"]
 ---
 

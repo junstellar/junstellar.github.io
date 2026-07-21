@@ -4,7 +4,7 @@ description: "为了让 Claude Code 直接操作内网中的公司 Redmine，我
 slug: "redmine-mcp-server"
 date: 2026-06-29T22:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["MCP", "Claude Code", "Python", "Redmine", "MCP服务器"]
 ---
 

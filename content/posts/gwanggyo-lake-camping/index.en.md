@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "Our First Rain on Our Second Camping Trip — Gwanggyo Lake Park Family Campground"
 description: "A review of Gwanggyo Lake Park Family Campground in Suwon — urban after-work camping, our first rain camp on only our second trip, packing up in the rain, and drying a tent for the first time."
 slug: "gwanggyo-lake-camping"
 date: 2026-07-05T10:10:00+09:00
 draft: true
 image: "camp-night.jpg"
-categories: ["캠핑"]
-tags: ["camping", "campground-review", "gwanggyo-lake-park", "rain-camping", "after-work-camping"]
+categories: []
+tags: []
 ---
 
 A week after our [first camping trip](/en/p/first-camping-malgeumteo/), our family was already off on the second one. This time it was the auto site at **Gwanggyo Lake Park Family Campground** inside Gwanggyo Lake Park in Suwon — another Friday-to-Saturday overnight right after work.

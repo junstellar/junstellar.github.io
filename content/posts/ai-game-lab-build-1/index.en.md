@@ -4,7 +4,7 @@ description: "I stumbled on a YouTube story about someone who made big money fro
 slug: "ai-game-lab-build-1"
 date: 2026-07-06T22:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "vibe coding", "indie hacker", "Pieter Levels", "game dev", "build in public", "ComfyUI", "local GPU", "AI coding"]
 ---
 

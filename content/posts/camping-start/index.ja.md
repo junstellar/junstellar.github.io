@@ -5,9 +5,11 @@ slug: "camping-start"
 date: 2026-06-30T12:00:00+09:00
 draft: true
 image: "sunrise.jpg"
-categories: ["캠핑"]
-tags: ["キャンプ", "キャンプ入門", "東海旅行", "キャンプ道具"]
+categories: []
+tags: []
 ---
+build:
+  list: never
 
 キャンプカテゴリ最初の記事なので、どうしてキャンプを始めようと思ったのか、そのきっかけから書いてみます。
 

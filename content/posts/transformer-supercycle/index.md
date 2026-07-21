@@ -5,7 +5,7 @@ slug: "transformer-supercycle"
 date: 2026-07-21T18:00:00+09:00
 draft: false
 image: "power-series-3-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["변압기 관련주", "HD현대일렉트릭", "효성중공업", "LS일렉트릭", "AI 전력"]
 ---
 

@@ -4,7 +4,7 @@ description: "ゲームラボ四つ目のゲームは片手アクション『ド
 slug: "ai-game-lab-build-4"
 date: 2026-07-21T09:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "バイブコーディング", "ゲーム開発", "ビルドインパブリック", "アーケード", "アクション", "個人開発", "AIコーディング"]
 ---
 

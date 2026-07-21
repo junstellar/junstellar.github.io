@@ -1,11 +1,13 @@
 ---
+build:
+  list: never
 title: "我做了一个玛奇手游第二赛季全职业攻略书库"
 description: "起初只是帮妻子找牧师攻略，在公会成员的鼓励下，最终做成了覆盖全部21个职业的攻略书库。整理自社区帖子并附来源链接，每周自动更新。"
 slug: "mabi-guide-library"
 date: 2026-07-06T09:00:00+09:00
 draft: false
-categories: ["일상"]
-tags: ["玛奇手游", "游戏攻略", "第二赛季"]
+categories: []
+tags: []
 ---
 
 <a href="/tools/mabi-guide/" style="display:flex;align-items:center;gap:14px;margin:0 0 32px;padding:18px 22px;border:1px solid #d9c795;border-radius:14px;background:linear-gradient(135deg,#fbf6e6,#f6efd8);text-decoration:none;box-shadow:0 6px 20px -14px rgba(120,90,20,.5)">

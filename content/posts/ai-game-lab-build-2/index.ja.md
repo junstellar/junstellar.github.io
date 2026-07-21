@@ -4,7 +4,7 @@ description: "ゲームラボに二つ目のゲームを載せました。今回
 slug: "ai-game-lab-build-2"
 date: 2026-07-11T09:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "バイブコーディング", "ゲーム開発", "ビルドインパブリック", "ワードル", "ハングル", "個人開発", "AIコーディング"]
 ---
 

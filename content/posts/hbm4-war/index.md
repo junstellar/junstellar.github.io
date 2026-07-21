@@ -5,7 +5,7 @@ slug: "hbm4-war"
 date: 2026-07-04T09:30:00+09:00
 draft: false
 image: "hbm-series-2-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["HBM4", "SK하이닉스", "삼성전자", "엔비디아", "AI반도체"]
 ---
 

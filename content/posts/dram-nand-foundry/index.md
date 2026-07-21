@@ -5,7 +5,7 @@ slug: "dram-nand-foundry"
 date: 2026-07-11T10:20:00+09:00
 draft: false
 image: "hbm-series-5-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["D램 낸드 차이", "파운드리란", "반도체 종류", "삼성전자", "SK하이닉스"]
 ---
 

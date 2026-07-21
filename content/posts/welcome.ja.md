@@ -1,11 +1,13 @@
 ---
+build:
+  list: never
 title: "ブログを始めます"
 description: "内気だった私が、AI時代に何かに挑戦しようとブログを始めます。毎晩の勉強・思考メモが自動で記事の下書きになるブログ、その第一歩を綴りました。"
 slug: "hello"
 date: 2026-06-26T12:00:00+09:00
 draft: false
-categories: ["일상"]
-tags: ["はじめに", "ブログ", "挑戦", "決意"]
+categories: []
+tags: []
 ---
 
 こんにちは 👋

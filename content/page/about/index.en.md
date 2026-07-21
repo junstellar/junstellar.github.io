@@ -10,11 +10,11 @@ menu:
 
 ## To the Moon
 
-A little space where I keep notes on what I learn.
+An AI-focused blog where I keep notes on everything I learn about AI.
 
-- 🛰 **AI** — things I learn and practice
-- 🚀 **Challenge** — shooting for opportunities
-- 🌙 **Camping** — catching a breath under the moonlight
+- 🚀 **AI Investing** — a leap toward the opportunities AI creates
+- 🛠 **AI Coding** — building (and breaking) things with AI
+- 🛰 **AI Trends** — news and thoughts from the fast lane of AI
 
 Slowly, but surely — to the Moon. 🚀
 

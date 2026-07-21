@@ -5,7 +5,7 @@ slug: "semiconductor-supercycle"
 date: 2026-07-06T19:45:00+09:00
 draft: false
 image: "hbm-series-4-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["semiconductor supercycle", "DRAM price", "memory semiconductor", "SK hynix", "Samsung Electronics"]
 ---
 

@@ -4,7 +4,7 @@ description: "能不能把Claude、ChatGPT那样的AI，不联网也不花钱地
 slug: "llama-cpp-local-llm"
 date: 2026-07-06T20:45:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "llama.cpp", "本地LLM", "LLM", "GGUF", "本地AI", "开源"]
 ---
 

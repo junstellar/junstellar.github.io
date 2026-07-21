@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "🍵 为什么气味能瞬间唤起记忆 —「普鲁斯特现象」"
 description: "一缕气味就能让遗忘的记忆瞬间涌现——这就是“普鲁斯特现象”。原因在于唯独嗅觉会绕过丘脑，直达大脑的情绪与记忆区域。揭秘这条捷径。"
 slug: "proust-phenomenon"
 date: 2026-06-26T22:00:00+09:00
 draft: false
 image: "proust.png"
-categories: ["지식"]
-tags: ["脑科学", "心理", "嗅觉", "冷知识"]
+categories: []
+tags: []
 ---
 
 路过面包店时飘来的一缕气味，有没有让你一下子想起早已遗忘的奶奶的厨房？

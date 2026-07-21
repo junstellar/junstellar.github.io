@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "💳 The Pricier, the Better It Sells — The Paradox of the 'Veblen Effect'"
 description: "Economics 101 says demand falls as prices rise. But for some goods the rule flips: the more expensive, the more they sell. The psychology of Veblen goods, conspicuous consumption, and how price fools even the brain."
 slug: "veblen-effect"
 date: 2026-07-01T17:15:00+09:00
 draft: false
 image: "veblen-effect.png"
-categories: ["지식"]
-tags: ["economics", "psychology", "consumption", "trivia"]
+categories: []
+tags: []
 ---
 
 The first page of any economics textbook shows a demand curve sloping down to the right: as prices rise, demand falls. Yet for certain goods, this law flips upside down.

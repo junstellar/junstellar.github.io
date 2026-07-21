@@ -1,12 +1,14 @@
 ---
+build:
+  list: never
 title: "🐝 꿀벌은 '춤'으로 대화한다 — 동물 언어의 경이로움"
 description: "꿀벌의 '8자 춤'은 단순한 흥분이 아니라 정확한 좌표다. 방향은 태양 기준 각도로, 시간은 거리로 — 노벨상까지 받은 동물 언어의 경이로움을 풀었다."
 slug: "bee-waggle-dance"
 date: 2026-06-26T21:00:00+09:00
 draft: false
 image: "waggle_dance.png"
-categories: ["지식"]
-tags: ["과학", "동물", "꿀벌", "잡학"]
+categories: []
+tags: []
 ---
 
 혹시 동물이 추상적인 정보를 '문장'처럼 전달할 수 있다고 생각해보신 적 있나요? 꿀벌이 바로 그렇습니다.

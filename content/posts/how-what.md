@@ -4,7 +4,7 @@ description: "허접한 장난감인 줄 알았던 GPT가 1년 만에 거의 모
 slug: "how-and-what"
 date: 2026-06-26T20:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 트렌드"]
 tags: ["AI", "GPT", "회고", "시작"]
 ---
 

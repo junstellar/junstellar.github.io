@@ -4,7 +4,7 @@ description: "The GPT I once dismissed as a flimsy toy now does almost anything.
 slug: "how-and-what"
 date: 2026-06-26T20:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 트렌드"]
 tags: ["AI", "GPT", "reflection", "beginning"]
 ---
 

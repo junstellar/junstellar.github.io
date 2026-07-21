@@ -5,7 +5,7 @@ slug: "dram-nand-foundry"
 date: 2026-07-11T10:20:00+09:00
 draft: false
 image: "hbm-series-5-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["DRAM vs NAND", "what is a foundry", "semiconductor types", "Samsung Electronics", "SK hynix"]
 ---
 

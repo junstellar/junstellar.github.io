@@ -5,7 +5,7 @@ slug: "kospi-semiconductor"
 date: 2026-07-16T20:30:00+09:00
 draft: false
 image: "hbm-series-8-cover.png"
-categories: ["투자"]
+categories: ["AI 투자"]
 tags: ["KOSPI展望", "KOSPI暴跌", "三星电子", "SK海力士", "半导体集中"]
 ---
 

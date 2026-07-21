@@ -105,28 +105,28 @@ buildExpired = false
     title = "To the Moon"
     weight = 1
     [languages.ko.params.sidebar]
-      subtitle = "AI로 배우고,\n기회에 도전하고,\n캠핑으로 숨 고르는 곳.\n천천히, 그러나 분명히 투더문."
+      subtitle = "AI에 투자하고,\nAI로 만들고,\nAI의 흐름을 읽는 곳.\n천천히, 그러나 분명히 투더문."
 
   [languages.en]
     label = "English"
     title = "To the Moon"
     weight = 2
     [languages.en.params.sidebar]
-      subtitle = "Learn with AI,\nchase the opportunities,\ncatch a breath by the campfire.\nSlowly, but surely — to the Moon."
+      subtitle = "Investing in AI,\nbuilding with AI,\nreading where AI goes next.\nSlowly, but surely — to the Moon."
 
   [languages.ja]
     label = "日本語"
     title = "To the Moon"
     weight = 3
     [languages.ja.params.sidebar]
-      subtitle = "AIで学び、\nチャンスに挑み、\nキャンプで一息つく場所。\nゆっくり、それでも確かに — To the Moon。"
+      subtitle = "AIに投資し、\nAIで作り、\nAIの流れを読む場所。\nゆっくり、それでも確かに — To the Moon。"
 
   [languages.zh]
     label = "简体中文"
     title = "To the Moon"
     weight = 4
     [languages.zh.params.sidebar]
-      subtitle = "用 AI 学习，\n向机会发起挑战，\n在露营中喘口气。\n慢慢地，却坚定地 — 奔向月球。"
+      subtitle = "投资 AI，\n用 AI 创造，\n读懂 AI 的走向。\n慢慢地，却坚定地 — 奔向月球。"
 
 [markup]
   [markup.goldmark.renderer]

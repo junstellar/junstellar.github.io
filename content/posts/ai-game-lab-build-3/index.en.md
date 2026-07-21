@@ -4,7 +4,7 @@ description: "The third game in the lab is a totally different genre — a one-b
 slug: "ai-game-lab-build-3"
 date: 2026-07-16T20:00:00+09:00
 draft: false
-categories: ["AI"]
+categories: ["AI 코딩"]
 tags: ["AI", "vibe coding", "game dev", "build in public", "arcade", "dessert", "indie hacker", "AI coding"]
 ---
 
