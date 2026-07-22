@@ -45,7 +45,7 @@
 
 <script>
 /* ===== 설정 ===== */
-const MODEL = "gemini-2.5-flash";            // 안 되면 "gemini-2.0-flash"
+const MODEL = "gemini-2.0-flash";            // 무료 한도 넉넉 (안 되면 "gemini-2.5-flash")
 const WAKE  = "짱팔";
 const CITY  = "";  // 예: "서울"
 const PERSONA = "너는 '짱팔'이라는 이름의 탁상시계 비서야. 항상 한국어로 2~3문장 이내로 짧고 친근하게 말해. 별표나 샵, 하이픈 같은 기호는 쓰지 마. 실시간 정보가 필요하면 검색해서 최신 사실로 답해.";
@@ -138,6 +138,7 @@ async function speak(text){
 /* --- Gemini (구글 검색 그라운딩) --- */
 let groundBad = false;
 function isRateErr(e){ const m=(e&&(e.status||'')+(e&&e.message||'')); return /RESOURCE_EXHAUSTED|429|quota|rate/i.test(m); }
+function needsRealtime(q){ return /날씨|뉴스|오늘|지금|현재|최신|환율|주가|주식|증시|경기|순위|랭킹|실시간|며칠|요일|가격|얼마|개봉|출시|시황|기온|미세먼지|속보/.test(q); }
 async function askGemini(text){
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${GEMINI_KEY}`;
   const now = new Date().toLocaleString('ko-KR');
@@ -145,26 +146,21 @@ async function askGemini(text){
   const prompt = `${PERSONA}\n\n(지금 시각: ${now}) ${loc}\n사용자: ${text}`;
   async function call(useSearch){
     const body = { contents:[{ parts:[{ text: prompt }] }],
-                   generationConfig:{ maxOutputTokens: 800, thinkingConfig:{ thinkingBudget: 0 } } };
+                   generationConfig:{ maxOutputTokens: 800 } };
     if(useSearch) body.tools = [{ google_search:{} }];
     const r = await fetch(url,{ method:'POST',
       headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
     return r.json();
   }
+  const wantSearch = needsRealtime(text) && !groundBad;   // 실시간 질문일 때만 검색
   try{
-    let j;
-    if(groundBad){
-      j = await call(false);                       // 검색 안 되는 키 → 1번만 호출
-    } else {
-      j = await call(true);
-      if(j.error){
-        if(isRateErr(j.error)) return "잠깐 요청이 몰렸어요 (무료 분당 한도). 1분쯤 뒤에 다시 불러줘요.";
-        groundBad = true;                          // 그라운딩 미지원 → 이후 검색 없이
-        j = await call(false);
-      }
+    let j = await call(wantSearch);
+    if(j.error){
+      if(isRateErr(j.error)) return "잠깐 요청이 몰렸어요 (무료 한도). 30초쯤 뒤 다시 불러줘요.";
+      if(wantSearch){ groundBad = true; j = await call(false); }   // 검색 문제면 검색 없이 재시도
     }
     if(j.error){
-      if(isRateErr(j.error)) return "잠깐 요청이 몰렸어요 (무료 분당 한도). 1분쯤 뒤에 다시 불러줘요.";
+      if(isRateErr(j.error)) return "잠깐 요청이 몰렸어요 (무료 한도). 30초쯤 뒤 다시 불러줘요.";
       return "제미나이 오류: " + (j.error.message || j.error.status || "요청 실패");
     }
     const parts = j?.candidates?.[0]?.content?.parts || [];
