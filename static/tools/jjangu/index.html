@@ -60,10 +60,11 @@ function ensureKeys(){
     GEMINI_KEY = (prompt("Gemini API 키 (aistudio.google.com 무료):") || "").trim();
     if(GEMINI_KEY) localStorage.setItem('gemini_key', GEMINI_KEY);
   }
-  if(ELEVEN_KEY === null){
-    const k = (prompt("자연스러운 여성 음성(ElevenLabs) 키를 넣으세요.\n없으면 [취소] → 기본 음성 사용.\n(무료 발급: elevenlabs.io)") || "").trim();
-    ELEVEN_KEY = k || "none";
-    localStorage.setItem('eleven_key', ELEVEN_KEY);
+  // 음성 키가 없으면(비었거나 none) 시작할 때마다 다시 물어봄
+  if(!ELEVEN_KEY || ELEVEN_KEY === "none"){
+    const k = (prompt("자연스러운 여성 음성(ElevenLabs) 키를 붙여넣으세요. (sk_ 로 시작)\n없으면 [취소] → 이번엔 기본 음성 (다음 새로고침 때 다시 물어봐요).\n무료 발급: elevenlabs.io") || "").trim();
+    if(k){ ELEVEN_KEY = k; localStorage.setItem('eleven_key', k); }
+    else  { ELEVEN_KEY = "none"; localStorage.removeItem('eleven_key'); }  // 저장 안 함 → 다음에 또 물음
   }
   return !!GEMINI_KEY;
 }
