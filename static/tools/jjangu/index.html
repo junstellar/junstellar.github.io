@@ -26,6 +26,7 @@
   .hidden { display:none !important; }
   .bubble { max-width:92%; font-size:4.5vw; line-height:1.4; }
   #q { color:#7aa2ff; }
+  #vtag { position:fixed; bottom:2vw; right:3vw; font-size:3vw; color:#3d4550; }
 </style>
 </head>
 <body>
@@ -38,21 +39,22 @@
   <div class="bubble" id="q"></div>
   <div class="bubble" id="a"></div>
 </div>
+<div id="vtag"></div>
 
 <script>
 /* ===== 설정 ===== */
 const MODEL = "gemini-2.5-flash";            // 안 되면 "gemini-2.0-flash"
-const WAKE  = "짱팔";                        // 부를 이름 (표시용)
-const CITY  = "";  // 예: "서울" — 넣으면 '오늘 날씨' 질문에 이 지역 기준으로 답함
+const WAKE  = "짱팔";
+const CITY  = "";  // 예: "서울"
 const PERSONA = "너는 '짱팔'이라는 이름의 탁상시계 비서야. 항상 한국어로 2~3문장 이내로 짧고 친근하게 말해. 별표나 샵, 하이픈 같은 기호는 쓰지 마. 실시간 정보가 필요하면 검색해서 최신 사실로 답해.";
-const ELEVEN_VOICE = "21m00Tcm4TlvDq8ikWAM";  // ElevenLabs 여성 음성(Rachel). 바꾸려면 voice ID 교체
-const SILENCE_MS = 1300;                      // 말 멈추고 이만큼 지나면 전송(문장 끝 대기)
+const ELEVEN_MODEL = "eleven_multilingual_v2";
 
-/* 키: 파일에 안 박고 폰에 저장. 주소 뒤 #reset=전체초기화, #voice=음성키만 재설정 */
-if(location.hash === '#reset'){ localStorage.removeItem('gemini_key'); localStorage.removeItem('eleven_key'); }
+/* 키/음성 설정 (폰 저장). #reset=전체초기화, #voice=음성키 재설정 */
+if(location.hash === '#reset'){ localStorage.clear(); }
 if(location.hash === '#voice'){ localStorage.removeItem('eleven_key'); }
 let GEMINI_KEY = localStorage.getItem('gemini_key') || "";
-let ELEVEN_KEY = localStorage.getItem('eleven_key'); // null=아직 안 물어봄, "none"=기본음성
+let ELEVEN_KEY = localStorage.getItem('eleven_key');       // null=미설정, "none"=기본음성
+let ELEVEN_VOICE = localStorage.getItem('eleven_voice') || "21m00Tcm4TlvDq8ikWAM"; // 기본 Rachel
 let elevenBad = false;
 
 function ensureKeys(){
@@ -60,11 +62,10 @@ function ensureKeys(){
     GEMINI_KEY = (prompt("Gemini API 키 (aistudio.google.com 무료):") || "").trim();
     if(GEMINI_KEY) localStorage.setItem('gemini_key', GEMINI_KEY);
   }
-  // 음성 키가 없으면(비었거나 none) 시작할 때마다 다시 물어봄
   if(!ELEVEN_KEY || ELEVEN_KEY === "none"){
-    const k = (prompt("자연스러운 여성 음성(ElevenLabs) 키를 붙여넣으세요. (sk_ 로 시작)\n없으면 [취소] → 이번엔 기본 음성 (다음 새로고침 때 다시 물어봐요).\n무료 발급: elevenlabs.io") || "").trim();
+    const k = (prompt("자연스러운 음성(ElevenLabs) 키를 붙여넣으세요. (sk_ 로 시작)\n없으면 [취소] → 이번엔 기본 음성 (다음 새로고침 때 다시 물어봐요).\n무료: elevenlabs.io") || "").trim();
     if(k){ ELEVEN_KEY = k; localStorage.setItem('eleven_key', k); }
-    else  { ELEVEN_KEY = "none"; localStorage.removeItem('eleven_key'); }  // 저장 안 함 → 다음에 또 물음
+    else  { ELEVEN_KEY = "none"; localStorage.removeItem('eleven_key'); }
   }
   return !!GEMINI_KEY;
 }
@@ -83,7 +84,7 @@ function tick(){
 }
 setInterval(tick, 1000); tick();
 
-/* --- 음성 합성: ElevenLabs(있으면) → 실패/없으면 폰 기본 --- */
+/* --- 음성 합성 --- */
 let VOICE=null;
 function pickVoice(){
   try{
@@ -110,10 +111,11 @@ async function speak(text){
       const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${ELEVEN_VOICE}`,{
         method:'POST',
         headers:{'xi-api-key':ELEVEN_KEY,'Content-Type':'application/json'},
-        body:JSON.stringify({ text, model_id:'eleven_turbo_v2_5',
-          voice_settings:{ stability:0.45, similarity_boost:0.8 } })
+        body:JSON.stringify({ text, model_id:ELEVEN_MODEL,
+          voice_settings:{ stability:0.5, similarity_boost:0.75 } })
       });
       if(r.ok){
+        $('vtag').textContent = '🔊 AI음성';
         const blob = await r.blob();
         await new Promise(res=>{
           const a = new Audio(URL.createObjectURL(blob));
@@ -121,13 +123,14 @@ async function speak(text){
         });
         return;
       }
-      elevenBad = true;   // 키 오류 등 → 이후 기본 음성
+      elevenBad = true;
     }catch(e){ elevenBad = true; }
   }
+  $('vtag').textContent = '🔊 기본음성';
   await browserSpeak(text);
 }
 
-/* --- Gemini 호출 (구글 검색 그라운딩 = 실시간) --- */
+/* --- Gemini (구글 검색 그라운딩) --- */
 async function askGemini(text){
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${GEMINI_KEY}`;
   const now = new Date().toLocaleString('ko-KR');
@@ -146,75 +149,71 @@ async function askGemini(text){
     if(j.error) j = await call(false);
     if(j.error) return "키가 잘못됐거나 막혔어요. 주소 뒤에 #reset 붙여서 다시 입력해줘요.";
     const parts = j?.candidates?.[0]?.content?.parts || [];
-    let out = parts.map(p => (p && p.text) ? p.text : '').join('');   // 전체 조각 합치기
+    let out = parts.map(p => (p && p.text) ? p.text : '').join('');
     out = out.replace(/[*#_`>]/g,'').replace(/\[\d+\]/g,'').trim();
     return out || "음… 잘 못 들었어요. 다시 말해줄래요?";
   }catch(e){ return "인터넷 연결을 확인해줘요."; }
 }
 
-/* --- 웨이크워드 퍼지 매칭: 짱팔·짱발·짱파·짱빨·장팔 등 --- */
+/* --- 웨이크워드 퍼지 매칭 --- */
 function matchedWake(heard){
   const m = heard.match(/[짱장]\s?[팔발파빨빠퐈]/);
   return m ? m.index + m[0].length : -1;
 }
 
-/* --- 음성 인식 (STT) : 문장 끝까지 기다렸다가 전송 --- */
-let rec, busy=false, awaiting=false, capturing=false, flashed=false, cmdText="", silenceTimer=null;
+/* --- 음성 인식: 한 문장씩 깔끔하게 --- */
+let rec, busy=false, awaiting=false, flashed=false;
 function setStatus(t, cls=''){ $('status').textContent=t; $('status').className=cls; }
-function fullText(ev){ let t=""; for(const r of ev.results) t += r[0].transcript; return t.trim(); }
 
 function startRec(){
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if(!SR){ setStatus('이 브라우저는 음성인식 미지원 — 크롬으로 열어주세요'); return; }
-  capturing=false; flashed=false; cmdText=""; clearTimeout(silenceTimer);
+  flashed=false;
   rec = new SR();
-  rec.lang='ko-KR'; rec.continuous=true; rec.interimResults=true;
+  rec.lang='ko-KR'; rec.continuous=false; rec.interimResults=true; rec.maxAlternatives=1;
   rec.onresult = onResult;
-  rec.onend = ()=>{ if(!busy){ try{ rec.start(); }catch(e){} } };
-  rec.onerror = (e)=>{ if(e && e.error === 'not-allowed'){ setStatus('마이크 권한을 허용해주세요'); } };
+  rec.onend = ()=>{ if(!busy){ try{ rec.start(); }catch(e){} } };  // 한 문장 끝나면 다시 듣기
+  rec.onerror = (e)=>{ if(e && e.error==='not-allowed'){ setStatus('마이크 권한을 허용해주세요'); } };
   try{ rec.start(); }catch(e){}
   if(!awaiting) setStatus(`'${WAKE}아' 하고 불러주세요`, 'live');
 }
 
 function onResult(ev){
   if(busy) return;
-  const txt = fullText(ev);
-  $('heard').textContent = txt ? '🎧 ' + txt : '';
-
-  const wi = matchedWake(txt);
-  if(!capturing && !awaiting && wi < 0) return;   // 아직 이름 없음 → 무시
-
-  if(!capturing){
-    capturing = true;
-    if(!flashed){ flashed=true; setStatus('✅ 짱팔 인식! 말해봐', 'heard');
-      try{ navigator.vibrate && navigator.vibrate(80); }catch(e){} }
+  let interim='', final='';
+  for(let i=ev.resultIndex; i<ev.results.length; i++){
+    const t = ev.results[i][0].transcript;
+    if(ev.results[i].isFinal) final += t; else interim += t;
   }
-  cmdText = (wi>=0 ? txt.slice(wi) : txt).replace(/^[아야라,.!? ]+/,'').trim();
+  const live = (final + interim).trim();
+  $('heard').textContent = live ? '🎧 ' + live : '';
 
-  clearTimeout(silenceTimer);
-  silenceTimer = setTimeout(finalizeCmd, SILENCE_MS);   // 말 멈추면 그때 전송
+  if(!awaiting && matchedWake(live) >= 0 && !flashed){
+    flashed=true; setStatus('✅ 짱팔 인식! 말해봐','heard');
+    try{ navigator.vibrate && navigator.vibrate(80); }catch(e){}
+  }
+
+  if(!final) return;                 // 최종 결과 나올 때까지 대기
+  onFinal(final.trim());
 }
 
-async function finalizeCmd(){
-  if(busy) return;
-  const cmd = cmdText.trim();
-  capturing=false; flashed=false; awaiting=false; cmdText="";
-
+async function onFinal(txt){
+  const wi = matchedWake(txt);
+  if(!awaiting && wi < 0){           // 이름 없음 → 무시
+    setTimeout(()=>{ if(!busy) $('heard').textContent=''; }, 800);
+    return;
+  }
+  const cmd = (wi>=0 ? txt.slice(wi) : txt).replace(/^[아야라,.!? ]+/,'').trim();
   if(cmd){ handle(cmd); return; }
 
-  // 이름만 부름 → "응?" 하고 다음 발화를 질문으로 받기
-  busy = true;
-  try{ rec.stop(); }catch(e){}
-  speechSynthesis.cancel();
-  setStatus('네?', 'heard');
-  await speak('응?');
-  awaiting = true; busy = false;
-  startRec();
+  // 이름만 → "응?"
+  busy=true; try{rec.stop()}catch(e){}; speechSynthesis.cancel();
+  setStatus('네?','heard'); await speak('응?');
+  awaiting=true; busy=false; startRec();
 }
 
 async function handle(cmd){
   busy = true;
-  clearTimeout(silenceTimer);
   try{ rec.stop(); }catch(e){}
   speechSynthesis.cancel();
   $('heard').textContent = '';
