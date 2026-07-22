@@ -108,7 +108,10 @@ function browserSpeak(text){
 }
 
 async function speak(text){
-  if(!elevenBad && ELEVEN_KEY && ELEVEN_KEY!=="none"){
+  let reason = '';
+  if(!ELEVEN_KEY || ELEVEN_KEY==="none") reason = '키없음';
+  else if(elevenBad) reason = '이전실패';
+  else {
     try{
       const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${ELEVEN_VOICE}`,{
         method:'POST',
@@ -125,10 +128,10 @@ async function speak(text){
         });
         return;
       }
-      elevenBad = true;
-    }catch(e){ elevenBad = true; }
+      elevenBad = true; reason = 'HTTP ' + r.status;
+    }catch(e){ elevenBad = true; reason = '연결실패'; }
   }
-  $('vtag').textContent = '🔊 기본음성';
+  $('vtag').textContent = '🔊 기본음성(' + reason + ')';
   await browserSpeak(text);
 }
 
@@ -142,7 +145,7 @@ async function askGemini(text){
   const prompt = `${PERSONA}\n\n(지금 시각: ${now}) ${loc}\n사용자: ${text}`;
   async function call(useSearch){
     const body = { contents:[{ parts:[{ text: prompt }] }],
-                   generationConfig:{ maxOutputTokens: 500 } };
+                   generationConfig:{ maxOutputTokens: 800, thinkingConfig:{ thinkingBudget: 0 } } };
     if(useSearch) body.tools = [{ google_search:{} }];
     const r = await fetch(url,{ method:'POST',
       headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
