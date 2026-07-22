@@ -41,14 +41,8 @@
 const MODEL = "gemini-2.5-flash";            // 안 되면 "gemini-2.0-flash"
 const WAKE  = "짱팔";                        // 부를 이름
 const WAKE_WORDS = ["짱팔","짱팔이","짱발","짱파","짱파리","짱빨"];  // 발음 오인식 대비
-const PERSONA = "너는 '짱팔'이라는 이름의 탁상시계 비서야. 항상 한국어로 2~3문장 이내로 짧고 친근하게 말해. 별표나 샵, 하이픈 같은 기호는 쓰지 마. [참고 정보]가 주어지면 반드시 그걸 근거로 답해.";
-
-/* 날씨 코드 → 한국어 */
-const WMO = {0:"맑음",1:"대체로 맑음",2:"구름 조금",3:"흐림",45:"안개",48:"짙은 안개",
-  51:"약한 이슬비",53:"이슬비",55:"강한 이슬비",61:"약한 비",63:"비",65:"강한 비",
-  66:"어는 비",67:"강한 어는 비",71:"약한 눈",73:"눈",75:"강한 눈",77:"싸락눈",
-  80:"약한 소나기",81:"소나기",82:"강한 소나기",85:"약한 눈소나기",86:"강한 눈소나기",
-  95:"뇌우",96:"우박 뇌우",99:"강한 우박 뇌우"};
+const CITY  = "";  // 예: "서울" — 넣으면 '오늘 날씨' 같은 질문에 이 지역 기준으로 답함
+const PERSONA = "너는 '짱팔'이라는 이름의 탁상시계 비서야. 항상 한국어로 2~3문장 이내로 짧고 친근하게 말해. 별표나 샵, 하이픈 같은 기호는 쓰지 마. 실시간 정보가 필요하면 검색해서 최신 사실로 답해.";
 
 /* 키는 파일에 안 박고 폰에 저장. 주소 뒤 #reset 붙이면 키 초기화 */
 if(location.hash === '#reset'){ localStorage.removeItem('gemini_key'); }
@@ -88,34 +82,28 @@ function speak(text){
   });
 }
 
-/* --- 실시간 날씨 (Open-Meteo, 키 불필요) --- */
-async function getWeather(){
-  let lat=37.5665, lon=126.9780;  // 위치 거부 시 서울 기본
-  try{
-    const pos = await new Promise((res,rej)=>
-      navigator.geolocation.getCurrentPosition(res,rej,{timeout:6000}));
-    lat=pos.coords.latitude; lon=pos.coords.longitude;
-  }catch(e){}
-  try{
-    const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m`);
-    const c = (await r.json()).current;
-    const desc = WMO[c.weather_code] || "";
-    return `${desc}, 기온 ${Math.round(c.temperature_2m)}도(체감 ${Math.round(c.apparent_temperature)}도), 바람 ${Math.round(c.wind_speed_10m)} km/h`;
-  }catch(e){ return "날씨 정보를 못 가져왔어요"; }
-}
-
-/* --- Gemini 호출 --- */
-async function askGemini(text, extra=""){
+/* --- Gemini 호출 (구글 검색 그라운딩 = 실시간 정보) --- */
+async function askGemini(text){
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${GEMINI_KEY}`;
-  const prompt = PERSONA + (extra ? "\n\n[참고 정보] " + extra : "") + "\n\n사용자: " + text;
-  const body = { contents:[{ parts:[{ text: prompt }] }], generationConfig:{ maxOutputTokens: 300 } };
-  try{
+  const now = new Date().toLocaleString('ko-KR');
+  const loc = CITY ? `사용자는 ${CITY}에 있어. ` : "";
+  const prompt = `${PERSONA}\n\n(지금 시각: ${now}) ${loc}\n사용자: ${text}`;
+
+  async function call(useSearch){
+    const body = { contents:[{ parts:[{ text: prompt }] }],
+                   generationConfig:{ maxOutputTokens: 400 } };
+    if(useSearch) body.tools = [{ google_search:{} }];   // 실시간 검색 켜기
     const r = await fetch(url,{ method:'POST',
       headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
-    const j = await r.json();
-    if(j.error){ return "키가 잘못됐거나 막혔어요. 주소 뒤에 #reset 붙여서 다시 입력해줘요."; }
+    return r.json();
+  }
+
+  try{
+    let j = await call(true);
+    if(j.error) j = await call(false);      // 검색 도구가 막히면 도구 없이 재시도
+    if(j.error) return "키가 잘못됐거나 막혔어요. 주소 뒤에 #reset 붙여서 다시 입력해줘요.";
     let out = j?.candidates?.[0]?.content?.parts?.[0]?.text || "";
-    out = out.replace(/[*#_`>-]/g,'').trim();
+    out = out.replace(/[*#_`>-]/g,'').replace(/\[\d+\]/g,'').trim();  // 기호·각주 제거
     return out || "음… 잘 못 들었어요. 다시 말해줄래요?";
   }catch(e){ return "인터넷 연결을 확인해줘요."; }
 }
@@ -147,14 +135,8 @@ async function handle(cmd){
   speechSynthesis.cancel();
   $('q').textContent = '❓ ' + cmd;
   $('a').textContent = '';
-  setStatus(`${WAKE}이 생각 중…`, 'think');
-
-  let extra = "";
-  if(/날씨|더워|추워|기온|우산|비\s*오|눈\s*오/.test(cmd)){
-    extra = "지금 실제 날씨: " + await getWeather();
-  }
-  const ans = await askGemini(cmd, extra);
-
+  setStatus(`${WAKE}이 검색·생각 중…`, 'think');
+  const ans = await askGemini(cmd);
   $('a').textContent = '💬 ' + ans;
   setStatus('', 'live');
   await speak(ans);
