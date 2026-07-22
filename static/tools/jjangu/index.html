@@ -11,20 +11,19 @@
   * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; }
   html,body { height:100%; background:#0b0d12; color:#e8ecf1;
     font-family:'Segoe UI',system-ui,sans-serif; overflow:hidden; }
-  #app { height:100%; display:flex; flex-direction:column; align-items:center;
-    justify-content:center; gap:3vh; padding:4vw; text-align:center; }
+  #app { min-height:100%; display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:3vh; padding:6vw 4vw; text-align:center; }
   #clock { font-size:22vw; font-weight:700; letter-spacing:2px; line-height:1;
     font-variant-numeric:tabular-nums; }
   #date { font-size:5vw; color:#8b94a3; }
   #status { font-size:4.5vw; color:#5a6470; min-height:6vw; }
   #status.live { color:#4ade80; }
   #status.think { color:#fbbf24; }
+  #startBtn { font-size:7vw; padding:4vw 10vw; border:none; border-radius:4vw;
+    background:#7aa2ff; color:#0b0d12; font-weight:700; margin-top:2vh; }
+  .hidden { display:none !important; }
   .bubble { max-width:92%; font-size:4.5vw; line-height:1.4; }
   #q { color:#7aa2ff; }
-  #start { position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
-    background:#0b0d12; z-index:9; }
-  #start button { font-size:7vw; padding:4vw 8vw; border:none; border-radius:4vw;
-    background:#7aa2ff; color:#0b0d12; font-weight:700; }
 </style>
 </head>
 <body>
@@ -32,10 +31,10 @@
   <div id="clock">--:--</div>
   <div id="date"></div>
   <div id="status">시작하려면 아래 버튼을 누르세요</div>
+  <button id="startBtn">🎤 짱구 시작</button>
   <div class="bubble" id="q"></div>
   <div class="bubble" id="a"></div>
 </div>
-<div id="start"><button>🎤 짱구 시작</button></div>
 
 <script>
 /* ===== 설정 ===== */
@@ -71,11 +70,13 @@ setInterval(tick, 1000); tick();
 /* --- 음성 합성 (TTS) --- */
 function speak(text){
   return new Promise(res=>{
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'ko-KR'; u.rate = 1.05;
-    u.onend = res; u.onerror = res;
-    speechSynthesis.cancel();
-    speechSynthesis.speak(u);
+    try{
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'ko-KR'; u.rate = 1.05;
+      u.onend = res; u.onerror = res;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(u);
+    }catch(e){ res(); }
   });
 }
 
@@ -103,12 +104,17 @@ function setStatus(t, cls=''){ $('status').textContent=t; $('status').className=
 
 function startRec(){
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if(!SR){ setStatus('이 브라우저는 음성인식을 지원 안 해요 (크롬 권장)'); return; }
+  if(!SR){
+    setStatus('이 브라우저는 음성인식 미지원 — 크롬으로 열어주세요');
+    return;
+  }
   rec = new SR();
   rec.lang='ko-KR'; rec.continuous=true; rec.interimResults=false;
   rec.onresult = onResult;
   rec.onend = ()=>{ if(!busy){ try{ rec.start(); }catch(e){} } };  // 끊기면 자동 재시작
-  rec.onerror = ()=>{};
+  rec.onerror = (e)=>{
+    if(e && e.error === 'not-allowed'){ setStatus('마이크 권한을 허용해주세요'); }
+  };
   try{ rec.start(); }catch(e){}
   setStatus(`'${WAKE}야' 하고 불러주세요`, 'live');
 }
@@ -141,9 +147,9 @@ async function onResult(ev){
 }
 
 /* --- 시작 버튼 --- */
-$('start').addEventListener('click', async ()=>{
+$('startBtn').addEventListener('click', async ()=>{
   if(!ensureKey()){ alert('Gemini 키가 필요해요.'); return; }
-  $('start').style.display='none';
+  $('startBtn').classList.add('hidden');
   try{ if('wakeLock' in navigator) await navigator.wakeLock.request('screen'); }catch(e){}
   await speak('짱구 준비 완료. 부르면 대답할게요.');
   startRec();
