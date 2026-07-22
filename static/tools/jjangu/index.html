@@ -107,11 +107,26 @@ function browserSpeak(text){
   });
 }
 
+let voiceResolved = false;
+async function resolveVoice(){
+  if(voiceResolved) return;
+  voiceResolved = true;
+  try{
+    const r = await fetch('https://api.elevenlabs.io/v1/voices', { headers:{'xi-api-key':ELEVEN_KEY} });
+    if(r.ok){
+      const list = (await r.json()).voices || [];
+      const fem = list.find(v => /female|여/i.test((v.labels && v.labels.gender) || ''));
+      const pick = fem || list[0];
+      if(pick && pick.voice_id){ ELEVEN_VOICE = pick.voice_id; localStorage.setItem('eleven_voice', ELEVEN_VOICE); }
+    }
+  }catch(e){}
+}
 async function speak(text){
   let reason = '';
   if(!ELEVEN_KEY || ELEVEN_KEY==="none") reason = '키없음';
   else if(elevenBad) reason = '이전실패';
   else {
+    await resolveVoice();
     try{
       const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${ELEVEN_VOICE}`,{
         method:'POST',
