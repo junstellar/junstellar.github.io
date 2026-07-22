@@ -6,6 +6,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="robots" content="noindex">
+<meta http-equiv="Cache-Control" content="no-store, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
 <title>짱팔 시계</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; }
@@ -131,6 +133,8 @@ async function speak(text){
 }
 
 /* --- Gemini (구글 검색 그라운딩) --- */
+let groundBad = false;
+function isRateErr(e){ const m=(e&&(e.status||'')+(e&&e.message||'')); return /RESOURCE_EXHAUSTED|429|quota|rate/i.test(m); }
 async function askGemini(text){
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${GEMINI_KEY}`;
   const now = new Date().toLocaleString('ko-KR');
@@ -145,9 +149,21 @@ async function askGemini(text){
     return r.json();
   }
   try{
-    let j = await call(true);
-    if(j.error) j = await call(false);
-    if(j.error) return "키가 잘못됐거나 막혔어요. 주소 뒤에 #reset 붙여서 다시 입력해줘요.";
+    let j;
+    if(groundBad){
+      j = await call(false);                       // 검색 안 되는 키 → 1번만 호출
+    } else {
+      j = await call(true);
+      if(j.error){
+        if(isRateErr(j.error)) return "잠깐 요청이 몰렸어요 (무료 분당 한도). 1분쯤 뒤에 다시 불러줘요.";
+        groundBad = true;                          // 그라운딩 미지원 → 이후 검색 없이
+        j = await call(false);
+      }
+    }
+    if(j.error){
+      if(isRateErr(j.error)) return "잠깐 요청이 몰렸어요 (무료 분당 한도). 1분쯤 뒤에 다시 불러줘요.";
+      return "제미나이 오류: " + (j.error.message || j.error.status || "요청 실패");
+    }
     const parts = j?.candidates?.[0]?.content?.parts || [];
     let out = parts.map(p => (p && p.text) ? p.text : '').join('');
     out = out.replace(/[*#_`>]/g,'').replace(/\[\d+\]/g,'').trim();
