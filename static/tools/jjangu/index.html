@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="robots" content="noindex">
+<title>짱구 시계</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-user-select:none; user-select:none; }
+  html,body { height:100%; background:#0b0d12; color:#e8ecf1;
+    font-family:'Segoe UI',system-ui,sans-serif; overflow:hidden; }
+  #app { height:100%; display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:3vh; padding:4vw; text-align:center; }
+  #clock { font-size:22vw; font-weight:700; letter-spacing:2px; line-height:1;
+    font-variant-numeric:tabular-nums; }
+  #date { font-size:5vw; color:#8b94a3; }
+  #status { font-size:4.5vw; color:#5a6470; min-height:6vw; }
+  #status.live { color:#4ade80; }
+  #status.think { color:#fbbf24; }
+  .bubble { max-width:92%; font-size:4.5vw; line-height:1.4; }
+  #q { color:#7aa2ff; }
+  #start { position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+    background:#0b0d12; z-index:9; }
+  #start button { font-size:7vw; padding:4vw 8vw; border:none; border-radius:4vw;
+    background:#7aa2ff; color:#0b0d12; font-weight:700; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="clock">--:--</div>
+  <div id="date"></div>
+  <div id="status">시작하려면 아래 버튼을 누르세요</div>
+  <div class="bubble" id="q"></div>
+  <div class="bubble" id="a"></div>
+</div>
+<div id="start"><button>🎤 짱구 시작</button></div>
+
+<script>
+/* ===== 설정 ===== */
+const MODEL = "gemini-2.5-flash";            // 안 되면 "gemini-2.0-flash"
+const WAKE  = "짱구";                        // 부를 이름
+const PERSONA = "너는 '짱구'라는 이름의 탁상시계 비서야. 항상 한국어로 2~3문장 이내로 짧고 친근하게 말해. 별표나 샵, 하이픈 같은 기호는 쓰지 마.";
+
+/* 키는 파일에 안 박고, 폰에 저장(공개 저장소 안전). 주소 뒤 #reset 붙이면 키 초기화 */
+if(location.hash === '#reset'){ localStorage.removeItem('gemini_key'); }
+let GEMINI_KEY = localStorage.getItem('gemini_key') || "";
+function ensureKey(){
+  if(!GEMINI_KEY){
+    GEMINI_KEY = (prompt("Gemini API 키를 입력하세요 (aistudio.google.com 무료):") || "").trim();
+    if(GEMINI_KEY) localStorage.setItem('gemini_key', GEMINI_KEY);
+  }
+  return !!GEMINI_KEY;
+}
+/* ================ */
+
+const $ = id => document.getElementById(id);
+
+/* --- 시계 --- */
+const DAYS = ['일','월','화','수','목','금','토'];
+function tick(){
+  const d = new Date();
+  $('clock').textContent =
+    String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+  $('date').textContent =
+    `${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일 (${DAYS[d.getDay()]})`;
+}
+setInterval(tick, 1000); tick();
+
+/* --- 음성 합성 (TTS) --- */
+function speak(text){
+  return new Promise(res=>{
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ko-KR'; u.rate = 1.05;
+    u.onend = res; u.onerror = res;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  });
+}
+
+/* --- Gemini 호출 --- */
+async function askGemini(text){
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${GEMINI_KEY}`;
+  const body = {
+    contents:[{ parts:[{ text: PERSONA + "\n\n사용자: " + text }] }],
+    generationConfig:{ maxOutputTokens: 300 }
+  };
+  try{
+    const r = await fetch(url,{ method:'POST',
+      headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+    const j = await r.json();
+    if(j.error){ return "키가 잘못됐거나 막혔어요. 주소 뒤에 #reset 붙여서 다시 입력해줘요."; }
+    let out = j?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+    out = out.replace(/[*#_`>-]/g,'').trim();     // TTS용 기호 제거
+    return out || "음… 잘 못 들었어요. 다시 말해줄래요?";
+  }catch(e){ return "인터넷 연결을 확인해줘요."; }
+}
+
+/* --- 음성 인식 (STT) + 웨이크워드 --- */
+let rec, busy=false;
+function setStatus(t, cls=''){ $('status').textContent=t; $('status').className=cls; }
+
+function startRec(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ setStatus('이 브라우저는 음성인식을 지원 안 해요 (크롬 권장)'); return; }
+  rec = new SR();
+  rec.lang='ko-KR'; rec.continuous=true; rec.interimResults=false;
+  rec.onresult = onResult;
+  rec.onend = ()=>{ if(!busy){ try{ rec.start(); }catch(e){} } };  // 끊기면 자동 재시작
+  rec.onerror = ()=>{};
+  try{ rec.start(); }catch(e){}
+  setStatus(`'${WAKE}야' 하고 불러주세요`, 'live');
+}
+
+async function onResult(ev){
+  if(busy) return;
+  const heard = ev.results[ev.results.length-1][0].transcript.trim();
+  if(!heard.includes(WAKE)) return;                 // 이름 안 부르면 무시
+
+  let cmd = heard.slice(heard.indexOf(WAKE)+WAKE.length)
+                 .replace(/^[야,.!? ]+/,'').trim();  // '짱구' 뒤 = 질문
+
+  busy = true;
+  try{ rec.stop(); }catch(e){}                       // 내 목소리 되먹임 방지
+  speechSynthesis.cancel();
+
+  if(!cmd){ await speak('응?'); busy=false; startRec(); return; }
+
+  $('q').textContent = '❓ ' + cmd;
+  $('a').textContent = '';
+  setStatus('짱구가 생각 중…', 'think');
+
+  const ans = await askGemini(cmd);
+  $('a').textContent = '💬 ' + ans;
+  setStatus('', 'live');
+  await speak(ans);
+
+  busy = false;
+  startRec();                                        // 다시 대기
+}
+
+/* --- 시작 버튼 --- */
+$('start').addEventListener('click', async ()=>{
+  if(!ensureKey()){ alert('Gemini 키가 필요해요.'); return; }
+  $('start').style.display='none';
+  try{ if('wakeLock' in navigator) await navigator.wakeLock.request('screen'); }catch(e){}
+  await speak('짱구 준비 완료. 부르면 대답할게요.');
+  startRec();
+});
+</script>
+</body>
+</html>
