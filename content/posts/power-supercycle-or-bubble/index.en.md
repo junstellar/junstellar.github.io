@@ -2,7 +2,7 @@
 title: "Power Supercycle or Bubble? — After Nuclear and Transformers Fell 30% · AI Power Investing 101 ④"
 description: "Nuclear and transformer stocks ran hot, then fell over 30%. Is the AI power theme a real supercycle or a bubble? We weigh both sides and boil it down to a checklist."
 slug: "power-supercycle-or-bubble"
-date: 2026-07-27T22:00:00+09:00
+date: 2026-07-27T18:20:00+09:00
 draft: false
 image: "power-series-4-cover.png"
 categories: ["AI 투자"]

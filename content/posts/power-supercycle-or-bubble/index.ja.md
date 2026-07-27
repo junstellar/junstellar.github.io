@@ -2,7 +2,7 @@
 title: "電力スーパーサイクルか泡か — 原発も変圧器も30%下げた今 · AI電力投資の教科書 ④"
 description: "原発株も変圧器株も熱狂の後に30%超下落。AI電力テーマは本物のスーパーサイクルか、泡か？両方の証拠を天秤に載せ、チェックリストで整理しました。"
 slug: "power-supercycle-or-bubble"
-date: 2026-07-27T22:00:00+09:00
+date: 2026-07-27T18:20:00+09:00
 draft: false
 image: "power-series-4-cover.png"
 categories: ["AI 투자"]

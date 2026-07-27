@@ -2,7 +2,7 @@
 title: "전력 슈퍼사이클인가 거품인가 — 원전도 변압기도 30% 빠진 지금 · AI 전력 투자 교과서 ④"
 description: "원전주도 변압기주도 뜨거웠다가 30% 넘게 빠졌습니다. AI 전력 테마는 진짜 슈퍼사이클일까요, 거품일까요? 양쪽 증거를 저울에 올리고 체크리스트로 정리했습니다."
 slug: "power-supercycle-or-bubble"
-date: 2026-07-27T22:00:00+09:00
+date: 2026-07-27T18:20:00+09:00
 draft: false
 image: "power-series-4-cover.png"
 categories: ["AI 투자"]

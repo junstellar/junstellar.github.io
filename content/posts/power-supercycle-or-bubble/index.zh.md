@@ -2,7 +2,7 @@
 title: "电力超级周期还是泡沫 — 核电、变压器都跌了30%的当下 · AI电力投资教科书 ④"
 description: "核电股、变压器股火过之后都跌了30%多。AI电力主题是真正的超级周期，还是泡沫？把两边的证据放上天平，用清单一并梳理。"
 slug: "power-supercycle-or-bubble"
-date: 2026-07-27T22:00:00+09:00
+date: 2026-07-27T18:20:00+09:00
 draft: false
 image: "power-series-4-cover.png"
 categories: ["AI 투자"]
