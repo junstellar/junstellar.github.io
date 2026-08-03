@@ -84,4 +84,4 @@ Under the hood it groups all touching same-tier bodies into one cluster and fuse
 
 **[Play a run of Space Merge](/games/space-merge/)** and tell me how far you got. I still haven't seen the **galaxy**. 🌌
 
-*Next time: either a seventh game, or a report card on whether anyone actually showed up to play.*
+*Next time: a seventh game.*

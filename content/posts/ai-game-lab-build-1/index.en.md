@@ -91,4 +91,4 @@ So let me close this post with a request. 👇
 
 **[Play a round of "Guess the AI Picture"](/games/guess-image/)** — tell me what you scored and which picture cracked you up, and I'll fold it into the next episode. You playing is the real fuel for this experiment. 🚀
 
-*Next time I'll probably show up with a second game, or a report card on how many people actually came by.*
+*Next time: a second game.*

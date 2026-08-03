@@ -68,4 +68,4 @@ Not "a pile of similar games" anymore — the [game lab](/games/) finally feels 
 
 **[Stack a dessert tower](/games/stack-tower/)** and tell me how many floors you managed. For the record, I keep collapsing on the jelly. 🚀
 
-*Next time: a fourth game, or maybe the report card on whether anyone actually came to play.*
+*Next time: a fourth game.*

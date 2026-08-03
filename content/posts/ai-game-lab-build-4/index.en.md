@@ -57,4 +57,4 @@ Brains, habit, hand-feel, reflex — whatever mood you show up in, the [game lab
 
 **[Play a round of Dodge](/games/dodge/)** and tell me your score. For the record, I keep flying into bombs while reaching for stars. 🚀
 
-*Next time: a fifth game, or maybe the report card on whether anyone actually came to play.*
+*Next time: a fifth game.*

@@ -76,4 +76,4 @@ Brain, habit, timing, reflex, aim — the [game lab](/games/) now has five flavo
 
 **[Play a round of Paper Hoop](/games/paper-hoop/)** and tell me your score. Sink three swishes in a row and you catch fire. 🔥
 
-*Next time: either a sixth game, or a report card on whether anyone actually showed up to play.*
+*Next time: a sixth game.*
