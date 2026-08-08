@@ -2,7 +2,7 @@
 title: "−8%, −8%, then +17.9% in One Week — What a Circuit Breaker Actually Is · AI Index Investing 101 ③"
 description: "In July 2026 Korea saw its first back-to-back circuit breakers and its largest single-day gain in 46 years — in the same week. Here is that week hour by hour, plus what circuit breakers, sidecars and VI actually do."
 slug: "circuit-breaker-week"
-date: 2026-08-08T11:30:00+09:00
+date: 2026-08-08T11:00:00+09:00
 draft: false
 image: "index-series-3-cover.png"
 categories: ["AI 투자"]

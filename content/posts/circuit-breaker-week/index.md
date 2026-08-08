@@ -2,7 +2,7 @@
 title: "일주일 만에 -8%, -8%, +17.9% — 서킷브레이커가 뭐길래 · AI 지수 투자 교과서 ③"
 description: "2026년 7월, 사상 첫 이틀 연속 서킷브레이커와 46년 만의 최대 폭등이 같은 주에 일어났습니다. 그 나흘을 시간순으로 재구성하고, 서킷브레이커·사이드카·VI가 무엇인지 정리했습니다."
 slug: "circuit-breaker-week"
-date: 2026-08-08T11:30:00+09:00
+date: 2026-08-08T11:00:00+09:00
 draft: false
 image: "index-series-3-cover.png"
 categories: ["AI 투자"]

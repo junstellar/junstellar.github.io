@@ -2,7 +2,7 @@
 title: "一周之内−8%、−8%、+17.9% — 熔断到底是什么 · AI指数投资教科书 ③"
 description: "2026年7月，史上首次连续两天熔断与46年来最大单日涨幅出现在同一周。本文按时间顺序还原那四天，并讲清楚熔断、熔断预警（sidecar）与VI各自在做什么。"
 slug: "circuit-breaker-week"
-date: 2026-08-08T11:30:00+09:00
+date: 2026-08-08T11:00:00+09:00
 draft: false
 image: "index-series-3-cover.png"
 categories: ["AI 투자"]
