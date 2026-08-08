@@ -11,7 +11,7 @@ tags: ["KOSPI", "stock index", "market cap", "KOSDAQ", "AI investing"]
 
 A new series begins. Having dug into AI's **components** in the [AI Semiconductor textbook](/en/p/what-is-hbm/) and AI's **fuel** in the [AI Power textbook](/en/p/ai-power-hunger/), this time we take on the **market itself** — the thing AI has swallowed.
 
-Let's start with what happened last week. **On July 31, the KOSPI rose 17.91% in a single day.** It jumped 1,001 points to close at 6,585.45 — the largest single-day percentage gain and the largest point gain in 46 years. And just three days earlier, on July 28 and 29, circuit breakers had tripped on consecutive days.
+Let's start with what happened last week. **On July 31, the KOSPI rose 17.91% in a single day.** It jumped 1,001 points to close at 6,595.45 — the largest single-day percentage gain and the largest point gain in 46 years. And just three days earlier, on July 28 and 29, circuit breakers had tripped on consecutive days.
 
 Minus 8%, minus 8%, then plus 17.9%, all in one week. What produced that? Remarkably, **essentially two stocks.**
 
