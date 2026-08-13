@@ -21,3 +21,8 @@ menu:
 ## 联系
 
 - **GitHub**: [junstellar](https://github.com/junstellar)
+- **邮箱**: lov@kakao.com
+
+## 免责声明
+
+本博客所有文章仅用于信息分享与学习记录，不构成投资建议。投资决策及其结果由您自行承担。

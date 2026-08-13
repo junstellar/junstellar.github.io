@@ -66,7 +66,8 @@ buildExpired = false
     readingTime = true
     [params.article.license]
       enabled = true
-      default = "이 글은 CC BY-NC-SA 4.0 라이선스를 따릅니다."
+      # 언어별 문구는 [languages.*.params.article.license] 에서 재정의
+      default = "이 글은 CC BY-NC-SA 4.0 라이선스를 따릅니다. 본 블로그의 글은 정보 제공과 학습 기록을 위한 것으로, 투자 조언이 아닙니다. 투자 판단의 책임은 투자자 본인에게 있습니다."
 
   [params.colorScheme]
     toggle = true
@@ -113,6 +114,8 @@ buildExpired = false
     weight = 2
     [languages.en.params.sidebar]
       subtitle = "Investing in AI,\nbuilding with AI,\nreading where AI goes next.\nSlowly, but surely — to the Moon."
+    [languages.en.params.article.license]
+      default = "This post is licensed under CC BY-NC-SA 4.0. Content on this blog is for informational purposes only and is not investment advice. All investment decisions are your own responsibility."
 
   [languages.ja]
     label = "日本語"
@@ -120,6 +123,8 @@ buildExpired = false
     weight = 3
     [languages.ja.params.sidebar]
       subtitle = "AIに投資し、\nAIで作り、\nAIの流れを読む場所。\nゆっくり、それでも確かに — To the Moon。"
+    [languages.ja.params.article.license]
+      default = "この記事は CC BY-NC-SA 4.0 ライセンスの下で公開されています。当ブログの内容は情報提供と学習記録を目的としたものであり、投資助言ではありません。投資判断はご自身の責任でお願いします。"
 
   [languages.zh]
     label = "简体中文"
@@ -127,6 +132,8 @@ buildExpired = false
     weight = 4
     [languages.zh.params.sidebar]
       subtitle = "投资 AI，\n用 AI 创造，\n读懂 AI 的走向。\n慢慢地，却坚定地 — 奔向月球。"
+    [languages.zh.params.article.license]
+      default = "本文采用 CC BY-NC-SA 4.0 许可协议。本博客内容仅供参考与学习记录，不构成投资建议。投资决策请自行承担责任。"
 
 [markup]
   [markup.goldmark.renderer]
