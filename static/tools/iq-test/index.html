@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>생각별 IQ 연구소 — 어린이 IQ 테스트</title>
-<meta name="description" content="만 10~14세 어린이를 위한 27문항 IQ 테스트(인지추론). 연령대별 기본·심화 세트로 언어·행렬·수열·도형유추 4개 영역을 살펴보는 오락·교육용 참고 검사이며, 전문 지능검사나 발달평가를 대신하지 않습니다.">
+<meta name="description" content="만 10~14세 어린이를 위한 27문항 IQ 테스트(인지추론). 연령대별 기본·심화 문제은행에서 매회 무작위 출제. 언어·행렬·수열·도형유추 4개 영역을 살펴보는 오락·교육용 참고 검사이며, 전문 지능검사나 발달평가를 대신하지 않습니다.">
 <meta property="og:title" content="생각별 IQ 연구소 — 어린이 IQ 테스트">
 <meta property="og:description" content="만 10~14세 어린이를 위한 27문항 IQ 테스트(인지추론). 설치 없이 브라우저에서 바로, 답은 서버로 전송되지 않습니다.">
 <style>
@@ -56,19 +56,29 @@ select { width:100%; border:1px solid #9aa49e; background:#fffdf7; padding:16px;
 .setupGrid aside strong { font-size:20px; }.setupGrid ul { padding-left:19px; color:#bac5bd; line-height:2; font-size:13px; list-style:disc; }
 .quizWrap { max-width:850px; }
 .quizHead { display:flex; justify-content:space-between; align-items:end; margin-bottom:12px; }.quizHead>span{font-size:13px;font-weight:800;color:#d84e1e}.quizHead strong{font:700 25px Georgia,serif}.quizHead small{font:12px Arial;color:#778079}
-.progress { height:3px; background:#d7d9d3; margin-bottom:clamp(20px,4vh,52px); }.progress i{display:block;height:100%;background:var(--orange);transition:width .3s}
+.progress { height:3px; background:#d7d9d3; margin-bottom:clamp(16px,3.5vh,52px); }.progress i{display:block;height:100%;background:var(--orange);transition:width .3s}
 .questionCard { min-height:min(440px,52vh); }.areaDesc{font-size:12px;color:#6f7972;margin-bottom:clamp(8px,1.5vh,14px)}.questionCard h2{font-size:clamp(24px,min(4vw,4.2vh),40px);line-height:1.25;letter-spacing:-.045em;margin:0 0 clamp(12px,2.5vh,26px)}.visual{background:#fffdf7;border:1px solid #cad0cb;padding:clamp(14px,2.5vh,30px) 30px;text-align:center;font:700 clamp(22px,min(5vw,4.5vh),40px)/1.4 Georgia,serif;letter-spacing:.15em;margin-bottom:clamp(14px,2.5vh,25px);white-space:pre-wrap}
-.figGrid{display:grid;grid-template-columns:repeat(3,clamp(46px,7.5vh,76px));gap:8px;justify-content:center;background:#fffdf7;border:1px solid #cad0cb;padding:clamp(8px,1.5vh,16px);margin-bottom:clamp(10px,1.8vh,22px)}
+.figGrid{display:grid;grid-template-columns:repeat(3,clamp(44px,6.6vh,76px));gap:8px;justify-content:center;background:#fffdf7;border:1px solid #cad0cb;padding:clamp(8px,1.2vh,16px);margin-bottom:clamp(10px,1.5vh,22px)}
 .figCell{display:grid;place-items:center;aspect-ratio:1;background:white;border:1px solid #e4e7e0}
 .figCell svg{width:84%;height:84%}
 .qmk{font:700 30px Georgia,serif;color:#d84e1e}
-.figRow{display:flex;align-items:center;justify-content:center;gap:clamp(6px,1vw,12px);background:#fffdf7;border:1px solid #cad0cb;padding:clamp(12px,2vh,20px);margin-bottom:clamp(12px,2vh,22px);flex-wrap:wrap}
+.figRow{display:flex;align-items:center;justify-content:center;gap:clamp(6px,1vw,12px);background:#fffdf7;border:1px solid #cad0cb;padding:clamp(12px,2vh,20px);margin-bottom:clamp(10px,1.8vh,22px);flex-wrap:wrap}
 .figRow>span{font:700 24px Georgia,serif;color:#6f7972}
 .figRow .figCell{width:clamp(46px,8vh,72px)}
 .choices { display:grid; grid-template-columns:1fr 1fr; gap:12px; }.choices button{min-height:clamp(48px,8vh,65px);background:transparent;border:1px solid #aab2ac;border-radius:3px;text-align:left;padding:13px;display:flex;align-items:center;gap:13px}.choices button span{display:grid;place-items:center;border:1px solid #7b857e;border-radius:50%;width:30px;height:30px;font:12px Georgia,serif;flex:none}.choices button:hover{background:#fffdf7}.choices button.selected{border:2px solid var(--ink);background:var(--mint);font-weight:800}.choices button.selected span{background:var(--ink);color:white}
-.choices.figc{grid-template-columns:repeat(4,1fr)}
-.choices.figc button{flex-direction:column;justify-content:center;gap:6px;min-height:clamp(72px,11vh,104px);padding:8px;text-align:center}
-.choices.figc button svg{width:clamp(34px,6vh,54px);height:clamp(34px,6vh,54px)}
+.choices.c8{gap:8px}.choices.c8 button{min-height:clamp(38px,5.5vh,52px);padding:8px 12px;font-size:14px}.choices.c8 button span{width:24px;height:24px;font-size:11px}
+.choices.figc{grid-template-columns:repeat(4,1fr);gap:9px}
+.choices.figc button{flex-direction:column;justify-content:center;gap:4px;min-height:clamp(56px,8vh,88px);padding:5px;text-align:center;font-size:12px}
+.choices.figc button svg{width:clamp(26px,4.5vh,42px);height:clamp(26px,4.5vh,42px)}
+.choices.figc button span{width:22px;height:22px;font-size:10px}
+.numWrap{display:grid;grid-template-columns:minmax(0,430px);justify-content:center;gap:10px}
+.numShow{border:1px solid #aab2ac;background:#fffdf7;border-radius:3px;min-height:clamp(44px,7vh,56px);display:flex;align-items:center;justify-content:flex-end;padding:0 16px;font:700 clamp(22px,3.5vh,30px) Georgia,serif;letter-spacing:.08em}
+.numShow.empty{justify-content:flex-start;font:400 13px Arial;color:#9aa49e}
+.numpad{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.numpad button{min-height:clamp(38px,6vh,50px);border:1px solid #aab2ac;border-radius:3px;background:#fffdf7;font:700 17px Georgia,serif}
+.numpad button:hover{background:var(--mint)}
+.numpad button.fn{font:600 12px Arial;color:#566159}
+.numHint{font-size:11px;color:#8b948d;text-align:center}
 .quizNav { border-top:1px solid #bec4bf;margin-top:clamp(16px,3vh,36px);padding-top:clamp(12px,2vh,22px);display:flex;justify-content:space-between}.quizNav button{padding:13px}.quizNav button:disabled{opacity:.3;cursor:not-allowed}.quizNav .next{background:var(--ink);color:white;padding:13px 22px;border-radius:3px}
 .resultHero { display:grid;grid-template-columns:1.4fr .7fr;gap:60px;align-items:center;border-bottom:1px solid #bfc5c0;padding-bottom:clamp(24px,4vh,55px)}.resultHero h2{margin-bottom:18px}.resultHero p{color:#667169}.scoreDial{aspect-ratio:1;width:100%;max-width:min(300px,38vh);margin:0 auto;border:2px solid var(--ink);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:10px 10px 0 var(--mint)}.scoreDial span{font-size:12px}.scoreDial strong{font:700 clamp(54px,9vh,78px)/1 Georgia,serif;color:var(--orange);margin:8px}.scoreDial small{font-size:12px}
 .resultGrid{display:grid;grid-template-columns:1fr 220px;gap:55px;padding:clamp(24px,4vh,55px) 0}.areas h3{margin-top:0;font-size:23px}.areaRow{display:grid;grid-template-columns:160px 1fr 50px;gap:15px;align-items:center;border-top:1px solid #d2d5d1;padding:18px 0}.areaRow div:first-child{display:flex;flex-direction:column;gap:4px}.areaRow span{font-size:11px;color:#7a837d}.bar{height:8px;background:#d9ddd8}.bar i{display:block;height:100%;background:var(--orange)}.areaRow b{font:14px Georgia,serif;text-align:right}.rawCard{background:var(--ink);color:white;padding:25px;display:flex;flex-direction:column;justify-content:center}.rawCard>span{font-size:12px;color:var(--mint)}.rawCard>strong{font:700 65px Georgia,serif}.rawCard small{font-size:18px;color:#9eaaa1}.rawCard p{font-size:11px;line-height:1.6;color:#aeb8b1}
@@ -78,7 +88,7 @@ select { width:100%; border:1px solid #9aa49e; background:#fffdf7; padding:16px;
 .resultActions{display:flex;justify-content:flex-end;gap:15px;margin-top:32px}.resultActions>button:first-child{border:1px solid #89928c;background:transparent;padding:15px 25px}
 .siteFoot{max-width:1180px;width:100%;margin:auto auto 0;padding:clamp(14px,2.5vh,24px) 28px clamp(16px,2.5vh,28px);border-top:1px solid rgba(24,34,28,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:#747b76}
 .siteFoot a{color:#435047}
-@media(max-width:700px){.topbar{height:66px}.researchTag{display:none}.hero:after{font-size:350px;right:-24%}h1{font-size:54px}.facts{gap:18px;flex-wrap:wrap}.studyCard{grid-template-columns:1fr}.studyCard h2,.studyCard p,.statLine{grid-column:1}.studyCard h2{font-size:31px}.setupGrid,.resultHero,.resultGrid{grid-template-columns:1fr;gap:35px}.choices{grid-template-columns:1fr}.choices.figc{grid-template-columns:1fr 1fr}.scoreDial{max-width:260px;margin:auto;width:100%}.areaRow{grid-template-columns:125px 1fr 44px}.resultGrid{padding-top:40px}.rawCard{min-height:180px}.questionCard{min-height:min(520px,58vh)}}
+@media(max-width:700px){.numpad{grid-template-columns:repeat(3,1fr)}.numWrap{grid-template-columns:minmax(0,300px)}.topbar{height:66px}.researchTag{display:none}.hero:after{font-size:350px;right:-24%}h1{font-size:54px}.facts{gap:18px;flex-wrap:wrap}.studyCard{grid-template-columns:1fr}.studyCard h2,.studyCard p,.statLine{grid-column:1}.studyCard h2{font-size:31px}.setupGrid,.resultHero,.resultGrid{grid-template-columns:1fr;gap:35px}.choices{grid-template-columns:1fr}.choices.c8{grid-template-columns:1fr 1fr}.choices.figc{grid-template-columns:1fr 1fr}.scoreDial{max-width:260px;margin:auto;width:100%}.areaRow{grid-template-columns:125px 1fr 44px}.resultGrid{padding-top:40px}.rawCard{min-height:180px}.questionCard{min-height:min(520px,58vh)}}
 </style>
 </head>
 <body>
@@ -88,6 +98,7 @@ select { width:100%; border:1px solid #9aa49e; background:#fffdf7; padding:16px;
 "use strict";
 
 const INK = "#18221c";
+const DUNNO = "모르겠어요";
 
 function prim(s, f){
   const K = `fill="${f ? INK : "none"}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"`;
@@ -115,8 +126,7 @@ function specSVG(c, px){
     inner = `<g transform="translate(1,26) scale(.48)">${prim(c.pair[0],f)}</g><g transform="translate(51,26) scale(.48)">${prim(c.pair[1],f)}</g>`;
   } else if (c.cell !== undefined) {
     const P = [[18,18],[50,18],[50,50],[18,50]][c.cell];
-    const G = `fill="none" stroke="${INK}" stroke-width="5"`;
-    inner = `<rect x="18" y="18" width="64" height="64" ${G}/><line x1="50" y1="18" x2="50" y2="82" stroke="${INK}" stroke-width="5"/><line x1="18" y1="50" x2="82" y2="50" stroke="${INK}" stroke-width="5"/><rect x="${P[0]}" y="${P[1]}" width="32" height="32" fill="${INK}"/>`;
+    inner = `<rect x="18" y="18" width="64" height="64" fill="none" stroke="${INK}" stroke-width="5"/><line x1="50" y1="18" x2="50" y2="82" stroke="${INK}" stroke-width="5"/><line x1="18" y1="50" x2="82" y2="50" stroke="${INK}" stroke-width="5"/><rect x="${P[0]}" y="${P[1]}" width="32" height="32" fill="${INK}"/>`;
   } else if (c.n) {
     const L = {1:[[50,50]],2:[[31,50],[69,50]],3:[[50,31],[31,69],[69,69]],4:[[31,31],[69,31],[31,69],[69,69]]}[c.n];
     const f = c.f === 0 ? 0 : 1;
@@ -142,76 +152,134 @@ function figHTML(fig){
 
 const MAT = "규칙을 찾아 빈칸에 들어갈 그림을 고르세요.";
 const ANA = "앞의 관계와 같도록 빈칸에 들어갈 그림을 고르세요.";
+const NUM = "다음에 올 수를 직접 입력하세요.";
+const V = "언어추론", M = "행렬추론", N = "수열추론", F = "도형유추";
 
-const SET_A = [
-  { area:"언어추론", prompt:"새는 하늘을 날고, 물고기는 어디에서 움직일까요?", choices:["숲","물","구름","땅속"], answer:1, note:"대상과 주된 생활 공간의 관계를 찾는 문제예요." },
-  { area:"언어추론", prompt:"연필 : 쓰기 = 가위 : ?", choices:["접기","자르기","붙이기","그리기"], answer:1, note:"도구와 쓰임의 관계를 찾는 문제예요." },
-  { area:"언어추론", prompt:"봄, 여름, 가을과 가장 같은 무리에 속하는 것은?", choices:["아침","겨울","비","바람"], answer:1, note:"공통된 범주(계절)를 찾는 문제예요." },
-  { area:"언어추론", prompt:"모든 고래는 동물입니다. 파란이는 고래입니다. 반드시 맞는 말은?", choices:["파란이는 물고기다","파란이는 동물이다","모든 동물은 고래다","알 수 없다"], answer:1, note:"주어진 조건만으로 확실한 결론을 찾는 문제예요." },
-  { area:"언어추론", prompt:"의사 : 병원 = 선생님 : ?", choices:["칠판","학교","공부","학생"], answer:1, note:"사람과 그 사람이 일하는 장소의 관계예요." },
-  { area:"언어추론", prompt:"민수는 지우보다 빠르고, 지우는 다연보다 빠릅니다. 가장 느린 사람은?", choices:["민수","지우","다연","알 수 없음"], answer:2, note:"여러 비교 관계를 순서대로 연결하는 문제예요." },
-  { area:"언어추론", prompt:"'조용히'와 가장 가까운 뜻은?", choices:["소리 없이","빠르게","즐겁게","똑바로"], answer:0, note:"문맥상 비슷한 뜻을 찾는 문제예요." },
-  { area:"언어추론", prompt:"숙제를 끝낸 사람만 게임을 할 수 있습니다. 지호가 지금 게임을 하고 있다면 반드시 맞는 말은?", choices:["지호는 숙제를 끝냈다","지호는 숙제가 없다","지호는 게임을 좋아한다","알 수 없다"], answer:0, note:"'~한 사람만 할 수 있다'는 조건을 거꾸로 읽는 문제예요." },
-  { area:"행렬추론", prompt:MAT, fig:{g:[{s:"cir"},{s:"sq"},{s:"cir"},{s:"sq"},{s:"cir"},{s:"sq"},{s:"cir"},{s:"sq"},null]}, choices:[{s:"tri"},{s:"sq"},{s:"cir"},{s:"dia"}], answer:2, note:"두 도형이 번갈아 나와요." },
-  { area:"행렬추론", prompt:MAT, fig:{g:[{s:"cir",n:1},{s:"cir",n:2},{s:"cir",n:3},{s:"tri",n:1},{s:"tri",n:2},{s:"tri",n:3},{s:"sq",n:1},{s:"sq",n:2},null]}, choices:[{s:"sq",n:2},{s:"sq",n:3},{s:"tri",n:3},{s:"sq",n:4}], answer:1, note:"가로줄에서 개수가 하나씩 늘고, 줄마다 도형이 달라요." },
-  { area:"행렬추론", prompt:MAT, fig:{g:[{s:"arr"},{s:"arr",r:90},{s:"arr",r:180},{s:"arr"},{s:"arr",r:90},{s:"arr",r:180},{s:"arr"},{s:"arr",r:90},null]}, choices:[{s:"arr"},{s:"arr",r:90},{s:"arr",r:270},{s:"arr",r:180}], answer:3, note:"화살표가 시계 방향으로 90도씩 돌아요." },
-  { area:"행렬추론", prompt:MAT, fig:{g:[{s:"cir"},{s:"cir",f:1},{s:"cir"},{s:"tri",f:1},{s:"tri"},{s:"tri",f:1},{s:"sq"},{s:"sq",f:1},null]}, choices:[{s:"sq"},{s:"sq",f:1},{s:"cir"},{s:"tri"}], answer:0, note:"빈 도형과 채워진 도형이 번갈아 나와요." },
-  { area:"행렬추론", prompt:MAT, fig:{g:[{cell:0},{cell:1},{cell:2},{cell:0},{cell:1},{cell:2},{cell:0},{cell:1},null]}, choices:[{cell:0},{cell:3},{cell:2},{cell:1}], answer:2, note:"칠해진 칸이 시계 방향으로 한 칸씩 움직여요." },
-  { area:"행렬추론", prompt:MAT, fig:{g:[{s:"vln"},{s:"hln"},{s:"plus"},{s:"dr"},{s:"dl"},{s:"x"},{s:"hln"},{s:"vln"},null]}, choices:[{s:"x"},{s:"plus"},{s:"vln"},{s:"hln"}], answer:1, note:"앞의 두 선을 겹치면 세 번째 그림이 돼요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"2, 4, 6, 8, ?", choices:["9","10","11","12"], answer:1, note:"2씩 커지는 수열이에요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"20, 17, 14, 11, ?", choices:["7","8","9","10"], answer:1, note:"3씩 작아지는 수열이에요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"3, 6, 12, 24, ?", choices:["30","36","42","48"], answer:3, note:"앞의 수에 2를 곱해요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"1, 4, 9, 16, ?", choices:["20","24","25","36"], answer:2, note:"1², 2², 3², 4² 다음은 5²이에요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"2, 3, 5, 8, 12, ?", choices:["15","16","17","18"], answer:2, note:"더하는 수가 1, 2, 3, 4로 하나씩 커져요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"64, 32, 16, 8, ?", choices:["2","4","6","7"], answer:1, note:"앞의 수를 2로 나눠요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"5, 10, 8, 16, 14, ?", choices:["18","24","26","28"], answer:3, note:"2배 한 뒤 2를 빼는 규칙이 반복돼요." },
-  { area:"도형유추", prompt:ANA, fig:{a:[{s:"arr"},{s:"arr",r:180},{s:"arr",r:90}]}, choices:[{s:"arr",r:90},{s:"arr"},{s:"arr",r:180},{s:"arr",r:270}], answer:3, note:"방향을 정반대로 바꾸는 관계예요." },
-  { area:"도형유추", prompt:ANA, fig:{a:[{s:"cir"},{s:"cir",f:1},{s:"sq"}]}, choices:[{s:"sq"},{s:"sq",f:1},{s:"cir",f:1},{s:"tri",f:1}], answer:1, note:"빈 도형을 같은 모양의 채운 도형으로 바꿔요." },
-  { area:"도형유추", prompt:ANA, fig:{a:[{s:"tri",n:1},{s:"tri",n:2},{s:"cir",n:1}]}, choices:[{s:"cir",n:2},{s:"cir",n:3},{s:"tri",n:2},{s:"cir",n:1}], answer:0, note:"같은 도형이 하나 더 늘어나는 관계예요." },
-  { area:"도형유추", prompt:ANA, fig:{a:[{s:"tri"},{s:"tri",r:90},{s:"vln"}]}, choices:[{s:"vln"},{s:"dl"},{s:"hln"},{s:"dr"}], answer:2, note:"시계 방향으로 90도 돌린 모습이에요." },
-  { area:"도형유추", prompt:ANA, fig:{a:[{s:"sq"},{s:"sq",k:.55},{s:"tri"}]}, choices:[{s:"tri"},{s:"tri",k:.55},{s:"sq",k:.55},{s:"tri",k:.55,f:1}], answer:1, note:"같은 모양이 작아지는 관계예요." },
-  { area:"도형유추", prompt:ANA, fig:{a:[{pair:["tri","sq"]},{pair:["sq","tri"]},{pair:["cir","dia"]}]}, choices:[{pair:["cir","dia"]},{pair:["dia","dia"]},{pair:["cir","cir"]},{pair:["dia","cir"]}], answer:3, note:"두 도형의 자리를 서로 바꾸는 관계예요." },
+/* 문항은행 — 객관식은 보기 7개(+'모르겠어요' 자동 추가), 수열은 주관식(answer=숫자). 각 영역 내에서 쉬운 문항 → 어려운 문항 순서. */
+
+const BANK_A = [
+  // 언어추론 (11)
+  { area:V, prompt:"새는 하늘을 날고, 물고기는 어디에서 움직일까요?", choices:["물","숲","구름","땅속","하늘","모래","얼음"], answer:0, note:"대상과 주된 생활 공간의 관계를 찾는 문제예요." },
+  { area:V, prompt:"연필 : 쓰기 = 가위 : ?", choices:["자르기","접기","붙이기","그리기","재기","지우기","색칠하기"], answer:0, note:"도구와 쓰임의 관계를 찾는 문제예요." },
+  { area:V, prompt:"봄, 여름, 가을과 가장 같은 무리에 속하는 것은?", choices:["겨울","아침","비","바람","낮","구름","밤"], answer:0, note:"공통된 범주(계절)를 찾는 문제예요." },
+  { area:V, prompt:"사과, 배, 포도와 가장 같은 무리에 속하는 것은?", choices:["수박","당근","감자","양파","오이","버섯","호박"], answer:0, note:"과일 무리에 속하는 것을 찾는 문제예요." },
+  { area:V, prompt:"장갑 : 손 = 양말 : ?", choices:["발","신발","다리","무릎","팔","얼굴","머리"], answer:0, note:"물건과 그 물건을 끼우는 몸의 부위 관계예요." },
+  { area:V, prompt:"의사 : 병원 = 선생님 : ?", choices:["학교","칠판","공부","학생","교과서","시험","급식실"], answer:0, note:"사람과 그 사람이 일하는 장소의 관계예요." },
+  { area:V, prompt:"모든 고래는 동물입니다. 파란이는 고래입니다. 반드시 맞는 말은?", choices:["파란이는 동물이다","파란이는 물고기다","모든 동물은 고래다","파란이는 헤엄을 못 친다","모든 고래는 파랗다","파란이는 바다에 산다","알 수 없다"], answer:0, note:"주어진 조건만으로 확실한 결론을 찾는 문제예요." },
+  { area:V, prompt:"'조용히'와 가장 가까운 뜻은?", choices:["소리 없이","빠르게","즐겁게","똑바로","천천히","크게","슬프게"], answer:0, note:"문맥상 비슷한 뜻을 찾는 문제예요." },
+  { area:V, prompt:"내일이 수요일이라면, 어제는 무슨 요일이었을까요?", choices:["월요일","화요일","수요일","목요일","금요일","토요일","일요일"], answer:0, note:"내일이 수요일이면 오늘은 화요일, 어제는 월요일이에요." },
+  { area:V, prompt:"민수는 지우보다 빠르고, 지우는 다연이보다 빠르고, 서연이는 다연이보다 느립니다. 가장 느린 사람은?", choices:["서연","다연","지우","민수","알 수 없음","다연과 서연","아무도 아니다"], answer:0, note:"민수 > 지우 > 다연 > 서연 순서예요." },
+  { area:V, prompt:"숙제를 끝낸 사람만 게임을 할 수 있습니다. 지호가 지금 게임을 하고 있다면 반드시 맞는 말은?", choices:["지호는 숙제를 끝냈다","지호는 숙제가 없다","지호는 게임을 좋아한다","지호는 숙제를 내일 할 것이다","지호는 상을 받았다","게임은 누구나 할 수 있다","알 수 없다"], answer:0, note:"'~한 사람만 할 수 있다'는 조건을 거꾸로 읽는 문제예요." },
+  // 행렬추론 (8)
+  { area:M, prompt:MAT, fig:{g:[{s:"cir"},{s:"sq"},{s:"cir"},{s:"sq"},{s:"cir"},{s:"sq"},{s:"cir"},{s:"sq"},null]}, choices:[{s:"cir"},{s:"sq"},{s:"tri"},{s:"dia"},{s:"cir",f:1},{s:"sq",f:1},{s:"arr"}], answer:0, note:"두 도형이 번갈아 나와요." },
+  { area:M, prompt:MAT, fig:{g:[{s:"cir",n:1},{s:"cir",n:2},{s:"cir",n:3},{s:"tri",n:1},{s:"tri",n:2},{s:"tri",n:3},{s:"sq",n:1},{s:"sq",n:2},null]}, choices:[{s:"sq",n:3},{s:"sq",n:2},{s:"sq",n:4},{s:"tri",n:3},{s:"cir",n:3},{s:"sq",n:1},{s:"tri",n:2}], answer:0, note:"가로줄에서 개수가 하나씩 늘고, 줄마다 도형이 달라요." },
+  { area:M, prompt:MAT, fig:{g:[{s:"arr"},{s:"arr",r:90},{s:"arr",r:180},{s:"arr"},{s:"arr",r:90},{s:"arr",r:180},{s:"arr"},{s:"arr",r:90},null]}, choices:[{s:"arr",r:180},{s:"arr"},{s:"arr",r:90},{s:"arr",r:270},{s:"arr",r:45},{s:"tri",r:180},{s:"arr",r:180,f:1}], answer:0, note:"화살표가 시계 방향으로 90도씩 돌아요." },
+  { area:M, prompt:MAT, fig:{g:[{s:"cir"},{s:"cir",f:1},{s:"cir"},{s:"tri",f:1},{s:"tri"},{s:"tri",f:1},{s:"sq"},{s:"sq",f:1},null]}, choices:[{s:"sq"},{s:"sq",f:1},{s:"cir"},{s:"tri"},{s:"dia"},{s:"cir",f:1},{s:"tri",f:1}], answer:0, note:"빈 도형과 채워진 도형이 번갈아 나와요." },
+  { area:M, prompt:MAT, fig:{g:[{s:"vln"},{s:"hln"},{s:"plus"},{s:"dr"},{s:"dl"},{s:"x"},{s:"hln"},{s:"vln"},null]}, choices:[{s:"plus"},{s:"x"},{s:"vln"},{s:"hln"},{s:"dl"},{s:"dr"},{s:"cir"}], answer:0, note:"앞의 두 선을 겹치면 세 번째 그림이 돼요." },
+  { area:M, prompt:MAT, fig:{g:[{cell:0},{cell:1},{cell:2},{cell:0},{cell:1},{cell:2},{cell:0},{cell:1},null]}, choices:[{cell:2},{cell:0},{cell:1},{cell:3},{s:"sq"},{s:"sq",f:1},{s:"x"}], answer:0, note:"칠해진 칸이 시계 방향으로 한 칸씩 움직여요." },
+  { area:M, prompt:MAT, fig:{g:[{n:3},{n:1},{n:2},{n:4},{n:2},{n:2},{n:2},{n:1},null]}, choices:[{n:1},{n:2},{n:3},{n:4},{s:"tri",n:1},{s:"sq",n:1},{s:"tri",n:2}], answer:0, note:"첫 번째 개수에서 두 번째 개수를 빼면 세 번째가 돼요." },
+  { area:M, prompt:MAT, fig:{g:[{s:"cir",f:1},{s:"cir"},{s:"cir"},{s:"tri"},{s:"tri",f:1},{s:"tri"},{s:"sq"},{s:"sq"},null]}, choices:[{s:"sq",f:1},{s:"sq"},{s:"cir",f:1},{s:"tri",f:1},{s:"dia",f:1},{s:"sq",f:1,k:.7},{s:"cir"}], answer:0, note:"채워진 도형이 대각선 방향으로 한 칸씩 이동해요." },
+  // 수열추론 (9) — 주관식
+  { area:N, prompt:NUM, visual:"2, 4, 6, 8, ?", input:true, answer:10, note:"2씩 커지는 수열이에요." },
+  { area:N, prompt:NUM, visual:"4, 8, 12, 16, ?", input:true, answer:20, note:"4씩 커지는 수열이에요." },
+  { area:N, prompt:NUM, visual:"20, 17, 14, 11, ?", input:true, answer:8, note:"3씩 작아지는 수열이에요." },
+  { area:N, prompt:NUM, visual:"3, 6, 12, 24, ?", input:true, answer:48, note:"앞의 수에 2를 곱해요." },
+  { area:N, prompt:NUM, visual:"1, 4, 9, 16, ?", input:true, answer:25, note:"1², 2², 3², 4² 다음은 5²이에요." },
+  { area:N, prompt:NUM, visual:"2, 3, 5, 8, 12, ?", input:true, answer:17, note:"더하는 수가 1, 2, 3, 4로 하나씩 커져요." },
+  { area:N, prompt:NUM, visual:"64, 32, 16, 8, ?", input:true, answer:4, note:"앞의 수를 2로 나눠요." },
+  { area:N, prompt:NUM, visual:"2, 5, 11, 23, ?", input:true, answer:47, note:"2배 하고 1을 더하는 규칙이에요." },
+  { area:N, prompt:NUM, visual:"5, 10, 8, 16, 14, ?", input:true, answer:28, note:"2배 한 뒤 2를 빼는 규칙이 반복돼요." },
+  // 도형유추 (8)
+  { area:F, prompt:ANA, fig:{a:[{s:"arr"},{s:"arr",r:180},{s:"arr",r:90}]}, choices:[{s:"arr",r:270},{s:"arr",r:90},{s:"arr"},{s:"arr",r:180},{s:"arr",r:315},{s:"tri",r:270},{s:"arr",r:270,f:1}], answer:0, note:"방향을 정반대로 바꾸는 관계예요." },
+  { area:F, prompt:ANA, fig:{a:[{s:"cir"},{s:"cir",f:1},{s:"sq"}]}, choices:[{s:"sq",f:1},{s:"sq"},{s:"cir",f:1},{s:"tri",f:1},{s:"dia",f:1},{s:"sq",f:1,k:.7},{s:"cir"}], answer:0, note:"빈 도형을 같은 모양의 채운 도형으로 바꿔요." },
+  { area:F, prompt:ANA, fig:{a:[{s:"tri",n:1},{s:"tri",n:2},{s:"cir",n:1}]}, choices:[{s:"cir",n:2},{s:"cir",n:3},{s:"cir",n:1},{s:"tri",n:2},{s:"sq",n:2},{s:"cir",n:4},{s:"dia",n:2}], answer:0, note:"같은 도형이 하나 더 늘어나는 관계예요." },
+  { area:F, prompt:ANA, fig:{a:[{s:"tri"},{s:"tri",r:90},{s:"vln"}]}, choices:[{s:"hln"},{s:"vln"},{s:"dl"},{s:"dr"},{s:"plus"},{s:"x"},{s:"tri",r:90}], answer:0, note:"시계 방향으로 90도 돌린 모습이에요." },
+  { area:F, prompt:ANA, fig:{a:[{s:"sq"},{s:"sq",k:.55},{s:"tri"}]}, choices:[{s:"tri",k:.55},{s:"tri"},{s:"sq",k:.55},{s:"tri",k:.55,f:1},{s:"cir",k:.55},{s:"dia",k:.55},{s:"tri",k:.75}], answer:0, note:"같은 모양이 작아지는 관계예요." },
+  { area:F, prompt:ANA, fig:{a:[{pair:["tri","sq"]},{pair:["sq","tri"]},{pair:["cir","dia"]}]}, choices:[{pair:["dia","cir"]},{pair:["cir","dia"]},{pair:["dia","dia"]},{pair:["cir","cir"]},{pair:["sq","tri"]},{pair:["tri","sq"]},{pair:["cir","dia"],f:1}], answer:0, note:"두 도형의 자리를 서로 바꾸는 관계예요." },
+  { area:F, prompt:ANA, fig:{a:[{pair:["tri","cir"]},{pair:["cir","tri"]},{pair:["sq","dia"]}]}, choices:[{pair:["dia","sq"]},{pair:["sq","dia"]},{pair:["dia","dia"]},{pair:["sq","sq"]},{pair:["dia","tri"]},{pair:["cir","sq"]},{pair:["tri","dia"]}], answer:0, note:"두 도형의 자리를 서로 바꾸는 관계예요." },
+  { area:F, prompt:ANA, fig:{a:[{n:2},{n:2,f:0},{n:3}]}, choices:[{n:3,f:0},{n:3},{n:2,f:0},{n:4,f:0},{n:1,f:0},{s:"tri",n:3,f:0},{s:"sq",n:3,f:0}], answer:0, note:"개수는 그대로 두고 채움만 없애는 관계예요." },
 ];
 
-const SET_B = [
-  { area:"언어추론", prompt:"온도계 : 온도 = 저울 : ?", choices:["길이","무게","부피","시간"], answer:1, note:"도구와 그 도구가 재는 대상의 관계예요." },
-  { area:"언어추론", prompt:"'확장'과 반대되는 뜻의 말은?", choices:["팽창","연장","축소","확대"], answer:2, note:"넓혀 크게 하는 것의 반대는 줄여 작게 하는 것이에요." },
-  { area:"언어추론", prompt:"다음 중 성격이 다른 하나는?", choices:["바이올린","첼로","플루트","기타"], answer:2, note:"플루트는 관악기, 나머지는 줄을 울리는 현악기예요." },
-  { area:"언어추론", prompt:"새벽 : 황혼 = 입구 : ?", choices:["출구","대문","현관","복도"], answer:0, note:"시작과 끝처럼 서로 반대 자리에 있는 짝이에요." },
-  { area:"언어추론", prompt:"수진이는 태호보다 빨리 달리고, 태호는 민아보다 빠릅니다. 지훈이는 수진이보다 빠릅니다. 세 번째로 빠른 사람은?", choices:["수진","태호","민아","지훈"], answer:1, note:"지훈 > 수진 > 태호 > 민아 순서예요." },
-  { area:"언어추론", prompt:"'비가 오면 소풍을 취소한다'가 참일 때, 소풍이 취소되지 않았다면 반드시 맞는 말은?", choices:["비가 왔다","비가 오지 않았다","소풍은 다음 주다","알 수 없다"], answer:1, note:"결과가 일어나지 않았다면 그 조건도 일어나지 않은 거예요." },
-  { area:"언어추론", prompt:"모든 장미는 꽃이다. 어떤 꽃은 빨갛다. 이때 반드시 맞는 말은?", choices:["어떤 장미는 빨갛다","빨간 장미는 없다","모든 장미는 빨갛다","반드시 맞는 말은 없다"], answer:3, note:"'어떤 꽃'이 장미라는 보장이 없어서 어느 것도 확실하지 않아요." },
-  { area:"언어추론", prompt:"'그 일을 하지 않는 것은 불가능하다'와 뜻이 가장 가까운 말은?", choices:["그 일을 반드시 해야 한다","그 일을 하면 안 된다","그 일을 안 해도 된다","그 일은 할 수 없다"], answer:0, note:"부정이 두 번 겹치면 강한 긍정이 돼요." },
-  { area:"행렬추론", prompt:MAT, fig:{g:[{s:"arr"},{s:"arr",r:90},{s:"arr",r:180},{s:"arr",r:90},{s:"arr",r:180},{s:"arr",r:270},{s:"arr",r:180},{s:"arr",r:270},null]}, choices:[{s:"arr",r:180},{s:"arr"},{s:"arr",r:90},{s:"arr",r:315}], answer:1, note:"칸마다 90도씩 돌고, 줄이 바뀌면 시작 방향도 한 칸 돌아가요." },
-  { area:"행렬추론", prompt:MAT, fig:{g:[{s:"cir"},{s:"cir",k:.7},{s:"cir",k:.45},{s:"sq"},{s:"sq",k:.7},{s:"sq",k:.45},{s:"tri"},{s:"tri",k:.7},null]}, choices:[{s:"tri"},{s:"sq",k:.45},{s:"tri",k:.7},{s:"tri",k:.45}], answer:3, note:"줄마다 도형이 다르고, 칸마다 점점 작아져요." },
-  { area:"행렬추론", prompt:MAT, fig:{g:[{s:"cir",n:1},{s:"tri",n:1},{s:"sq",n:1},{s:"cir",n:2},{s:"tri",n:2},{s:"sq",n:2},{s:"cir",n:3},{s:"tri",n:3},null]}, choices:[{s:"sq",n:3},{s:"sq",n:2},{s:"tri",n:3},{s:"sq",n:4}], answer:0, note:"세로줄은 도형을, 가로줄은 개수를 정해요." },
-  { area:"행렬추론", prompt:MAT, fig:{g:[{s:"vln"},{s:"hln"},{s:"plus"},{s:"dl"},{s:"dr"},{s:"x"},{s:"cir"},{s:"sq"},null]}, choices:[{s:"cir"},{s:"sq"},{s:"cir",ov:"sq"},{s:"cir",ov:"tri"}], answer:2, note:"앞의 두 그림을 겹친 모양이 세 번째 그림이에요." },
-  { area:"행렬추론", prompt:MAT, fig:{g:[{s:"arr"},{s:"arr",r:90,f:1},{s:"arr",r:180},{s:"tri",f:1},{s:"tri",r:90},{s:"tri",r:180,f:1},{s:"arr",r:45,f:1},{s:"arr",r:135},null]}, choices:[{s:"arr",r:225,f:1},{s:"arr",r:225},{s:"arr",r:135,f:1},{s:"arr",r:315,f:1}], answer:0, note:"90도씩 돌면서 채움이 번갈아 바뀌어요." },
-  { area:"행렬추론", prompt:MAT, fig:{g:[{cell:0},{cell:1},{cell:2},{cell:1},{cell:2},{cell:3},{cell:2},{cell:3},null]}, choices:[{cell:3},{cell:0},{cell:1},{cell:2}], answer:1, note:"칠해진 칸이 시계 방향으로 돌고, 줄이 바뀌면 한 칸 더 간 자리에서 시작해요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"3, 4, 6, 9, 13, ?", choices:["18","16","17","20"], answer:0, note:"더하는 수가 1, 2, 3, 4, 5로 커져요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"81, 27, 9, 3, ?", choices:["0","1","2","6"], answer:1, note:"앞의 수를 3으로 나눠요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"1, 1, 2, 3, 5, 8, ?", choices:["11","12","16","13"], answer:3, note:"앞의 두 수를 더하면 다음 수가 돼요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"2, 6, 12, 20, 30, ?", choices:["40","42","44","36"], answer:1, note:"더하는 수가 4, 6, 8, 10, 12로 2씩 커져요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"2, 3, 5, 7, 11, 13, ?", choices:["17","15","19","21"], answer:0, note:"1과 자기 자신으로만 나누어지는 소수를 차례로 늘어놓았어요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"1, 4, 2, 8, 3, 12, 4, ?", choices:["5","14","16","20"], answer:2, note:"두 수열(1,2,3,4와 4,8,12,16)이 번갈아 나와요." },
-  { area:"수열추론", prompt:"다음 수는 무엇일까요?", visual:"2, 4, 12, 48, ?", choices:["96","144","192","240"], answer:3, note:"곱하는 수가 2, 3, 4, 5로 커져요." },
-  { area:"도형유추", prompt:ANA, fig:{a:[{s:"arr"},{s:"arr",r:90},{s:"tri"}]}, choices:[{s:"tri",r:180},{s:"tri",r:45},{s:"tri",r:90},{s:"tri",r:270}], answer:2, note:"시계 방향으로 90도 돌리는 관계예요." },
-  { area:"도형유추", prompt:ANA, fig:{a:[{s:"sq",in:{s:"cir"}},{s:"cir",in:{s:"sq"}},{s:"tri",in:{s:"dia"}}]}, choices:[{s:"dia",in:{s:"tri"}},{s:"tri",in:{s:"dia"}},{s:"dia",in:{s:"sq"}},{s:"sq",in:{s:"dia"}}], answer:0, note:"바깥 도형과 안쪽 도형이 서로 자리를 바꿔요." },
-  { area:"도형유추", prompt:ANA, fig:{a:[{n:1},{n:2},{n:2}]}, choices:[{n:3},{n:4},{n:2},{n:1}], answer:1, note:"개수가 2배로 늘어나는 관계예요." },
-  { area:"도형유추", prompt:ANA, fig:{a:[{s:"cir",f:1},{s:"cir",k:.55},{s:"sq",f:1}]}, choices:[{s:"sq",k:.55,f:1},{s:"sq"},{s:"cir",k:.55},{s:"sq",k:.55}], answer:3, note:"채움이 사라지면서 크기도 작아지는 관계예요." },
-  { area:"도형유추", prompt:ANA, fig:{a:[{s:"arr"},{s:"arr",r:180,f:1},{s:"arr",r:90,f:1}]}, choices:[{s:"arr",r:270},{s:"arr",r:270,f:1},{s:"arr",r:90},{s:"arr",f:1}], answer:0, note:"180도 돌리면서 채움을 반대로 바꿔요." },
-  { area:"도형유추", prompt:ANA, fig:{a:[{pair:["tri","sq"]},{pair:["sq","tri"],f:1},{pair:["cir","dia"]}]}, choices:[{pair:["dia","cir"]},{pair:["cir","dia"],f:1},{pair:["dia","cir"],f:1},{pair:["dia","dia"],f:1}], answer:2, note:"자리를 서로 바꾸고 채움도 바꿔요." },
+const BANK_B = [
+  // 언어추론 (12)
+  { area:V, prompt:"온도계 : 온도 = 저울 : ?", choices:["무게","길이","부피","시간","온도","크기","넓이"], answer:0, note:"도구와 그 도구가 재는 대상의 관계예요." },
+  { area:V, prompt:"'확장'과 반대되는 뜻의 말은?", choices:["축소","팽창","확대","연장","증가","압축","과장"], answer:0, note:"넓혀 크게 하는 것의 반대는 줄여 작게 하는 것이에요." },
+  { area:V, prompt:"다음 중 성격이 다른 하나는?", choices:["플루트","바이올린","첼로","기타","하프","우쿨렐레","가야금"], answer:0, note:"플루트는 관악기, 나머지는 줄을 울리는 현악기예요." },
+  { area:V, prompt:"새벽 : 황혼 = 입구 : ?", choices:["출구","대문","현관","복도","계단","문턱","통로"], answer:0, note:"시작과 끝처럼 서로 반대 자리에 있는 짝이에요." },
+  { area:V, prompt:"영수 어머니의 남동생의 아들은 영수와 어떤 관계일까요?", choices:["외사촌","친사촌","외삼촌","조카","이모","형","동생"], answer:0, note:"어머니의 남동생은 외삼촌, 외삼촌의 아들은 외사촌이에요." },
+  { area:V, prompt:"수진이는 태호보다 빠르고, 태호는 민아보다 빠릅니다. 지훈이는 수진이보다 빠르고, 하늘이는 민아보다 느립니다. 세 번째로 빠른 사람은?", choices:["태호","수진","민아","지훈","하늘","알 수 없다","두 명일 수 있다"], answer:0, note:"지훈 > 수진 > 태호 > 민아 > 하늘 순서예요." },
+  { area:V, prompt:"내일이 수요일이 아니라 모레가 수요일이라면, 오늘은 무슨 요일일까요?", choices:["월요일","화요일","수요일","목요일","금요일","토요일","일요일"], answer:0, note:"모레가 수요일이면 오늘은 이틀 전인 월요일이에요." },
+  { area:V, prompt:"'비가 오면 소풍을 취소한다'가 참일 때, 소풍이 취소되지 않았다면 반드시 맞는 말은?", choices:["비가 오지 않았다","비가 왔다","소풍을 갔다","소풍 장소가 바뀌었다","날씨와 관계없다","비가 올 예정이다","알 수 없다"], answer:0, note:"결과가 일어나지 않았다면 그 조건도 일어나지 않은 거예요." },
+  { area:V, prompt:"어제가 금요일의 사흘 후였다면, 내일은 무슨 요일일까요?", choices:["수요일","화요일","목요일","금요일","월요일","토요일","일요일"], answer:0, note:"어제는 월요일(금+3일), 오늘은 화요일, 내일은 수요일이에요." },
+  { area:V, prompt:"모든 장미는 꽃이다. 어떤 꽃은 빨갛다. 이때 반드시 맞는 말은?", choices:["반드시 맞는 말은 없다","어떤 장미는 빨갛다","빨간 장미는 없다","모든 장미는 빨갛다","어떤 꽃은 장미가 아니다","모든 꽃은 장미다","빨간 것은 모두 꽃이다"], answer:0, note:"'어떤 꽃'이 장미라는 보장이 없어서 어느 것도 확실하지 않아요." },
+  { area:V, prompt:"모레가 목요일의 이틀 전이라면, 오늘은 무슨 요일일까요?", choices:["일요일","월요일","화요일","수요일","목요일","금요일","토요일"], answer:0, note:"모레는 화요일(목요일 이틀 전), 오늘은 그 이틀 전인 일요일이에요." },
+  { area:V, prompt:"'그 일을 하지 않는 것은 불가능하다'와 뜻이 가장 가까운 말은?", choices:["그 일을 반드시 해야 한다","그 일을 하면 안 된다","그 일을 안 해도 된다","그 일은 할 수 없다","해도 되고 안 해도 된다","그 일은 하기 어렵다","그 일은 이미 끝났다"], answer:0, note:"부정이 두 번 겹치면 강한 긍정이 돼요." },
+  // 행렬추론 (9)
+  { area:M, prompt:MAT, fig:{g:[{s:"cir",n:1},{s:"tri",n:1},{s:"sq",n:1},{s:"cir",n:2},{s:"tri",n:2},{s:"sq",n:2},{s:"cir",n:3},{s:"tri",n:3},null]}, choices:[{s:"sq",n:3},{s:"sq",n:2},{s:"sq",n:4},{s:"tri",n:3},{s:"cir",n:3},{s:"sq",n:1},{s:"dia",n:3}], answer:0, note:"세로줄은 도형을, 가로줄은 개수를 정해요." },
+  { area:M, prompt:MAT, fig:{g:[{s:"cir"},{s:"cir",k:.7},{s:"cir",k:.45},{s:"sq"},{s:"sq",k:.7},{s:"sq",k:.45},{s:"tri"},{s:"tri",k:.7},null]}, choices:[{s:"tri",k:.45},{s:"tri",k:.7},{s:"tri"},{s:"sq",k:.45},{s:"cir",k:.45},{s:"tri",k:.45,f:1},{s:"dia",k:.45}], answer:0, note:"줄마다 도형이 다르고, 칸마다 점점 작아져요." },
+  { area:M, prompt:MAT, fig:{g:[{s:"arr"},{s:"arr",r:90},{s:"arr",r:180},{s:"arr",r:90},{s:"arr",r:180},{s:"arr",r:270},{s:"arr",r:180},{s:"arr",r:270},null]}, choices:[{s:"arr"},{s:"arr",r:90},{s:"arr",r:180},{s:"arr",r:270},{s:"arr",r:45},{s:"arr",f:1},{s:"tri"}], answer:0, note:"칸마다 90도씩 돌고, 줄이 바뀌면 시작 방향도 한 칸 돌아가요." },
+  { area:M, prompt:MAT, fig:{g:[{s:"vln"},{s:"hln"},{s:"plus"},{s:"dl"},{s:"dr"},{s:"x"},{s:"cir"},{s:"sq"},null]}, choices:[{s:"cir",ov:"sq"},{s:"cir"},{s:"sq"},{s:"cir",ov:"tri"},{s:"sq",ov:"tri"},{s:"cir",f:1},{s:"dia",ov:"sq"}], answer:0, note:"앞의 두 그림을 겹친 모양이 세 번째 그림이에요." },
+  { area:M, prompt:MAT, fig:{g:[{n:4},{n:1},{n:3},{n:3},{n:2},{n:1},{n:4},{n:2},null]}, choices:[{n:2},{n:1},{n:3},{n:4},{s:"tri",n:2},{s:"sq",n:2},{s:"dia",n:2}], answer:0, note:"첫 번째 개수에서 두 번째 개수를 빼면 세 번째가 돼요." },
+  { area:M, prompt:MAT, fig:{g:[{s:"sq",in:{s:"dia"}},{s:"cir",in:{s:"dia"}},{s:"tri",in:{s:"dia"}},{s:"sq",in:{s:"vln"}},{s:"cir",in:{s:"vln"}},{s:"tri",in:{s:"vln"}},{s:"sq",in:{s:"cir"}},{s:"cir",in:{s:"cir"}},null]}, choices:[{s:"tri",in:{s:"cir"}},{s:"tri",in:{s:"dia"}},{s:"cir",in:{s:"cir"}},{s:"tri",in:{s:"vln"}},{s:"sq",in:{s:"cir"}},{s:"tri",in:{s:"sq"}},{s:"tri",f:1}], answer:0, note:"세로줄은 바깥 도형을, 가로줄은 안쪽 도형을 정해요." },
+  { area:M, prompt:MAT, fig:{g:[{s:"arr"},{s:"arr",r:90,f:1},{s:"arr",r:180},{s:"tri",f:1},{s:"tri",r:90},{s:"tri",r:180,f:1},{s:"arr",r:45,f:1},{s:"arr",r:135},null]}, choices:[{s:"arr",r:225,f:1},{s:"arr",r:225},{s:"arr",r:135,f:1},{s:"arr",r:315,f:1},{s:"arr",r:45,f:1},{s:"arr",r:225,k:.7,f:1},{s:"tri",r:225,f:1}], answer:0, note:"90도씩 돌면서 채움이 번갈아 바뀌어요." },
+  { area:M, prompt:MAT, fig:{g:[{cell:0},{cell:1},{cell:2},{cell:1},{cell:2},{cell:3},{cell:2},{cell:3},null]}, choices:[{cell:0},{cell:1},{cell:2},{cell:3},{s:"sq"},{s:"sq",f:1},{s:"x"}], answer:0, note:"칠해진 칸이 시계 방향으로 돌고, 줄이 바뀌면 한 칸 더 간 자리에서 시작해요." },
+  { area:M, prompt:MAT, fig:{g:[{s:"cir"},{s:"cir",k:.7},{s:"cir",k:.45},{s:"sq",f:1},{s:"sq",f:1,k:.7},{s:"sq",f:1,k:.45},{s:"dia"},{s:"dia",k:.7},null]}, choices:[{s:"dia",k:.45},{s:"dia",k:.7},{s:"dia"},{s:"dia",k:.45,f:1},{s:"sq",k:.45,f:1},{s:"cir",k:.45},{s:"tri",k:.45}], answer:0, note:"줄마다 도형과 채움이 다르고, 칸마다 점점 작아져요." },
+  // 수열추론 (10) — 주관식
+  { area:N, prompt:NUM, visual:"3, 4, 6, 9, 13, ?", input:true, answer:18, note:"더하는 수가 1, 2, 3, 4, 5로 커져요." },
+  { area:N, prompt:NUM, visual:"81, 27, 9, 3, ?", input:true, answer:1, note:"앞의 수를 3으로 나눠요." },
+  { area:N, prompt:NUM, visual:"1, 1, 2, 3, 5, 8, ?", input:true, answer:13, note:"앞의 두 수를 더하면 다음 수가 돼요." },
+  { area:N, prompt:NUM, visual:"100, 96, 88, 76, ?", input:true, answer:60, note:"빼는 수가 4, 8, 12, 16으로 커져요." },
+  { area:N, prompt:NUM, visual:"2, 6, 12, 20, 30, ?", input:true, answer:42, note:"더하는 수가 4, 6, 8, 10, 12로 2씩 커져요." },
+  { area:N, prompt:NUM, visual:"34, 150, 35, 160, 36, 170, ?", input:true, answer:37, note:"두 수열(34,35,36,37과 150,160,170)이 번갈아 나와요." },
+  { area:N, prompt:NUM, visual:"2, 3, 5, 7, 11, 13, ?", input:true, answer:17, note:"1과 자기 자신으로만 나누어지는 소수를 차례로 늘어놓았어요." },
+  { area:N, prompt:NUM, visual:"1, 4, 2, 8, 3, 12, 4, ?", input:true, answer:16, note:"두 수열(1,2,3,4와 4,8,12,16)이 번갈아 나와요." },
+  { area:N, prompt:NUM, visual:"5, 6, 10, 19, 35, ?", input:true, answer:60, note:"더하는 수가 1, 4, 9, 16, 25(제곱수)로 커져요." },
+  { area:N, prompt:NUM, visual:"2, 4, 12, 48, ?", input:true, answer:240, note:"곱하는 수가 2, 3, 4, 5로 커져요." },
+  // 도형유추 (9)
+  { area:F, prompt:ANA, fig:{a:[{s:"arr"},{s:"arr",r:90},{s:"tri"}]}, choices:[{s:"tri",r:90},{s:"tri"},{s:"tri",r:180},{s:"tri",r:270},{s:"tri",r:45},{s:"arr",r:90},{s:"tri",r:90,f:1}], answer:0, note:"시계 방향으로 90도 돌리는 관계예요." },
+  { area:F, prompt:ANA, fig:{a:[{n:1},{n:2},{n:2}]}, choices:[{n:4},{n:3},{n:2},{n:1},{s:"tri",n:4},{s:"sq",n:4},{n:4,f:0}], answer:0, note:"개수가 2배로 늘어나는 관계예요." },
+  { area:F, prompt:ANA, fig:{a:[{n:3},{n:2},{n:4}]}, choices:[{n:3},{n:4},{n:2},{n:1},{s:"tri",n:3},{s:"sq",n:3},{n:3,f:0}], answer:0, note:"개수가 하나 줄어드는 관계예요." },
+  { area:F, prompt:ANA, fig:{a:[{s:"cir",f:1},{s:"cir",k:.55},{s:"sq",f:1}]}, choices:[{s:"sq",k:.55},{s:"sq",k:.55,f:1},{s:"sq"},{s:"cir",k:.55},{s:"sq",f:1},{s:"dia",k:.55},{s:"tri",k:.55}], answer:0, note:"채움이 사라지면서 크기도 작아지는 관계예요." },
+  { area:F, prompt:ANA, fig:{a:[{s:"sq",in:{s:"cir"}},{s:"cir",in:{s:"sq"}},{s:"tri",in:{s:"dia"}}]}, choices:[{s:"dia",in:{s:"tri"}},{s:"tri",in:{s:"dia"}},{s:"dia",in:{s:"sq"}},{s:"sq",in:{s:"dia"}},{s:"dia",in:{s:"cir"}},{s:"tri",in:{s:"sq"}},{s:"dia",f:1}], answer:0, note:"바깥 도형과 안쪽 도형이 서로 자리를 바꿔요." },
+  { area:F, prompt:ANA, fig:{a:[{s:"arr"},{s:"arr",r:180,f:1},{s:"arr",r:90,f:1}]}, choices:[{s:"arr",r:270},{s:"arr",r:270,f:1},{s:"arr",r:90},{s:"arr",f:1},{s:"arr",r:180},{s:"arr",r:45},{s:"tri",r:270}], answer:0, note:"180도 돌리면서 채움을 반대로 바꿔요." },
+  { area:F, prompt:ANA, fig:{a:[{s:"arr"},{s:"arr",k:.55,r:90},{s:"tri"}]}, choices:[{s:"tri",k:.55,r:90},{s:"tri",k:.55},{s:"tri",r:90},{s:"tri"},{s:"tri",k:.55,r:180},{s:"dia",k:.55},{s:"arr",k:.55,r:90}], answer:0, note:"90도 돌리면서 크기도 작아지는 관계예요." },
+  { area:F, prompt:ANA, fig:{a:[{s:"sq",in:{s:"cir"}},{s:"sq",in:{s:"cir",f:1}},{s:"cir",in:{s:"tri"}}]}, choices:[{s:"cir",in:{s:"tri",f:1}},{s:"cir",in:{s:"tri"}},{s:"tri",in:{s:"cir",f:1}},{s:"cir",in:{s:"sq",f:1}},{s:"cir",in:{s:"dia",f:1}},{s:"sq",in:{s:"cir",f:1}},{s:"cir",in:{s:"tri"},k:.7}], answer:0, note:"바깥은 그대로 두고 안쪽 도형만 채우는 관계예요." },
+  { area:F, prompt:ANA, fig:{a:[{pair:["tri","sq"]},{pair:["sq","tri"],f:1},{pair:["cir","dia"]}]}, choices:[{pair:["dia","cir"],f:1},{pair:["dia","cir"]},{pair:["cir","dia"],f:1},{pair:["dia","dia"],f:1},{pair:["cir","cir"],f:1},{pair:["sq","tri"],f:1},{pair:["tri","dia"],f:1}], answer:0, note:"자리를 서로 바꾸고 채움도 바꿔요." },
 ];
 
 const AREA_MAX = { "언어추론":8, "행렬추론":6, "수열추론":7, "도형유추":6 };
 const AREA_DESC = { "언어추론":"말의 의미와 논리 관계", "행렬추론":"규칙과 변화 발견", "수열추론":"숫자 사이의 규칙", "도형유추":"도형 관계와 공간 사고" };
 const MEAN = 10.76, SD = 5.11;
+const BANK_TOTAL = BANK_A.length + BANK_B.length;
 
-const state = { screen:"home", age:12, consent:false, index:0, answers:{} };
+const state = { screen:"home", age:12, consent:false, index:0, answers:{}, test:[] };
 const app = document.getElementById("app");
 
-function qs() { return state.age <= 11 ? SET_A : SET_B; }
+function bank() { return state.age <= 11 ? BANK_A : BANK_B; }
 function setName() { return state.age <= 11 ? "기본 세트" : "심화 세트"; }
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+function sample(pool, k) {
+  const idx = shuffle(pool.map((_, i) => i)).slice(0, k).sort((x, y) => x - y);
+  return idx.map(i => pool[i]);
+}
+function prepare(q) {
+  if (q.input) return Object.assign({}, q);
+  const ord = shuffle(q.choices.map((_, i) => i));
+  return Object.assign({}, q, { choices: ord.map(i => q.choices[i]), answer: ord.indexOf(q.answer) });
+}
+function drawTest() {
+  const B = bank();
+  const test = [];
+  Object.keys(AREA_MAX).forEach(area => {
+    sample(B.filter(q => q.area === area), AREA_MAX[area]).forEach(q => test.push(prepare(q)));
+  });
+  return test;
+}
 
 function referenceScore(raw) { return Math.max(55, Math.min(145, Math.round(100 + 15 * ((raw - MEAN) / SD)))); }
 function percentile(z) {
@@ -219,11 +287,14 @@ function percentile(z) {
   const p = 1 - d * t * (.3193815 + t * (-.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))));
   return Math.round(100 * (z >= 0 ? p : 1 - p));
 }
+function isCorrect(q, ans) {
+  if (ans === undefined || ans === "") return false;
+  return q.input ? Number(ans) === q.answer : ans === q.answer;
+}
 function getSummary() {
-  const Q = qs();
   const areas = {}; Object.keys(AREA_MAX).forEach(k => areas[k] = 0);
   let raw = 0;
-  Q.forEach((q, i) => { if (state.answers[i] === q.answer) { raw++; areas[q.area]++; } });
+  state.test.forEach((q, i) => { if (isCorrect(q, state.answers[i])) { raw++; areas[q.area]++; } });
   const z = (raw - MEAN) / SD;
   return { raw, areas, z, score: referenceScore(raw), pct: percentile(z) };
 }
@@ -235,15 +306,15 @@ function viewHome() {
   <section class="hero">
     <div class="eyebrow"><span>●</span> 10–14세 어린이를 위한 인지 추론 테스트</div>
     <h1>정답보다 중요한 건,<br><em>생각하는 과정</em>이에요.</h1>
-    <p class="heroCopy">27개의 문제로 언어, 도형, 수 규칙과 논리적 사고를 살펴보세요. 연령에 맞는 문항 세트가 출제되고, 답은 서버로 전송되지 않고 이 브라우저 안에서만 계산됩니다.</p>
-    <div class="facts"><div><strong>27</strong><span>문항</span></div><div><strong>2</strong><span>연령별 세트</span></div><div><strong>4</strong><span>추론 영역</span></div></div>
+    <p class="heroCopy">문제은행 ${BANK_TOTAL}문항에서 연령에 맞는 27문제가 매번 새로 출제됩니다. 답은 서버로 전송되지 않고 이 브라우저 안에서만 계산됩니다.</p>
+    <div class="facts"><div><strong>27</strong><span>문항 · 매회</span></div><div><strong>${BANK_TOTAL}</strong><span>문제은행</span></div><div><strong>4</strong><span>추론 영역</span></div></div>
     <button class="primary" data-action="setup">테스트 시작하기 <span>→</span></button>
     <p class="notice">오락·교육용 참고 검사이며 전문 지능검사나 진단을 대신하지 않습니다.</p>
   </section>
   <section class="studyCard">
     <span class="cardIndex">01 / 연구 근거</span>
     <h2>쌓여 있는 연구자료에서<br>출발했습니다.</h2>
-    <p>2025년 발표된 Children’s ICAR 검증 연구의 27문항 구성과 820명 표본 통계를 참고합니다. 문항은 같은 영역 구성으로 독자 제작했으며, 연령대(만 10~11세 / 12~14세)에 따라 다른 세트가 출제됩니다.</p>
+    <p>2025년 발표된 Children’s ICAR 검증 연구의 27문항 구성(영역 비율·8지선다·수열 주관식)을 따릅니다. 문항은 독자 제작 문제은행에서 연령대별(만 10~11세 / 12~14세)로 매회 무작위 출제됩니다.</p>
     <div class="statLine"><span>플란데런 연구표본 평균</span><strong>10.76 <small>/ 27</small></strong></div>
   </section>`;
 }
@@ -258,7 +329,7 @@ function viewSetup() {
       <div class="setupForm">
         <label for="age">어린이의 만 나이</label>
         <select id="age">${opts}</select>
-        <p class="setNote">만 10~11세는 <b>기본 세트</b>, 만 12~14세는 <b>심화 세트</b> 27문항이 출제됩니다. 지금 선택: <b>${setName()}</b></p>
+        <p class="setNote">만 10~11세는 <b>기본 세트</b>, 만 12~14세는 <b>심화 세트</b>에서 매번 27문항이 무작위로 출제됩니다. 지금 선택: <b>${setName()}</b></p>
         <label class="check"><input type="checkbox" id="consent" ${state.consent ? "checked" : ""}><span>보호자와 함께 안내를 읽었으며, 이 결과가 전문적인 IQ 진단이 아니라는 점을 이해했습니다.</span></label>
         <button class="primary wide" data-action="start" ${state.consent ? "" : "disabled"}>준비됐어요 <span>→</span></button>
       </div>
@@ -267,7 +338,7 @@ function viewSetup() {
         <ul>
           <li>계산기나 검색은 사용하지 않아요.</li>
           <li>시간은 점수에 포함되지 않아요.</li>
-          <li>모르겠다면 가장 알맞은 답을 골라요.</li>
+          <li>모르겠다면 '모르겠어요'를 골라도 돼요.</li>
           <li>이름·학교·연락처는 수집하지 않아요.</li>
         </ul>
       </aside>
@@ -276,18 +347,34 @@ function viewSetup() {
 }
 
 function choiceContent(q, i, px) {
+  if (i === 7) return DUNNO;
   const c = q.choices[i];
   return typeof c === "object" ? specSVG(c, px) : c;
 }
 
+function numpadHTML(val) {
+  const show = val && val.length
+    ? `<div class="numShow">${val}</div>`
+    : `<div class="numShow empty">키패드로 답을 입력하세요</div>`;
+  const keys = ["1","2","3","4","5","6","7","8","9","0"].map(d => `<button data-action="digit" data-d="${d}">${d}</button>`).join("");
+  return `<div class="numWrap">${show}<div class="numpad">${keys}<button class="fn" data-action="numclear">지움</button><button class="fn" data-action="numback">←</button></div><p class="numHint">PC에서는 키보드 숫자키로도 입력할 수 있어요.</p></div>`;
+}
+
 function viewQuiz() {
-  const Q = qs();
-  const q = Q[state.index];
+  const q = state.test[state.index];
   const sel = state.answers[state.index];
-  const answered = sel !== undefined;
-  const figc = typeof q.choices[0] === "object";
-  const choices = q.choices.map((c, i) =>
-    `<button data-action="choose" data-i="${i}" class="${sel === i ? "selected" : ""}"><span>${String.fromCharCode(65 + i)}</span>${choiceContent(q, i, 54)}</button>`).join("");
+  const answered = q.input ? (sel !== undefined && sel !== "") : sel !== undefined;
+  let body;
+  if (q.input) {
+    body = numpadHTML(sel || "");
+  } else {
+    const figc = typeof q.choices[0] === "object";
+    const btns = [];
+    for (let i = 0; i < 8; i++) {
+      btns.push(`<button data-action="choose" data-i="${i}" class="${sel === i ? "selected" : ""}"><span>${String.fromCharCode(65 + i)}</span>${choiceContent(q, i, 44)}</button>`);
+    }
+    body = `<div class="choices c8 ${figc ? "figc" : ""}">${btns.join("")}</div>`;
+  }
   return `
   <section class="quizWrap">
     <div class="quizHead"><span>${q.area} · ${setName()}</span><strong>${String(state.index + 1).padStart(2, "0")} <small>/ 27</small></strong></div>
@@ -297,7 +384,7 @@ function viewQuiz() {
       <h2>${q.prompt}</h2>
       ${q.visual ? `<div class="visual" aria-label="${q.visual}">${q.visual}</div>` : ""}
       ${q.fig ? figHTML(q.fig) : ""}
-      <div class="choices ${figc ? "figc" : ""}">${choices}</div>
+      ${body}
     </div>
     <div class="quizNav">
       <button data-action="prev" ${state.index === 0 ? "disabled" : ""}>← 이전</button>
@@ -309,7 +396,6 @@ function viewQuiz() {
 }
 
 function viewResult() {
-  const Q = qs();
   const s = getSummary();
   const areaRows = Object.keys(AREA_MAX).map(a => `
     <div class="areaRow">
@@ -317,15 +403,23 @@ function viewResult() {
       <div class="bar"><i style="width:${(s.areas[a] / AREA_MAX[a]) * 100}%"></i></div>
       <b>${s.areas[a]} / ${AREA_MAX[a]}</b>
     </div>`).join("");
-  const reviewRows = Q.map((q, i) => {
+  const reviewRows = state.test.map((q, i) => {
     const user = state.answers[i];
-    const ok = user === q.answer;
+    const ok = isCorrect(q, user);
+    let mine, right;
+    if (q.input) {
+      mine = (user !== undefined && user !== "") ? user : "무응답";
+      right = String(q.answer);
+    } else {
+      mine = user !== undefined ? choiceContent(q, user, 26) : "무응답";
+      right = choiceContent(q, q.answer, 26);
+    }
     return `
     <div class="reviewItem">
       <p class="meta">${String(i + 1).padStart(2, "0")} · ${q.area} · <b class="${ok ? "ok" : "no"}">${ok ? "정답" : "오답"}</b></p>
       <p class="q">${q.prompt}</p>
       ${q.visual ? `<p class="reviewVisual">${q.visual}</p>` : ""}
-      <p>내가 고른 답: ${user !== undefined ? choiceContent(q, user, 26) : "무응답"}${ok ? "" : ` · 정답: ${choiceContent(q, q.answer, 26)}`}</p>
+      <p>내가 고른 답: ${mine}${ok ? "" : ` · 정답: ${right}`}</p>
       <p class="note">${q.note}</p>
     </div>`;
   }).join("");
@@ -345,7 +439,7 @@ function viewResult() {
     </div>
     <div class="disclaimer">
       <strong>이 점수는 어떻게 계산했나요?</strong>
-      <p>2025년 Ch-ICAR 연구표본의 평균과 표준편차를 이용해 평균 100, 표준편차 15 형태로 단순 환산했습니다. 연령 그룹에 따라 서로 다른 독자 제작 문항 세트가 출제되므로 세트 간 점수를 직접 비교할 수 없고, 한국 어린이의 연령별 표준화 IQ가 아니며, 극단 점수와 개별 영역 해석에는 특히 주의해야 합니다.</p>
+      <p>2025년 Ch-ICAR 연구표본의 평균과 표준편차를 이용해 평균 100, 표준편차 15 형태로 단순 환산했습니다. 매회 문제은행에서 무작위로 출제되므로 회차·세트 간 점수를 직접 비교할 수 없고, 한국 어린이의 연령별 표준화 IQ가 아니며, 극단 점수와 개별 영역 해석에는 특히 주의해야 합니다.</p>
     </div>
     <details class="review">
       <summary>문항별 풀이 다시 보기 (27문항)</summary>
@@ -374,14 +468,29 @@ function render() {
 
 function setScreen(s) { state.screen = s; render(); window.scrollTo(0, 0); }
 
+function inputDigit(d) {
+  const cur = state.answers[state.index] || "";
+  if (cur.length >= 6) return;
+  state.answers[state.index] = cur + d;
+  render();
+}
+function inputBack() {
+  const cur = state.answers[state.index] || "";
+  state.answers[state.index] = cur.slice(0, -1);
+  render();
+}
+
 app.addEventListener("click", e => {
   const btn = e.target.closest("[data-action]");
   if (!btn || btn.disabled) return;
   const a = btn.dataset.action;
   if (a === "home") setScreen("home");
   else if (a === "setup") setScreen("setup");
-  else if (a === "start") { state.index = 0; state.answers = {}; setScreen("quiz"); }
+  else if (a === "start") { state.index = 0; state.answers = {}; state.test = drawTest(); setScreen("quiz"); }
   else if (a === "choose") { state.answers[state.index] = Number(btn.dataset.i); render(); }
+  else if (a === "digit") inputDigit(btn.dataset.d);
+  else if (a === "numback") inputBack();
+  else if (a === "numclear") { state.answers[state.index] = ""; render(); }
   else if (a === "prev") { state.index--; render(); }
   else if (a === "next") { state.index++; render(); window.scrollTo(0, 0); }
   else if (a === "finish") setScreen("result");
@@ -390,6 +499,21 @@ app.addEventListener("click", e => {
 app.addEventListener("change", e => {
   if (e.target.id === "age") { state.age = Number(e.target.value); render(); }
   else if (e.target.id === "consent") { state.consent = e.target.checked; render(); }
+});
+
+document.addEventListener("keydown", e => {
+  if (state.screen !== "quiz") return;
+  const q = state.test[state.index];
+  if (!q || !q.input) return;
+  if (/^[0-9]$/.test(e.key)) inputDigit(e.key);
+  else if (e.key === "Backspace") { e.preventDefault(); inputBack(); }
+  else if (e.key === "Enter") {
+    const sel = state.answers[state.index];
+    if (sel !== undefined && sel !== "") {
+      if (state.index < 26) { state.index++; render(); window.scrollTo(0, 0); }
+      else setScreen("result");
+    }
+  }
 });
 
 render();
