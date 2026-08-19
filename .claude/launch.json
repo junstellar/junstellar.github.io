@@ -10,7 +10,7 @@
     {
       "name": "games-preview",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8899", "--directory", "static/games"],
+      "runtimeArgs": ["tools/serve-nocache.py", "--port", "8899", "--dir", "static/games"],
       "port": 8899
     },
     {
