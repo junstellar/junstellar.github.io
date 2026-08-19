@@ -2,7 +2,7 @@
 title: "Dad-Made IQ Test — I Built One Myself for My 7th-Grade Daughter"
 description: "My daughter wanted an IQ test, so I built one myself: a kids' reasoning test modeled on the Ch-ICAR study (820 children), with a 76-item bank and random draws."
 slug: "kids-iq-test"
-date: 2026-08-19T22:00:00+09:00
+date: 2026-08-19T21:00:00+09:00
 draft: false
 categories: ["AI 코딩"]
 tags: ["AI", "vibe coding", "IQ test", "building", "Ch-ICAR"]

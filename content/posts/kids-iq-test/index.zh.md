@@ -2,7 +2,7 @@
 title: "爸爸牌IQ测试 — 为初一女儿亲手做了一个"
 description: "女儿想做智商测试，爸爸干脆自己做了一个：参照比利时820人验证研究(Ch-ICAR)结构的儿童推理测试，76题题库每次随机出题。"
 slug: "kids-iq-test"
-date: 2026-08-19T22:00:00+09:00
+date: 2026-08-19T21:00:00+09:00
 draft: false
 categories: ["AI 코딩"]
 tags: ["AI", "vibe coding", "IQ测试", "动手做", "Ch-ICAR"]
