@@ -17,8 +17,8 @@ links:
     description: 玛奇手游第二赛季全部21个职业的攻略合集。整理自200余篇社区帖子 — 技能、精工、符文与强度评价，均附来源链接。（韩语）
     website: /tools/mabi-guide/
   - title: 🧠 思考星IQ实验室 — 儿童IQ测试
-    description: 面向10~14岁儿童的27题IQ测试（认知推理），按年龄提供基础/进阶两套题目，涵盖语言、矩阵、数列、图形类比四个领域，并附每题讲解。答案不会上传服务器，仅供娱乐和学习参考。（韩语）
-    website: /tools/iq-test/
+    description: 面向10~14岁儿童的27题IQ测试（认知推理），按年龄提供基础/进阶两套题目，涵盖语言、矩阵、数列、图形类比四个领域，并附每题讲解。支持中文，答案不会上传服务器，仅供娱乐和学习参考。
+    website: /tools/iq-test/?lang=zh
 comments: false
 ---
 

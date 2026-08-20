@@ -17,8 +17,8 @@ links:
     description: Class guides for all 21 classes in Mabinogi Mobile Season 2, compiled from 200+ community posts — skills, reforges, runes, and tier notes with source links. (Korean)
     website: /tools/mabi-guide/
   - title: 🧠 Thinking Star IQ Lab — Kids' IQ Test
-    description: A 27-item IQ-style reasoning test for ages 10–14 with two difficulty sets by age (10–11 / 12–14), covering verbal, matrix, number-series, and figure-analogy items, with per-question explanations. Answers never leave your browser; for fun and learning only. (Korean)
-    website: /tools/iq-test/
+    description: A 27-item IQ-style reasoning test for ages 10–14 with two difficulty sets by age (10–11 / 12–14), covering verbal, matrix, number-series, and figure-analogy items, with per-question explanations. Available in English; answers never leave your browser.
+    website: /tools/iq-test/?lang=en
 comments: false
 ---
 

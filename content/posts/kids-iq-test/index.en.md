@@ -14,7 +14,7 @@ A normal dad would have nodded along or searched for a free online test. Instead
 
 Then I started researching what I had just promised. This post is the cleanup record of that big talk.
 
-👉 The result first: **[Thinking Star IQ Lab — Kids' IQ Test](/tools/iq-test/)** (Korean)
+👉 The result first: **[Thinking Star IQ Lab — Kids' IQ Test](/tools/iq-test/?lang=en)**
 
 ## Real IQ Tests Are No Joke
 
@@ -65,6 +65,6 @@ Rather than fixating on one number, it works best as a way to see together **whi
 
 ## Try It
 
-👉 **[Open Thinking Star IQ Lab](/tools/iq-test/)** (Korean) — also available from the **Tools** menu.
+👉 **[Open Thinking Star IQ Lab](/tools/iq-test/?lang=en)** — also available from the **Tools** menu.
 
 Now it's time to hand my daughter the advanced set. If she aces it again… then maybe I really should suspect a genius.
