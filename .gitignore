@@ -6,3 +6,18 @@
 # OS
 .DS_Store
 Thumbs.db
+
+# 게임 개발 스크래치 (검증 하네스·프로브 스크립트·스크린샷 — 완성본은 static/games로 이동)
+/tools/shunting-dev/
+
+# 숏폼 파이프라인 생성 산출물 (스크립트·자막 json만 추적, 프레임·음성·영상은 로컬 보관)
+/video-shorts/pipeline/frames_*/
+/video-shorts/pipeline/seq_*/
+/video-shorts/pipeline/tts_*/
+/video-shorts/pipeline/scene_*.mp4
+/video-shorts/pipeline/video_*.mp4
+/video-shorts/pipeline/_marktmp/
+/video-shorts/pipeline/_glyphtest.png
+/video-shorts/published/
+/video-shorts/comfyui-assets/
+/video-shorts/face-mosaic-assets/
