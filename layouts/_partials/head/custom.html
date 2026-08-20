@@ -4,6 +4,12 @@
 {{ end }}{{ with site.Params.bingSiteVerification }}<meta name="msvalidate.01" content="{{ . }}">
 {{ end }}
 
+{{/* Google AdSense — 사이트 연결·광고 스크립트 (운영 빌드에서만 로드) */}}
+{{ if hugo.IsProduction }}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8537655417588698"
+        crossorigin="anonymous"></script>
+{{ end }}
+
 {{/* favicon — assets/img/avatar.png(초승달)을 Hugo가 작게 리사이즈해 생성 */}}
 {{ with resources.Get "img/avatar.png" }}
 {{ $ico := .Resize "32x32 png" }}
