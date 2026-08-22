@@ -19,6 +19,9 @@ links:
   - title: 🧠 思考星IQ实验室 — 儿童IQ测试
     description: 面向10~14岁儿童的27题IQ测试（认知推理），按年龄提供基础/进阶两套题目，涵盖语言、矩阵、数列、图形类比四个领域，并附每题讲解。支持中文，答案不会上传服务器，仅供娱乐和学习参考。
     website: /tools/iq-test/?lang=zh
+  - title: ⭐ 大五人格测试
+    description: 用心理学研究中实际使用的IPIP公开条目50题，测量人格五因素 — 外向性、宜人性、尽责性、情绪稳定性、开放性。约5分钟，答案不会上传服务器，仅供娱乐和学习参考。
+    website: /tools/big5/?lang=zh
 comments: false
 ---
 

@@ -19,6 +19,9 @@ links:
   - title: 🧠 Thinking Star IQ Lab — Kids' IQ Test
     description: A 27-item IQ-style reasoning test for ages 10–14 with two difficulty sets by age (10–11 / 12–14), covering verbal, matrix, number-series, and figure-analogy items, with per-question explanations. Available in English; answers never leave your browser.
     website: /tools/iq-test/?lang=en
+  - title: ⭐ Big Five Personality Test
+    description: Your Big Five traits — extraversion, agreeableness, conscientiousness, emotional stability, and openness — measured with 50 public-domain IPIP items actually used in psychology research. About 5 minutes; answers never leave your browser.
+    website: /tools/big5/?lang=en
 comments: false
 ---
 

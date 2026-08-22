@@ -19,6 +19,9 @@ links:
   - title: 🧠 생각별 IQ 연구소 — 어린이 IQ 테스트
     description: 만 10~14세 어린이를 위한 27문항 IQ 테스트(인지추론). 연령대별 기본·심화 세트로 언어·행렬·수열·도형유추 4개 영역을 살펴보고 풀이 해설까지 제공합니다. 답은 서버로 전송되지 않으며, 오락·교육용 참고 검사입니다.
     website: /tools/iq-test/?lang=ko
+  - title: ⭐ Big Five 성격 테스트
+    description: 심리학 연구에서 실제로 쓰는 IPIP 공개 문항 50개로 보는 성격 5요인 — 외향성·우호성·성실성·정서 안정성·개방성. 약 5분, 답변은 서버로 전송되지 않으며, 오락·교육용 참고 검사입니다.
+    website: /tools/big5/?lang=ko
 comments: false
 ---
 

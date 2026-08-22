@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Big Five 성격 테스트 — 생각별 연구소</title>
+<meta name="description" content="심리학 연구에서 실제로 쓰는 IPIP 공개 문항 50개로 만든 Big Five 성격 테스트. 외향성·우호성·성실성·정서 안정성·개방성 5요인을 약 5분 만에 확인합니다. 답변은 서버로 전송되지 않습니다.">
+<meta property="og:title" content="Big Five 성격 테스트 — 생각별 연구소">
+<meta property="og:description" content="유행 테스트가 아니라 연구용 공개 문항(IPIP 50문항)으로 보는 성격 5요인. 4개 언어 지원, 답변은 브라우저 밖으로 나가지 않습니다.">
+<style>
+:root { --ink:#18221c; --paper:#f4f1e8; --mint:#c9f36a; --orange:#ff6b35; }
+* { box-sizing:border-box; }
+h1,h2,h3,p { margin:0; }
+ul { margin:0; padding:0; list-style:none; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,"Noto Sans KR",sans-serif; }
+button,select { font:inherit; }
+button { color:inherit; background:none; border:0; padding:0; cursor:pointer; }
+.shell { min-height:100vh; min-height:100dvh; overflow:hidden; display:flex; flex-direction:column; }
+.topbar { height:clamp(50px,7vh,78px); flex:none; display:flex; align-items:center; justify-content:space-between; max-width:1180px; width:100%; margin:0 auto; padding:0 28px; border-bottom:1px solid rgba(24,34,28,.18); }
+.brand { font-weight:800; letter-spacing:-.04em; display:flex; align-items:center; gap:10px; }
+.brandMark { display:grid; place-items:center; width:31px; height:31px; background:var(--ink); color:var(--mint); border-radius:50% 50% 45% 55%; font-family:Georgia,serif; }
+.topRight { display:flex; align-items:center; gap:14px; }
+.researchTag { font-size:12px; border:1px solid var(--ink); border-radius:99px; padding:7px 12px; }
+.langSw { display:flex; gap:4px; font-size:11px; }
+.langSw button { padding:4px 7px; border:1px solid transparent; border-radius:3px; color:#6f7972; }
+.langSw button.on { border-color:var(--ink); color:var(--ink); font-weight:800; }
+.hero { position:relative; max-width:1180px; width:100%; margin:0 auto; padding:clamp(12px,2.6vh,56px) 28px clamp(14px,3vh,64px); flex:1; display:flex; flex-direction:column; justify-content:center; }
+.hero:after { content:"★"; position:absolute; right:4%; top:2%; font:700 400px/1 Georgia,serif; color:transparent; -webkit-text-stroke:2px rgba(24,34,28,.08); transform:rotate(12deg); pointer-events:none; }
+.eyebrow { font-size:13px; font-weight:700; letter-spacing:.02em; margin-bottom:clamp(10px,2.2vh,26px); }
+.eyebrow span { color:var(--orange); margin-right:8px; }
+h1 { position:relative; z-index:1; font-size:clamp(40px,min(7.6vw,9vh),104px); line-height:.98; letter-spacing:-.075em; max-width:950px; }
+h1 em { color:var(--orange); font-family:Georgia,"Noto Serif KR",serif; font-weight:400; }
+.heroCopy { max-width:540px; font-size:clamp(14px,2vh,18px); line-height:1.65; margin:clamp(16px,3vh,35px) 0 clamp(14px,2.5vh,27px); color:#435047; }
+.facts { display:flex; gap:36px; margin:0 0 clamp(16px,3vh,34px); }
+.facts div { display:flex; align-items:baseline; gap:7px; }
+.facts strong { font:700 clamp(24px,3vh,31px)/1 Georgia,serif; }
+.facts span { font-size:12px; color:#647068; }
+.primary { position:relative; z-index:2; border-radius:4px; background:var(--ink); color:white; padding:clamp(12px,2vh,17px) 22px; min-width:220px; display:inline-flex; justify-content:space-between; gap:14px; box-shadow:5px 5px 0 var(--mint); }
+.primary:hover { transform:translate(-2px,-2px); box-shadow:7px 7px 0 var(--mint); }
+.notice { font-size:11px; color:#747b76; margin-top:clamp(10px,1.8vh,19px); }
+.studyCard { background:var(--ink); color:white; padding:clamp(18px,3.6vh,52px) max(28px,calc((100vw - 1124px)/2)); display:grid; grid-template-columns:160px 1fr 1fr; gap:clamp(18px,3vh,44px) 44px; align-items:start; }
+.cardIndex { color:var(--mint); font-size:12px; }
+.studyCard h2 { font-size:clamp(24px,3.6vh,36px); line-height:1.15; letter-spacing:-.05em; }
+.studyCard p { color:#b9c2bc; line-height:1.7; font-size:clamp(13px,1.8vh,16px); }
+.statLine { grid-column:2/4; border-top:1px solid #536057; padding-top:clamp(12px,2vh,22px); display:flex; justify-content:space-between; align-items:baseline; }
+.statLine strong { font:700 clamp(18px,2.6vh,26px) Georgia,serif; color:var(--mint); }.statLine small{color:#9da8a0;font-size:13px}
+.setupWrap,.quizWrap,.resultWrap { max-width:1040px; width:100%; margin:0 auto; padding:clamp(20px,4vh,64px) 28px clamp(20px,4vh,64px); }
+.stepLabel { display:inline-block; color:#d84e1e; font-size:12px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; margin-bottom:18px; }
+.setupWrap>h2,.resultHero h2 { font-size:clamp(34px,min(6vw,7vh),68px); line-height:1.02; letter-spacing:-.065em; margin:0 0 clamp(22px,4vh,50px); }
+.setupGrid { display:grid; grid-template-columns:1.3fr .8fr; gap:70px; }
+.setupForm { display:flex; flex-direction:column; gap:18px; }
+.setupForm p { line-height:1.7; color:#435047; font-size:15px; }
+.wide { width:100%; }
+.setupGrid aside { border-top:5px solid var(--mint); background:var(--ink); color:white; padding:28px; }
+.setupGrid aside strong { font-size:20px; }.setupGrid ul { padding-left:19px; color:#bac5bd; line-height:2; font-size:13px; list-style:disc; }
+.quizWrap { max-width:850px; }
+.quizHead { display:flex; justify-content:space-between; align-items:end; margin-bottom:12px; }.quizHead>span{font-size:13px;font-weight:800;color:#d84e1e}.quizHead strong{font:700 25px Georgia,serif}.quizHead small{font:12px Arial;color:#778079}
+.progress { height:3px; background:#d7d9d3; margin-bottom:clamp(20px,4vh,52px); }.progress i{display:block;height:100%;background:var(--orange);transition:width .3s}
+.questionCard { min-height:min(360px,44vh); display:flex; flex-direction:column; justify-content:center; }
+.qLead { font-size:12px; color:#6f7972; margin-bottom:clamp(10px,2vh,18px); text-align:center; }
+.stmt { font-size:clamp(22px,min(3.6vw,4vh),34px); line-height:1.35; letter-spacing:-.04em; text-align:center; font-weight:800; margin:0 auto clamp(22px,4.5vh,46px); max-width:640px; min-height:2.7em; display:flex; align-items:center; justify-content:center; }
+.likert { display:grid; grid-template-columns:repeat(5,1fr); gap:clamp(6px,1vw,12px); max-width:640px; margin:0 auto; }
+.likert button { border:1px solid #aab2ac; border-radius:6px; background:#fffdf7; padding:clamp(10px,1.8vh,16px) 4px; display:flex; flex-direction:column; align-items:center; gap:8px; transition:transform .1s; }
+.likert button:hover { background:var(--mint); transform:translateY(-2px); }
+.likert button.selected { border:2px solid var(--ink); background:var(--mint); font-weight:800; }
+.likert .dot { width:clamp(18px,3.2vh,28px); height:clamp(18px,3.2vh,28px); border-radius:50%; border:2px solid #7b857e; }
+.likert button:nth-child(1) .dot{transform:scale(1.15)} .likert button:nth-child(5) .dot{transform:scale(1.15)}
+.likert button.selected .dot { background:var(--ink); border-color:var(--ink); }
+.likert .lab { font-size:clamp(10px,1.5vh,12px); color:#566159; line-height:1.3; text-align:center; }
+.quizNav { border-top:1px solid #bec4bf;margin-top:clamp(16px,3vh,36px);padding-top:clamp(12px,2vh,22px);display:flex;justify-content:space-between}.quizNav button{padding:13px}.quizNav button:disabled{opacity:.3;cursor:not-allowed}
+.resultHero { display:grid;grid-template-columns:1fr;gap:10px;border-bottom:1px solid #bfc5c0;padding-bottom:clamp(20px,3.5vh,42px)}
+.resultHero p{color:#667169}
+.factors { padding:clamp(18px,3vh,40px) 0; display:flex; flex-direction:column; gap:clamp(14px,2.4vh,24px); }
+.factorRow { display:grid; grid-template-columns:170px 1fr 90px; gap:18px; align-items:center; border-top:1px solid #d2d5d1; padding-top:clamp(12px,2vh,20px); }
+.factorRow .fname { display:flex; flex-direction:column; gap:4px; }
+.factorRow .fname strong { font-size:17px; }
+.factorRow .fname span { font-size:11px; color:#7a837d; line-height:1.4; }
+.fbarWrap { display:flex; flex-direction:column; gap:7px; }
+.fbar { height:14px; background:#d9ddd8; border-radius:99px; overflow:hidden; }
+.fbar i { display:block; height:100%; background:var(--orange); border-radius:99px; transition:width .6s; }
+.fdesc { font-size:12.5px; color:#566159; line-height:1.55; }
+.fscore { text-align:right; display:flex; flex-direction:column; gap:3px; }
+.fscore b { font:700 24px Georgia,serif; }
+.fscore span { font-size:11px; font-weight:800; }
+.lvHigh { color:#d84e1e; } .lvMid { color:#6f7972; } .lvLow { color:#2f6f8f; }
+.disclaimer{background:#e7e3d8;padding:24px 30px;border-left:5px solid var(--orange)}.disclaimer strong{display:block;margin-bottom:8px}.disclaimer p{font-size:13px;line-height:1.7;color:#566159}
+.resultActions{display:flex;justify-content:flex-end;gap:15px;margin-top:30px}.resultActions>button:first-child{border:1px solid #89928c;background:transparent;padding:15px 25px}.resultActions .primary{min-width:0}
+.siteFoot{max-width:1180px;width:100%;margin:auto auto 0;padding:clamp(14px,2.5vh,24px) 28px clamp(16px,2.5vh,28px);border-top:1px solid rgba(24,34,28,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:#747b76}
+.siteFoot a{color:#435047}
+@media(max-width:700px){.topbar{height:66px}.researchTag{display:none}.hero:after{font-size:280px;right:-18%}h1{font-size:54px}.facts{gap:18px;flex-wrap:wrap}.studyCard{grid-template-columns:1fr}.studyCard h2,.studyCard p,.statLine{grid-column:1}.studyCard h2{font-size:31px}.setupGrid{grid-template-columns:1fr;gap:35px}.factorRow{grid-template-columns:1fr 74px;grid-template-areas:"n s" "b b"}.factorRow .fname{grid-area:n}.fbarWrap{grid-area:b}.fscore{grid-area:s}.likert .lab{font-size:9.5px}}
+</style>
+</head>
+<body>
+<div class="shell" id="app"></div>
+
+<script>
+"use strict";
+
+/* 문항: IPIP 50-item Goldberg Big-Five markers (ipip.ori.org, 퍼블릭 도메인)
+   f: E외향 A우호 C성실 S정서안정 O개방 / k: 1=정방향, -1=역방향 */
+const ITEMS = [
+  {f:"E",k:1, t:{ko:"모임에서 분위기를 주도하는 사람이다",en:"I am the life of the party",ja:"パーティーの盛り上げ役だ",zh:"我是聚会中的活跃人物"}},
+  {f:"E",k:1, t:{ko:"사람들과 함께 있으면 편안하다",en:"I feel comfortable around people",ja:"人と一緒にいると心地よい",zh:"和人在一起时我感到自在"}},
+  {f:"E",k:1, t:{ko:"먼저 대화를 시작하는 편이다",en:"I start conversations",ja:"自分から会話を始める",zh:"我会主动开启话题"}},
+  {f:"E",k:1, t:{ko:"모임에서 여러 사람과 두루 이야기한다",en:"I talk to a lot of different people at parties",ja:"集まりではいろいろな人と話す",zh:"在聚会上我会和很多不同的人交谈"}},
+  {f:"E",k:1, t:{ko:"주목받는 것이 싫지 않다",en:"I don't mind being the center of attention",ja:"注目されるのは嫌ではない",zh:"我不介意成为关注的焦点"}},
+  {f:"E",k:-1,t:{ko:"말수가 적은 편이다",en:"I don't talk a lot",ja:"口数が少ない",zh:"我话不多"}},
+  {f:"E",k:-1,t:{ko:"나서기보다 뒤에 있는 편이다",en:"I keep in the background",ja:"前に出ず後ろに控えている",zh:"我喜欢待在幕后"}},
+  {f:"E",k:-1,t:{ko:"할 말이 별로 없을 때가 많다",en:"I have little to say",ja:"あまり話すことがない",zh:"我常常没什么话可说"}},
+  {f:"E",k:-1,t:{ko:"관심이 나에게 쏠리는 것을 좋아하지 않는다",en:"I don't like to draw attention to myself",ja:"自分に注目が集まるのは好きではない",zh:"我不喜欢引人注意"}},
+  {f:"E",k:-1,t:{ko:"낯선 사람들 앞에서는 조용해진다",en:"I am quiet around strangers",ja:"初対面の人の前では静かになる",zh:"在陌生人面前我很安静"}},
+  {f:"A",k:1, t:{ko:"사람에 대한 관심이 많다",en:"I am interested in people",ja:"人に関心がある",zh:"我对人很感兴趣"}},
+  {f:"A",k:1, t:{ko:"다른 사람의 감정에 공감한다",en:"I sympathize with others' feelings",ja:"他人の気持ちに共感する",zh:"我能体谅别人的感受"}},
+  {f:"A",k:1, t:{ko:"마음이 여린 편이다",en:"I have a soft heart",ja:"情にもろい",zh:"我心肠软"}},
+  {f:"A",k:1, t:{ko:"다른 사람을 위해 기꺼이 시간을 내준다",en:"I take time out for others",ja:"人のために時間を割く",zh:"我愿意为别人抽出时间"}},
+  {f:"A",k:1, t:{ko:"다른 사람의 감정이 나에게도 전해진다",en:"I feel others' emotions",ja:"他人の感情が自分にも伝わってくる",zh:"我能感受到别人的情绪"}},
+  {f:"A",k:1, t:{ko:"사람들을 편안하게 해주는 편이다",en:"I make people feel at ease",ja:"人を安心させるほうだ",zh:"我能让人感到放松"}},
+  {f:"A",k:-1,t:{ko:"다른 사람에게 모욕적인 말을 하곤 한다",en:"I insult people",ja:"人を侮辱することがある",zh:"我有时会说侮辱人的话"}},
+  {f:"A",k:-1,t:{ko:"다른 사람의 고민에는 관심이 없다",en:"I am not interested in other people's problems",ja:"他人の悩みには興味がない",zh:"我对别人的问题不感兴趣"}},
+  {f:"A",k:-1,t:{ko:"다른 사람 일에 별로 신경 쓰지 않는다",en:"I feel little concern for others",ja:"他人のことはあまり気にかけない",zh:"我不太关心别人"}},
+  {f:"A",k:-1,t:{ko:"타인에게 그다지 관심이 없다",en:"I am not really interested in others",ja:"他人にあまり関心がない",zh:"我对他人不太感兴趣"}},
+  {f:"C",k:1, t:{ko:"항상 준비가 되어 있다",en:"I am always prepared",ja:"いつも準備ができている",zh:"我总是做好准备"}},
+  {f:"C",k:1, t:{ko:"세부 사항까지 꼼꼼히 챙긴다",en:"I pay attention to details",ja:"細部まで気を配る",zh:"我注重细节"}},
+  {f:"C",k:1, t:{ko:"해야 할 일은 바로 처리한다",en:"I get chores done right away",ja:"やるべきことはすぐ片付ける",zh:"我会马上把该做的事做完"}},
+  {f:"C",k:1, t:{ko:"정돈된 상태를 좋아한다",en:"I like order",ja:"整っているのが好きだ",zh:"我喜欢井井有条"}},
+  {f:"C",k:1, t:{ko:"계획표에 따라 움직인다",en:"I follow a schedule",ja:"スケジュール通りに動く",zh:"我按计划行事"}},
+  {f:"C",k:1, t:{ko:"일을 빈틈없이 정확하게 한다",en:"I am exacting in my work",ja:"仕事は厳密にこなす",zh:"我做事一丝不苟"}},
+  {f:"C",k:-1,t:{ko:"물건을 아무 데나 놓아둔다",en:"I leave my belongings around",ja:"持ち物をあちこちに置きっぱなしにする",zh:"我东西随手乱放"}},
+  {f:"C",k:-1,t:{ko:"일을 어질러 놓기 일쑤다",en:"I make a mess of things",ja:"物事を散らかしてしまう",zh:"我常把事情弄得一团糟"}},
+  {f:"C",k:-1,t:{ko:"물건을 제자리에 두는 것을 자주 잊는다",en:"I often forget to put things back in their proper place",ja:"物を元の場所に戻すのをよく忘れる",zh:"我经常忘记把东西放回原处"}},
+  {f:"C",k:-1,t:{ko:"해야 할 일을 미루거나 회피한다",en:"I shirk my duties",ja:"やるべきことをさぼってしまう",zh:"我会逃避自己该做的事"}},
+  {f:"S",k:1, t:{ko:"대체로 느긋한 편이다",en:"I am relaxed most of the time",ja:"たいていリラックスしている",zh:"我大部分时间都很放松"}},
+  {f:"S",k:1, t:{ko:"우울해지는 일이 거의 없다",en:"I seldom feel blue",ja:"落ち込むことはめったにない",zh:"我很少感到忧郁"}},
+  {f:"S",k:-1,t:{ko:"스트레스를 쉽게 받는다",en:"I get stressed out easily",ja:"ストレスを感じやすい",zh:"我容易感到压力"}},
+  {f:"S",k:-1,t:{ko:"이런저런 걱정이 많다",en:"I worry about things",ja:"いろいろ心配する",zh:"我常常担心各种事情"}},
+  {f:"S",k:-1,t:{ko:"사소한 일에도 마음이 흔들린다",en:"I am easily disturbed",ja:"ちょっとしたことで動揺する",zh:"我容易心神不宁"}},
+  {f:"S",k:-1,t:{ko:"쉽게 속상해한다",en:"I get upset easily",ja:"すぐに動揺してしまう",zh:"我容易感到难过"}},
+  {f:"S",k:-1,t:{ko:"기분이 자주 바뀐다",en:"I change my mood a lot",ja:"気分がよく変わる",zh:"我情绪多变"}},
+  {f:"S",k:-1,t:{ko:"감정 기복이 심한 편이다",en:"I have frequent mood swings",ja:"気分の浮き沈みが激しい",zh:"我情绪起伏频繁"}},
+  {f:"S",k:-1,t:{ko:"쉽게 짜증이 난다",en:"I get irritated easily",ja:"イライラしやすい",zh:"我容易被激怒"}},
+  {f:"S",k:-1,t:{ko:"자주 우울한 기분이 든다",en:"I often feel blue",ja:"よく憂うつな気分になる",zh:"我常常感到忧郁"}},
+  {f:"O",k:1, t:{ko:"어휘력이 풍부하다",en:"I have a rich vocabulary",ja:"語彙が豊富だ",zh:"我词汇量丰富"}},
+  {f:"O",k:1, t:{ko:"상상력이 생생하다",en:"I have a vivid imagination",ja:"想像力が豊かだ",zh:"我的想象力很生动"}},
+  {f:"O",k:1, t:{ko:"좋은 아이디어가 많다",en:"I have excellent ideas",ja:"優れたアイデアを持っている",zh:"我常有出色的想法"}},
+  {f:"O",k:1, t:{ko:"무엇이든 빨리 이해하는 편이다",en:"I am quick to understand things",ja:"物事の理解が早い",zh:"我理解事物很快"}},
+  {f:"O",k:1, t:{ko:"어려운 단어를 즐겨 쓴다",en:"I use difficult words",ja:"難しい言葉を使う",zh:"我会使用高深的词汇"}},
+  {f:"O",k:1, t:{ko:"여러 가지를 깊이 생각하며 시간을 보낸다",en:"I spend time reflecting on things",ja:"物事をじっくり考える時間を持つ",zh:"我会花时间思考问题"}},
+  {f:"O",k:1, t:{ko:"아이디어가 넘친다",en:"I am full of ideas",ja:"アイデアにあふれている",zh:"我满脑子都是想法"}},
+  {f:"O",k:-1,t:{ko:"추상적인 개념은 이해하기 어렵다",en:"I have difficulty understanding abstract ideas",ja:"抽象的な考えを理解するのが難しい",zh:"我难以理解抽象的概念"}},
+  {f:"O",k:-1,t:{ko:"추상적인 이야기에는 흥미가 없다",en:"I am not interested in abstract ideas",ja:"抽象的な話には興味がない",zh:"我对抽象的观念不感兴趣"}},
+  {f:"O",k:-1,t:{ko:"상상력이 풍부한 편은 아니다",en:"I do not have a good imagination",ja:"想像力は豊かなほうではない",zh:"我的想象力不算丰富"}},
+];
+
+const FACTORS = ["E","A","C","S","O"];
+
+const FMETA = {
+E:{ name:{ko:"외향성",en:"Extraversion",ja:"外向性",zh:"外向性"},
+    desc:{ko:"사교성 · 활력 · 자기표현",en:"Sociability · energy · assertiveness",ja:"社交性・活力・自己表現",zh:"社交性 · 活力 · 自我表达"},
+    hi:{ko:"사람들과의 교류에서 에너지를 얻고, 모임을 이끄는 것이 자연스러운 편입니다.",en:"You draw energy from being with people and naturally take the lead in groups.",ja:"人との交流からエネルギーを得て、集まりを引っ張るのが自然なタイプです。",zh:"你从与人交往中获得能量，在群体中自然而然地成为主导。"},
+    mid:{ko:"상황에 따라 활발함과 차분함을 오가는 균형형입니다.",en:"You balance outgoing and quiet modes depending on the situation.",ja:"状況に応じて活発さと静けさを使い分けるバランス型です。",zh:"你能根据场合在活跃与安静之间自如切换。"},
+    lo:{ko:"혼자 있는 시간에서 에너지를 충전하는 차분한 편입니다. 깊은 일대일 관계를 선호합니다.",en:"You recharge in quiet time alone and prefer deeper one-on-one connections.",ja:"一人の時間で充電する落ち着いたタイプ。深い一対一の関係を好みます。",zh:"你在独处中恢复能量，更喜欢深入的一对一交往。"} },
+A:{ name:{ko:"우호성",en:"Agreeableness",ja:"協調性",zh:"宜人性"},
+    desc:{ko:"공감 · 배려 · 협력",en:"Empathy · kindness · cooperation",ja:"共感・思いやり・協力",zh:"共情 · 体贴 · 合作"},
+    hi:{ko:"다른 사람의 마음에 잘 공감하고, 함께하는 분위기를 만드는 데 능합니다.",en:"You empathize easily and are good at creating a warm, cooperative atmosphere.",ja:"他人の気持ちに寄り添い、協力的な雰囲気をつくるのが得意です。",zh:"你善于共情，擅长营造温暖合作的氛围。"},
+    mid:{ko:"따뜻함과 단호함을 상황에 맞게 조절하는 편입니다.",en:"You adjust between warmth and firmness as the situation calls for.",ja:"温かさと毅然さを状況に合わせて調整できます。",zh:"你能根据情况在温和与坚定之间调节。"},
+    lo:{ko:"관계보다 솔직함과 합리성을 우선하는 편입니다. 협상과 경쟁 상황에 강할 수 있습니다.",en:"You prioritize honesty and logic over harmony — often a strength in negotiation.",ja:"調和より率直さと合理性を優先するタイプ。交渉や競争に強い面があります。",zh:"你更看重坦率与理性而非一团和气，这在谈判中常是优势。"} },
+C:{ name:{ko:"성실성",en:"Conscientiousness",ja:"誠実性",zh:"尽责性"},
+    desc:{ko:"계획 · 질서 · 꾸준함",en:"Planning · order · persistence",ja:"計画・秩序・粘り強さ",zh:"计划 · 条理 · 坚持"},
+    hi:{ko:"계획을 세우고 끝까지 해내는 힘이 강합니다. 주변에서 믿고 맡기는 사람일 가능성이 높습니다.",en:"You plan ahead and follow through — the person others trust to get it done.",ja:"計画を立てやり遂げる力が強く、周囲から信頼されるタイプです。",zh:"你善于规划并坚持到底，是别人信赖的靠谱之人。"},
+    mid:{ko:"필요할 때는 체계적으로, 여유가 있을 때는 유연하게 움직이는 편입니다.",en:"You are organized when it matters and flexible when it doesn't.",ja:"必要な時は計画的に、余裕がある時は柔軟に動けます。",zh:"该认真时有条理，可放松时也能灵活应对。"},
+    lo:{ko:"즉흥성과 유연함이 강점입니다. 다만 마감과 정리는 의식적으로 챙길 필요가 있습니다.",en:"Spontaneity and flexibility are your strengths; deadlines may need conscious effort.",ja:"即興性と柔軟さが強み。締め切りや整理は意識してカバーを。",zh:"随性与灵活是你的强项，但截止日期需要有意识地管理。"} },
+S:{ name:{ko:"정서 안정성",en:"Emotional Stability",ja:"情緒安定性",zh:"情绪稳定性"},
+    desc:{ko:"평정심 · 스트레스 대처",en:"Calmness · stress resilience",ja:"平常心・ストレス耐性",zh:"平和心态 · 抗压能力"},
+    hi:{ko:"감정의 파도가 잔잔한 편이라 압박 상황에서도 평정심을 잘 유지합니다.",en:"Your emotional waters run calm — you keep composure under pressure.",ja:"感情の波が穏やかで、プレッシャー下でも平常心を保てます。",zh:"你的情绪波澜不惊，在压力下也能保持镇定。"},
+    mid:{ko:"대체로 안정적이지만, 큰 스트레스 앞에서는 흔들리기도 하는 보통 수준입니다.",en:"Generally steady, though major stress can shake you — like most people.",ja:"おおむね安定していますが、大きなストレスでは揺れることも。",zh:"总体平稳，但重大压力下也会波动——和大多数人一样。"},
+    lo:{ko:"감정을 섬세하게 느끼는 편입니다. 예민함은 공감과 위기 감지의 재능이기도 합니다.",en:"You feel emotions vividly — a sensitivity that also powers empathy and alertness.",ja:"感情を繊細に感じるタイプ。敏感さは共感力や危機察知の才能でもあります。",zh:"你对情绪的感受很敏锐——这种敏感也是共情与警觉的天赋。"} },
+O:{ name:{ko:"개방성",en:"Openness",ja:"開放性",zh:"开放性"},
+    desc:{ko:"상상력 · 지적 호기심",en:"Imagination · curiosity",ja:"想像力・知的好奇心",zh:"想象力 · 求知欲"},
+    hi:{ko:"새로운 생각과 경험에 활짝 열려 있습니다. 아이디어를 만들고 연결하는 데서 즐거움을 느낍니다.",en:"You are wide open to new ideas and experiences, and love connecting concepts.",ja:"新しい考えや経験に開かれ、アイデアをつなげることに喜びを感じます。",zh:"你对新想法和新体验持开放态度，乐于创造和连接观点。"},
+    mid:{ko:"새로움과 익숙함 사이에서 실용적인 균형을 잡는 편입니다.",en:"You strike a practical balance between novelty and the familiar.",ja:"新しさと慣れ親しんだものの間で実用的なバランスを取ります。",zh:"你在新奇与熟悉之间保持务实的平衡。"},
+    lo:{ko:"검증된 방법과 구체적인 현실을 선호합니다. 실행력과 안정감이 강점입니다.",en:"You prefer proven methods and concrete reality — execution is your strength.",ja:"実証済みの方法と具体的な現実を好むタイプ。実行力が強みです。",zh:"你偏爱经过验证的方法和具体现实，执行力是你的优势。"} }
+};
+
+const UI = {
+ko:{ docTitle:"Big Five 성격 테스트 — 생각별 연구소", tag:"IPIP 공개 문항 기반", brand:"생각별 연구소",
+  eyebrow:"연구용 공개 문항으로 보는 성격 5요인",
+  h1:"유행 말고,<br><em>연구</em>로 보는 성격.",
+  heroCopy:"심리학 연구에서 실제로 쓰는 공개 문항(IPIP) 50개로 성격 5요인을 확인합니다. 약 5분, 답변은 서버로 전송되지 않고 이 브라우저 안에서만 계산됩니다.",
+  f1:"문항", f2:"성격 요인", f3:"분 내외",
+  start:"테스트 시작하기", notice:"오락·교육용 참고 결과이며 심리 상담이나 전문 검사를 대신하지 않습니다.",
+  cardIndex:"01 / 문항 출처", studyH2:"심리학이 실제로 쓰는<br>공개 문항입니다.",
+  studyP:"국제 성격 문항 저장소 IPIP(International Personality Item Pool)의 Big Five 마커 50문항판을 사용합니다. IPIP 문항은 퍼블릭 도메인으로 공개되어 연구·교육에 널리 쓰입니다. 번역은 직접 했습니다.",
+  statL:"문항 출처", statV:"ipip.ori.org · 퍼블릭 도메인",
+  setupStep:"시작 전 안내", setupH2:"정답은<br>없습니다.",
+  setupP:"각 문장이 평소의 나와 얼마나 잘 맞는지 고르면 됩니다. 잘 보이고 싶은 모습이 아니라 실제 모습대로 답할수록 결과가 정확해집니다.",
+  ready:"준비됐어요", asideT:"솔직하게, 가볍게",
+  aside:["정답도 좋은 성격도 없어요.","너무 오래 고민하지 말고 처음 느낌대로.","50문항, 5분 내외예요.","답변은 저장·전송되지 않아요."],
+  qLead:"이 문장은 평소의 나와 얼마나 잘 맞나요?",
+  likert:["전혀 아니다","아니다","보통이다","그렇다","매우 그렇다"],
+  prev:"← 이전", finish:"결과 보기 →",
+  resLabel:"IPIP 50문항 기준 참고 결과", resH2:"이것이 당신의<br>다섯 가지 축입니다.",
+  resP:"높고 낮음은 좋고 나쁨이 아니라 서로 다른 강점입니다. 축마다 어떤 성향인지 살펴보세요.",
+  hi:"높음", mid:"중간", lo:"낮음",
+  discT:"이 결과는 어떻게 계산했나요?",
+  discP:"요인별 10문항 응답을 합산해 이론적 범위(10~50점)를 0~100으로 환산한 값입니다. 모집단 비교(규준) 기반 백분위가 아니며, 오락·교육용 참고 결과로 심리 상담이나 전문 성격검사를 대신하지 않습니다. 문항 출처: IPIP(ipip.ori.org), 퍼블릭 도메인.",
+  home:"처음으로", retry:"다시 하기", footL:"© To the Moon · 오락·교육용 참고 검사", footTools:"다른 도구 보기", footHome:"블로그 홈",
+  footToolsUrl:"/%EB%8F%84%EA%B5%AC/", footHomeUrl:"/" },
+en:{ docTitle:"Big Five Personality Test — Thinking Star Lab", tag:"Built on public IPIP items", brand:"Thinking Star Lab",
+  eyebrow:"The Big Five, measured with real research items",
+  h1:"Not a fad quiz —<br><em>research</em>-based personality.",
+  heroCopy:"Fifty public-domain items (IPIP) actually used in psychology research measure your Big Five traits. About 5 minutes; answers never leave your browser.",
+  f1:"items", f2:"trait factors", f3:"minutes",
+  start:"Start the test", notice:"For fun and learning — not a substitute for counseling or professional assessment.",
+  cardIndex:"01 / Item source", studyH2:"The very items<br>psychology uses.",
+  studyP:"This test uses the 50-item Big Five marker set from the International Personality Item Pool (IPIP). IPIP items are released into the public domain and widely used in research and education. Translations are our own.",
+  statL:"Item source", statV:"ipip.ori.org · public domain",
+  setupStep:"Before you start", setupH2:"There are<br>no right answers.",
+  setupP:"For each statement, choose how well it describes you as you usually are. The more honestly you answer — not how you wish to be — the more accurate the result.",
+  ready:"I'm ready", asideT:"Honest and light",
+  aside:["No right answers, no 'good' personality.","Go with your first instinct.","50 items, about 5 minutes.","Answers are never stored or sent."],
+  qLead:"How well does this statement describe you?",
+  likert:["Strongly disagree","Disagree","Neutral","Agree","Strongly agree"],
+  prev:"← Back", finish:"See results →",
+  resLabel:"Reference result · IPIP 50 items", resH2:"These are your<br>five dimensions.",
+  resP:"High or low isn't good or bad — they are different strengths. See what each dimension says.",
+  hi:"High", mid:"Mid", lo:"Low",
+  discT:"How is this calculated?",
+  discP:"Each factor sums 10 item responses, mapped from the theoretical range (10–50) onto 0–100. This is not a norm-based percentile, and it is a fun/educational reference — not a substitute for counseling or professional assessment. Items: IPIP (ipip.ori.org), public domain.",
+  home:"Home", retry:"Try again", footL:"© To the Moon · for fun & learning", footTools:"More tools", footHome:"Blog home",
+  footToolsUrl:"/en/tools/", footHomeUrl:"/en/" },
+ja:{ docTitle:"ビッグファイブ性格テスト — 考える星研究所", tag:"IPIP公開項目ベース", brand:"考える星研究所",
+  eyebrow:"研究用の公開項目で見る性格5因子",
+  h1:"流行りではなく、<br><em>研究</em>で見る性格。",
+  heroCopy:"心理学研究で実際に使われる公開項目(IPIP)50問で性格5因子を測ります。約5分、回答はサーバーに送信されずブラウザ内だけで計算されます。",
+  f1:"項目", f2:"性格因子", f3:"分程度",
+  start:"テストを始める", notice:"娯楽・教育用の参考結果であり、カウンセリングや専門検査の代わりにはなりません。",
+  cardIndex:"01 / 項目の出典", studyH2:"心理学が実際に使う<br>公開項目です。",
+  studyP:"国際性格項目プールIPIP(International Personality Item Pool)のビッグファイブ・マーカー50項目版を使用。IPIP項目はパブリックドメインとして公開され、研究・教育で広く使われています。翻訳は独自です。",
+  statL:"項目の出典", statV:"ipip.ori.org · パブリックドメイン",
+  setupStep:"開始前の案内", setupH2:"正解は<br>ありません。",
+  setupP:"各文が普段の自分にどれくらい当てはまるかを選ぶだけです。なりたい姿ではなく、実際の姿で答えるほど結果は正確になります。",
+  ready:"準備OK", asideT:"正直に、気軽に",
+  aside:["正解も「良い性格」もありません。","考え込まず最初の直感で。","50問、5分程度です。","回答は保存・送信されません。"],
+  qLead:"この文は普段のあなたにどれくらい当てはまりますか?",
+  likert:["全く違う","違う","どちらでもない","そうだ","全くそうだ"],
+  prev:"← 前へ", finish:"結果を見る →",
+  resLabel:"IPIP 50項目基準の参考結果", resH2:"これがあなたの<br>5つの軸です。",
+  resP:"高い・低いは良し悪しではなく、異なる強みです。軸ごとの傾向を見てみましょう。",
+  hi:"高め", mid:"中間", lo:"低め",
+  discT:"この結果はどう計算したの?",
+  discP:"因子ごとに10項目の回答を合計し、理論的範囲(10〜50点)を0〜100に換算した値です。母集団比較(規準)に基づくパーセンタイルではなく、娯楽・教育用の参考結果です。項目出典: IPIP(ipip.ori.org)、パブリックドメイン。",
+  home:"最初へ", retry:"もう一度", footL:"© To the Moon · 娯楽・教育用参考テスト", footTools:"他のツール", footHome:"ブログホーム",
+  footToolsUrl:"/ja/%E3%83%84%E3%83%BC%E3%83%AB/", footHomeUrl:"/ja/" },
+zh:{ docTitle:"大五人格测试 — 思考星实验室", tag:"基于IPIP公开条目", brand:"思考星实验室",
+  eyebrow:"用真正的研究条目测量人格五因素",
+  h1:"不看流行测验，<br>用<em>研究</em>看人格。",
+  heroCopy:"用心理学研究中实际使用的公开条目(IPIP)50题测量你的大五人格。约5分钟，答案不会上传服务器，只在浏览器内计算。",
+  f1:"条目", f2:"人格因素", f3:"分钟左右",
+  start:"开始测试", notice:"仅供娱乐和学习参考，不能替代心理咨询或专业测评。",
+  cardIndex:"01 / 条目来源", studyH2:"心理学实际使用的<br>公开条目。",
+  studyP:"本测试使用国际人格条目库IPIP(International Personality Item Pool)的大五标记50题版。IPIP条目以公共领域形式发布，广泛用于研究和教育。翻译为自制。",
+  statL:"条目来源", statV:"ipip.ori.org · 公共领域",
+  setupStep:"开始前说明", setupH2:"没有<br>标准答案。",
+  setupP:"只需选择每句话与平时的你有多相符。按真实的自己作答——而不是理想中的自己——结果才更准确。",
+  ready:"准备好了", asideT:"诚实而轻松",
+  aside:["没有标准答案，也没有'好性格'。","不要纠结，凭第一感觉。","50题，约5分钟。","答案不会保存或发送。"],
+  qLead:"这句话与平时的你有多相符？",
+  likert:["完全不符合","不太符合","一般","比较符合","完全符合"],
+  prev:"← 上一题", finish:"查看结果 →",
+  resLabel:"IPIP 50条目参考结果", resH2:"这是你的<br>五个维度。",
+  resP:"高与低不是好与坏，而是不同的优势。看看每个维度说明什么。",
+  hi:"偏高", mid:"中等", lo:"偏低",
+  discT:"结果是怎么算的？",
+  discP:"每个因素将10个条目的回答求和，把理论范围(10~50分)换算为0~100。这不是基于人群常模的百分位，仅供娱乐和学习参考，不能替代心理咨询或专业人格测评。条目来源：IPIP(ipip.ori.org)，公共领域。",
+  home:"回到首页", retry:"再做一次", footL:"© To the Moon · 娱乐·学习参考", footTools:"更多工具", footHome:"博客首页",
+  footToolsUrl:"/zh/%E5%B7%A5%E5%85%B7/", footHomeUrl:"/zh/" }
+};
+
+const N = ITEMS.length;
+const params = new URLSearchParams(location.search);
+let storedLang = null;
+try { storedLang = localStorage.getItem("iq_lang"); } catch (e) {}
+const initLang = ["ko","en","ja","zh"].indexOf(params.get("lang")) >= 0 ? params.get("lang") : (["ko","en","ja","zh"].indexOf(storedLang) >= 0 ? storedLang : "ko");
+
+const state = { screen:"home", index:0, answers:{}, order:[], lang:initLang };
+const app = document.getElementById("app");
+let advanceTimer = null;
+
+function T() { return UI[state.lang]; }
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+
+function getScores() {
+  const sums = {};
+  FACTORS.forEach(f => sums[f] = 0);
+  ITEMS.forEach((it, idx) => {
+    const r = state.answers[idx];
+    if (r === undefined) return;
+    sums[it.f] += it.k === 1 ? r : 6 - r;
+  });
+  const out = {};
+  FACTORS.forEach(f => {
+    const pct = Math.round((sums[f] - 10) / 40 * 100);
+    out[f] = { sum: sums[f], pct, lv: pct >= 65 ? "hi" : (pct <= 35 ? "lo" : "mid") };
+  });
+  return out;
+}
+
+function langSw() {
+  return `<span class="langSw">` + [["ko","KO"],["en","EN"],["ja","日"],["zh","中"]].map(([l, lab]) =>
+    `<button data-action="lang" data-l="${l}" class="${state.lang === l ? "on" : ""}">${lab}</button>`).join("") + `</span>`;
+}
+function foot() {
+  return `<footer class="siteFoot"><span>${T().footL}</span><span><a href="${T().footToolsUrl}">${T().footTools}</a> · <a href="${T().footHomeUrl}">${T().footHome}</a></span></footer>`;
+}
+
+function viewHome() {
+  const t = T();
+  return `
+  <section class="hero">
+    <div class="eyebrow"><span>●</span> ${t.eyebrow}</div>
+    <h1>${t.h1}</h1>
+    <p class="heroCopy">${t.heroCopy}</p>
+    <div class="facts"><div><strong>50</strong><span>${t.f1}</span></div><div><strong>5</strong><span>${t.f2}</span></div><div><strong>5</strong><span>${t.f3}</span></div></div>
+    <button class="primary" data-action="setup">${t.start} <span>→</span></button>
+    <p class="notice">${t.notice}</p>
+  </section>
+  <section class="studyCard">
+    <span class="cardIndex">${t.cardIndex}</span>
+    <h2>${t.studyH2}</h2>
+    <p>${t.studyP}</p>
+    <div class="statLine"><span>${t.statL}</span><strong>${t.statV}</strong></div>
+  </section>`;
+}
+
+function viewSetup() {
+  const t = T();
+  return `
+  <section class="setupWrap">
+    <div class="stepLabel">${t.setupStep}</div>
+    <h2>${t.setupH2}</h2>
+    <div class="setupGrid">
+      <div class="setupForm">
+        <p>${t.setupP}</p>
+        <button class="primary wide" data-action="start">${t.ready} <span>→</span></button>
+      </div>
+      <aside>
+        <strong>${t.asideT}</strong>
+        <ul>${t.aside.map(x => `<li>${x}</li>`).join("")}</ul>
+      </aside>
+    </div>
+  </section>`;
+}
+
+function viewQuiz() {
+  const t = T();
+  const itemIdx = state.order[state.index];
+  const it = ITEMS[itemIdx];
+  const sel = state.answers[itemIdx];
+  const btns = t.likert.map((lab, i) =>
+    `<button data-action="rate" data-v="${i + 1}" class="${sel === i + 1 ? "selected" : ""}"><span class="dot"></span><span class="lab">${lab}</span></button>`).join("");
+  return `
+  <section class="quizWrap">
+    <div class="quizHead"><span>${t.qLead}</span><strong>${String(state.index + 1).padStart(2, "0")} <small>/ ${N}</small></strong></div>
+    <div class="progress"><i style="width:${((state.index + 1) / N) * 100}%"></i></div>
+    <div class="questionCard">
+      <h2 class="stmt">“${it.t[state.lang]}”</h2>
+      <div class="likert">${btns}</div>
+    </div>
+    <div class="quizNav">
+      <button data-action="prev" ${state.index === 0 ? "disabled" : ""}>${t.prev}</button>
+      <button data-action="finish" ${Object.keys(state.answers).length === N ? "" : "disabled"} class="primary" style="min-width:0">${t.finish}</button>
+    </div>
+  </section>`;
+}
+
+function viewResult() {
+  const t = T();
+  const s = getScores();
+  const rows = FACTORS.map(f => {
+    const m = FMETA[f];
+    const r = s[f];
+    const lvText = r.lv === "hi" ? m.hi[state.lang] : (r.lv === "lo" ? m.lo[state.lang] : m.mid[state.lang]);
+    const lvLabel = r.lv === "hi" ? t.hi : (r.lv === "lo" ? t.lo : t.mid);
+    const lvClass = r.lv === "hi" ? "lvHigh" : (r.lv === "lo" ? "lvLow" : "lvMid");
+    return `
+    <div class="factorRow">
+      <div class="fname"><strong>${m.name[state.lang]}</strong><span>${m.desc[state.lang]}</span></div>
+      <div class="fbarWrap"><div class="fbar"><i style="width:${r.pct}%"></i></div><p class="fdesc">${lvText}</p></div>
+      <div class="fscore"><b>${r.pct}</b><span class="${lvClass}">${lvLabel}</span></div>
+    </div>`;
+  }).join("");
+  return `
+  <section class="resultWrap">
+    <div class="resultHero">
+      <span class="stepLabel">${t.resLabel}</span>
+      <h2>${t.resH2}</h2>
+      <p>${t.resP}</p>
+    </div>
+    <div class="factors">${rows}</div>
+    <div class="disclaimer">
+      <strong>${t.discT}</strong>
+      <p>${t.discP}</p>
+    </div>
+    <div class="resultActions">
+      <button data-action="home">${t.home}</button>
+      <button class="primary" data-action="setup">${t.retry} <span>↻</span></button>
+    </div>
+  </section>`;
+}
+
+function render() {
+  document.documentElement.lang = state.lang;
+  document.title = T().docTitle;
+  const body = state.screen === "home" ? viewHome()
+    : state.screen === "setup" ? viewSetup()
+    : state.screen === "quiz" ? viewQuiz()
+    : viewResult();
+  app.innerHTML = `
+  <header class="topbar">
+    <button class="brand" data-action="home"><span class="brandMark">★</span> ${T().brand}</button>
+    <span class="topRight"><span class="researchTag">${T().tag}</span>${langSw()}</span>
+  </header>
+  ${body}
+  ${foot()}`;
+}
+
+function setScreen(s) { state.screen = s; render(); window.scrollTo(0, 0); }
+
+app.addEventListener("click", e => {
+  const btn = e.target.closest("[data-action]");
+  if (!btn || btn.disabled) return;
+  const a = btn.dataset.action;
+  if (a === "home") setScreen("home");
+  else if (a === "setup") setScreen("setup");
+  else if (a === "lang") {
+    state.lang = btn.dataset.l;
+    try { localStorage.setItem("iq_lang", state.lang); } catch (err) {}
+    render();
+  }
+  else if (a === "start") {
+    state.index = 0; state.answers = {}; state.order = shuffle(ITEMS.map((_, i) => i));
+    setScreen("quiz");
+  }
+  else if (a === "rate") {
+    clearTimeout(advanceTimer);
+    const itemIdx = state.order[state.index];
+    state.answers[itemIdx] = Number(btn.dataset.v);
+    render();
+    advanceTimer = setTimeout(() => {
+      if (state.screen !== "quiz") return;
+      if (state.index < N - 1) { state.index++; render(); window.scrollTo(0, 0); }
+      else if (Object.keys(state.answers).length === N) setScreen("result");
+    }, 260);
+  }
+  else if (a === "prev") { clearTimeout(advanceTimer); state.index--; render(); }
+  else if (a === "finish") { clearTimeout(advanceTimer); setScreen("result"); }
+});
+
+document.addEventListener("keydown", e => {
+  if (state.screen !== "quiz") return;
+  if (/^[1-5]$/.test(e.key)) {
+    const b = document.querySelector(`[data-action="rate"][data-v="${e.key}"]`);
+    if (b) b.click();
+  }
+});
+
+render();
+</script>
+</body>
+</html>
