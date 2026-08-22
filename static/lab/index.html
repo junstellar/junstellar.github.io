@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>생각별 연구소 — 연구 기반 인지·심리 테스트 모음</title>
+<meta name="description" content="연구 구조를 참고해 직접 만든 인지·심리 테스트 모음. 어린이 IQ 테스트, Big Five 성격 테스트 — 모두 설치 없이 브라우저에서 동작하고 답변은 서버로 전송되지 않습니다.">
+<meta property="og:title" content="생각별 연구소 — 연구 기반 테스트 모음">
+<meta property="og:description" content="유행 테스트가 아니라 연구 구조로 만든 인지·심리 테스트. 4개 언어 지원, 답변 무전송.">
+<style>
+:root { --ink:#18221c; --paper:#f4f1e8; --mint:#c9f36a; --orange:#ff6b35; }
+* { box-sizing:border-box; }
+h1,h2,h3,p { margin:0; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,"Noto Sans KR",sans-serif; }
+button { font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer; }
+.shell { min-height:100vh; min-height:100dvh; display:flex; flex-direction:column; }
+.topbar { height:clamp(50px,7vh,78px); flex:none; display:flex; align-items:center; justify-content:space-between; max-width:1180px; width:100%; margin:0 auto; padding:0 28px; border-bottom:1px solid rgba(24,34,28,.18); }
+.brand { font-weight:800; letter-spacing:-.04em; display:flex; align-items:center; gap:10px; }
+.brandMark { display:grid; place-items:center; width:31px; height:31px; background:var(--ink); color:var(--mint); border-radius:50% 50% 45% 55%; font-family:Georgia,serif; }
+.topRight { display:flex; align-items:center; gap:14px; }
+.researchTag { font-size:12px; border:1px solid var(--ink); border-radius:99px; padding:7px 12px; }
+.langSw { display:flex; gap:4px; font-size:11px; }
+.langSw button { padding:4px 7px; border:1px solid transparent; border-radius:3px; color:#6f7972; }
+.langSw button.on { border-color:var(--ink); color:var(--ink); font-weight:800; }
+.wrap { max-width:1040px; width:100%; margin:0 auto; padding:clamp(24px,4.5vh,60px) 28px clamp(24px,4vh,56px); flex:1; }
+.eyebrow { font-size:13px; font-weight:700; margin-bottom:clamp(12px,2vh,22px); }
+.eyebrow span { color:var(--orange); margin-right:8px; }
+h1 { font-size:clamp(38px,6vw,72px); line-height:1.0; letter-spacing:-.07em; margin-bottom:clamp(14px,2.5vh,24px); }
+h1 em { color:var(--orange); font-family:Georgia,"Noto Serif KR",serif; font-weight:400; }
+.introCopy { max-width:600px; font-size:clamp(14px,2vh,17px); line-height:1.65; color:#435047; margin-bottom:clamp(22px,4vh,44px); }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+.card { display:flex; flex-direction:column; gap:10px; background:#fffdf7; border:1px solid #cad0cb; border-radius:8px; padding:24px 22px 20px; position:relative; overflow:hidden; color:inherit; text-decoration:none; transition:transform .12s, box-shadow .12s; }
+a.card:hover { transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--mint); }
+.card .bar { position:absolute; left:0; top:0; height:5px; width:100%; background:var(--mint); }
+.card.soon .bar { background:#d7d9d3; }
+.card .emoji { font-size:2.3rem; line-height:1; }
+.card h2 { font-size:1.15rem; letter-spacing:-.03em; }
+.card p { color:#566159; font-size:.86rem; line-height:1.6; flex:1; }
+.card .meta { display:flex; flex-wrap:wrap; gap:6px; }
+.card .meta span { font-size:11px; border:1px solid #b7bfb8; border-radius:99px; padding:4px 10px; color:#566159; }
+.card.soon { opacity:.62; }
+.card.soon .soonTag { position:absolute; top:14px; right:14px; font-size:10px; font-weight:800; letter-spacing:.06em; color:#d84e1e; border:1px solid #d84e1e; border-radius:99px; padding:3px 9px; }
+.secT { display:flex; align-items:center; gap:14px; margin:clamp(26px,4.5vh,46px) 0 14px; color:#7a837d; font-size:12px; font-weight:800; letter-spacing:.08em; white-space:nowrap; }
+.secT::after { content:''; height:1px; background:#c9cec8; flex:1; }
+.principles { margin-top:clamp(28px,5vh,52px); background:var(--ink); color:white; border-radius:8px; padding:clamp(20px,3.5vh,34px) clamp(22px,3vw,36px); display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.principles div strong { display:block; color:var(--mint); font-size:13px; margin-bottom:7px; }
+.principles div p { color:#b9c2bc; font-size:12.5px; line-height:1.65; }
+.siteFoot { max-width:1180px; width:100%; margin:auto auto 0; padding:clamp(14px,2.5vh,24px) 28px clamp(16px,2.5vh,28px); border-top:1px solid rgba(24,34,28,.14); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12px; color:#747b76; }
+.siteFoot a { color:#435047; }
+@media(max-width:700px){ .topbar{height:66px} .researchTag{display:none} .principles{grid-template-columns:1fr;gap:16px} }
+</style>
+</head>
+<body>
+<div class="shell" id="app"></div>
+
+<script>
+"use strict";
+
+const TESTS = [
+  { slug:"iq-test", emoji:"🧠",
+    name:{ko:"어린이 IQ 테스트",en:"Kids' IQ Test",ja:"子ども向けIQテスト",zh:"儿童IQ测试"},
+    desc:{ko:"Ch-ICAR 검증 연구(820명)의 27문항 구조를 따른 인지추론 테스트. 언어·행렬·수열·도형유추 4개 영역, 문제은행 76문항에서 매회 무작위 출제.",
+          en:"A cognitive reasoning test following the 27-item structure of the Ch-ICAR validation study (N=820). Four areas, drawn randomly from a 76-item bank each run.",
+          ja:"Ch-ICAR検証研究(820人)の27問構造に沿った認知推論テスト。4領域、76問の問題バンクから毎回ランダム出題。",
+          zh:"参照Ch-ICAR验证研究(820人)27题结构的认知推理测试。四个领域，76题题库每次随机出题。"},
+    meta:{ko:["27문항","20분 내외","만 10~14세"],en:["27 items","~20 min","Ages 10–14"],ja:["27問","約20分","10〜14歳"],zh:["27题","约20分钟","10~14岁"]} },
+  { slug:"big5", emoji:"⭐",
+    name:{ko:"Big Five 성격 테스트",en:"Big Five Personality Test",ja:"ビッグファイブ性格テスト",zh:"大五人格测试"},
+    desc:{ko:"심리학 연구에서 실제로 쓰는 IPIP 공개 문항 50개로 보는 성격 5요인 — 외향성·우호성·성실성·정서 안정성·개방성.",
+          en:"Your Big Five traits measured with 50 public-domain IPIP items actually used in psychology research.",
+          ja:"心理学研究で実際に使われるIPIP公開項目50問で見る性格5因子。",
+          zh:"用心理学研究中实际使用的IPIP公开条目50题测量人格五因素。"},
+    meta:{ko:["50문항","5분 내외","청소년~성인"],en:["50 items","~5 min","Teens & adults"],ja:["50問","約5分","中高生〜大人"],zh:["50题","约5分钟","青少年~成人"]} },
+];
+
+const SOON = [
+  { emoji:"⚡", name:{ko:"반응속도 테스트",en:"Reaction Time",ja:"反応速度テスト",zh:"反应速度测试"},
+    desc:{ko:"화면이 바뀌는 순간을 잡아라. 평균 반응속도(ms)를 측정합니다.",en:"Catch the moment the screen changes — average reaction time in ms.",ja:"画面が変わる瞬間をキャッチ。平均反応速度(ms)を測定。",zh:"抓住屏幕变化的瞬间，测量平均反应速度(ms)。"} },
+  { emoji:"🔢", name:{ko:"숫자 기억력 테스트",en:"Digit Span",ja:"数字記憶テスト",zh:"数字记忆测试"},
+    desc:{ko:"점점 길어지는 숫자열을 기억하는 작업기억 검사(숫자 폭 패러다임).",en:"Remember ever-longer number strings — the classic digit span paradigm.",ja:"どんどん長くなる数字列を覚える作業記憶検査。",zh:"记住越来越长的数字串——经典数字广度范式。"} },
+  { emoji:"🎨", name:{ko:"스트룹 집중력 테스트",en:"Stroop Test",ja:"ストループテスト",zh:"斯特鲁普测试"},
+    desc:{ko:"글자의 뜻과 색이 다를 때, 당신의 주의력은 몇 초나 버틸까요?",en:"When word and color disagree, how well does your attention hold up?",ja:"文字の意味と色が違うとき、あなたの注意力は?",zh:"当字义与颜色冲突时，你的注意力能撑多久？"} },
+];
+
+const UI = {
+ko:{ docTitle:"생각별 연구소 — 연구 기반 인지·심리 테스트 모음", tag:"연구 기반 테스트 시리즈", brand:"생각별 연구소",
+  eyebrow:"연구 구조로 직접 만드는 테스트 모음",
+  h1:"유행 말고,<br><em>근거</em> 있는 테스트.",
+  intro:"검증된 연구의 구조와 공개 문항을 바탕으로 하나씩 직접 만드는 인지·심리 테스트 모음입니다. 전부 설치 없이 브라우저에서 바로 동작하고, 답변은 서버로 전송되지 않습니다.",
+  secLive:"지금 해볼 수 있어요", secSoon:"준비 중",
+  soonTag:"준비 중",
+  p1T:"연구 근거", p1:"검증 연구의 문항 구조나 퍼블릭 도메인 공개 문항(IPIP 등)을 바탕으로 만듭니다. 출처는 각 테스트에 명시합니다.",
+  p2T:"정직한 결과", p2:"오락·교육용 참고 결과임을 항상 밝힙니다. 전문 검사·상담·진단을 대신하지 않습니다.",
+  p3T:"답변 무전송", p3:"모든 계산은 브라우저 안에서 끝납니다. 이름도 답변도 서버로 보내지 않습니다.",
+  footL:"© To the Moon · 생각별 연구소", footTools:"다른 도구 보기", footHome:"블로그 홈",
+  footToolsUrl:"/%EB%8F%84%EA%B5%AC/", footHomeUrl:"/" },
+en:{ docTitle:"Thinking Star Lab — Research-based Tests", tag:"Research-based test series", brand:"Thinking Star Lab",
+  eyebrow:"Tests built on real research structures",
+  h1:"Not fads —<br><em>evidence</em>-based tests.",
+  intro:"A growing collection of cognitive and personality tests, each built on validated research structures or public-domain items. Everything runs in your browser; answers are never sent anywhere.",
+  secLive:"Available now", secSoon:"Coming soon",
+  soonTag:"SOON",
+  p1T:"Research basis", p1:"Built on validated study structures or public-domain item pools (like IPIP), with sources credited on every test.",
+  p2T:"Honest results", p2:"Always labeled as fun/educational references — never a substitute for professional assessment.",
+  p3T:"Nothing uploaded", p3:"All scoring happens in your browser. No names, no answers ever leave your device.",
+  footL:"© To the Moon · Thinking Star Lab", footTools:"More tools", footHome:"Blog home",
+  footToolsUrl:"/en/tools/", footHomeUrl:"/en/" },
+ja:{ docTitle:"考える星研究所 — 研究ベースのテスト集", tag:"研究ベースのテストシリーズ", brand:"考える星研究所",
+  eyebrow:"研究構造をもとに自作するテスト集",
+  h1:"流行ではなく、<br><em>根拠</em>のあるテスト。",
+  intro:"検証済み研究の構造やパブリックドメインの公開項目をもとに、一つずつ自作している認知・心理テスト集です。すべてブラウザ内で動作し、回答はどこにも送信されません。",
+  secLive:"今すぐ試せる", secSoon:"準備中",
+  soonTag:"準備中",
+  p1T:"研究根拠", p1:"検証研究の項目構造やパブリックドメイン項目(IPIPなど)がベース。出典は各テストに明記します。",
+  p2T:"正直な結果", p2:"娯楽・教育用の参考結果であることを常に明示。専門検査や診断の代わりにはなりません。",
+  p3T:"回答は無送信", p3:"すべての計算はブラウザ内で完結。名前も回答も送信しません。",
+  footL:"© To the Moon · 考える星研究所", footTools:"他のツール", footHome:"ブログホーム",
+  footToolsUrl:"/ja/%E3%83%84%E3%83%BC%E3%83%AB/", footHomeUrl:"/ja/" },
+zh:{ docTitle:"思考星实验室 — 研究型测试合集", tag:"研究型测试系列", brand:"思考星实验室",
+  eyebrow:"基于研究结构自制的测试合集",
+  h1:"不追流行，<br>做有<em>依据</em>的测试。",
+  intro:"以经过验证的研究结构和公共领域条目为基础，逐个自制的认知·心理测试合集。全部在浏览器内运行，答案不会发送到任何地方。",
+  secLive:"现在就能玩", secSoon:"筹备中",
+  soonTag:"筹备中",
+  p1T:"研究依据", p1:"基于验证研究的条目结构或公共领域条目库(如IPIP)，每个测试都注明来源。",
+  p2T:"诚实的结果", p2:"始终注明仅供娱乐和学习参考，不能替代专业测评或诊断。",
+  p3T:"答案不上传", p3:"所有计算都在浏览器内完成，姓名和答案都不会离开你的设备。",
+  footL:"© To the Moon · 思考星实验室", footTools:"更多工具", footHome:"博客首页",
+  footToolsUrl:"/zh/%E5%B7%A5%E5%85%B7/", footHomeUrl:"/zh/" }
+};
+
+const params = new URLSearchParams(location.search);
+let storedLang = null;
+try { storedLang = localStorage.getItem("iq_lang"); } catch (e) {}
+let lang = ["ko","en","ja","zh"].indexOf(params.get("lang")) >= 0 ? params.get("lang") : (["ko","en","ja","zh"].indexOf(storedLang) >= 0 ? storedLang : "ko");
+const app = document.getElementById("app");
+
+function render() {
+  const t = UI[lang];
+  document.documentElement.lang = lang;
+  document.title = t.docTitle;
+  const live = TESTS.map(x => `
+    <a class="card" href="/tools/${x.slug}/?lang=${lang}">
+      <span class="bar"></span>
+      <span class="emoji">${x.emoji}</span>
+      <h2>${x.name[lang]}</h2>
+      <p>${x.desc[lang]}</p>
+      <div class="meta">${x.meta[lang].map(m => `<span>${m}</span>`).join("")}</div>
+    </a>`).join("");
+  const soon = SOON.map(x => `
+    <div class="card soon">
+      <span class="bar"></span>
+      <span class="soonTag">${t.soonTag}</span>
+      <span class="emoji">${x.emoji}</span>
+      <h2>${x.name[lang]}</h2>
+      <p>${x.desc[lang]}</p>
+    </div>`).join("");
+  app.innerHTML = `
+  <header class="topbar">
+    <a class="brand" href="/lab/?lang=${lang}" style="text-decoration:none;color:inherit"><span class="brandMark">★</span> ${t.brand}</a>
+    <span class="topRight"><span class="researchTag">${t.tag}</span><span class="langSw">${[["ko","KO"],["en","EN"],["ja","日"],["zh","中"]].map(([l, lab]) =>
+      `<button data-l="${l}" class="${lang === l ? "on" : ""}">${lab}</button>`).join("")}</span></span>
+  </header>
+  <main class="wrap">
+    <div class="eyebrow"><span>●</span> ${t.eyebrow}</div>
+    <h1>${t.h1}</h1>
+    <p class="introCopy">${t.intro}</p>
+    <div class="secT">${t.secLive}</div>
+    <div class="grid">${live}</div>
+    <div class="secT">${t.secSoon}</div>
+    <div class="grid">${soon}</div>
+    <div class="principles">
+      <div><strong>${t.p1T}</strong><p>${t.p1}</p></div>
+      <div><strong>${t.p2T}</strong><p>${t.p2}</p></div>
+      <div><strong>${t.p3T}</strong><p>${t.p3}</p></div>
+    </div>
+  </main>
+  <footer class="siteFoot"><span>${t.footL}</span><span><a href="${t.footToolsUrl}">${t.footTools}</a> · <a href="${t.footHomeUrl}">${t.footHome}</a></span></footer>`;
+}
+
+app.addEventListener("click", e => {
+  const b = e.target.closest("[data-l]");
+  if (!b) return;
+  lang = b.dataset.l;
+  try { localStorage.setItem("iq_lang", lang); } catch (err) {}
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

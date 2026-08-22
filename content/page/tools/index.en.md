@@ -16,12 +16,9 @@ links:
   - title: 📚 Mabinogi Mobile S2 Guide Library
     description: Class guides for all 21 classes in Mabinogi Mobile Season 2, compiled from 200+ community posts — skills, reforges, runes, and tier notes with source links. (Korean)
     website: /tools/mabi-guide/
-  - title: 🧠 Thinking Star IQ Lab — Kids' IQ Test
-    description: A 27-item IQ-style reasoning test for ages 10–14 with two difficulty sets by age (10–11 / 12–14), covering verbal, matrix, number-series, and figure-analogy items, with per-question explanations. Available in English; answers never leave your browser.
-    website: /tools/iq-test/?lang=en
-  - title: ⭐ Big Five Personality Test
-    description: Your Big Five traits — extraversion, agreeableness, conscientiousness, emotional stability, and openness — measured with 50 public-domain IPIP items actually used in psychology research. About 5 minutes; answers never leave your browser.
-    website: /tools/big5/?lang=en
+  - title: 🌟 Thinking Star Lab — Research-based Tests
+    description: A growing collection of cognitive and personality tests built on research structures and public-domain items — 🧠 Kids' IQ Test, ⭐ Big Five Personality Test, and more to come. Everything runs in your browser; answers are never uploaded.
+    website: /lab/?lang=en
 comments: false
 ---
 
