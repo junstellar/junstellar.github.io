@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>반응속도 테스트 — 생각별 연구소</title>
+<meta name="description" content="화면이 초록색으로 바뀌는 순간을 잡아라. 5라운드 평균 반응속도(ms)를 측정하는 무료 반응속도 테스트. 4개 언어 지원, 기록은 서버로 전송되지 않습니다.">
+<meta property="og:title" content="반응속도 테스트 — 생각별 연구소">
+<meta property="og:description" content="당신의 평균 반응속도는 몇 ms? 5라운드 측정, 브라우저에서 바로.">
+<style>
+:root { --ink:#18221c; --paper:#f4f1e8; --mint:#c9f36a; --orange:#ff6b35; }
+* { box-sizing:border-box; }
+h1,h2,h3,p { margin:0; }
+ul { margin:0; padding:0; list-style:none; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,"Noto Sans KR",sans-serif; }
+button { font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer; }
+.shell { min-height:100vh; min-height:100dvh; overflow:hidden; display:flex; flex-direction:column; }
+.topbar { height:clamp(50px,7vh,78px); flex:none; display:flex; align-items:center; justify-content:space-between; max-width:1180px; width:100%; margin:0 auto; padding:0 28px; border-bottom:1px solid rgba(24,34,28,.18); }
+.brand { font-weight:800; letter-spacing:-.04em; display:flex; align-items:center; gap:10px; }
+.brandMark { display:grid; place-items:center; width:31px; height:31px; background:var(--ink); color:var(--mint); border-radius:50% 50% 45% 55%; font-family:Georgia,serif; }
+.topRight { display:flex; align-items:center; gap:14px; }
+.researchTag { font-size:12px; border:1px solid var(--ink); border-radius:99px; padding:7px 12px; }
+.langSw { display:flex; gap:4px; font-size:11px; }
+.langSw button { padding:4px 7px; border:1px solid transparent; border-radius:3px; color:#6f7972; }
+.langSw button.on { border-color:var(--ink); color:var(--ink); font-weight:800; }
+.hero { position:relative; max-width:1180px; width:100%; margin:0 auto; padding:clamp(12px,2.6vh,56px) 28px clamp(14px,3vh,64px); flex:1; display:flex; flex-direction:column; justify-content:center; }
+.hero:after { content:"⚡"; position:absolute; right:6%; top:4%; font:700 320px/1 Georgia,serif; color:transparent; -webkit-text-stroke:2px rgba(24,34,28,.08); transform:rotate(10deg); pointer-events:none; }
+.eyebrow { font-size:13px; font-weight:700; letter-spacing:.02em; margin-bottom:clamp(10px,2.2vh,26px); }
+.eyebrow span { color:var(--orange); margin-right:8px; }
+h1 { position:relative; z-index:1; font-size:clamp(40px,min(7.6vw,9vh),104px); line-height:.98; letter-spacing:-.075em; max-width:950px; }
+h1 em { color:var(--orange); font-family:Georgia,"Noto Serif KR",serif; font-weight:400; }
+.heroCopy { max-width:540px; font-size:clamp(14px,2vh,18px); line-height:1.65; margin:clamp(16px,3vh,35px) 0 clamp(14px,2.5vh,27px); color:#435047; }
+.facts { display:flex; gap:36px; margin:0 0 clamp(16px,3vh,34px); }
+.facts div { display:flex; align-items:baseline; gap:7px; }
+.facts strong { font:700 clamp(24px,3vh,31px)/1 Georgia,serif; }
+.facts span { font-size:12px; color:#647068; }
+.primary { position:relative; z-index:2; border-radius:4px; background:var(--ink); color:white; padding:clamp(12px,2vh,17px) 22px; min-width:220px; display:inline-flex; justify-content:space-between; gap:14px; box-shadow:5px 5px 0 var(--mint); }
+.primary:hover { transform:translate(-2px,-2px); box-shadow:7px 7px 0 var(--mint); }
+.notice { font-size:11px; color:#747b76; margin-top:clamp(10px,1.8vh,19px); }
+.studyCard { background:var(--ink); color:white; padding:clamp(18px,3.6vh,52px) max(28px,calc((100vw - 1124px)/2)); display:grid; grid-template-columns:160px 1fr 1fr; gap:clamp(18px,3vh,44px) 44px; align-items:start; }
+.cardIndex { color:var(--mint); font-size:12px; }
+.studyCard h2 { font-size:clamp(24px,3.6vh,36px); line-height:1.15; letter-spacing:-.05em; }
+.studyCard p { color:#b9c2bc; line-height:1.7; font-size:clamp(13px,1.8vh,16px); }
+.statLine { grid-column:2/4; border-top:1px solid #536057; padding-top:clamp(12px,2vh,22px); display:flex; justify-content:space-between; align-items:baseline; }
+.statLine strong { font:700 clamp(20px,2.8vh,28px) Georgia,serif; color:var(--mint); }.statLine small{color:#9da8a0;font-size:13px}
+.testWrap,.resultWrap { max-width:900px; width:100%; margin:0 auto; padding:clamp(16px,3vh,44px) 28px clamp(16px,3vh,44px); flex:1; display:flex; flex-direction:column; }
+.testHead { display:flex; justify-content:space-between; align-items:end; margin-bottom:12px; }
+.testHead>span{font-size:13px;font-weight:800;color:#d84e1e}
+.testHead strong{font:700 25px Georgia,serif}.testHead small{font:12px Arial;color:#778079}
+.arena { flex:1; min-height:min(430px,52vh); border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-align:center; padding:24px; user-select:none; -webkit-user-select:none; cursor:pointer; transition:background .08s; }
+.arena .shape { font-size:clamp(54px,10vh,90px); line-height:1; }
+.arena .msg { font-size:clamp(17px,2.6vh,24px); font-weight:800; letter-spacing:-.02em; }
+.arena .sub { font-size:13px; opacity:.75; }
+.arena.idle { background:#fffdf7; border:2px dashed #aab2ac; }
+.arena.waiting { background:var(--ink); color:white; cursor:progress; }
+.arena.go { background:var(--mint); color:var(--ink); }
+.arena.early { background:var(--orange); color:white; }
+.arena.clicked { background:#fffdf7; border:2px solid var(--ink); }
+.arena.clicked .ms { font:700 clamp(52px,9vh,84px)/1 Georgia,serif; color:var(--orange); }
+.rounds { display:flex; gap:8px; justify-content:center; margin-top:14px; }
+.rounds span { min-width:64px; text-align:center; font:700 13px Georgia,serif; border:1px solid #b7bfb8; border-radius:99px; padding:6px 10px; color:#566159; background:#fffdf7; }
+.rounds span.done { border-color:var(--ink); color:var(--ink); }
+.resultHero { display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center; border-bottom:1px solid #bfc5c0; padding-bottom:clamp(18px,3vh,36px); }
+.resultHero h2 { font-size:clamp(30px,min(5.5vw,6vh),56px); line-height:1.05; letter-spacing:-.06em; margin-bottom:12px; }
+.resultHero p { color:#667169; font-size:14px; line-height:1.6; }
+.msDial { aspect-ratio:1; width:100%; max-width:min(260px,34vh); margin:0 auto; border:2px solid var(--ink); border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:10px 10px 0 var(--mint); background:#fffdf7; }
+.msDial span { font-size:12px; }
+.msDial strong { font:700 clamp(44px,7.5vh,64px)/1 Georgia,serif; color:var(--orange); margin:6px; }
+.msDial small { font-size:12px; font-weight:800; }
+.statsRow { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; padding:clamp(16px,2.6vh,28px) 0; }
+.statBox { background:#fffdf7; border:1px solid #cad0cb; border-radius:8px; padding:14px 18px; }
+.statBox span { font-size:11px; color:#7a837d; display:block; margin-bottom:4px; }
+.statBox b { font:700 22px Georgia,serif; }
+.statBox .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:2px; }
+.statBox .chips i { font:700 12px Georgia,serif; font-style:normal; border:1px solid #b7bfb8; border-radius:99px; padding:3px 9px; color:#566159; }
+.disclaimer{background:#e7e3d8;padding:20px 26px;border-left:5px solid var(--orange)}.disclaimer strong{display:block;margin-bottom:6px;font-size:14px}.disclaimer p{font-size:12.5px;line-height:1.65;color:#566159}
+.resultActions{display:flex;justify-content:flex-end;gap:15px;margin-top:20px}.resultActions>button:first-child{border:1px solid #89928c;background:transparent;padding:14px 24px}.resultActions .primary{min-width:0}
+.siteFoot{max-width:1180px;width:100%;margin:auto auto 0;padding:clamp(12px,2.2vh,22px) 28px clamp(14px,2.2vh,26px);border-top:1px solid rgba(24,34,28,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:#747b76}
+.siteFoot a{color:#435047}
+@media(max-width:700px){.topbar{height:66px}.researchTag{display:none}.hero:after{font-size:220px;right:-14%}h1{font-size:52px}.facts{gap:18px;flex-wrap:wrap}.studyCard{grid-template-columns:1fr}.studyCard h2,.studyCard p,.statLine{grid-column:1}.studyCard h2{font-size:29px}.resultHero{grid-template-columns:1fr;gap:24px}.statsRow{grid-template-columns:1fr}.rounds span{min-width:52px;font-size:12px}}
+</style>
+</head>
+<body>
+<div class="shell" id="app"></div>
+
+<script>
+"use strict";
+
+const ROUNDS = 5;
+
+const UI = {
+ko:{ docTitle:"반응속도 테스트 — 생각별 연구소", tag:"단순 반응시간 패러다임", brand:"생각별 연구소",
+  eyebrow:"당신의 반사신경, 숫자로 확인하기",
+  h1:"초록불이 켜지면,<br><em>클릭</em>.",
+  heroCopy:"화면이 초록색 ●로 바뀌는 순간 최대한 빨리 클릭하세요. 5라운드 평균으로 반응속도(ms)를 측정합니다. 기록은 서버로 전송되지 않습니다.",
+  f1:"라운드", f2:"ms 단위 측정", f3:"분이면 끝",
+  start:"측정 시작하기", notice:"오락용 측정이며 기기·화면 지연에 따라 결과가 달라질 수 있습니다.",
+  cardIndex:"01 / 측정 방식", studyH2:"심리학 실험실의<br>가장 오래된 과제입니다.",
+  studyP:"자극이 나타나면 최대한 빨리 반응하는 '단순 반응시간(Simple Reaction Time)'은 실험심리학에서 150년 넘게 쓰여온 기본 과제입니다. 연구에서 젊은 성인의 시각 단순 반응시간은 보통 200~300ms 범위로 보고됩니다.",
+  statL:"연구 참고치 (젊은 성인, 시각 자극)", statV:"약 200~300ms",
+  roundLabel:"라운드", waitTitle:"기다리세요…", waitSub:"초록색 ●로 바뀌면 클릭!",
+  goTitle:"지금!", earlyTitle:"너무 빨랐어요!", earlySub:"초록색이 된 다음에 클릭하세요. 눌러서 다시 시도.",
+  clickedSub:"눌러서 다음 라운드로", clickedLast:"눌러서 결과 보기",
+  idleTitle:"여기를 눌러 시작", idleSub:"화면이 어두워지면 준비, 초록색 ●가 되면 클릭!",
+  resLabel:"5라운드 평균 기준", resH2:"당신의<br>반응속도는—",
+  avgL:"평균 반응속도", bestL:"가장 빠른 기록", listL:"라운드별 기록",
+  bands:[["매우 빠름","반사신경이 상위권입니다. 게이머의 자질이 보여요."],["빠름","평균보다 확실히 빠른 편입니다."],["평균 범위","연구 참고치(200~300ms) 안의 안정적인 기록입니다."],["신중형","서두르지 않는 타입. 정확성이 강점일 수 있어요."],["여유형","오늘은 몸풀기. 다시 도전해보세요!"]],
+  discT:"이 기록은 어떻게 봐야 하나요?",
+  discP:"단순 시각 반응시간은 연구에서 젊은 성인 기준 200~300ms 범위로 보고되며, 나이·피로·연습에 따라 달라집니다. 온라인 측정에는 모니터 주사율과 입력 장치 지연이 20~50ms가량 더해질 수 있어 절대값보다는 반복 측정의 변화를 보는 것이 좋습니다. 오락용 참고 기록입니다.",
+  home:"처음으로", retry:"다시 측정", footL:"© To the Moon · 오락·교육용 참고 검사", footTools:"생각별 연구소", footHome:"블로그 홈",
+  footToolsUrl:"/lab/?lang=ko", footHomeUrl:"/" },
+en:{ docTitle:"Reaction Time Test — Thinking Star Lab", tag:"Simple reaction time paradigm", brand:"Thinking Star Lab",
+  eyebrow:"Put a number on your reflexes",
+  h1:"When it turns green,<br><em>click</em>.",
+  heroCopy:"Click as fast as you can the moment the screen turns green ●. Your reaction time (ms) is averaged over 5 rounds. Nothing is uploaded.",
+  f1:"rounds", f2:"measured in ms", f3:"minute total",
+  start:"Start measuring", notice:"For fun — results vary with device and display latency.",
+  cardIndex:"01 / The method", studyH2:"The oldest task in<br>the psychology lab.",
+  studyP:"Reacting as fast as possible to a stimulus — 'simple reaction time' — has been a staple of experimental psychology for over 150 years. Studies typically report visual simple reaction times of 200–300ms for young adults.",
+  statL:"Research reference (young adults, visual)", statV:"~200–300ms",
+  roundLabel:"Round", waitTitle:"Wait for it…", waitSub:"Click when it turns green ●!",
+  goTitle:"NOW!", earlyTitle:"Too soon!", earlySub:"Wait for green before clicking. Tap to retry.",
+  clickedSub:"Tap for the next round", clickedLast:"Tap to see results",
+  idleTitle:"Tap here to start", idleSub:"Dark screen = get ready. Green ● = click!",
+  resLabel:"Average of 5 rounds", resH2:"Your<br>reaction time —",
+  avgL:"Average reaction time", bestL:"Best round", listL:"All rounds",
+  bands:[["Lightning","Top-tier reflexes. Gamer material."],["Fast","Clearly quicker than average."],["Typical","A solid result within the research range (200–300ms)."],["Deliberate","Not one to rush — accuracy may be your strength."],["Relaxed","Call it a warm-up. Try again!"]],
+  discT:"How should I read this?",
+  discP:"Studies report visual simple reaction times of roughly 200–300ms for young adults, varying with age, fatigue, and practice. Online measurements add 20–50ms of display and input latency, so trends across attempts matter more than absolute values. For fun only.",
+  home:"Home", retry:"Measure again", footL:"© To the Moon · for fun & learning", footTools:"Thinking Star Lab", footHome:"Blog home",
+  footToolsUrl:"/lab/?lang=en", footHomeUrl:"/en/" },
+ja:{ docTitle:"反応速度テスト — 考える星研究所", tag:"単純反応時間パラダイム", brand:"考える星研究所",
+  eyebrow:"あなたの反射神経を数字で",
+  h1:"緑になったら、<br><em>クリック</em>。",
+  heroCopy:"画面が緑の●に変わった瞬間、できるだけ速くクリック。5ラウンドの平均で反応速度(ms)を測ります。記録は送信されません。",
+  f1:"ラウンド", f2:"ms単位で測定", f3:"分で完了",
+  start:"測定を始める", notice:"娯楽用の測定です。端末や画面の遅延で結果が変わることがあります。",
+  cardIndex:"01 / 測定方式", studyH2:"心理学実験室で<br>最も古い課題です。",
+  studyP:"刺激が出たらできるだけ速く反応する「単純反応時間」は、実験心理学で150年以上使われてきた基本課題。研究では若い成人の視覚単純反応時間はおよそ200〜300msと報告されています。",
+  statL:"研究参考値(若い成人・視覚)", statV:"約200〜300ms",
+  roundLabel:"ラウンド", waitTitle:"待って…", waitSub:"緑の●になったらクリック!",
+  goTitle:"今!", earlyTitle:"早すぎ!", earlySub:"緑になってからクリック。タップで再挑戦。",
+  clickedSub:"タップで次のラウンドへ", clickedLast:"タップで結果を見る",
+  idleTitle:"ここをタップして開始", idleSub:"暗くなったら準備、緑の●でクリック!",
+  resLabel:"5ラウンド平均", resH2:"あなたの<br>反応速度は—",
+  avgL:"平均反応速度", bestL:"最速記録", listL:"ラウンド別記録",
+  bands:[["超速い","反射神経は上位クラス。ゲーマーの素質あり。"],["速い","平均よりはっきり速いほうです。"],["平均的","研究参考値(200〜300ms)内の安定した記録です。"],["慎重派","急がないタイプ。正確さが強みかも。"],["ゆったり","今日は準備運動。もう一度どうぞ!"]],
+  discT:"この記録の見方は?",
+  discP:"視覚の単純反応時間は若い成人でおよそ200〜300msと報告され、年齢・疲労・練習で変わります。オンライン測定には画面や入力の遅延が20〜50msほど加わるため、絶対値より繰り返し測定の変化を見るのがおすすめ。娯楽用の参考記録です。",
+  home:"最初へ", retry:"もう一度測る", footL:"© To the Moon · 娯楽・教育用参考テスト", footTools:"考える星研究所", footHome:"ブログホーム",
+  footToolsUrl:"/lab/?lang=ja", footHomeUrl:"/ja/" },
+zh:{ docTitle:"反应速度测试 — 思考星实验室", tag:"简单反应时范式", brand:"思考星实验室",
+  eyebrow:"用数字看你的反射神经",
+  h1:"变绿的瞬间，<br><em>点击</em>。",
+  heroCopy:"屏幕变成绿色●的那一刻，尽快点击。5轮取平均，测出你的反应速度(ms)。记录不会上传。",
+  f1:"轮", f2:"以ms计", f3:"分钟搞定",
+  start:"开始测量", notice:"仅供娱乐，结果会受设备和屏幕延迟影响。",
+  cardIndex:"01 / 测量方式", studyH2:"心理学实验室里<br>最古老的任务。",
+  studyP:"刺激一出现就尽快反应的'简单反应时'，是实验心理学沿用150多年的基本任务。研究通常报告年轻成人的视觉简单反应时在200~300ms范围。",
+  statL:"研究参考值(年轻成人·视觉)", statV:"约200~300ms",
+  roundLabel:"第", waitTitle:"等一下…", waitSub:"变成绿色●就点击！",
+  goTitle:"就是现在！", earlyTitle:"太早了！", earlySub:"等变绿再点。点击重试。",
+  clickedSub:"点击进入下一轮", clickedLast:"点击查看结果",
+  idleTitle:"点这里开始", idleSub:"变暗=准备，绿色●=点击！",
+  resLabel:"5轮平均", resH2:"你的<br>反应速度是—",
+  avgL:"平均反应速度", bestL:"最快纪录", listL:"每轮记录",
+  bands:[["闪电","反射神经属于顶级，有电竞潜质。"],["快","明显快于平均水平。"],["平均范围","在研究参考值(200~300ms)内的稳定成绩。"],["稳重型","不急不躁，准确性可能是你的强项。"],["从容型","就当热身，再来一次吧！"]],
+  discT:"这个成绩怎么看？",
+  discP:"研究报告年轻成人的视觉简单反应时约为200~300ms，会随年龄、疲劳和练习变化。在线测量还会叠加20~50ms的屏幕与输入延迟，所以多次测量的变化比绝对值更有意义。仅供娱乐参考。",
+  home:"回到首页", retry:"再测一次", footL:"© To the Moon · 娱乐·学习参考", footTools:"思考星实验室", footHome:"博客首页",
+  footToolsUrl:"/lab/?lang=zh", footHomeUrl:"/zh/" }
+};
+
+const params = new URLSearchParams(location.search);
+let storedLang = null;
+try { storedLang = localStorage.getItem("iq_lang"); } catch (e) {}
+const initLang = ["ko","en","ja","zh"].indexOf(params.get("lang")) >= 0 ? params.get("lang") : (["ko","en","ja","zh"].indexOf(storedLang) >= 0 ? storedLang : "ko");
+
+const state = { screen:"home", phase:"idle", round:0, times:[], goAt:0, lang:initLang };
+const app = document.getElementById("app");
+let goTimer = null;
+
+function T() { return UI[state.lang]; }
+
+function band(avg) {
+  if (avg < 220) return 0;
+  if (avg < 270) return 1;
+  if (avg < 320) return 2;
+  if (avg < 400) return 3;
+  return 4;
+}
+
+function langSw() {
+  return `<span class="langSw">` + [["ko","KO"],["en","EN"],["ja","日"],["zh","中"]].map(([l, lab]) =>
+    `<button data-action="lang" data-l="${l}" class="${state.lang === l ? "on" : ""}">${lab}</button>`).join("") + `</span>`;
+}
+function foot() {
+  return `<footer class="siteFoot"><span>${T().footL}</span><span><a href="${T().footToolsUrl}">${T().footTools}</a> · <a href="${T().footHomeUrl}">${T().footHome}</a></span></footer>`;
+}
+
+function viewHome() {
+  const t = T();
+  return `
+  <section class="hero">
+    <div class="eyebrow"><span>●</span> ${t.eyebrow}</div>
+    <h1>${t.h1}</h1>
+    <p class="heroCopy">${t.heroCopy}</p>
+    <div class="facts"><div><strong>${ROUNDS}</strong><span>${t.f1}</span></div><div><strong>ms</strong><span>${t.f2}</span></div><div><strong>1</strong><span>${t.f3}</span></div></div>
+    <button class="primary" data-action="test">${t.start} <span>→</span></button>
+    <p class="notice">${t.notice}</p>
+  </section>
+  <section class="studyCard">
+    <span class="cardIndex">${t.cardIndex}</span>
+    <h2>${t.studyH2}</h2>
+    <p>${t.studyP}</p>
+    <div class="statLine"><span>${t.statL}</span><strong>${t.statV}</strong></div>
+  </section>`;
+}
+
+function arenaHTML() {
+  const t = T();
+  if (state.phase === "idle") return `<div class="arena idle" data-action="arena"><span class="shape">■</span><p class="msg">${t.idleTitle}</p><p class="sub">${t.idleSub}</p></div>`;
+  if (state.phase === "waiting") return `<div class="arena waiting" data-action="arena"><span class="shape">■</span><p class="msg">${t.waitTitle}</p><p class="sub">${t.waitSub}</p></div>`;
+  if (state.phase === "go") return `<div class="arena go" data-action="arena"><span class="shape">●</span><p class="msg">${t.goTitle}</p></div>`;
+  if (state.phase === "early") return `<div class="arena early" data-action="arena"><span class="shape">■</span><p class="msg">${t.earlyTitle}</p><p class="sub">${t.earlySub}</p></div>`;
+  const last = state.times[state.times.length - 1];
+  const sub = state.times.length >= ROUNDS ? t.clickedLast : t.clickedSub;
+  return `<div class="arena clicked" data-action="arena"><span class="ms">${last}<small style="font-size:.35em"> ms</small></span><p class="sub">${sub}</p></div>`;
+}
+
+function viewTest() {
+  const t = T();
+  const chips = Array.from({length: ROUNDS}, (_, i) =>
+    `<span class="${i < state.times.length ? "done" : ""}">${i < state.times.length ? state.times[i] + "ms" : "R" + (i + 1)}</span>`).join("");
+  return `
+  <section class="testWrap">
+    <div class="testHead"><span>${t.roundLabel} ${Math.min(state.times.length + 1, ROUNDS)} / ${ROUNDS}</span><strong>⚡</strong></div>
+    ${arenaHTML()}
+    <div class="rounds">${chips}</div>
+  </section>`;
+}
+
+function viewResult() {
+  const t = T();
+  const avg = Math.round(state.times.reduce((a, b) => a + b, 0) / state.times.length);
+  const best = Math.min.apply(null, state.times);
+  const b = band(avg);
+  return `
+  <section class="resultWrap">
+    <div class="resultHero">
+      <div>
+        <span class="eyebrow" style="display:inline-block;margin-bottom:10px"><span>●</span> ${t.resLabel}</span>
+        <h2>${t.resH2}</h2>
+        <p><b>${t.bands[b][0]}</b> — ${t.bands[b][1]}</p>
+      </div>
+      <div class="msDial"><span>${t.avgL}</span><strong>${avg}</strong><small>ms · ${t.bands[b][0]}</small></div>
+    </div>
+    <div class="statsRow">
+      <div class="statBox"><span>${t.bestL}</span><b>${best} ms</b></div>
+      <div class="statBox"><span>${t.listL}</span><div class="chips">${state.times.map(x => `<i>${x}</i>`).join("")}</div></div>
+    </div>
+    <div class="disclaimer"><strong>${t.discT}</strong><p>${t.discP}</p></div>
+    <div class="resultActions">
+      <button data-action="home">${t.home}</button>
+      <button class="primary" data-action="test">${t.retry} <span>↻</span></button>
+    </div>
+  </section>`;
+}
+
+function render() {
+  document.documentElement.lang = state.lang;
+  document.title = T().docTitle;
+  const body = state.screen === "home" ? viewHome() : state.screen === "test" ? viewTest() : viewResult();
+  app.innerHTML = `
+  <header class="topbar">
+    <button class="brand" data-action="home"><span class="brandMark">★</span> ${T().brand}</button>
+    <span class="topRight"><span class="researchTag">${T().tag}</span>${langSw()}</span>
+  </header>
+  ${body}
+  ${foot()}`;
+}
+
+function clearGoTimer() { clearTimeout(goTimer); goTimer = null; }
+
+function startWaiting() {
+  state.phase = "waiting";
+  render();
+  clearGoTimer();
+  goTimer = setTimeout(() => {
+    state.phase = "go";
+    state.goAt = performance.now();
+    render();
+  }, 1500 + Math.random() * 2500);
+}
+
+function arenaClick() {
+  if (state.phase === "idle") { state.times = []; startWaiting(); return; }
+  if (state.phase === "waiting") { clearGoTimer(); state.phase = "early"; render(); return; }
+  if (state.phase === "early") { startWaiting(); return; }
+  if (state.phase === "go") {
+    const ms = Math.round(performance.now() - state.goAt);
+    state.times.push(ms);
+    state.phase = "clicked";
+    render();
+    return;
+  }
+  if (state.phase === "clicked") {
+    if (state.times.length >= ROUNDS) { state.screen = "result"; render(); window.scrollTo(0, 0); }
+    else startWaiting();
+  }
+}
+
+app.addEventListener("pointerdown", e => {
+  const arena = e.target.closest('[data-action="arena"]');
+  if (arena) { e.preventDefault(); arenaClick(); }
+});
+app.addEventListener("click", e => {
+  const btn = e.target.closest("[data-action]");
+  if (!btn) return;
+  const a = btn.dataset.action;
+  if (a === "arena") return; // pointerdown에서 처리(클릭 지연 제거)
+  if (a === "home") { clearGoTimer(); state.screen = "home"; state.phase = "idle"; render(); window.scrollTo(0, 0); }
+  else if (a === "test") { clearGoTimer(); state.screen = "test"; state.phase = "idle"; state.times = []; render(); window.scrollTo(0, 0); }
+  else if (a === "lang") {
+    state.lang = btn.dataset.l;
+    try { localStorage.setItem("iq_lang", state.lang); } catch (err) {}
+    render();
+  }
+});
+
+document.addEventListener("keydown", e => {
+  if (state.screen !== "test" || e.repeat) return;
+  if (e.key === " " || e.key === "Enter") { e.preventDefault(); arenaClick(); }
+});
+
+render();
+</script>
+</body>
+</html>
