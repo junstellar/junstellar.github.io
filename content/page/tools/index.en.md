@@ -17,7 +17,7 @@ links:
     description: Class guides for all 21 classes in Mabinogi Mobile Season 2, compiled from 200+ community posts — skills, reforges, runes, and tier notes with source links. (Korean)
     website: /tools/mabi-guide/
   - title: 🌟 Thinking Star Lab — Research-based Tests
-    description: A growing collection of cognitive and personality tests built on research structures and public-domain items — 🧠 Kids' IQ Test, ⭐ Big Five Personality Test, and more to come. Everything runs in your browser; answers are never uploaded.
+    description: A growing collection of cognitive and personality tests built on research structures and public-domain items — 🧠 IQ Test for All Ages, ⭐ Big Five Personality Test, ⚡ Reaction Time Test, and more to come. Everything runs in your browser; answers are never uploaded.
     website: /lab/?lang=en
 comments: false
 ---

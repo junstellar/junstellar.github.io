@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>생각별 IQ 연구소 — 어린이 IQ 테스트</title>
-<meta name="description" content="만 10~14세 어린이를 위한 27문항 IQ 테스트(인지추론). 한국어·영어·일본어·중국어 지원, 연령대별 기본·심화 문제은행에서 매회 무작위 출제. 오락·교육용 참고 검사이며 전문 지능검사를 대신하지 않습니다.">
-<meta property="og:title" content="생각별 IQ 연구소 — 어린이 IQ 테스트">
-<meta property="og:description" content="만 10~14세 어린이를 위한 27문항 IQ 테스트(인지추론). 4개 언어 지원, 설치 없이 브라우저에서 바로, 답은 서버로 전송되지 않습니다.">
+<title>생각별 IQ 연구소 — 온 가족 IQ 테스트</title>
+<meta name="description" content="온 가족이 함께 하는 27문항 IQ 테스트(인지추론). 한국어·영어·일본어·중국어 지원, 난이도별(쉬움·심화) 문제은행에서 매회 무작위 출제. 오락·교육용 참고 검사이며 전문 지능검사를 대신하지 않습니다.">
+<meta property="og:title" content="생각별 IQ 연구소 — 온 가족 IQ 테스트">
+<meta property="og:description" content="온 가족이 함께 하는 27문항 IQ 테스트(인지추론). 4개 언어 지원, 설치 없이 브라우저에서 바로, 답은 서버로 전송되지 않습니다.">
 <style>
 :root { --ink:#18221c; --paper:#f4f1e8; --mint:#c9f36a; --orange:#ff6b35; }
 * { box-sizing:border-box; }
@@ -53,6 +53,11 @@ h1 em { color:var(--orange); font-family:Georgia,"Noto Serif KR",serif; font-wei
 .setupForm>label:first-child { font-weight:800; }
 select { width:100%; border:1px solid #9aa49e; background:#fffdf7; padding:16px; border-radius:3px; font-size:16px; }
 .setNote { font-size:12px; color:#6f7972; line-height:1.6; }
+.diffPick { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.diffPick button { border:1px solid #aab2ac; border-radius:6px; background:#fffdf7; padding:14px 12px; display:flex; flex-direction:column; gap:5px; font-weight:800; font-size:16px; text-align:left; }
+.diffPick button span { font-size:11px; color:#6f7972; font-weight:400; line-height:1.4; }
+.diffPick button:hover { background:var(--mint); }
+.diffPick button.on { border:2px solid var(--ink); background:var(--mint); }
 .check { display:grid; grid-template-columns:22px 1fr; gap:12px; margin:16px 0; line-height:1.55; font-size:14px; }
 .check input { width:20px; height:20px; accent-color:var(--orange); }
 .wide { width:100%; }
@@ -165,31 +170,33 @@ function days(order){ return { ko:order.map(i=>DAYS.ko[i]), en:order.map(i=>DAYS
 /* ---- UI 문자열 (4개 언어) ---- */
 const UI = {
 ko:{
-  docTitle:"생각별 IQ 연구소 — 어린이 IQ 테스트",
+  docTitle:"생각별 IQ 연구소 — 온 가족 IQ 테스트",
   tag:"Ch-ICAR 연구 구조 기반", brand:"생각별 IQ 연구소",
-  eyebrow:"10–14세 어린이를 위한 인지 추론 테스트",
+  eyebrow:"온 가족이 함께 하는 인지 추론 테스트",
   h1:"정답보다 중요한 건,<br><em>생각하는 과정</em>이에요.",
   heroCopy:b=>`문제은행 ${b}문항에서 연령에 맞는 27문제가 매번 새로 출제됩니다. 답은 서버로 전송되지 않고 이 브라우저 안에서만 계산됩니다.`,
   f1:"문항 · 매회", f2:"문제은행", f3:"추론 영역",
   start:"테스트 시작하기", notice:"오락·교육용 참고 검사이며 전문 지능검사나 진단을 대신하지 않습니다.",
   cardIndex:"01 / 연구 근거", studyH2:"쌓여 있는 연구자료에서<br>출발했습니다.",
-  studyP:"2025년 발표된 Children’s ICAR 검증 연구의 27문항 구성(영역 비율·8지선다·수열 주관식)을 따릅니다. 문항은 독자 제작 문제은행에서 연령대별(만 10~11세 / 12~14세)로 매회 무작위 출제됩니다.",
+  studyP:"2025년 발표된 Children’s ICAR 검증 연구의 27문항 구성(영역 비율·8지선다·수열 주관식)을 따릅니다. 문항은 독자 제작 문제은행에서 난이도별(쉬움/심화)로 매회 무작위 출제됩니다.",
   statL:"플란데런 연구표본 평균",
-  setupStep:"시작 전 확인", setupH2:"어린이와 보호자가<br>함께 확인해 주세요.",
-  ageLabel:"어린이의 만 나이", ageOpt:n=>`만 ${n}세`,
-  setNote:s=>`만 10~11세는 <b>기본 세트</b>, 만 12~14세는 <b>심화 세트</b>에서 매번 27문항이 무작위로 출제됩니다. 지금 선택: <b>${s}</b>`,
-  consent:"보호자와 함께 안내를 읽었으며, 이 결과가 전문적인 IQ 진단이 아니라는 점을 이해했습니다.",
+  setupStep:"시작 전 확인", setupH2:"시작 전에<br>확인해 주세요.",
+  diffLabel:"난이도 선택",
+  diffEasy:"쉬움", diffEasyHint:"기본 세트 · 가볍게 시작",
+  diffAdv:"심화", diffAdvHint:"심화 세트 · 본격 도전",
+  setNote:"선택한 난이도의 문제은행에서 매번 27문항이 무작위로 출제됩니다.",
+  consent:"이 결과가 전문 지능검사가 아닌 오락용 참고 결과임을 이해했습니다. (어린이는 보호자와 함께 확인해 주세요.)",
   ready:"준비됐어요", asideT:"편안하게 풀어보세요",
   aside:["계산기나 검색은 사용하지 않아요.","시간은 점수에 포함되지 않아요.","모르겠다면 '모르겠어요'를 골라도 돼요.","이름·학교·연락처는 수집하지 않아요."],
   basic:"기본 세트", adv:"심화 세트", dunno:"모르겠어요",
   numEmpty:"키패드로 답을 입력하세요", numClear:"지움", numHint:"PC에서는 키보드 숫자키로도 입력할 수 있어요.",
   prev:"← 이전", next:"다음 문제 →", finish:"결과 보기 →",
-  resLabel:(a,s)=>`만 ${a}세 · ${s} · 연구표본 기준 참고 결과`,
+  resLabel:s=>`${s} · 연구표본 기준 참고 결과`,
   resH2:"차분하게 규칙을<br>찾아냈어요.", resP:"점수 하나보다 어떤 문제를 잘 풀었는지 함께 살펴보세요.",
   scoreL:"참고 추론점수", pct:p=>`백분위 약 ${p}%`, areasH:"영역별 결과", rawL:"원점수",
   rawNote:"플란데런 12세 중심 표본<br>평균 10.76 · 표준편차 5.11",
   discT:"이 점수는 어떻게 계산했나요?",
-  discP:"2025년 Ch-ICAR 연구표본의 평균과 표준편차를 이용해 평균 100, 표준편차 15 형태로 단순 환산했습니다. 매회 문제은행에서 무작위로 출제되므로 회차·세트 간 점수를 직접 비교할 수 없고, 한국 어린이의 연령별 표준화 IQ가 아니며, 극단 점수와 개별 영역 해석에는 특히 주의해야 합니다.",
+  discP:"2025년 Ch-ICAR 연구표본의 평균과 표준편차를 이용해 평균 100, 표준편차 15 형태로 단순 환산했습니다. 매회 문제은행에서 무작위로 출제되므로 회차·세트 간 점수를 직접 비교할 수 없고, 연령별 표준화 IQ가 아니며, 극단 점수와 개별 영역 해석에는 특히 주의해야 합니다. 환산 통계는 만 10~14세 표본 기준이라, 그 밖의 연령대 결과는 표본 범위 밖의 재미용 참고치입니다.",
   reviewT:"문항별 풀이 다시 보기 (27문항)", ok:"정답", no:"오답", mine:"내가 고른 답", right:"정답", noAns:"무응답",
   home:"처음으로", retry:"다시 풀기", footL:"© To the Moon · 오락·교육용 참고 검사", footTools:"생각별 연구소", footHome:"블로그 홈", footToolsUrl:"/lab/?lang=ko", footHomeUrl:"/",
   mat:"규칙을 찾아 빈칸에 들어갈 그림을 고르세요.", ana:"앞의 관계와 같도록 빈칸에 들어갈 그림을 고르세요.", num:"다음에 올 수를 직접 입력하세요.",
@@ -197,31 +204,33 @@ ko:{
   areaDesc:{"언어추론":"말의 의미와 논리 관계","행렬추론":"규칙과 변화 발견","수열추론":"숫자 사이의 규칙","도형유추":"도형 관계와 공간 사고"}
 },
 en:{
-  docTitle:"Thinking Star IQ Lab — Kids' IQ Test",
+  docTitle:"Thinking Star IQ Lab — IQ Test for All Ages",
   tag:"Based on the Ch-ICAR structure", brand:"Thinking Star IQ Lab",
-  eyebrow:"A cognitive reasoning test for ages 10–14",
+  eyebrow:"A cognitive reasoning test for the whole family",
   h1:"What matters more than answers<br>is <em>how you think</em>.",
   heroCopy:b=>`Each run draws 27 fresh questions for your age from a bank of ${b}. Answers never leave your browser.`,
   f1:"questions / run", f2:"item bank", f3:"reasoning areas",
   start:"Start the test", notice:"For fun and learning only — not a substitute for a professional intelligence test or diagnosis.",
   cardIndex:"01 / Research basis", studyH2:"Built on published<br>research.",
-  studyP:"Follows the 27-item structure of the 2025 Children’s ICAR validation study (area ratios, 8 options, open-ended series). All items are original, drawn randomly each run from age-specific banks (ages 10–11 / 12–14).",
+  studyP:"Follows the 27-item structure of the 2025 Children’s ICAR validation study (area ratios, 8 options, open-ended series). All items are original, drawn randomly each run from two difficulty banks (Easy / Advanced).",
   statL:"Flanders study sample mean",
-  setupStep:"Before you start", setupH2:"Please check together<br>with a parent.",
-  ageLabel:"Child's age", ageOpt:n=>`Age ${n}`,
-  setNote:s=>`Ages 10–11 get the <b>Basic set</b>, ages 12–14 the <b>Advanced set</b> — 27 questions drawn at random each run. Current: <b>${s}</b>`,
-  consent:"We read this together with a parent and understand the result is not a professional IQ diagnosis.",
+  setupStep:"Before you start", setupH2:"A quick check<br>before you start.",
+  diffLabel:"Choose difficulty",
+  diffEasy:"Easy", diffEasyHint:"Basic set · a light start",
+  diffAdv:"Advanced", diffAdvHint:"Advanced set · the real challenge",
+  setNote:"Each run draws 27 questions at random from the selected bank.",
+  consent:"I understand this is a fun reference result, not a professional IQ assessment. (Children, please check with a parent.)",
   ready:"I'm ready", asideT:"Take it easy",
   aside:["No calculators or web search.","Time is not scored.","Not sure? 'I don't know' is fine.","No names, schools, or contacts are collected."],
   basic:"Basic set", adv:"Advanced set", dunno:"I don't know",
   numEmpty:"Enter your answer with the keypad", numClear:"Clear", numHint:"On PC you can also type with the keyboard.",
   prev:"← Back", next:"Next →", finish:"See results →",
-  resLabel:(a,s)=>`Age ${a} · ${s} · reference result (study sample)`,
+  resLabel:s=>`${s} · reference result (study sample)`,
   resH2:"You worked through<br>the patterns.", resP:"Look beyond the single score — see which problems went well.",
   scoreL:"Reference score", pct:p=>`≈ ${p}th percentile`, areasH:"Results by area", rawL:"Raw score",
   rawNote:"Flanders sample (age ~12)<br>mean 10.76 · SD 5.11",
   discT:"How is this score calculated?",
-  discP:"It is a simple conversion to a mean-100, SD-15 scale using the 2025 Ch-ICAR study sample statistics. Questions are drawn randomly each run, so scores are not directly comparable across runs or sets. This is not a standardized IQ, and extreme scores and single-area results deserve extra caution.",
+  discP:"It is a simple conversion to a mean-100, SD-15 scale using the 2025 Ch-ICAR study sample statistics. Questions are drawn randomly each run, so scores are not directly comparable across runs or sets. This is not a standardized IQ, and extreme scores and single-area results deserve extra caution. The conversion statistics come from a sample aged 10–14, so results outside that age range are purely for fun.",
   reviewT:"Review all 27 questions", ok:"Correct", no:"Wrong", mine:"My answer", right:"Answer", noAns:"No answer",
   home:"Home", retry:"Try again", footL:"© To the Moon · for fun & learning", footTools:"Thinking Star Lab", footHome:"Blog home", footToolsUrl:"/lab/?lang=en", footHomeUrl:"/en/",
   mat:"Find the rule and pick the missing picture.", ana:"Pick the picture that completes the second pair the same way.", num:"Type the next number in the sequence.",
@@ -229,31 +238,33 @@ en:{
   areaDesc:{"언어추론":"Meaning and logical relations","행렬추론":"Finding rules and changes","수열추론":"Patterns between numbers","도형유추":"Shape relations and spatial thinking"}
 },
 ja:{
-  docTitle:"考える星IQ研究所 — 子ども向けIQテスト",
+  docTitle:"考える星IQ研究所 — 家族で楽しむIQテスト",
   tag:"Ch-ICAR研究構造ベース", brand:"考える星IQ研究所",
-  eyebrow:"10〜14歳のための認知推論テスト",
+  eyebrow:"家族みんなで楽しむ認知推論テスト",
   h1:"正解より大切なのは、<br><em>考える過程</em>です。",
   heroCopy:b=>`${b}問の問題バンクから、年齢に合った27問が毎回新しく出題されます。回答はサーバーに送信されず、このブラウザ内だけで計算されます。`,
   f1:"問 · 毎回", f2:"問題バンク", f3:"推論領域",
   start:"テストを始める", notice:"娯楽・教育用の参考テストであり、専門的な知能検査や診断の代わりにはなりません。",
   cardIndex:"01 / 研究根拠", studyH2:"積み重ねられた研究から<br>出発しました。",
-  studyP:"2025年発表のChildren’s ICAR検証研究の27問構成(領域比率・8択・数列は記述式)に従います。問題はすべて自作の問題バンクから、年齢別(10〜11歳 / 12〜14歳)に毎回ランダム出題されます。",
+  studyP:"2025年発表のChildren’s ICAR検証研究の27問構成(領域比率・8択・数列は記述式)に従います。問題はすべて自作の問題バンクから、難易度別(やさしい/応用)に毎回ランダム出題されます。",
   statL:"フランドル研究標本の平均",
-  setupStep:"開始前の確認", setupH2:"お子さんと保護者で<br>一緒に確認してください。",
-  ageLabel:"お子さんの年齢", ageOpt:n=>`${n}歳`,
-  setNote:s=>`10〜11歳は<b>基本セット</b>、12〜14歳は<b>応用セット</b>から毎回27問がランダム出題されます。現在の選択: <b>${s}</b>`,
-  consent:"保護者と一緒に案内を読み、この結果が専門的なIQ診断ではないことを理解しました。",
+  setupStep:"開始前の確認", setupH2:"始める前に<br>ご確認ください。",
+  diffLabel:"難易度を選択",
+  diffEasy:"やさしい", diffEasyHint:"基本セット · 気軽にスタート",
+  diffAdv:"応用", diffAdvHint:"応用セット · 本格チャレンジ",
+  setNote:"選んだ難易度の問題バンクから毎回27問がランダム出題されます。",
+  consent:"この結果が専門的な知能検査ではなく、娯楽用の参考結果であることを理解しました。(お子さんは保護者と一緒にご確認ください)",
   ready:"準備OK", asideT:"気楽に解いてみよう",
   aside:["電卓や検索は使いません。","時間は点数に含まれません。","わからなければ「わからない」を選んでOK。","名前・学校・連絡先は収集しません。"],
   basic:"基本セット", adv:"応用セット", dunno:"わからない",
   numEmpty:"キーパッドで答えを入力してください", numClear:"クリア", numHint:"PCではキーボードの数字キーでも入力できます。",
   prev:"← 前へ", next:"次の問題 →", finish:"結果を見る →",
-  resLabel:(a,s)=>`${a}歳 · ${s} · 研究標本基準の参考結果`,
+  resLabel:s=>`${s} · 研究標本基準の参考結果`,
   resH2:"落ち着いて規則を<br>見つけました。", resP:"点数だけでなく、どんな問題が得意だったかを一緒に見てみましょう。",
   scoreL:"参考推論スコア", pct:p=>`パーセンタイル約${p}%`, areasH:"領域別結果", rawL:"素点",
   rawNote:"フランドル12歳中心標本<br>平均10.76 · 標準偏差5.11",
   discT:"このスコアはどう計算したの?",
-  discP:"2025年Ch-ICAR研究標本の平均と標準偏差を用いて、平均100・標準偏差15の形に単純換算しました。毎回ランダム出題のため回・セット間でスコアを直接比較できず、標準化されたIQでもありません。極端なスコアや個別領域の解釈には特に注意してください。",
+  discP:"2025年Ch-ICAR研究標本の平均と標準偏差を用いて、平均100・標準偏差15の形に単純換算しました。毎回ランダム出題のため回・セット間でスコアを直接比較できず、標準化されたIQでもありません。極端なスコアや個別領域の解釈には特に注意してください。換算統計は10〜14歳の標本に基づくため、その他の年齢の結果は標本範囲外のお楽しみ用参考値です。",
   reviewT:"問題ごとの解説を見る (27問)", ok:"正解", no:"不正解", mine:"自分の答え", right:"正解", noAns:"無回答",
   home:"最初へ", retry:"もう一度", footL:"© To the Moon · 娯楽・教育用参考テスト", footTools:"考える星研究所", footHome:"ブログホーム", footToolsUrl:"/lab/?lang=ja", footHomeUrl:"/ja/",
   mat:"規則を見つけて、空欄に入る図を選んでください。", ana:"前の関係と同じになるよう、空欄に入る図を選んでください。", num:"次に来る数を直接入力してください。",
@@ -261,31 +272,33 @@ ja:{
   areaDesc:{"언어추론":"言葉の意味と論理関係","행렬추론":"規則と変化の発見","수열추론":"数の間の規則","도형유추":"図形関係と空間思考"}
 },
 zh:{
-  docTitle:"思考星IQ实验室 — 儿童IQ测试",
+  docTitle:"思考星IQ实验室 — 全家IQ测试",
   tag:"基于Ch-ICAR研究结构", brand:"思考星IQ实验室",
-  eyebrow:"面向10~14岁儿童的认知推理测试",
+  eyebrow:"全家一起玩的认知推理测试",
   h1:"比正确答案更重要的，<br>是<em>思考的过程</em>。",
   heroCopy:b=>`从${b}道题的题库中，每次为你的年龄随机抽取27道新题。答案不会上传服务器，只在浏览器内计算。`,
   f1:"题 · 每次", f2:"题库", f3:"推理领域",
   start:"开始测试", notice:"仅供娱乐和学习参考，不能替代专业智力测验或诊断。",
   cardIndex:"01 / 研究依据", studyH2:"从已发表的研究<br>出发。",
-  studyP:"遵循2025年发表的Children’s ICAR验证研究的27题结构（领域比例、八选一、数列填空）。所有题目均为原创，按年龄（10~11岁 / 12~14岁）从题库中每次随机出题。",
+  studyP:"遵循2025年发表的Children’s ICAR验证研究的27题结构（领域比例、八选一、数列填空）。所有题目均为原创，按难度（简单/进阶）从题库中每次随机出题。",
   statL:"法兰德斯研究样本平均分",
-  setupStep:"开始前确认", setupH2:"请孩子和家长<br>一起确认。",
-  ageLabel:"孩子的年龄", ageOpt:n=>`${n}岁`,
-  setNote:s=>`10~11岁使用<b>基础套题</b>，12~14岁使用<b>进阶套题</b>，每次随机抽取27题。当前选择：<b>${s}</b>`,
-  consent:"已和家长一起阅读说明，并理解该结果不是专业的IQ诊断。",
+  setupStep:"开始前确认", setupH2:"开始前<br>请确认。",
+  diffLabel:"选择难度",
+  diffEasy:"简单", diffEasyHint:"基础套题 · 轻松开始",
+  diffAdv:"进阶", diffAdvHint:"进阶套题 · 正式挑战",
+  setNote:"每次从所选难度的题库中随机抽取27题。",
+  consent:"我理解该结果仅为娱乐用参考，不是专业的智力测验。（儿童请与家长一起确认）",
   ready:"准备好了", asideT:"放轻松慢慢做",
   aside:["不使用计算器或搜索。","时间不计入分数。","不确定就选'不知道'也可以。","不收集姓名、学校、联系方式。"],
   basic:"基础套题", adv:"进阶套题", dunno:"不知道",
   numEmpty:"用键盘输入你的答案", numClear:"清除", numHint:"在电脑上也可以用键盘数字键输入。",
   prev:"← 上一题", next:"下一题 →", finish:"查看结果 →",
-  resLabel:(a,s)=>`${a}岁 · ${s} · 基于研究样本的参考结果`,
+  resLabel:s=>`${s} · 基于研究样本的参考结果`,
   resH2:"沉着地找到了<br>规律。", resP:"比起一个分数，更值得一起看看哪类问题做得好。",
   scoreL:"参考推理分数", pct:p=>`约第${p}百分位`, areasH:"分领域结果", rawL:"原始分",
   rawNote:"法兰德斯12岁为主样本<br>平均10.76 · 标准差5.11",
   discT:"这个分数是怎么算的？",
-  discP:"借用2025年Ch-ICAR研究样本的均值和标准差，简单换算为均值100、标准差15的形式。每次随机出题，因此不同次、不同套题之间的分数不能直接比较；它也不是标准化IQ，对极端分数和单一领域的解读须格外谨慎。",
+  discP:"借用2025年Ch-ICAR研究样本的均值和标准差，简单换算为均值100、标准差15的形式。每次随机出题，因此不同次、不同套题之间的分数不能直接比较；它也不是标准化IQ，对极端分数和单一领域的解读须格外谨慎。换算统计基于10~14岁样本，其他年龄段的结果超出样本范围，仅供娱乐参考。",
   reviewT:"逐题回顾讲解 (27题)", ok:"正确", no:"错误", mine:"我的答案", right:"正确答案", noAns:"未作答",
   home:"回到首页", retry:"再做一次", footL:"© To the Moon · 娱乐·学习参考", footTools:"思考星实验室", footHome:"博客首页", footToolsUrl:"/lab/?lang=zh", footHomeUrl:"/zh/",
   mat:"找出规律，选择空格中应填入的图形。", ana:"按照前一组的关系，选择空格中应填入的图形。", num:"直接输入数列的下一个数。",
@@ -498,12 +511,12 @@ let storedLang = null;
 try { storedLang = localStorage.getItem("iq_lang"); } catch (e) {}
 const initLang = ["ko","en","ja","zh"].indexOf(params.get("lang")) >= 0 ? params.get("lang") : (["ko","en","ja","zh"].indexOf(storedLang) >= 0 ? storedLang : "ko");
 
-const state = { screen:"home", age:12, consent:false, index:0, answers:{}, test:[], lang:initLang };
+const state = { screen:"home", diff:"adv", consent:false, index:0, answers:{}, test:[], lang:initLang };
 const app = document.getElementById("app");
 
 function T() { return UI[state.lang]; }
-function bank() { return state.age <= 11 ? BANK_A : BANK_B; }
-function setName() { return state.age <= 11 ? T().basic : T().adv; }
+function bank() { return state.diff === "easy" ? BANK_A : BANK_B; }
+function setName() { return state.diff === "easy" ? T().basic : T().adv; }
 
 function shuffle(arr) {
   const a = arr.slice();
@@ -590,16 +603,18 @@ function viewHome() {
 
 function viewSetup() {
   const t = T();
-  const opts = [10, 11, 12, 13, 14].map(n => `<option value="${n}" ${state.age === n ? "selected" : ""}>${t.ageOpt(n)}</option>`).join("");
   return `
   <section class="setupWrap">
     <div class="stepLabel">${t.setupStep}</div>
     <h2>${t.setupH2}</h2>
     <div class="setupGrid">
       <div class="setupForm">
-        <label for="age">${t.ageLabel}</label>
-        <select id="age">${opts}</select>
-        <p class="setNote">${t.setNote(setName())}</p>
+        <label>${t.diffLabel}</label>
+        <div class="diffPick">
+          <button data-action="diff" data-d="easy" class="${state.diff === "easy" ? "on" : ""}">${t.diffEasy}<span>${t.diffEasyHint}</span></button>
+          <button data-action="diff" data-d="adv" class="${state.diff === "adv" ? "on" : ""}">${t.diffAdv}<span>${t.diffAdvHint}</span></button>
+        </div>
+        <p class="setNote">${t.setNote}</p>
         <label class="check"><input type="checkbox" id="consent" ${state.consent ? "checked" : ""}><span>${t.consent}</span></label>
         <button class="primary wide" data-action="start" ${state.consent ? "" : "disabled"}>${t.ready} <span>→</span></button>
       </div>
@@ -689,7 +704,7 @@ function viewResult() {
   <section class="resultWrap">
     <div class="resultHero">
       <div>
-        <span class="stepLabel">${t.resLabel(state.age, setName())}</span>
+        <span class="stepLabel">${t.resLabel(setName())}</span>
         <h2>${t.resH2}</h2>
         <p>${t.resP}</p>
       </div>
@@ -755,6 +770,7 @@ app.addEventListener("click", e => {
     try { localStorage.setItem("iq_lang", state.lang); } catch (err) {}
     render();
   }
+  else if (a === "diff") { state.diff = btn.dataset.d; render(); }
   else if (a === "start") { state.index = 0; state.answers = {}; state.test = drawTest(); setScreen("quiz"); }
   else if (a === "choose") { state.answers[state.index] = Number(btn.dataset.i); render(); }
   else if (a === "digit") inputDigit(btn.dataset.d);
@@ -766,8 +782,7 @@ app.addEventListener("click", e => {
 });
 
 app.addEventListener("change", e => {
-  if (e.target.id === "age") { state.age = Number(e.target.value); render(); }
-  else if (e.target.id === "consent") { state.consent = e.target.checked; render(); }
+  if (e.target.id === "consent") { state.consent = e.target.checked; render(); }
 });
 
 document.addEventListener("keydown", e => {
