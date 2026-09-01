@@ -4,7 +4,10 @@
 
   python play.py --out shots/try1 --actions "shot; text; click 400,300; wait 3500; shot"
 
-액션 (세미콜론 구분):
+액션 구분: **개행이 있으면 줄 단위**, 없으면 세미콜론.
+  → eval 에 세미콜론이 들어가는 JS 를 쓰려면 액션을 반드시 줄바꿈으로 나눠라.
+
+액션:
   shot                  스크린샷 저장 (out/NN.png) + 그 시점 게임 상태 출력
   text                  화면 DOM 텍스트 덤프
   click X,Y             화면 좌표 클릭 (CSS px)
@@ -85,7 +88,11 @@ def main():
             b.close(); httpd.shutdown(); return 1
         pg.wait_for_timeout(800)
 
-        for raw in a.actions.split(";"):
+        # 액션 구분: 개행이 있으면 줄 단위로 나눈다(그래야 eval 안에 세미콜론을 쓸 수 있다).
+        # 개행이 없으면 예전처럼 세미콜론으로 나눈다.
+        raw_actions = (a.actions.splitlines() if "\n" in a.actions.strip()
+                       else a.actions.split(";"))
+        for raw in raw_actions:
             act = raw.strip()
             if not act:
                 continue

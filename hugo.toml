@@ -8,6 +8,10 @@ defaultContentLanguage = "ko"
 defaultContentLanguageInSubdir = false
 hasCJKLanguage = true
 
+# 애드센스 심사 대비: 자동번역(en/ja/zh) 일시 비활성화 (2026-07)
+# 한국어만 빌드됨. 되돌리려면 아래 한 줄만 삭제(또는 주석 처리)하면 즉시 복구.
+disableLanguages = ["en", "ja", "zh"]
+
 enableRobotsTXT = true
 buildDrafts = false
 buildFuture = false
