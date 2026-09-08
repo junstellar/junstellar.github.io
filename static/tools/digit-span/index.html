@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>숫자 기억력 테스트 — 생각별 연구소</title>
+<meta name="description" content="숫자가 한 자리씩 나타났다 사라집니다. 본 순서대로, 그리고 거꾸로 입력해 작업기억의 폭(숫자 폭)을 측정하세요. 성인 참고치 7±2. 4개 언어 지원, 기록은 서버로 전송되지 않습니다.">
+<meta property="og:title" content="숫자 기억력 테스트 — 생각별 연구소">
+<meta property="og:description" content="몇 자리까지 기억할 수 있나요? 지능검사가 실제로 쓰는 숫자 폭 과제, 브라우저에서 바로.">
+<style>
+:root { --ink:#18221c; --paper:#f4f1e8; --mint:#c9f36a; --orange:#ff6b35; }
+* { box-sizing:border-box; }
+h1,h2,h3,p { margin:0; }
+ul { margin:0; padding:0; list-style:none; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,"Noto Sans KR",sans-serif; }
+button { font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer; }
+.shell { min-height:100vh; min-height:100dvh; overflow:hidden; display:flex; flex-direction:column; }
+.topbar { height:clamp(50px,7vh,78px); flex:none; display:flex; align-items:center; justify-content:space-between; max-width:1180px; width:100%; margin:0 auto; padding:0 28px; border-bottom:1px solid rgba(24,34,28,.18); }
+.brand { font-weight:800; letter-spacing:-.04em; display:flex; align-items:center; gap:10px; }
+.brandMark { display:grid; place-items:center; width:31px; height:31px; background:var(--ink); color:var(--mint); border-radius:50% 50% 45% 55%; font-family:Georgia,serif; }
+.topRight { display:flex; align-items:center; gap:14px; }
+.researchTag { font-size:12px; border:1px solid var(--ink); border-radius:99px; padding:7px 12px; }
+.langSw { display:flex; gap:4px; font-size:11px; }
+.langSw button { padding:4px 7px; border:1px solid transparent; border-radius:3px; color:#6f7972; }
+.langSw button.on { border-color:var(--ink); color:var(--ink); font-weight:800; }
+.hero { position:relative; max-width:1180px; width:100%; margin:0 auto; padding:clamp(12px,2.6vh,56px) 28px clamp(14px,3vh,64px); flex:1; display:flex; flex-direction:column; justify-content:center; }
+.hero:after { content:"7"; position:absolute; right:8%; top:2%; font:700 380px/1 Georgia,serif; color:transparent; -webkit-text-stroke:2px rgba(24,34,28,.08); transform:rotate(10deg); pointer-events:none; }
+.eyebrow { font-size:13px; font-weight:700; letter-spacing:.02em; margin-bottom:clamp(10px,2.2vh,26px); }
+.eyebrow span { color:var(--orange); margin-right:8px; }
+h1 { position:relative; z-index:1; font-size:clamp(40px,min(7.6vw,9vh),104px); line-height:.98; letter-spacing:-.075em; max-width:950px; }
+h1 em { color:var(--orange); font-family:Georgia,"Noto Serif KR",serif; font-weight:400; }
+.heroCopy { max-width:540px; font-size:clamp(14px,2vh,18px); line-height:1.65; margin:clamp(16px,3vh,35px) 0 clamp(14px,2.5vh,27px); color:#435047; }
+.facts { display:flex; gap:36px; margin:0 0 clamp(16px,3vh,34px); }
+.facts div { display:flex; align-items:baseline; gap:7px; }
+.facts strong { font:700 clamp(24px,3vh,31px)/1 Georgia,serif; }
+.facts span { font-size:12px; color:#647068; }
+.primary { position:relative; z-index:2; border-radius:4px; background:var(--ink); color:white; padding:clamp(12px,2vh,17px) 22px; min-width:220px; display:inline-flex; justify-content:space-between; gap:14px; box-shadow:5px 5px 0 var(--mint); }
+.primary:hover { transform:translate(-2px,-2px); box-shadow:7px 7px 0 var(--mint); }
+.primary:disabled { opacity:.35; cursor:not-allowed; transform:none; box-shadow:5px 5px 0 #c9cdc9; }
+.notice { font-size:11px; color:#747b76; margin-top:clamp(10px,1.8vh,19px); }
+.studyCard { background:var(--ink); color:white; padding:clamp(18px,3.6vh,52px) max(28px,calc((100vw - 1124px)/2)); display:grid; grid-template-columns:160px 1fr 1fr; gap:clamp(18px,3vh,44px) 44px; align-items:start; }
+.cardIndex { color:var(--mint); font-size:12px; }
+.studyCard h2 { font-size:clamp(24px,3.6vh,36px); line-height:1.15; letter-spacing:-.05em; }
+.studyCard p { color:#b9c2bc; line-height:1.7; font-size:clamp(13px,1.8vh,16px); }
+.statLine { grid-column:2/4; border-top:1px solid #536057; padding-top:clamp(12px,2vh,22px); display:flex; justify-content:space-between; align-items:baseline; }
+.statLine strong { font:700 clamp(20px,2.8vh,28px) Georgia,serif; color:var(--mint); }.statLine small{color:#9da8a0;font-size:13px}
+.testWrap,.resultWrap { max-width:900px; width:100%; margin:0 auto; padding:clamp(16px,3vh,44px) 28px clamp(16px,3vh,44px); flex:1; display:flex; flex-direction:column; }
+.testHead { display:flex; justify-content:space-between; align-items:end; margin-bottom:12px; }
+.testHead>span{font-size:13px;font-weight:800;color:#d84e1e}
+.testHead strong{font:700 22px Georgia,serif}.testHead small{font:13px Arial;color:#778079}
+.stage { flex:1; min-height:min(430px,52vh); border-radius:12px; background:#fffdf7; border:1px solid #cad0cb; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(10px,2vh,18px); text-align:center; padding:24px; user-select:none; -webkit-user-select:none; }
+.stage.dark { background:var(--ink); color:white; border-color:var(--ink); }
+.stage .big { font:700 clamp(90px,18vh,160px)/1 Georgia,serif; }
+.stage.dark .big { color:var(--mint); }
+.stage .msg { font-size:clamp(17px,2.6vh,24px); font-weight:800; letter-spacing:-.02em; }
+.stage .sub { font-size:13px; opacity:.8; max-width:420px; line-height:1.6; }
+.stage .phaseTag { font-size:12px; font-weight:800; letter-spacing:.06em; color:#d84e1e; }
+.stage.dark .phaseTag { color:var(--mint); }
+.stage .okBig { font:700 clamp(34px,6vh,52px)/1.1 Georgia,serif; color:#2f7d4f; }
+.stage .noBig { font:700 clamp(34px,6vh,52px)/1.1 Georgia,serif; color:#d84e1e; }
+.stage .seqShow { font:700 clamp(20px,3.4vh,30px) Georgia,serif; letter-spacing:.25em; color:#566159; }
+.entryShow { font:700 clamp(30px,5.5vh,46px)/1 Georgia,serif; letter-spacing:.3em; min-height:1.2em; }
+.entryShow i { font-style:normal; color:#c2c8c1; }
+.numWrap{display:grid;grid-template-columns:minmax(0,430px);justify-content:center;gap:10px;width:100%}
+.numpad{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.numpad button{min-height:clamp(38px,6vh,50px);border:1px solid #aab2ac;border-radius:3px;background:#fffdf7;font:700 17px Georgia,serif}
+.numpad button:hover{background:var(--mint)}
+.numpad button.fn{font:600 12px Arial;color:#566159}
+.numHint{font-size:11px;color:#8b948d;text-align:center}
+.tapArea { cursor:pointer; }
+.resultHero { display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;border-bottom:1px solid #bfc5c0;padding-bottom:clamp(18px,3vh,36px)}
+.resultHero h2 { font-size:clamp(30px,min(5.5vw,6vh),56px); line-height:1.05; letter-spacing:-.06em; margin-bottom:12px; }
+.resultHero p { color:#667169; font-size:14px; line-height:1.6; }
+.spanDial { aspect-ratio:1; width:100%; max-width:min(260px,34vh); margin:0 auto; border:2px solid var(--ink); border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:10px 10px 0 var(--mint); background:#fffdf7; }
+.spanDial span { font-size:12px; }
+.spanDial strong { font:700 clamp(48px,8vh,70px)/1 Georgia,serif; color:var(--orange); margin:6px; }
+.spanDial small { font-size:12px; font-weight:800; }
+.statsRow { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; padding:clamp(16px,2.6vh,28px) 0; }
+.statBox { background:#fffdf7; border:1px solid #cad0cb; border-radius:8px; padding:16px 18px; }
+.statBox span { font-size:11px; color:#7a837d; display:block; margin-bottom:4px; }
+.statBox b { font:700 26px Georgia,serif; }
+.statBox small { font-size:12px; font-weight:800; margin-left:8px; }
+.statBox p { font-size:12px; color:#697468; line-height:1.55; margin-top:6px; }
+.lvHigh { color:#d84e1e; } .lvMid { color:#6f7972; } .lvLow { color:#2f6f8f; }
+.disclaimer{background:#e7e3d8;padding:20px 26px;border-left:5px solid var(--orange)}.disclaimer strong{display:block;margin-bottom:6px;font-size:14px}.disclaimer p{font-size:12.5px;line-height:1.65;color:#566159}
+.resultActions{display:flex;justify-content:flex-end;gap:15px;margin-top:20px}.resultActions>button:first-child{border:1px solid #89928c;background:transparent;padding:14px 24px}.resultActions .primary{min-width:0}
+.siteFoot{max-width:1180px;width:100%;margin:auto auto 0;padding:clamp(12px,2.2vh,22px) 28px clamp(14px,2.2vh,26px);border-top:1px solid rgba(24,34,28,.14);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:#747b76}
+.siteFoot a{color:#435047}
+@media(max-width:700px){.numpad{grid-template-columns:repeat(3,1fr)}.numWrap{grid-template-columns:minmax(0,300px)}.topbar{height:66px}.researchTag{display:none}.hero:after{font-size:260px;right:-10%}h1{font-size:52px}.facts{gap:18px;flex-wrap:wrap}.studyCard{grid-template-columns:1fr}.studyCard h2,.studyCard p,.statLine{grid-column:1}.studyCard h2{font-size:29px}.resultHero{grid-template-columns:1fr;gap:24px}.statsRow{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="shell" id="app"></div>
+
+<script>
+"use strict";
+
+/* 숫자 폭(Digit Span) — 정방향 → 역방향, 자리수당 2회 시도, 2회 연속 실패 시 단계 종료.
+   결과 점수 객체는 getResult()가 반환 — 추후 익명 점수 제출(옵트인)은 이 객체를 그대로 전송하면 됨. */
+
+const FWD_START = 3, BWD_START = 2, MAX_LEN = 10;
+const SHOW_MS = 750, GAP_MS = 250, FB_MS = 1000;
+
+const UI = {
+ko:{ docTitle:"숫자 기억력 테스트 — 생각별 연구소", tag:"숫자 폭(Digit Span) 과제", brand:"생각별 연구소",
+  eyebrow:"작업기억을 재는 가장 고전적인 방법",
+  h1:"몇 자리까지<br><em>기억</em>할 수 있나요?",
+  heroCopy:"숫자가 한 자리씩 나타났다 사라집니다. 1단계는 본 순서대로, 2단계는 거꾸로 입력하세요. 작업기억의 폭을 측정합니다. 기록은 서버로 전송되지 않습니다.",
+  f1:"단계 · 정방향과 역방향", f2:"성인 참고치", f3:"분 내외",
+  start:"측정 시작하기", notice:"오락·교육용 참고 검사이며 전문 인지검사를 대신하지 않습니다.",
+  cardIndex:"01 / 측정 방식", studyH2:"지능검사가 실제로 쓰는<br>소검사입니다.",
+  studyP:"숫자 폭(Digit Span)은 표준화 지능검사들이 작업기억 소검사로 써온 고전 과제입니다. 연구에서 성인의 정방향 폭은 평균 6~7자리(이른바 '마법의 수 7±2'), 거꾸로 외우는 역방향 폭은 4~5자리로 보고됩니다.",
+  statL:"연구 참고치 (성인 평균)", statV:"정방향 6~7 · 역방향 4~5",
+  phaseF:"1단계 · 정방향", phaseB:"2단계 · 역방향",
+  introF:"숫자를 본 순서 그대로 입력하세요.", introB:"이번엔 거꾸로! 마지막에 본 숫자부터 입력하세요.",
+  introHint:"숫자는 1초에 한 자리씩 나타납니다. 자리수당 기회는 2번, 두 번 다 틀리면 단계가 끝납니다.",
+  tapStart:"눌러서 시작", lenTag:n=>`${n}자리`, trialTag:n=>`시도 ${n}/2`,
+  watch:"잘 보세요…", recallF:"본 순서대로 입력하세요", recallB:"거꾸로 입력하세요",
+  okT:"정답!", okNext:"한 자리 늘려볼게요", okCap:"최대 자리수까지 성공!",
+  noT:"아깝네요", noRetry:"같은 자리수로 한 번 더", noEnd:"이 단계는 여기까지",
+  answerWas:"정답", toBwd:"잠시 후 역방향 단계로 넘어갑니다",
+  numHint:"PC에서는 키보드 숫자키와 백스페이스도 됩니다.",
+  resLabel:"숫자 폭 · 연구 참고치 환산", resH2:"당신의<br>작업기억 성적은—",
+  scaledL:"환산점수", scaledNote:"평균 10 · 표준편차 3 (지능검사 소검사 형식)", pct:p=>`백분위 약 ${p}%`, scaledShort:"환산점수",
+  cls:{vlo:"매우 낮음",lo:"낮음",blo:"평균 하",avg:"평균",bhi:"평균 상",sup:"우수",vsup:"매우 우수"},
+  totalL:"합계 폭", fwdL:"정방향 폭", bwdL:"역방향 폭", unit:"자리",
+  fwdRef:"성인 평균 6~7자리", bwdRef:"성인 평균 4~5자리",
+  lv:{hi:"평균 위",mid:"평균 범위",lo:"평균 아래"},
+  fwdCmt:{hi:"연구 참고치보다 넓은 폭입니다. 한 번에 붙잡는 용량이 큰 편이에요.",mid:"성인 참고치(6~7자리) 안의 안정적인 기록입니다.",lo:"오늘은 참고치 아래지만, 컨디션과 연습의 영향이 큰 과제입니다."},
+  bwdCmt:{hi:"거꾸로 조작하는 능력이 참고치를 웃돕니다. 작업기억의 '조작' 쪽이 강해요.",mid:"성인 참고치(4~5자리) 안의 안정적인 기록입니다.",lo:"역방향은 원래 훨씬 어렵습니다. 반복하면 늘어나는 영역이에요."},
+  discT:"이 기록은 어떻게 봐야 하나요?",
+  discP:"정방향 폭은 단기 저장 용량을, 역방향 폭은 정보를 붙잡은 채 조작하는 능력을 반영합니다. 환산점수는 연구 문헌의 성인 평균·표준편차를 지능검사 소검사와 같은 형식(평균 10·표준편차 3)으로 단순 환산한 참고치로, 실제 웩슬러 규준표를 사용한 것이 아닙니다. 연령·컨디션·환경에 따라 달라지는 오락·교육용 참고 기록입니다.",
+  home:"처음으로", retry:"다시 측정", footL:"© To the Moon · 오락·교육용 참고 검사", footTools:"생각별 연구소", footHome:"블로그 홈",
+  footToolsUrl:"/lab/?lang=ko", footHomeUrl:"/" },
+en:{ docTitle:"Digit Span Test — Thinking Star Lab", tag:"Digit Span paradigm", brand:"Thinking Star Lab",
+  eyebrow:"The classic measure of working memory",
+  h1:"How many digits<br>can you <em>hold</em>?",
+  heroCopy:"Digits appear one at a time, then vanish. Phase 1: type them in order. Phase 2: in reverse. This measures your working-memory span. Nothing is uploaded.",
+  f1:"phases · forward & backward", f2:"adult reference", f3:"minutes",
+  start:"Start the test", notice:"For fun and learning — not a substitute for professional cognitive assessment.",
+  cardIndex:"01 / The method", studyH2:"A subtest real intelligence<br>tests actually use.",
+  studyP:"Digit Span is the classic working-memory subtest used in standardized intelligence testing. Research reports adult forward spans of about 6–7 digits (the famous 'magical number 7±2') and backward spans of 4–5.",
+  statL:"Research reference (adult average)", statV:"Forward 6–7 · Backward 4–5",
+  phaseF:"Phase 1 · Forward", phaseB:"Phase 2 · Backward",
+  introF:"Type the digits in the order shown.", introB:"Now in reverse — start from the last digit you saw.",
+  introHint:"Digits appear one per second. Two tries per length; two misses ends the phase.",
+  tapStart:"Tap to start", lenTag:n=>`${n} digits`, trialTag:n=>`Try ${n}/2`,
+  watch:"Watch closely…", recallF:"Type them in order", recallB:"Type them in reverse",
+  okT:"Correct!", okNext:"Let's add one more digit", okCap:"You reached the maximum length!",
+  noT:"So close", noRetry:"One more try at this length", noEnd:"That's it for this phase",
+  answerWas:"Answer", toBwd:"Moving to the backward phase…",
+  numHint:"On PC, number keys and backspace work too.",
+  resLabel:"Digit span · research-based conversion", resH2:"Your working-memory<br>score is —",
+  scaledL:"Scaled score", scaledNote:"Mean 10 · SD 3 (intelligence-subtest format)", pct:p=>`≈ ${p}th percentile`, scaledShort:"scaled",
+  cls:{vlo:"Very low",lo:"Low",blo:"Low average",avg:"Average",bhi:"High average",sup:"Superior",vsup:"Very superior"},
+  totalL:"Total span", fwdL:"Forward span", bwdL:"Backward span", unit:"digits",
+  fwdRef:"Adult average 6–7", bwdRef:"Adult average 4–5",
+  lv:{hi:"Above average",mid:"Average range",lo:"Below average"},
+  fwdCmt:{hi:"Wider than the research reference — you hold a lot at once.",mid:"A solid result within the adult reference (6–7 digits).",lo:"Below the reference today — but this task is highly sensitive to condition and practice."},
+  bwdCmt:{hi:"Manipulating in reverse above the reference — the 'processing' side of your working memory is strong.",mid:"A solid result within the adult reference (4–5 digits).",lo:"Backward is much harder by design — and it improves with practice."},
+  discT:"How should I read this?",
+  discP:"Forward span reflects short-term storage capacity; backward span reflects holding information while manipulating it. The scaled score maps research-literature adult means and SDs onto the intelligence-subtest format (mean 10, SD 3) — it does not use actual Wechsler norm tables. A fun/educational reference that varies with age, condition, and environment.",
+  home:"Home", retry:"Test again", footL:"© To the Moon · for fun & learning", footTools:"Thinking Star Lab", footHome:"Blog home",
+  footToolsUrl:"/lab/?lang=en", footHomeUrl:"/en/" },
+ja:{ docTitle:"数字記憶テスト — 考える星研究所", tag:"数字スパン(Digit Span)課題", brand:"考える星研究所",
+  eyebrow:"作業記憶を測る最も古典的な方法",
+  h1:"何桁まで<br><em>覚え</em>られますか?",
+  heroCopy:"数字が1桁ずつ現れて消えます。第1段階は見た順に、第2段階は逆順に入力。作業記憶のスパンを測定します。記録は送信されません。",
+  f1:"段階 · 順唱と逆唱", f2:"成人参考値", f3:"分程度",
+  start:"測定を始める", notice:"娯楽・教育用の参考検査であり、専門的な認知検査の代わりにはなりません。",
+  cardIndex:"01 / 測定方式", studyH2:"知能検査が実際に使う<br>下位検査です。",
+  studyP:"数字スパン(Digit Span)は標準化された知能検査が作業記憶の下位検査として使ってきた古典課題。研究では成人の順唱は平均6〜7桁(有名な『マジカルナンバー7±2』)、逆唱は4〜5桁と報告されています。",
+  statL:"研究参考値(成人平均)", statV:"順唱 6〜7 · 逆唱 4〜5",
+  phaseF:"第1段階 · 順唱", phaseB:"第2段階 · 逆唱",
+  introF:"数字を見た順のまま入力してください。", introB:"今度は逆から!最後に見た数字から入力します。",
+  introHint:"数字は1秒に1桁ずつ。各桁数につき2回まで、2回続けて間違えると段階終了です。",
+  tapStart:"タップで開始", lenTag:n=>`${n}桁`, trialTag:n=>`挑戦 ${n}/2`,
+  watch:"よく見て…", recallF:"見た順に入力", recallB:"逆順に入力",
+  okT:"正解!", okNext:"1桁増やします", okCap:"最大桁数まで成功!",
+  noT:"惜しい", noRetry:"同じ桁数でもう一度", noEnd:"この段階はここまで",
+  answerWas:"正解", toBwd:"まもなく逆唱の段階へ…",
+  numHint:"PCではキーボードの数字キーとバックスペースも使えます。",
+  resLabel:"数字スパン · 研究参考値換算", resH2:"あなたの<br>作業記憶の成績は—",
+  scaledL:"換算点", scaledNote:"平均10 · 標準偏差3 (知能検査下位検査形式)", pct:p=>`パーセンタイル約${p}%`, scaledShort:"換算点",
+  cls:{vlo:"非常に低い",lo:"低い",blo:"平均の下",avg:"平均",bhi:"平均の上",sup:"高い",vsup:"非常に高い"},
+  totalL:"合計スパン", fwdL:"順唱スパン", bwdL:"逆唱スパン", unit:"桁",
+  fwdRef:"成人平均 6〜7桁", bwdRef:"成人平均 4〜5桁",
+  lv:{hi:"平均以上",mid:"平均範囲",lo:"平均以下"},
+  fwdCmt:{hi:"研究参考値より広いスパン。一度に保持できる量が多いタイプです。",mid:"成人参考値(6〜7桁)内の安定した記録です。",lo:"今日は参考値以下ですが、この課題はコンディションと練習の影響が大きいものです。"},
+  bwdCmt:{hi:"逆順の操作が参考値を上回っています。作業記憶の『操作』側が強いですね。",mid:"成人参考値(4〜5桁)内の安定した記録です。",lo:"逆唱はもともとずっと難しい課題。繰り返せば伸びる領域です。"},
+  discT:"この記録の見方は?",
+  discP:"順唱は短期的な保持容量を、逆唱は情報を保持したまま操作する力を反映します。換算点は研究文献の成人平均・標準偏差を知能検査の下位検査と同じ形式(平均10・標準偏差3)に単純換算した参考値で、実際のウェクスラー規準表を使ったものではありません。年齢・体調・環境で変わる娯楽・教育用の参考記録です。",
+  home:"最初へ", retry:"もう一度測る", footL:"© To the Moon · 娯楽・教育用参考テスト", footTools:"考える星研究所", footHome:"ブログホーム",
+  footToolsUrl:"/lab/?lang=ja", footHomeUrl:"/ja/" },
+zh:{ docTitle:"数字记忆测试 — 思考星实验室", tag:"数字广度(Digit Span)任务", brand:"思考星实验室",
+  eyebrow:"测量工作记忆的最经典方法",
+  h1:"你能记住<br>多少位<em>数字</em>？",
+  heroCopy:"数字一位一位出现又消失。第一阶段按原顺序输入，第二阶段倒着输入。测量你的工作记忆广度。记录不会上传。",
+  f1:"阶段 · 顺背与倒背", f2:"成人参考值", f3:"分钟左右",
+  start:"开始测量", notice:"仅供娱乐和学习参考，不能替代专业认知测评。",
+  cardIndex:"01 / 测量方式", studyH2:"智力测验实际使用的<br>分测验。",
+  studyP:"数字广度(Digit Span)是标准化智力测验长期使用的工作记忆分测验。研究报告成人顺背平均6~7位（著名的'神奇数字7±2'），倒背为4~5位。",
+  statL:"研究参考值(成人平均)", statV:"顺背 6~7 · 倒背 4~5",
+  phaseF:"第一阶段 · 顺背", phaseB:"第二阶段 · 倒背",
+  introF:"按看到的顺序输入数字。", introB:"这次倒过来！从最后看到的数字开始输入。",
+  introHint:"数字每秒出现一位。每个位数有2次机会，连错2次该阶段结束。",
+  tapStart:"点击开始", lenTag:n=>`${n}位`, trialTag:n=>`尝试 ${n}/2`,
+  watch:"看仔细…", recallF:"按顺序输入", recallB:"倒序输入",
+  okT:"正确！", okNext:"再加一位", okCap:"达到最大位数！",
+  noT:"可惜", noRetry:"同样位数再试一次", noEnd:"这个阶段到此为止",
+  answerWas:"正确答案", toBwd:"即将进入倒背阶段…",
+  numHint:"电脑上也可以用键盘数字键和退格键。",
+  resLabel:"数字广度 · 研究参考值换算", resH2:"你的工作记忆<br>成绩是—",
+  scaledL:"量表分", scaledNote:"平均10 · 标准差3 (智力测验分测验形式)", pct:p=>`约第${p}百分位`, scaledShort:"量表分",
+  cls:{vlo:"非常低",lo:"偏低",blo:"中下",avg:"平均",bhi:"中上",sup:"优秀",vsup:"非常优秀"},
+  totalL:"总广度", fwdL:"顺背广度", bwdL:"倒背广度", unit:"位",
+  fwdRef:"成人平均 6~7位", bwdRef:"成人平均 4~5位",
+  lv:{hi:"高于平均",mid:"平均范围",lo:"低于平均"},
+  fwdCmt:{hi:"广度超过研究参考值——你一次能抓住的信息量很大。",mid:"处于成人参考值(6~7位)内的稳定成绩。",lo:"今天低于参考值——但这个任务很受状态和练习影响。"},
+  bwdCmt:{hi:"倒序操作超过参考值——你工作记忆的'加工'一侧很强。",mid:"处于成人参考值(4~5位)内的稳定成绩。",lo:"倒背本来就难得多，而且会随练习提升。"},
+  discT:"这个成绩怎么看？",
+  discP:"顺背广度反映短时储存容量，倒背广度反映边保持边加工信息的能力。量表分是把研究文献的成人均值·标准差换算成智力测验分测验形式(平均10·标准差3)的参考值，并未使用真正的韦氏常模表。成绩会随年龄、状态和环境变化，仅供娱乐和学习参考。",
+  home:"回到首页", retry:"再测一次", footL:"© To the Moon · 娱乐·学习参考", footTools:"思考星实验室", footHome:"博客首页",
+  footToolsUrl:"/lab/?lang=zh", footHomeUrl:"/zh/" }
+};
+
+const params = new URLSearchParams(location.search);
+let storedLang = null;
+try { storedLang = localStorage.getItem("iq_lang"); } catch (e) {}
+const initLang = ["ko","en","ja","zh"].indexOf(params.get("lang")) >= 0 ? params.get("lang") : (["ko","en","ja","zh"].indexOf(storedLang) >= 0 ? storedLang : "ko");
+
+const state = {
+  screen:"home", lang:initLang,
+  phase:"fwd", mode:"intro",       // mode: intro | show | recall | fb
+  len:FWD_START, trial:1, seq:[], showIdx:0, entry:"",
+  fails:0, spans:{ fwd:0, bwd:0 },
+  fb:null                          // {ok, endPhase, cap, answer}
+};
+const app = document.getElementById("app");
+let timer = null;
+
+function T() { return UI[state.lang]; }
+function clearTimer() { clearTimeout(timer); timer = null; }
+
+function genSeq(n) {
+  const s = [];
+  for (let i = 0; i < n; i++) {
+    let d;
+    do { d = Math.floor(Math.random() * 10); } while (i > 0 && d === s[i - 1]);
+    s.push(d);
+  }
+  return s;
+}
+
+function expected() {
+  return state.phase === "fwd" ? state.seq.join("") : state.seq.slice().reverse().join("");
+}
+
+/* 환산점수: 연구 문헌의 성인 평균·표준편차를 지능검사 소검사 형식(평균 10·표준편차 3, 1~19)으로 단순 환산 */
+const REF = { fwd:{m:6.5, sd:1.3}, bwd:{m:4.8, sd:1.3}, total:{m:11.3, sd:2.2} };
+function toScaled(v, r) { return Math.max(1, Math.min(19, Math.round(10 + 3 * (v - r.m) / r.sd))); }
+function percentile(z) {
+  const t = 1 / (1 + .2316419 * Math.abs(z)); const d = .3989423 * Math.exp(-z * z / 2);
+  const p = 1 - d * t * (.3193815 + t * (-.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))));
+  return Math.round(100 * (z >= 0 ? p : 1 - p));
+}
+function clsOf(s) { return s <= 3 ? "vlo" : s <= 5 ? "lo" : s <= 7 ? "blo" : s <= 12 ? "avg" : s <= 14 ? "bhi" : s <= 16 ? "sup" : "vsup"; }
+
+/* 결과 점수 객체 — 추후 옵트인 익명 제출 시 이 객체를 그대로 사용 */
+function getResult() {
+  const fwd = state.spans.fwd, bwd = state.spans.bwd, total = fwd + bwd;
+  const scaledT = toScaled(total, REF.total);
+  return {
+    tool:"digit-span", fwd, bwd, total,
+    scaledF: toScaled(fwd, REF.fwd), scaledB: toScaled(bwd, REF.bwd), scaledT,
+    pct: percentile((scaledT - 10) / 3), lang: state.lang
+  };
+}
+
+function lvOf(v, midLo, midHi) { return v > midHi ? "hi" : (v < midLo ? "lo" : "mid"); }
+
+function langSw() {
+  return `<span class="langSw">` + [["ko","KO"],["en","EN"],["ja","日"],["zh","中"]].map(([l, lab]) =>
+    `<button data-action="lang" data-l="${l}" class="${state.lang === l ? "on" : ""}">${lab}</button>`).join("") + `</span>`;
+}
+function foot() {
+  return `<footer class="siteFoot"><span>${T().footL}</span><span><a href="${T().footToolsUrl}">${T().footTools}</a> · <a href="${T().footHomeUrl}">${T().footHome}</a></span></footer>`;
+}
+
+function viewHome() {
+  const t = T();
+  return `
+  <section class="hero">
+    <div class="eyebrow"><span>●</span> ${t.eyebrow}</div>
+    <h1>${t.h1}</h1>
+    <p class="heroCopy">${t.heroCopy}</p>
+    <div class="facts"><div><strong>2</strong><span>${t.f1}</span></div><div><strong>7±2</strong><span>${t.f2}</span></div><div><strong>3</strong><span>${t.f3}</span></div></div>
+    <button class="primary" data-action="test">${t.start} <span>→</span></button>
+    <p class="notice">${t.notice}</p>
+  </section>
+  <section class="studyCard">
+    <span class="cardIndex">${t.cardIndex}</span>
+    <h2>${t.studyH2}</h2>
+    <p>${t.studyP}</p>
+    <div class="statLine"><span>${t.statL}</span><strong>${t.statV}</strong></div>
+  </section>`;
+}
+
+function numpadHTML() {
+  const t = T();
+  const dots = [];
+  for (let i = 0; i < state.len; i++) {
+    dots.push(i < state.entry.length ? state.entry[i] : "<i>·</i>");
+  }
+  const keys = ["1","2","3","4","5","6","7","8","9","0"].map(d => `<button data-action="digit" data-d="${d}">${d}</button>`).join("");
+  return `
+    <div class="entryShow">${dots.join(" ")}</div>
+    <div class="numWrap"><div class="numpad">${keys}<button class="fn" data-action="numclear">C</button><button class="fn" data-action="numback">←</button></div><p class="numHint">${t.numHint}</p></div>`;
+}
+
+function stageHTML() {
+  const t = T();
+  const phaseTag = state.phase === "fwd" ? t.phaseF : t.phaseB;
+  if (state.mode === "intro") {
+    const isBwdIntro = state.phase === "bwd";
+    return `<div class="stage dark tapArea" data-action="stage">
+      <span class="phaseTag">${phaseTag}</span>
+      <p class="msg">${isBwdIntro ? t.introB : t.introF}</p>
+      <p class="sub">${t.introHint}</p>
+      <p class="msg" style="opacity:.85">▶ ${t.tapStart}</p>
+    </div>`;
+  }
+  if (state.mode === "show") {
+    const d = state.showIdx < state.seq.length && state.showIdx >= 0 ? state.seq[state.showIdx] : "";
+    return `<div class="stage dark">
+      <span class="phaseTag">${phaseTag} · ${t.lenTag(state.len)}</span>
+      <span class="big">${d === "" ? "&nbsp;" : d}</span>
+      <p class="sub">${t.watch}</p>
+    </div>`;
+  }
+  if (state.mode === "recall") {
+    return `<div class="stage">
+      <span class="phaseTag">${phaseTag} · ${t.lenTag(state.len)} · ${t.trialTag(state.trial)}</span>
+      <p class="msg">${state.phase === "fwd" ? t.recallF : t.recallB}</p>
+      ${numpadHTML()}
+    </div>`;
+  }
+  // fb
+  const f = state.fb;
+  if (f.ok) {
+    return `<div class="stage tapArea">
+      <p class="okBig">${t.okT}</p>
+      <p class="sub">${f.cap ? t.okCap : t.okNext}</p>
+    </div>`;
+  }
+  return `<div class="stage tapArea">
+    <p class="noBig">${t.noT}</p>
+    <p class="seqShow">${t.answerWas}: ${f.answer}</p>
+    <p class="sub">${f.endPhase ? (state.phase === "fwd" ? t.toBwd : t.noEnd) : t.noRetry}</p>
+  </div>`;
+}
+
+function viewTest() {
+  const t = T();
+  return `
+  <section class="testWrap">
+    <div class="testHead"><span>${state.phase === "fwd" ? t.phaseF : t.phaseB}</span><strong>${t.lenTag(state.len)} <small>· ${t.trialTag(state.trial)}</small></strong></div>
+    ${stageHTML()}
+  </section>`;
+}
+
+function viewResult() {
+  const t = T();
+  const r = getResult();
+  const fLv = lvOf(r.fwd, 6, 7), bLv = lvOf(r.bwd, 4, 5);
+  const lvClass = l => l === "hi" ? "lvHigh" : (l === "lo" ? "lvLow" : "lvMid");
+  const cls = t.cls[clsOf(r.scaledT)];
+  return `
+  <section class="resultWrap">
+    <div class="resultHero">
+      <div>
+        <span class="eyebrow" style="display:inline-block;margin-bottom:10px"><span>●</span> ${t.resLabel}</span>
+        <h2>${t.resH2}</h2>
+        <p><b>${cls}</b> · ${t.pct(r.pct)}<br>${t.fwdL} ${r.fwd}${t.unit} · ${t.bwdL} ${r.bwd}${t.unit} (${t.totalL} ${r.total}${t.unit})</p>
+        <p style="font-size:12px;color:#7a837d;margin-top:8px">${t.scaledNote}</p>
+      </div>
+      <div class="spanDial"><span>${t.scaledL}</span><strong>${r.scaledT}</strong><small>/ 19 · ${cls}</small></div>
+    </div>
+    <div class="statsRow">
+      <div class="statBox"><span>${t.fwdL} · ${t.fwdRef}</span><b>${r.fwd} ${t.unit}</b><small class="${lvClass(fLv)}">${t.lv[fLv]}</small><p>${t.scaledShort} ${r.scaledF}/19 — ${t.fwdCmt[fLv]}</p></div>
+      <div class="statBox"><span>${t.bwdL} · ${t.bwdRef}</span><b>${r.bwd} ${t.unit}</b><small class="${lvClass(bLv)}">${t.lv[bLv]}</small><p>${t.scaledShort} ${r.scaledB}/19 — ${t.bwdCmt[bLv]}</p></div>
+    </div>
+    <div class="disclaimer"><strong>${t.discT}</strong><p>${t.discP}</p></div>
+    <div class="resultActions">
+      <button data-action="home">${t.home}</button>
+      <button class="primary" data-action="test">${t.retry} <span>↻</span></button>
+    </div>
+  </section>`;
+}
+
+function render() {
+  document.documentElement.lang = state.lang;
+  document.title = T().docTitle;
+  const body = state.screen === "home" ? viewHome() : state.screen === "test" ? viewTest() : viewResult();
+  app.innerHTML = `
+  <header class="topbar">
+    <button class="brand" data-action="home"><span class="brandMark">★</span> ${T().brand}</button>
+    <span class="topRight"><span class="researchTag">${T().tag}</span>${langSw()}</span>
+  </header>
+  ${body}
+  ${foot()}`;
+}
+
+function startTest() {
+  clearTimer();
+  state.screen = "test"; state.phase = "fwd"; state.mode = "intro";
+  state.len = FWD_START; state.trial = 1; state.fails = 0;
+  state.spans = { fwd:0, bwd:0 };
+  render(); window.scrollTo(0, 0);
+}
+
+function startTrial() {
+  clearTimer();
+  state.seq = genSeq(state.len);
+  state.entry = "";
+  state.mode = "show"; state.showIdx = -1;
+  let cur = -1;
+  const step = () => {
+    cur++;
+    if (cur >= state.seq.length) { state.mode = "recall"; render(); return; }
+    state.showIdx = cur;
+    render();
+    timer = setTimeout(() => {
+      const d = document.querySelector(".stage .big");
+      if (d) d.innerHTML = "&nbsp;";
+      timer = setTimeout(step, GAP_MS);
+    }, SHOW_MS);
+  };
+  render();
+  timer = setTimeout(step, 500);
+}
+
+function submitEntry() {
+  if (state.entry.length !== state.len) return;
+  clearTimer();
+  const ok = state.entry === expected();
+  if (ok) {
+    state.spans[state.phase] = state.len;
+    const cap = state.len >= MAX_LEN;
+    state.fb = { ok:true, cap, endPhase:cap, answer:"" };
+    if (!cap) { state.len++; state.trial = 1; state.fails = 0; }
+  } else {
+    state.fails++;
+    const endPhase = state.fails >= 2;
+    state.fb = { ok:false, cap:false, endPhase, answer: expected().split("").join(" ") };
+    if (!endPhase) state.trial = 2;
+  }
+  state.mode = "fb";
+  render();
+  timer = setTimeout(advanceAfterFb, state.fb.ok ? FB_MS : FB_MS + 800);
+}
+
+function advanceAfterFb() {
+  clearTimer();
+  const f = state.fb;
+  if (f.endPhase) {
+    if (state.phase === "fwd") {
+      state.phase = "bwd"; state.mode = "intro";
+      state.len = BWD_START; state.trial = 1; state.fails = 0;
+      render();
+    } else {
+      state.screen = "result";
+      render(); window.scrollTo(0, 0);
+    }
+  } else {
+    startTrial();
+  }
+}
+
+function inputDigit(d) {
+  if (state.screen !== "test" || state.mode !== "recall") return;
+  if (state.entry.length >= state.len) return;
+  state.entry += d;
+  if (state.entry.length === state.len) {
+    render();
+    timer = setTimeout(submitEntry, 250);
+  } else {
+    render();
+  }
+}
+function inputBack() {
+  if (state.mode !== "recall") return;
+  clearTimer();
+  state.entry = state.entry.slice(0, -1);
+  render();
+}
+
+app.addEventListener("click", e => {
+  const btn = e.target.closest("[data-action]");
+  if (!btn) return;
+  const a = btn.dataset.action;
+  if (a === "home") { clearTimer(); state.screen = "home"; render(); window.scrollTo(0, 0); }
+  else if (a === "test") startTest();
+  else if (a === "lang") {
+    state.lang = btn.dataset.l;
+    try { localStorage.setItem("iq_lang", state.lang); } catch (err) {}
+    render();
+  }
+  else if (a === "stage") { if (state.mode === "intro") startTrial(); }
+  else if (a === "digit") inputDigit(btn.dataset.d);
+  else if (a === "numback") inputBack();
+  else if (a === "numclear") { if (state.mode === "recall") { clearTimer(); state.entry = ""; render(); } }
+});
+
+// 숫자 제시 중 탭을 벗어나면 타이머가 늘어져 측정이 왜곡됨 → 해당 시도를 취소하고 안내로 복귀
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden && state.screen === "test" && state.mode === "show") {
+    clearTimer(); state.mode = "intro"; render();
+  }
+});
+
+document.addEventListener("keydown", e => {
+  if (state.screen !== "test") return;
+  if (state.mode === "intro" && (e.key === " " || e.key === "Enter")) { e.preventDefault(); startTrial(); return; }
+  if (state.mode !== "recall") return;
+  if (/^[0-9]$/.test(e.key)) inputDigit(e.key);
+  else if (e.key === "Backspace") { e.preventDefault(); inputBack(); }
+});
+
+render();
+</script>
+</body>
+</html>
