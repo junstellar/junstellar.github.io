@@ -2,7 +2,7 @@
 title: "압축 프로그램에 광고가 뜨길래 직접 만들었습니다"
 description: "쓰던 무료 압축 프로그램에 광고가 뜨기 시작했습니다. 그래서 광고 없는 걸 직접 만들었습니다. ZIP·7z 압축에 20여 종 해제, 멀티코어 병렬 압축. Apache-2.0으로 공개합니다."
 slug: "arcbox-free-archiver"
-date: 2026-09-12T14:30:00+09:00
+date: 2026-09-12T13:00:00+09:00
 draft: false
 categories: ["AI 코딩"]
 tags: ["ArcBox", "압축 프로그램", "오픈소스", "무료 프로그램", "C#", "WPF"]
