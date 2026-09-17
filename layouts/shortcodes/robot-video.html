@@ -1,0 +1,7 @@
+<figure class="rb-media">
+<a class="rb-video-link" href="https://www.youtube.com/watch?v={{ .Get "id" }}" target="_blank" rel="noopener noreferrer" aria-label="{{ .Get "title" }} · YouTube에서 공식 영상 보기 (새 탭)">
+<img src="https://i.ytimg.com/vi/{{ .Get "id" }}/hqdefault.jpg" alt="{{ .Get "title" }} 공식 영상 미리보기" width="480" height="360" loading="lazy">
+<span>공식 영상 보기 ↗ <small>YouTube · 새 탭</small></span>
+</a>
+<figcaption><a href="https://www.youtube.com/watch?v={{ .Get "id" }}">{{ .Get "title" }}</a> · {{ .Get "credit" }}<br>{{ .Get "note" }}</figcaption>
+</figure>
