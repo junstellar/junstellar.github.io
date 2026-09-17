@@ -1,12 +1,12 @@
 ---
 title: "500만원 벌었는데, 내 돈은 얼마일까? · 계좌와 세금 교과서 ①"
-description: "똑같이 500만원을 벌었는데 손에 남는 돈은 왜 다를까요. 같은 지수를 따라가도 어떤 상품을 어느 계좌에 담았는지에 따라 마지막 숫자가 달라집니다."
+description: "국내 상장 해외 ETF·미국 상장 ETF·ISA의 세금을 비교합니다. 수익 500만원의 세후 금액, 250만원 기본공제와 ISA 비과세 차이를 계산기로 확인하고 절세 계좌를 고르는 기준을 알아보세요."
 slug: "account-matters"
 date: 2026-09-16T20:00:00+09:00
 draft: false
 image: "tax-series-1-cover.png"
-categories: ["투자"]
-tags: ["절세", "ISA", "해외주식 양도소득세", "ETF 세금", "투자공부"]
+categories: ["AI 투자"]
+tags: ["AI 투자", "계좌와 세금", "ISA", "ETF 세금", "절세 계좌", "해외주식 양도소득세"]
 ---
 
 <style>
