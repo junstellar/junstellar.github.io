@@ -1,7 +1,7 @@
+<meta name="robots" content="noindex">
 <!doctype html>
 <html lang="ko">
 <head>
-<meta name="robots" content="noindex">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>육육이의 공략 서재 — 시즌2 전직업 (올인원)</title>
@@ -55,13 +55,14 @@
   <div class="rule"><span>&#10022; 마비노기 모바일 시즌 2 · 빛과 어둠 · 전직업 올인원 &#10022;</span></div>
   <p class="sub">
     <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    시즌 2 출시(2026-06-25)~7/5 게시글 200여 건 분석 · 직업별 공략집 <b>21권</b>이 이 파일 하나에 전부 내장 · 마지막 업데이트: 2026-07-05<br>
+    직업별 공략집 <b>21권</b>이 이 파일 하나에 전부 내장 · 마지막 업데이트: 2026-09-20 (사제 페이지 개편)<br>
+    직업별 근거의 기준일은 각 공략에서 확인하세요.<br>
     표지를 클릭하면 해당 공략집이 열립니다
   </p>
 </header>
 <div class="grouph">지원 · 힐 계열</div>
 <div class="shelf">
-<button class="book" onclick="openBook(&quot;priest&quot;)"><span class="ic">⛪</span><span><span class="t">사제 (탄붕을 위한)</span><span class="d">결집심 · 뼈인장+칼바람 · 불사</span><span class="tier up">바위 칼날 1픽 · 브레이크 2위</span></span></button>
+<button class="book" onclick="openBook(&quot;priest&quot;)"><span class="ic">⛪</span><span><span class="t">사제</span><span class="d">집성심 · 스탯·세공 · 빌드 비교</span><span class="tier up">9/20 개편 · 최신 추천과 과거 기록 분리</span></span></button>
 <button class="book" onclick="openBook(&quot;healer&quot;)"><span class="ic">💚</span><span><span class="t">힐러</span><span class="d">궁극기 본체 · 가호 사기 · 물광가</span><span class="tier down">8/13 궁밥 조정 확정</span></span></button>
 <button class="book" onclick="openBook(&quot;monk&quot;)"><span class="ic">👊</span><span><span class="t">수도사</span><span class="d">보연이 · 빠스 5,000 · 인뇌정</span><span class="tier up">시즌2룬 3,000만 · 재평가</span></span></button>
 <button class="book" onclick="openBook(&quot;bard&quot;)"><span class="ic">🎻</span><span><span class="t">음유</span><span class="d">2(5)4평타/314(5) · 방해 세공</span><span class="tier">궁극기 서폿 1황론</span></span></button>
@@ -95,7 +96,7 @@
 
 <footer>
   <div class="sign">&#128218; 육육이의 공략 서재 · 올인원 에디션 &#128218;</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-07-05<br>
+  정리: 육육이 · 출처: 갤러리·유튜브·개별 공략 · 마지막 업데이트 2026-09-20 (직업별 기준일 별도)<br>
   이 파일은 단독으로 동작합니다 — 그대로 복사·전달하세요
 </footer>
 </div>
@@ -109,7 +110,7 @@
 </div>
 
 <script>
-var TITLES = {"priest":"⛪ 사제 (탄붕을 위한)","healer":"💚 힐러","monk":"👊 수도사","bard":"🎻 음유","aksa":"🎺 악사","dancer":"💃 댄서","sword":"⚔️ 검술사","gs":"🗡️ 대검","knight":"🛡️ 기사 (신규)","rogue":"🔪 도적","fighter":"👊 격투가","archer":"🏹 궁수","xbow":"🎯 석궁","longbow":"🌲 장궁","mage":"🪄 법사","fire":"🔥 화법","ice":"❄️ 빙결","storm":"⚡ 전격","warrior":"⛨ 검방 (전사)","dual":"🗡️ 듀블","dark":"🌑 암술"};
+var TITLES = {"priest":"⛪ 사제","healer":"💚 힐러","monk":"👊 수도사","bard":"🎻 음유","aksa":"🎺 악사","dancer":"💃 댄서","sword":"⚔️ 검술사","gs":"🗡️ 대검","knight":"🛡️ 기사 (신규)","rogue":"🔪 도적","fighter":"👊 격투가","archer":"🏹 궁수","xbow":"🎯 석궁","longbow":"🌲 장궁","mage":"🪄 법사","fire":"🔥 화법","ice":"❄️ 빙결","storm":"⚡ 전격","warrior":"⛨ 검방 (전사)","dual":"🗡️ 듀블","dark":"🌑 암술"};
 function openBook(id){
   var t = document.getElementById('tpl-'+id);
   if(!t) return;
@@ -128,8 +129,18 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 </script>
 
 <template id="tpl-priest">
+<!doctype html>
+<html lang="ko">
+<head>
+<meta name="robots" content="noindex">
 <style>
-  :root{
+:root{--bg:#f5f6f2;--paper:#fff;--ink:#21392f;--muted:#64746c;--green:#225c46;--mint:#e8f0e9;--line:#dce3dc;--gold:#aa7942;--sand:#f5eddf;--radius:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard","Segoe UI","Malgun Gothic",sans-serif;line-height:1.7;letter-spacing:-.025em}a{color:inherit}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #c39647;outline-offset:4px}h1,h2,h3,p{margin:0}h2{font-size:27px;line-height:1.4;letter-spacing:-.05em}h3{font-size:18px}p{color:var(--muted)}svg{display:block}.shell{max-width:1200px;margin:auto;padding:0 34px}.top{border-bottom:1px solid var(--line);background:rgba(245,246,242,.97);position:sticky;top:0;z-index:10}.top .shell{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:800;display:flex;align-items:center;gap:10px;font-size:17px}.brand-icon{width:29px;height:29px;background:var(--green);color:white;border-radius:8px;text-align:center;line-height:28px}.top-right{display:flex;align-items:center;gap:18px;font-size:12px;color:var(--muted)}.draft{border:1px solid #d6c9ad;color:#80632c;border-radius:6px;padding:3px 9px;background:#faf5e8}.crumb{font-size:12px;color:var(--muted);margin:31px 0 27px;display:flex;gap:12px}.layout{display:grid;grid-template-columns:180px minmax(0,1fr);gap:42px}.sidebar{align-self:start;position:sticky;top:103px;padding-top:9px}.smallcap{font-size:10px;letter-spacing:.17em;font-weight:800;color:var(--muted)}.sidebar nav{margin:20px 0 28px;display:grid;gap:4px}.sidebar nav a{text-decoration:none;color:var(--muted);padding:9px 12px;border-radius:8px;font-size:13px}.sidebar nav a:hover,.sidebar nav a.active{background:var(--mint);color:var(--green);font-weight:700}.side-meta{border-top:1px solid var(--line);padding:20px 12px;font-size:11px;line-height:1.9;color:var(--muted)}.side-meta b{display:block;font-size:12px;color:var(--ink)}main{min-width:0}.hero{display:grid;grid-template-columns:1fr 140px;gap:15px;align-items:center;padding-bottom:29px}.eyebrow{font-size:11px;letter-spacing:.13em;color:var(--green);font-weight:700;margin-bottom:12px}.hero h1{font-size:58px;line-height:1.1;letter-spacing:-.06em;font-weight:800;display:flex;align-items:baseline;gap:15px}.hero h1 span{font-size:14px;font-weight:400;letter-spacing:.12em;color:#8c9a91}.hero p{margin-top:17px;font-size:15px}.tags{display:flex;gap:6px;margin-top:18px;flex-wrap:wrap}.tag{font-size:11px;line-height:1.5;background:#edf0ea;border:1px solid var(--line);padding:4px 9px;border-radius:5px;color:#53675c}.sigil{width:128px;height:128px;color:var(--green)}.hero-art{justify-self:end}.update{display:flex;gap:14px;padding:14px 18px;background:var(--mint);border-radius:10px;align-items:baseline;font-size:12px;margin-bottom:23px}.update strong{white-space:nowrap;color:var(--green)}.update span{color:#4e6858}.featured{background:var(--green);border-radius:var(--radius);padding:28px 30px;color:#fff;position:relative;overflow:hidden}.featured .smallcap{color:#c9d9c5}.featured h2{margin-top:8px;font-size:29px;color:#fff}.featured p{color:#d3e0d5;font-size:13px;margin-top:9px}.rune-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0 20px}.rune{padding:14px;background:#ffffff0c;border:1px solid #ffffff2e;border-radius:12px;display:flex;align-items:center;gap:12px}.rune-symbol{font-size:23px;color:#ead19b;border:1px solid #ffffff25;display:grid;place-items:center;width:41px;height:41px;border-radius:50%;flex-shrink:0}.rune small{display:block;font-size:10px;color:#c5d5c8}.rune b{font-size:18px;font-weight:600}.recommend-bottom{display:flex;gap:20px;flex-wrap:wrap;border-top:1px solid #ffffff24;padding-top:15px;font-size:12px;color:#e2e9df}.recommend-bottom span:before{content:'↗';margin-right:7px;color:#ead19b}.section{padding-top:44px}.section-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:18px}.section-head small{font-size:11px;color:var(--muted)}.intro{font-size:13px;margin-top:7px}.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.quick{background:white;border:1px solid var(--line);border-radius:12px;padding:18px}.quick small{font-size:11px;color:var(--muted)}.quick b{display:block;font-size:16px;margin:6px 0}.quick p{font-size:11px}.tabs{display:flex;gap:5px;background:#e9eee7;padding:5px;border-radius:10px;margin:20px 0 14px}.tabs button{border:0;background:transparent;color:var(--muted);border-radius:7px;padding:10px 14px;flex:1;font-size:13px}.tabs button[aria-selected=true]{background:white;box-shadow:0 2px 5px #203d3010;color:var(--green);font-weight:700}.panel{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:25px}.compare-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:30px}.chip{display:inline-block;font-size:10px;background:var(--mint);color:var(--green);border-radius:5px;padding:3px 7px;margin-bottom:9px}.panel h3{font-size:21px}.panel p{font-size:13px;margin-top:9px}.build-names{color:var(--green);font-size:14px;font-weight:700;margin:8px 0 16px}.use-note{font-size:12px;border-left:2px solid #afc5ac;padding-left:12px;color:var(--muted)}.adoption{padding:5px 0}.bar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:7px}.bar-track{height:7px;border-radius:7px;background:#edf0eb;margin-bottom:18px}.bar-fill{background:#3b7054;height:100%;border-radius:7px}.bar-fill.alt{background:#b2bfb0}.adoption p{font-size:10px;margin-top:8px}.link{color:var(--green);text-decoration:underline;text-underline-offset:3px}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.stat{background:white;border:1px solid var(--line);border-radius:14px;padding:20px}.stat-head{display:flex;justify-content:space-between;font-size:12px;align-items:center}.stat-head span{font-size:10px;color:#758378}.value{font-size:32px;letter-spacing:-.04em;line-height:1.3;margin:12px 0 7px;font-weight:750}.value small{font-size:12px;font-weight:400;color:var(--muted)}.stat p{font-size:12px}.notice{font-size:12px;padding:14px 17px;background:var(--sand);border-radius:9px;margin:13px 0 18px;color:#80633e}.gem-row{display:flex;align-items:center;gap:20px;background:#ecf0e9;padding:19px 22px;border-radius:12px}.gem-row>div{flex:1}.gem-row small{font-size:11px;color:var(--muted);display:block}.gem-row strong{font-size:15px;display:block;margin-top:3px}.gem-arrow{color:#91a189;font-size:20px}.note{font-size:11px;color:var(--muted);margin-top:10px}.gear{width:100%;border-collapse:collapse;font-size:13px}.gear th{text-align:left;font-size:10px;font-weight:600;color:var(--muted);padding:12px 15px;background:#f4f6f1}.gear td{padding:16px 15px;border-top:1px solid var(--line);vertical-align:top}.gear td:first-child{width:85px;color:var(--muted)}.gear td:nth-child(2){font-weight:700;min-width:150px}.gear td:last-child{font-size:12px;color:var(--muted)}.table-wrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:white}.steps{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0}.step{border:1px solid var(--line);border-radius:8px;min-width:45px;text-align:center;padding:10px;font-weight:750;background:#f5f7f2;font-size:19px}.step.em{background:var(--green);color:#fff}.arr{font-size:13px;color:#8c9c8d}.cycle-footer{border-top:1px solid var(--line);padding-top:14px;font-size:12px;color:var(--muted)}.cycle-footer strong{color:var(--green)}.source-list{display:grid;gap:10px}.source{display:block;padding:18px 20px;border:1px solid var(--line);background:white;border-radius:12px;text-decoration:none;transition:border-color .15s}.source:hover{border-color:var(--green)}.source small{font-size:10px;color:var(--muted);display:flex;gap:10px}.source strong{display:flex;justify-content:space-between;font-size:14px;margin:5px 0}.source p{font-size:12px}.source strong span{color:#81967f}.archive{margin-top:25px;border-top:1px solid var(--line)}details{border-bottom:1px solid var(--line);padding:17px 2px}summary{cursor:pointer;list-style:none;font-size:13px;font-weight:700;display:flex;justify-content:space-between}summary::-webkit-details-marker{display:none}summary:after{content:'＋';color:var(--muted)}details[open] summary:after{content:'−'}details p{font-size:12px;margin-top:12px}.bottom{margin-top:45px;padding:23px 0 35px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;font-size:11px;color:var(--muted)}[hidden]{display:none!important}.mobile-nav{display:none}
+@media(max-width:1000px){.layout{grid-template-columns:140px minmax(0,1fr);gap:24px}.shell{padding:0 24px}.rune{padding:12px 9px;gap:8px}.rune-symbol{width:32px;height:32px}.rune b{font-size:16px}.featured{padding:25px}.value{font-size:28px}}
+@media(max-width:760px){html{scroll-padding-top:130px}.shell{padding:0 18px}.top .shell{height:61px}.top-right>span:first-child{display:none}.brand{font-size:14px}.layout{display:block}.sidebar{display:none}.crumb{margin:23px 0;font-size:11px}.mobile-nav{display:flex;gap:22px;overflow:auto;white-space:nowrap;padding:0 18px 11px;font-size:12px}.mobile-nav a{text-decoration:none;color:var(--muted)}.hero{grid-template-columns:1fr 70px;padding-bottom:24px}.hero h1{font-size:46px}.hero h1 span{font-size:11px}.hero p{font-size:13px}.sigil{width:72px;height:72px}.eyebrow{font-size:9px}.update{display:block;padding:13px 15px}.update strong{display:block;margin-bottom:3px}.featured{padding:22px 19px}.featured h2{font-size:24px}.rune-row{gap:7px;margin-top:20px}.rune{display:block;text-align:center;padding:12px 5px}.rune-symbol{margin:0 auto 8px;width:34px;height:34px;font-size:21px}.rune small{font-size:9px}.rune b{font-size:17px}.recommend-bottom{gap:7px 14px;font-size:11px}.quick-grid{grid-template-columns:1fr;gap:8px}.quick{display:grid;grid-template-columns:85px 1fr;padding:13px 16px;align-items:center}.quick b{font-size:14px;margin:0}.quick p{grid-column:2}.section{padding-top:33px}h2{font-size:23px}.section-head{align-items:center}.section-head small{font-size:10px}.compare-grid{grid-template-columns:1fr;gap:22px}.panel{padding:21px}.stat-grid{gap:7px}.stat{padding:15px 10px}.stat-head{display:block}.stat-head span{display:block;font-size:9px}.value{font-size:23px}.value small{font-size:10px;display:block}.stat p{font-size:10px}.gem-row{padding:16px 14px;gap:8px}.gem-row strong{font-size:13px}.gear th{padding:10px}.gear td{padding:13px 10px}.gear td:first-child{width:60px;font-size:11px}.gear td:nth-child(2){min-width:0;font-size:12px}.gear td:last-child{font-size:11px}.source strong{font-size:13px}.bottom{display:block;font-size:10px}.bottom span{display:block}.hero-art{align-self:start;margin-top:26px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+.legacy{
     --paper:#f4f1e7;
     --card:#faf8f1;
     --ink:#2a2333;
@@ -143,7 +154,9 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
     --crimson-soft:#f3e5df;
     --serif:'Nanum Myeongjo','Batang','AppleMyungjo',Georgia,serif;
     --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;
-  }
+  padding-top:16px}.legacy .wrap{padding:0 0 30px}.legacy .mast{padding-top:25px}.legacy .chapter{scroll-margin-top:130px}
+@scope (.legacy){
+
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
@@ -323,8 +336,32 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
     .card,.summary{animation:rise .5s ease both}
     @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   }
+}
 </style>
-
+</head>
+<body>
+<header class="top"><div class="shell"><a class="brand" href="./index.html" style="text-decoration:none" aria-label="공략 서재로 돌아가기"><span class="brand-icon">✦</span> 육육이의 공략 서재</a><div class="top-right"><span>마비노기 모바일 · 시즌 2</span><span class="draft">09.20 업데이트</span></div></div><nav class="mobile-nav" aria-label="모바일 목차"><a href="#overview">추천 세팅</a><a href="#build">빌드 비교</a><a href="#stats">스탯·세공</a><a href="#gear">장비</a><a href="#rotation">운용</a><a href="#sources">근거</a></nav></header>
+<div class="shell">
+<div class="crumb"><span>공략 서재</span><span>/</span><span>힐러 계열</span><span>/</span><strong>사제</strong></div>
+<div class="layout">
+<aside class="sidebar"><div class="smallcap">PRIEST FIELD GUIDE</div><nav aria-label="페이지 목차"><a href="#overview" class="active">01 &nbsp; 추천 세팅</a><a href="#build">02 &nbsp; 빌드 비교</a><a href="#stats">03 &nbsp; 스탯 · 세공</a><a href="#gear">04 &nbsp; 장비 선택</a><a href="#rotation">05 &nbsp; 실전 운용</a><a href="#sources">06 &nbsp; 근거와 기록</a></nav><div class="side-meta">검토일<b>2026.09.20</b><br>채용률 기준<b>2026.09.07</b>자료마다 기준일을 확인하세요.</div></aside>
+<main>
+<section id="overview">
+<div class="hero"><div><div class="eyebrow">SEASON 02 &nbsp; / &nbsp; 빛과 어둠</div><h1>사제 <span>PRIEST</span></h1><p>심판으로 딜을, 회복으로 파티를 잇는 사제.<br>지금 필요한 세팅부터 빠르게 살펴보세요.</p><div class="tags"><span class="tag">힐러 계열</span><span class="tag">집행 중심</span><span class="tag">딜 · 회복 지원</span></div></div><div class="hero-art"><svg class="sigil" viewBox="0 0 140 140" fill="none" aria-hidden="true"><circle cx="70" cy="70" r="64" stroke="currentColor" stroke-opacity=".12"/><circle cx="70" cy="70" r="49" stroke="currentColor" stroke-opacity=".3"/><path d="M70 9V22M70 118V131M9 70H22M118 70H131" stroke="currentColor"/><path d="M70 28L79 58L104 67L79 77L70 114L61 77L36 67L61 58Z" fill="currentColor"/><path d="M70 44V92M49 67H91" stroke="#d6bc78" stroke-width="2"/><circle cx="70" cy="67" r="5" fill="#e7d5a5"/></svg></div></div>
+<div class="update" style="scroll-margin-top:130px"><strong>이번 개편의 핵심</strong><span>첫 추천을 집성심으로 정리하고, 과거 결집심 추천은 기록으로 분리했습니다.</span></div>
+<div class="featured"><div class="smallcap">지금 맞춘다면</div><h2>집성심, 심판 중심의 기본 세팅</h2><p>집행·심판을 중심에 두고 성전을 더하는 조합입니다.</p><div class="rune-row"><div class="rune"><span class="rune-symbol" aria-hidden="true">✧</span><div><small>EXECUTION</small><b>집행</b></div></div><div class="rune"><span class="rune-symbol" aria-hidden="true">⌂</span><div><small>SANCTUARY</small><b>성전</b></div></div><div class="rune"><span class="rune-symbol" aria-hidden="true">✦</span><div><small>JUDGMENT</small><b>심판</b></div></div></div><div class="recommend-bottom"><span>세공: 보조 · 강타 · 방해</span><span>집행은 치명타 확보 필요</span><span>추천 근거: 9/7 채용률</span></div></div>
+<div class="quick-grid"><div class="quick"><small>무기 출발점</small><b>바위 칼날</b><p>치명타 확보 상황과 함께 판단</p></div><div class="quick"><small>방어구 핵심 후보</small><b>뼈 인장 · 칼바람</b><p>나머지 슬롯은 보유 룬에 맞춰</p></div><div class="quick"><small>엠블럼 후보</small><b>위대함 · 영원한 밤</b><p>현재 스탯과 실전 기록으로 비교</p></div></div>
+</section>
+<section class="section" id="build"><div class="section-head"><h2>집성심과 결집심, 어떤 차이?</h2><small>같은 집행, 다른 한 자리</small></div><p class="intro">두 조합 모두 집행·심판을 사용합니다. 성전과 결속 중 한 자리를 고르는 선택입니다.</p>
+<div class="tabs" role="tablist" aria-label="장신구 빌드 비교"><button id="tab-power" role="tab" aria-selected="true" aria-controls="power" tabindex="0">집성심 · 주력 추천</button><button id="tab-comfort" role="tab" aria-selected="false" aria-controls="comfort" tabindex="-1">결집심 · 수급 대안</button></div>
+<div id="power" class="panel" role="tabpanel" aria-labelledby="tab-power"><div class="compare-grid"><div><span class="chip">채용 자료 기준 주류</span><h3>성전을 더하는 기본형</h3><div class="build-names">집행 + 성전 + 심판</div><div class="use-note">새로 세팅을 잡는다면 먼저 검토할 조합.<br>실전 세팅 표에서도 이 조합을 제시합니다.</div></div><div class="adoption"><div class="bar-label"><span>성전 · 개별 룬 채용률</span><b>89.6%</b></div><div class="bar-track"><div class="bar-fill" style="width:89.6%"></div></div><div class="bar-label"><span>결속 · 개별 룬 채용률</span><b>6.8%</b></div><div class="bar-track"><div class="bar-fill alt" style="width:6.8%"></div></div><p>2026.09.07 집계 · 황산갈매기 자료실<br>각 룬의 채용률이며, 세 룬을 함께 낀 조합 비율은 아닙니다.</p></div></div></div>
+<div id="comfort" class="panel" role="tabpanel" aria-labelledby="tab-comfort" hidden><div class="compare-grid"><div><span class="chip">신성력 수급을 위한 선택</span><h3>결속을 더하는 보완형</h3><div class="build-names">결속 + 집행 + 심판</div><div class="use-note">신성력 수급의 편의성을 보고 선택하는 대안.<br>이미 사용 중이라면 자원 부족과 실전 딜을 함께 비교하세요.</div></div><div><h3>바꿀 때 확인할 것</h3><p>성전의 보유·강화 상태, 신성력 부족 빈도, 같은 보스에서의 실전 기록을 확인하세요.</p><p>“초월 몇 단계부터 무조건 교체”라는 확정 기준은 확인되지 않았습니다.</p><p class="note">결속 채용률 6.8% · 2026.09.07 기준</p></div></div></div>
+</section>
+<section class="section" id="stats"><div class="section-head"><h2>스탯은 치명타부터</h2><small>집성심 / 집행 기준</small></div><p class="intro">치명타·추가타를 확보하고 강타를 보완하는 방향. 아래 숫자는 세팅을 시작할 때 참고하는 예시입니다.</p><div class="stat-grid"><article class="stat"><div class="stat-head"><b>치명타</b><span>우선 확보</span></div><div class="value">9,000<small> 이상 · 예시</small></div><p>집행을 확정 치명으로 가정하지 않기.</p></article><article class="stat"><div class="stat-head"><b>추가타</b><span>함께 보완</span></div><div class="value">6,000<small> 전후 · 예시</small></div><p>룬에서 얻는 추가타도 함께 고려.</p></article><article class="stat"><div class="stat-head"><b>강타</b><span>균형 조정</span></div><div class="value">4,000<small> 전후 · 예시</small></div><p>다른 스탯을 희생해 몰아 올리지 않기.</p></article></div><div class="notice">참고 수치 · 8/25 개인 공략의 제시값입니다. 9월 확정 종결 컷이 아니며, 보유 룬과 전투 중 효과에 따라 조정이 필요합니다. <a href="https://jonathan93.tistory.com/16" target="_blank" rel="noopener">근거 보기 ↗</a></div><div class="gem-row"><div><small>보석 세공 · 2줄 출발</small><strong>보조 + 강타</strong></div><span class="gem-arrow" aria-hidden="true">→</span><div><small>3줄 목표</small><strong>보조 + 강타 + 방해</strong></div></div><p class="note">강타 스탯과 ‘강타 태그 스킬 강화’ 세공은 별개입니다. 세공 방향은 9/7 컨닝페이퍼 기준.</p></section>
+<section class="section" id="gear"><div class="section-head"><h2>장비는 핵심부터, 나머지는 조정</h2></div><div class="table-wrap"><table class="gear"><thead><tr><th scope="col">부위</th><th scope="col">먼저 볼 후보</th><th scope="col">선택할 때</th></tr></thead><tbody><tr><td>무기</td><td>바위 칼날 / 광채</td><td>치명타가 부족한지 먼저 확인.</td></tr><tr><td>엠블럼</td><td>위대함 / 영원한 밤</td><td>보유 룬과 전투 기록으로 비교.</td></tr><tr><td>방어구</td><td>뼈 인장 · 칼바람</td><td>심판 중심 세팅에서 우선 검토.</td></tr><tr><td>추가 후보</td><td>긍지 · 무너진 경계</td><td>파티 구성과 스탯 부족분 고려.</td></tr><tr><td>조건부</td><td>오팔 성배 등</td><td>효과 조건과 교체할 룬을 확인한 뒤 채용.</td></tr></tbody></table></div><p class="note">9/7 채용 자료와 9/20 갤러리 사용 사례를 참고한 후보 목록입니다. 모두를 고정하는 종결 세트는 아닙니다.</p></section>
+<section class="section" id="rotation"><div class="section-head"><h2>집행을 열고, 심판을 이어가기</h2><small>실전 제보 기반</small></div><div class="panel"><span class="chip">집행 기준 · 기본 흐름</span><div class="steps" aria-label="5번, 1번, 4번, 3번 이후 223 반복"><span class="step em">5</span><span class="arr">→</span><span class="step">1</span><span class="arr">→</span><span class="step">4</span><span class="arr">→</span><span class="step em">3</span><span class="arr">→</span><span class="step">223 반복</span></div><div class="cycle-footer"><strong>저지먼트가 뜨면</strong> 5번 사용 후 353 연계를 노리는 운용 제보가 있습니다. 룬과 쿨감에 따라 조정하세요.</div><p class="note">개조는 3·5 중심 + 선택 슬롯. 기존 자료의 235 고정·345 고정 주장은 구분해 보며, 특정 조합을 유일한 정답으로 단정하지 않습니다.</p></div></section>
+<section class="section" id="sources"><div class="section-head"><h2>근거를 함께 읽는 공략</h2><small>수치의 날짜까지 확인</small></div><div class="source-list"><a class="source" href="https://erinndata.pages.dev/cheatsheet/" target="_blank" rel="noopener"><small><span>채용 통계 · 영상 제작자 자료</span><span>집계 09.07 / 작성 09.08</span></small><strong>황산갈매기 · 전직업 컨닝페이퍼 <span>↗</span></strong><p>사제 장신구 채용률, 세공 방향, 운용 제보의 기준 자료.</p></a><a class="source" href="https://www.youtube.com/watch?v=77kWMFDjpvE" target="_blank" rel="noopener"><small><span>유튜브 · 주간 룬 리포트</span><span>집계 09.14</span></small><strong>황산갈매기 · 9월 14일 룬 채용률 <span>↗</span></strong><p>전체 룬 흐름 참고. 이번 재수집에서는 자막을 확보하지 못해 사제 수치의 직접 근거로 사용하지 않았습니다.</p></a><a class="source" href="https://jonathan93.tistory.com/16" target="_blank" rel="noopener"><small><span>개인 공략 · 참고값</span><span>작성 08.25</span></small><strong>사제 시즌2 룬·스탯·세공 정리 <span>↗</span></strong><p>스탯 목표 예시의 출처. 채용 통계나 공식 필수 기준과는 구분합니다.</p></a><a class="source" href="https://m.dcinside.com/board/enban/1373489" target="_blank" rel="noopener"><small><span>갤러리 · 개별 사용 사례</span><span>작성 09.20</span></small><strong>사제 어비스 세팅 · #1373489 <span>↗</span></strong><p>뼈인장·칼바람·긍지·경계 기반의 남은 슬롯 논의.</p></a></div>
+<div class="archive"><details><summary>이번에 달라진 안내</summary><p>7월의 결집심 추천을 현재 추천에서 분리했습니다. 9/7 통계에서 확인한 집성심을 앞에 배치하고, 스탯은 근거 날짜와 함께 예시로 제시합니다. “서폿 1황” 같은 시점 의존적인 표현은 첫 화면에서 제외했습니다.</p></details><details id="history"><summary>지난 시즌2 기록 · 7월~9월</summary><p>아래는 2026.09.19까지의 이전 공략입니다. 당시 추천과 수치는 역사적 기록이며, 현재 안내는 위 본문을 기준으로 확인하세요.</p><div class="legacy">
 <div class="wrap">
 
 <!-- ============ MASTHEAD ============ -->
@@ -349,11 +386,11 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <h2>✚ 한눈에 보는 결론</h2>
   <p class="lead">바쁜 사람은 이것만 — 자세한 근거는 아래 각 장에.</p>
   <ul class="checklist">
-    <li><span class="k">티어</span><span class="v"><b>서폿 1황.</b> 힐·딜·불사를 다 챙겨 7월 초 여론이 “역대급 사제시즌·너프 대상”으로 급상승</span></li>
+    <li><span class="k">티어</span><span class="v"><b>서폿 1황.</b> 힐·딜·불사를 다 챙겨 7월 초 여론이 역대급 시즌·너프 후보론으로 급상승</span></li>
     <li><span class="k">빌드</span><span class="v">홀스 / <b>집행</b> / 하이브리드 중 대세는 <b>집행</b>(힐하면서 딜, 사이클 쉬움). 보스 고점은 홀스</span></li>
     <li><span class="k">악세</span><span class="v">스킬룬 <b>집행+심판 고정 + @</b> → <b>결집심</b>(결속·집행·심판)이 정배</span></li>
     <li><span class="k">무기룬</span><span class="v"><b>바위칼날·광채·죽음</b> / 홀스면 <b>계시</b> / 집행 사제는 <b>오랜광기</b>도 후보</span></li>
-    <li><span class="k">핵심템</span><span class="v"><b>뼈인장 + 칼바람</b>이 사제 “수저” — 3스(심판) 브레이크딜을 폭발시킴</span></li>
+    <li><span class="k">핵심템</span><span class="v"><b>뼈인장 + 칼바람</b>이 사제의 수저 조합 — 3스(심판) 브레이크딜을 폭발시킴</span></li>
     <li><span class="k">세공</span><span class="v">집행이면 <b>방보(보조·방해)</b> · <b>강보방 20개</b> · <b>235 개조</b></span></li>
     <li><span class="k">스탯</span><span class="v">강타 <b>5,000+</b> / 추가타 <b>4,000+</b> / 치명 최대 1만 · 장비 피증 <b>40%</b></span></li>
     <li><span class="k">방어구</span><span class="v"><b>밤의축복 세트</b> +@ / 엠블럼(무방엠)은 아직 연구 중</span></li>
@@ -381,15 +418,15 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="chead">
     <div class="kicker">제 1 장 · 壹</div>
     <h3>티어와 여론 변화</h3>
-    <p>시즌 초 “결국 서폿” → 7월 초 “역대급 사제시즌·너프 대상”으로 반전</p>
+    <p>시즌 초 서폿 평가 → 7월 초 역대급 시즌·너프 후보론으로 반전</p>
   </div>
 
   <div class="card hl">
     <h4><span class="tag">여론 변화</span>6/25 출시 → 7/5</h4>
-    <p>시즌 초(6/25~7/1)엔 “딜은 시즌1 옆그레, 결국 서폿”이라는 미지근한 평이었다. 그런데 <b>집행 세팅이 정립된 7/4~7/5엔 “역대급 사제시즌”, “서폿 1황”, “너프 무조건 먹어야 함”</b>으로 확 뒤집혔다. 힐러 직군에 힐·딜·불사를 다 주는 게 과하다는 것 — “사제 패치되고 힐러·수도사가 그냥 엉망이 됐다”.</p>
-    <p class="plain">“사제 미만잡”이라며 깎아내리는 글조차 실제론 <b>딜 고점 2,500만 + 힐 + 부활</b>이라 결국 강함을 인정한다.</p>
-    <div class="quote">“힐러는 딜세팅하면 힐을 어느 정도 포기해야 하는데, 지금 사제는 힐·딜 전부 챙길 수 있고 애초에 힐러 직군에 불사를 달아주는 것 자체가 말이 안 됨.”
-      <span class="who">— 「사제는 너프 무조건 먹어야함」</span></div>
+    <p>시즌 초(6/25~7/1)엔 딜이 시즌1의 옆그레이드 수준이라 결국 서폿이라는 미지근한 평이 다수였다. 그런데 <b>집행 세팅이 정립된 7/4~7/5엔 “역대급 사제시즌”이라는 감탄과 함께 서폿 1황 호칭, 너프 불가피론</b>으로 확 뒤집혔다. 힐러 직군에 힐·딜·불사를 다 주는 게 과하다는 것으로, 사제 패치 이후 힐러·수도사의 입지가 무너졌다는 진단도 함께 나왔다.</p>
+    <p class="plain">사제를 짐짓 낮춰 부르는 반어 제목의 글조차 실제 내용은 <b>딜 고점 2,500만 + 힐 + 부활</b>이라 결국 강함을 인정한다.</p>
+    <div class="quote">너프론의 핵심 논거는 이렇다 — 힐러는 딜 세팅을 하면 힐을 어느 정도 포기하는 게 정상인데, 지금 사제는 힐·딜을 전부 챙기는 데다 힐러 직군에 불사까지 얹어준 구조 자체가 과하다는 것.
+      <span class="who">— 「사제는 너프 무조건 먹어야함」 요지</span></div>
     <div class="refs"><span class="rl">근거</span>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143741" target="_blank" rel="noopener"><span class="n">#1143741</span> 역대급 사제시즌</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143569" target="_blank" rel="noopener"><span class="n">#1143569</span> 서폿 1황</a>
@@ -397,7 +434,54 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144938" target="_blank" rel="noopener"><span class="n">#1144938</span> 딜 2500만+부활</a>
     </div>
   </div>
-  <div class="card">
+
+  <div class="card" style="scroll-margin-top:24px">
+    <h4>🔄 5주차 갱신 — 무기 1픽 광채로 교체 + 집행이 성전 추월<span class="tag">2026-08-03</span></h4>
+    <p>사제 룬이 두 군데 바뀌었다. <b>무기 1픽이 광채로 교체</b>됐고(개시도 채용률 있음), 장신구는 <b>집행이 성전을 제치고 2위</b>로 올라섰다(심판·집행·성전 체제). 결속·날개는 대안으로 내려갔다. 방어구 코어는 <b>뼈인장</b> 유지이고, 여기에 <b>칼바람·무한한 탐욕</b>이 새로 채용률에 진입했다 — 칼바람은 <b>브레이크 스킬 피해 기여</b> 때문으로, 지원 계열의 의외 채용으로 리포트에 지목됐다.</p>
+    <p class="plain">티어 논쟁은 이번 주에도 이어졌다. 지금 사제가 왜 1티어냐는 물음에 <b>쫄방·중보·보스방을 다 잘 미는 팔방미인이자 잡몹방 최강</b>이라는 답이 다수였다. 반대편 근거는 어비스 점수(8/2·8/3 모두 47,298)와 <b>구조 설명</b>이다 — 보스 딜을 힐러가 가져가는 현 메타에서는 <b>잡몹 처리가 빠른 딜러가 각광받는 것일 뿐</b>이라는 것. 함수 기준으로는 평범하다는 실측(오토 dps 2,600)도 함께 올라왔다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1226179" target="_blank" rel="noopener"><span class="n">#1226179</span> 사제 1티어 여부 논쟁</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1231970" target="_blank" rel="noopener"><span class="n">#1231970</span> 오토 dps 2,600 실측</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1228962" target="_blank" rel="noopener"><span class="n">#1228962</span> 8/2 어비스 47,298</a>
+      <a class="chip" href="https://youtu.be/bswVvDOiC6Q" target="_blank" rel="noopener"><span class="n">YT</span> 황산갈매기 · 8/3 룬 리포트</a>
+      <a class="chip" href="https://youtu.be/n7PqoxX16JA" target="_blank" rel="noopener"><span class="n">YT</span> 황산갈매기 · 21직업 컨닝페이퍼</a>
+    </div>
+  </div>
+  <div class="card" style="scroll-margin-top:24px">
+    <h4>🔧 6주차 갱신 — 무기 1픽이 다시 바뀌었다: 바위 칼날<span class="tag">2026-08-08</span></h4>
+    <p>5주차에 무기 1픽을 광채로 정리한 항목을 <b>바위 칼날로 정정</b>한다. 갤 문답에서 사제는 광채·계시가 아니라 바위 칼날을 쓰는 게 당연하다는 즉답이 나왔고, 대안으로 <b>신화 무기룬 죽음(공증 20%·치피 20%)</b>이 제시됐다 — 판단 기준은 명확하다: <b>침식·밤축·각성을 다 합쳐 치확 100%가 맞춰지면 죽음, 아니면 바칼(바위 칼날)</b>. 방어구는 <b>뼈인장 · 칼바람 · 긍지 · 무너진 경계 · 갈퀴</b>가 종결 라인으로 굳었다(<b>긍지는 방깍이지만 힐 계열엔 사실상 필수 공증룬</b>, 일렁임은 비추). 고점형 실험으로 <b>잠든 땅</b>(연타·강타 +13%, 회복력 −60%)이 제시됐는데 지1 카브락 풀오토에서도 죽지 않았다는 검증이 붙었으나 한눈팔면 위험하다는 경고도 함께 달렸다.</p>
+    <p class="plain">역할 평가도 강화됐다. 브레이크 성능 순위 정리글에서 <b>수도사 다음 2위</b>로 꼽혔고 <b>사제는 확실히 브렉 머신</b>이라는 평과 함께, 갈땅을 끼고 입장하자마자 223을 쏟아부으면 브레이크가 순식간에 깨진다는 운용법이 공유됐다. 1브 실적으로는 <b>정박지·물길 1브 로그</b>가 공개됐고(파괴자·아득·집성심 / 칼바람·무한한 탐욕·무너진 경계·수호자·아귀), 중위권 딜러가 1브 10억일 때 <b>사제는 15억을 넘긴다</b>는 비교가 나왔다. 유튜브 심화 정리에서는 <b>심판(3번)을 메인으로 신규 스킬 베네딕션과 1·2번을 섞어 심판을 빨리 재사용</b>하는 사이클, <b>강타 강화 5,000</b> 세팅(시즌 스킬 발동 주기 최대화), <b>뼈인장 종결 + 무너진 경계로 추가타 보충 → 타오르는 빛 발동 빈도 상승</b>이 제시됐다. 어비스는 8/8 <b>47,530(서폿 2위)</b>. <b>8/13 힐러 궁밥 조정이 확정된 만큼, 다음 주 서폿 1황 자리는 사제 쪽으로 넘어올 가능성이 높다</b>는 관측이 갤·유튜브 양쪽에서 나왔다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1246864" target="_blank" rel="noopener"><span class="n">#1246864</span> 사제 무기룬 — 바위 칼날 / 죽음 분기</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1246517" target="_blank" rel="noopener"><span class="n">#1246517</span> 사제 옷룬 — 뼈인장·칼바람·긍지·경계·갈퀴</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1246990" target="_blank" rel="noopener"><span class="n">#1246990</span> 잠든 땅 실험 (연타·강타 +13% / 회복 −60%)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1245557" target="_blank" rel="noopener"><span class="n">#1245557</span> 뽀삐사제 1브딜 로그</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1243129" target="_blank" rel="noopener"><span class="n">#1243129</span> 브레이크 성능 순위 — 사제 2위</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=g_DSFFfKofQ" target="_blank" rel="noopener"><span class="n">YT</span> 시웅 · 시즌2 사제 스킬·스탯·룬 세팅</a>
+    </div>
+  </div>
+  <div class="card" style="scroll-margin-top:24px">
+    <h4>🔻 7주차 갱신 — 어비스 전 직업 1위, 그러나 8/20 직격 대상<span class="tag">2026-08-19</span></h4>
+    <p class="plain"><b>이번 주 전제 — 8/13 패치로 «스킬 주는 피해»(스주피) 계열 룬 효과가 2배로 적용되는 버그가 있었고, 8/20 점검에서 수정된다.</b> 전격 유저의 실측 검증에 따르면 스주피 룬끼리는 원래 <b>합연산</b>이 맞고, 버그는 각 룬의 수치가 두 배로 들어간 것이다 — 무한한 탐욕+봉인술사를 함께 끼면 아무것도 없을 때 대비 <b>2.36배</b>(=1+0.8+0.56)가 나왔고, 정상화되면 <b>1.68배</b>로 떨어진다(해당 스킬 대미지가 현재의 <b>71.2%</b> 수준). 따라서 <b>8/13~8/19 사이에 나온 어비스 점수·함수 기록·티어표는 모두 버그 구간의 수치</b>이며, 그대로 믿으면 안 된다. 스주피 룬을 많이 낀 직업일수록 낙폭이 크다. <b>계승자·끓는 피는 버그가 아니라는 것</b>이 실측자들의 공통 견해다.</p><p>사제는 <b>8/18 어비스 전 직업 1위</b>다 — 평균 순위 <b>1위(75,726.5)</b>, 1위 점수 공동 1위(76,476), 10위 점수 공동 1위(74,977)로 세 지표를 모두 석권했다. 갤 반응은 «너프하라»로 기울었다. <b>다만 이 기록은 버그 구간의 것</b>이며, 사제는 <b>뼈인장·바위 칼날·무한한 탐욕 세 개를 동시에 받는 구조</b>라 2배 버그의 최대 수혜 직업 중 하나로 지목됐다. 8/13 패치에서 이미 <b>켈틱 크로스의 심판 적용 시 데미지 감소</b>, <b>브레이크 상태의 적 공격 시 추가 데미지 감소</b>가 적용됐고 <b>디바인 윙의 날개 적용 시 데미지는 증가</b>했다.</p><p class="plain">채용률로 보면 <b>심판은 -0.8%로 거의 움직이지 않았고</b>, 대신 <b>날개가 4.8%로 상승</b>해 결속 자리를 대체하는 흐름이다 — 즉 브레이크 너프에도 심판을 버리진 않았다는 뜻이다. 낙폭 전망은 갈린다. 한쪽은 <b>심판·홀리 스피어의 딜 지분이 전체의 80%를 넘는 비정상 구조</b>라 버그가 잡히면 실질적으로 수도사 수준까지 내려앉는다고 본다. 반대쪽은 <b>홀리 스피어는 탐욕 하나만 작용</b>하므로 낙폭이 «몰락»이라 부를 정도는 아니며, <b>버그 이전에도 체급 자체는 높았다</b>고 반박한다. 정리하면 <b>집행(심판) 사제의 낙폭이 크고 홀스 사제는 상대적으로 완만할 것</b>이라는 데는 양쪽이 대체로 동의한다. 기갱·산낙지에서 «유일신»으로 불릴 만큼의 현재 위상은 8/20을 기점으로 재평가가 불가피하다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1276285" target="_blank" rel="noopener"><span class="n">#1276285</span> 8/18 어비스 랭킹 — 사제 3지표 석권</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1279225" target="_blank" rel="noopener"><span class="n">#1279225</span> 사제 몰락 예측 — 딜 지분 80% 구조</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1280418" target="_blank" rel="noopener"><span class="n">#1280418</span> 산낙지 선호 직업 · 사제 «유일신»</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=1OX-o13RDIc" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「8월 3주차 룬 리포트」</a>
+    </div>
+  </div>
+  <div class="card" style="scroll-margin-top:24px">
+    <h4>📘 8주차 갱신 — 뼈인장 코어 유지, 레이드룬은 신기루/오팔 갈림길<span class="tag">2026-08-29</span></h4>
+    <p class="plain"><b>이번 주 전제 — 8/24 레이드룬 정가 교환으로 «오팔 성배»가 대량 보급됐고, 치명타 피해 증가가 2회 적용되는 버그가 확인돼 8/27 점검에서 수정됐다.</b> 그 여파로 <b>지옥2 어비스 랭킹이 2주 연속 초기화</b>됐는데, 이번엔 <b>오팔 성배를 낀 캐릭터뿐 아니라 같은 파티 전원의 기록</b>이 대상이라 본인이 끼지 않았어도 삭제된 사례가 많다. 따라서 <b>8/24~8/26 사이의 지옥2 기록은 근거로 쓸 수 없다</b>. 아래 채용률은 <b>8/25 집계</b>이며 <b>레이드룬은 아직 0~0.4%</b>(드랍분만)라 다음 주 리포트에 처음 반영된다.</p><p>사제는 <b>뼈인장 코어룬 위치를 유지</b>했다. 8/20에 «2배 적용» 버그가 수정됐음에도 채용률이 꺾이지 않았고, 이는 화법·장궁과 공통이다. <b>무한한 탐욕</b>도 40~50%대에서 유지되며, <b>긍지</b>는 힐러·수도사·음유와 함께 40~50%대 코어룬이다. 어비스 파티 메타는 <b>1방 사제 · 2방 사제 · 3방 음유</b> 구도가 굳어지는 흐름이다.</p><p class="plain"><b>레이드룬은 «신기루»와 «오팔 성배»의 갈림길이다.</b> 사제는 강타강화 시즌 스킬을 가진 <b>원거리 강타 직업</b>이라 신기루의 «피격 시 중첩 감소» 조건에서 자유롭고, 분석 채널도 사제를 신기루 후보로 명시했다. 갤에서도 «기본기 한 자리를 빼고 신기루를 끼면 어떤가»라는 질문이 올라왔는데, 오팔 성배의 조건(빛·어둠·용 각 2개)을 맞추려면 <b>부캐 기준 한 달 넘게 파밍해야 한다</b>는 현실적 제약이 배경이다. 즉 <b>«오팔이 더 좋지만 조건이 되는가»가 실질적인 판단 기준</b>이며, 조건이 안 되면 신기루가 무난한 차선이다.</p><p>펫 스탯은 분석 채널이 사제 본인 캐릭터 기준으로 <b>강타 5,000 / 브레이크 5,000 / 치명타 8,000 / 추가타 3,800~4,000</b>을 제시했다. 펫 자체는 <b>브치·강치·추치 중 아무거나</b> 비슷하며 나머지 스탯을 룬 프리즘으로 조절하면 된다는 입장이다. 갤에서는 <b>사제 오토 성능</b>을 힐러와 비교해 묻는 글이 이어졌다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1310522" target="_blank" rel="noopener"><span class="n">#1310522</span> 신기루 채용 문의 — 오팔 조건 파밍 부담</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1310669" target="_blank" rel="noopener"><span class="n">#1310669</span> 사제 오토 성능</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=cC3qP4e-vj8" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「8월 4주차 룬 채용률 리포트」</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=ExVDpVW1xKg" target="_blank" rel="noopener"><span class="n">▶</span> 빙식이 「레이드 방어구 룬 정가 고르기」</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=T5wSydnrBos" target="_blank" rel="noopener"><span class="n">▶</span> 새크리마 「어비스·레이드 직업별 펫 추천」</a>
+    </div>
+  </div>
+  <div class="card" style="scroll-margin-top:24px">
     <h4>⛪ 9주차 갱신 — «위대함»이 영원한 밤을 대체하는 중 · 집행 vs 홀스<span class="tag">2026-09-08</span></h4>
     <p class="plain"><b>이번 주 전제 — 레이드룬 채용률이 2주치 쌓이며 자리가 확정됐다.</b> <b>«작열»은 수도사·기사·도적 3직업의 코어룬</b>이 됐고(그 외 직업은 쓰지 않는다), <b>«오팔 성배»는 평균 20.8%의 범용룬</b>으로 굳었다. 나머지 5종은 두 자릿수 진입에 실패했다. 아래 채용률은 <b>9/07 집계</b>이며, 갤 자료는 <b>9/07~9/08 2일치</b>다(디시 키워드 검색의 구조적 한계).</p>
     <p>엠블럼에 변화가 생겼다. 시즌 내내 1픽이던 <b>«영원한 밤»을 «위대함»이 대체</b>하고 있다. 영원한 밤이 1위인 직업이 <b>13개 → 12개로 줄었는데 그 한 자리가 사제</b>다. 사제는 오팔 성배를 10%대로 채용하는 직업이라 <b>용 계열 조건을 맞추려는 동기가 섞여 있을 수 있으나</b>, 오팔을 쓰지 않는 대검전사·전사에서도 위대함이 동반 상승한 점을 보면 <b>순수 재평가로 보는 편이 맞다</b>는 것이 분석 채널의 결론이다.</p>
@@ -410,54 +494,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
       <a class="chip" href="https://www.youtube.com/watch?v=wAbE6SIrtTY" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「9/07 룬 채용률 — 사제 위대함」</a>
     </div>
   </div>
-  <div class="card">
-    <h4>🔻 7주차 갱신 — 어비스 전 직업 1위, 그러나 8/20 직격 대상<span class="tag">2026-08-19</span></h4>
-    <p class="plain"><b>이번 주 전제 — 8/13 패치로 «스킬 주는 피해»(스주피) 계열 룬 효과가 2배로 적용되는 버그가 있었고, 8/20 점검에서 수정된다.</b> 전격 유저의 실측 검증에 따르면 스주피 룬끼리는 원래 <b>합연산</b>이 맞고, 버그는 각 룬의 수치가 두 배로 들어간 것이다 — 무한한 탐욕+봉인술사를 함께 끼면 아무것도 없을 때 대비 <b>2.36배</b>(=1+0.8+0.56)가 나왔고, 정상화되면 <b>1.68배</b>로 떨어진다(해당 스킬 대미지가 현재의 <b>71.2%</b> 수준). 따라서 <b>8/13~8/19 사이에 나온 어비스 점수·함수 기록·티어표는 모두 버그 구간의 수치</b>이며, 그대로 믿으면 안 된다. 스주피 룬을 많이 낀 직업일수록 낙폭이 크다. <b>계승자·끓는 피는 버그가 아니라는 것</b>이 실측자들의 공통 견해다.</p><p>사제는 <b>8/18 어비스 전 직업 1위</b>다 — 평균 순위 <b>1위(75,726.5)</b>, 1위 점수 공동 1위(76,476), 10위 점수 공동 1위(74,977)로 세 지표를 모두 석권했다. 갤 반응은 «너프하라»로 기울었다. <b>다만 이 기록은 버그 구간의 것</b>이며, 사제는 <b>뼈인장·바위 칼날·무한한 탐욕 세 개를 동시에 받는 구조</b>라 2배 버그의 최대 수혜 직업 중 하나로 지목됐다. 8/13 패치에서 이미 <b>켈틱 크로스의 심판 적용 시 데미지 감소</b>, <b>브레이크 상태의 적 공격 시 추가 데미지 감소</b>가 적용됐고 <b>디바인 윙의 날개 적용 시 데미지는 증가</b>했다.</p><p class="plain">채용률로 보면 <b>심판은 -0.8%로 거의 움직이지 않았고</b>, 대신 <b>날개가 4.8%로 상승</b>해 결속 자리를 대체하는 흐름이다 — 즉 브레이크 너프에도 심판을 버리진 않았다는 뜻이다. 낙폭 전망은 갈린다. 한쪽은 <b>심판·홀리 스피어의 딜 지분이 전체의 80%를 넘는 비정상 구조</b>라 버그가 잡히면 실질적으로 수도사 수준까지 내려앉는다고 본다. 반대쪽은 <b>홀리 스피어는 탐욕 하나만 작용</b>하므로 낙폭이 «몰락»이라 부를 정도는 아니며, <b>버그 이전에도 체급 자체는 높았다</b>고 반박한다. 정리하면 <b>집행(심판) 사제의 낙폭이 크고 홀스 사제는 상대적으로 완만할 것</b>이라는 데는 양쪽이 대체로 동의한다. 기갱·산낙지에서 «유일신»으로 불릴 만큼의 현재 위상은 8/20을 기점으로 재평가가 불가피하다.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1276285" target="_blank" rel="noopener"><span class="n">#1276285</span> 8/18 어비스 랭킹 — 사제 3지표 석권</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1279225" target="_blank" rel="noopener"><span class="n">#1279225</span> 사제 몰락 예측 — 딜 지분 80% 구조</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1280418" target="_blank" rel="noopener"><span class="n">#1280418</span> 산낙지 선호 직업 · 사제 «유일신»</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=1OX-o13RDIc" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「8월 3주차 룬 리포트」</a>
-    </div>
-  </div>
-  <div class="card">
-    <h4>📘 8주차 갱신 — 뼈인장 코어 유지, 레이드룬은 신기루/오팔 갈림길<span class="tag">2026-08-29</span></h4>
-    <p class="plain"><b>이번 주 전제 — 8/24 레이드룬 정가 교환으로 «오팔 성배»가 대량 보급됐고, 치명타 피해 증가가 2회 적용되는 버그가 확인돼 8/27 점검에서 수정됐다.</b> 그 여파로 <b>지옥2 어비스 랭킹이 2주 연속 초기화</b>됐는데, 이번엔 <b>오팔 성배를 낀 캐릭터뿐 아니라 같은 파티 전원의 기록</b>이 대상이라 본인이 끼지 않았어도 삭제된 사례가 많다. 따라서 <b>8/24~8/26 사이의 지옥2 기록은 근거로 쓸 수 없다</b>. 아래 채용률은 <b>8/25 집계</b>이며 <b>레이드룬은 아직 0~0.4%</b>(드랍분만)라 다음 주 리포트에 처음 반영된다.</p><p>사제는 <b>뼈인장 코어룬 위치를 유지</b>했다. 8/20에 «2배 적용» 버그가 수정됐음에도 채용률이 꺾이지 않았고, 이는 화법·장궁과 공통이다. <b>무한한 탐욕</b>도 40~50%대에서 유지되며, <b>긍지</b>는 힐러·수도사·음유와 함께 40~50%대 코어룬이다. 어비스 파티 메타는 <b>1방 사제 · 2방 사제 · 3방 음유</b> 구도가 굳어지는 흐름이다.</p><p class="plain"><b>레이드룬은 «신기루»와 «오팔 성배»의 갈림길이다.</b> 사제는 강타강화 시즌 스킬을 가진 <b>원거리 강타 직업</b>이라 신기루의 «피격 시 중첩 감소» 조건에서 자유롭고, 분석 채널도 사제를 신기루 후보로 명시했다. 갤에서도 «기본기 한 자리를 빼고 신기루를 끼면 어떤가»라는 질문이 올라왔는데, 오팔 성배의 조건(빛·어둠·용 각 2개)을 맞추려면 <b>부캐 기준 한 달 넘게 파밍해야 한다</b>는 현실적 제약이 배경이다. 즉 <b>«오팔이 더 좋지만 조건이 되는가»가 실질적인 판단 기준</b>이며, 조건이 안 되면 신기루가 무난한 차선이다.</p><p>펫 스탯은 분석 채널이 사제 본인 캐릭터 기준으로 <b>강타 5,000 / 브레이크 5,000 / 치명타 8,000 / 추가타 3,800~4,000</b>을 제시했다. 펫 자체는 <b>브치·강치·추치 중 아무거나</b> 비슷하며 나머지 스탯을 룬 프리즘으로 조절하면 된다는 입장이다. 갤에서는 <b>사제 오토 성능</b>을 힐러와 비교해 묻는 글이 이어졌다.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1310522" target="_blank" rel="noopener"><span class="n">#1310522</span> 신기루 채용 문의 — 오팔 조건 파밍 부담</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1310669" target="_blank" rel="noopener"><span class="n">#1310669</span> 사제 오토 성능</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=cC3qP4e-vj8" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「8월 4주차 룬 채용률 리포트」</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=ExVDpVW1xKg" target="_blank" rel="noopener"><span class="n">▶</span> 빙식이 「레이드 방어구 룬 정가 고르기」</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=T5wSydnrBos" target="_blank" rel="noopener"><span class="n">▶</span> 새크리마 「어비스·레이드 직업별 펫 추천」</a>
-    </div>
-  </div>
 
-
-  <div class="card">
-    <h4>🔄 5주차 갱신 — 무기 1픽 광채로 교체 + 집행이 성전 추월<span class="tag">2026-08-03</span></h4>
-    <p>사제 룬이 두 군데 바뀌었다. <b>무기 1픽이 광채로 교체</b>됐고(개시도 채용률 있음), 장신구는 <b>집행이 성전을 제치고 2위</b>로 올라섰다(심판·집행·성전 체제). 결속·날개는 대안으로 내려갔다. 방어구 코어는 <b>뼈인장</b> 유지이고, 여기에 <b>칼바람·무한한 탐욕</b>이 새로 채용률에 진입했다 — 칼바람은 <b>브레이크 스킬 피해 기여</b> 때문으로, 지원 계열의 의외 채용으로 리포트에 지목됐다.</p>
-    <p class="plain">티어 논쟁은 이번 주에도 이어졌다. “지금 사제가 왜 1티어냐”는 물음에 <b>“쫄방·중보·보스방 다 잘 미는 팔방미인”·“잡몹방의 신”</b>이라는 답이 다수였다. 반대편 근거는 어비스 점수(8/2·8/3 모두 47,298)와 <b>구조 설명</b>이다 — 보스 딜을 힐러가 가져가는 현 메타에서는 <b>잡몹 처리가 빠른 딜러가 각광받는 것일 뿐</b>이라는 것. 함수 기준으로는 평범하다는 실측(오토 dps 2,600)도 함께 올라왔다.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1226179" target="_blank" rel="noopener"><span class="n">#1226179</span> “지금 사제가 왜 1티어냐” 논쟁</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1231970" target="_blank" rel="noopener"><span class="n">#1231970</span> 오토 dps 2,600 실측</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1228962" target="_blank" rel="noopener"><span class="n">#1228962</span> 8/2 어비스 47,298</a>
-      <a class="chip" href="https://youtu.be/bswVvDOiC6Q" target="_blank" rel="noopener"><span class="n">YT</span> 황산갈매기 · 8/3 룬 리포트</a>
-      <a class="chip" href="https://youtu.be/n7PqoxX16JA" target="_blank" rel="noopener"><span class="n">YT</span> 황산갈매기 · 21직업 컨닝페이퍼</a>
-    </div>
-  </div>
-  <div class="card">
-    <h4>🔧 6주차 갱신 — 무기 1픽이 다시 바뀌었다: 바위 칼날<span class="tag">2026-08-08</span></h4>
-    <p>5주차에 “무기 1픽 광채”로 정리한 항목을 <b>바위 칼날로 정정</b>한다. 갤 문답에서 “사제는 바위 칼날 쓰지 무슨 광채·계시냐”가 즉답으로 나왔고, 대안으로 <b>신화 무기룬 죽음(공증 20%·치피 20%)</b>이 제시됐다 — 판단 기준은 명확하다: <b>침식·밤축·각성을 다 합쳐 치확 100%가 맞춰지면 죽음, 아니면 바칼(바위 칼날)</b>. 방어구는 <b>뼈인장 · 칼바람 · 긍지 · 무너진 경계 · 갈퀴</b>가 종결 라인으로 굳었다(<b>긍지는 방깍이지만 힐 계열엔 사실상 필수 공증룬</b>, 일렁임은 비추). 고점형 실험으로 <b>잠든 땅</b>(연타·강타 +13%, 회복력 −60%)이 제시됐는데 “지1 카브락 풀오토도 안 죽는다”는 검증이 붙었으나 “한눈팔면 죽는다”는 경고가 함께 달렸다.</p>
-    <p class="plain">역할 평가도 강화됐다. 브레이크 성능 순위 정리글에서 <b>수도사 다음 2위</b>로 꼽혔고 “<b>사제는 확실히 브렉 머신</b>, 갈땅 끼고 입장하자마자 223 싸면 브레이크가 개진다”는 운용법이 공유됐다. 1브 실적으로는 <b>정박지·물길 1브 로그</b>가 공개됐고(파괴자·아득·집성심 / 칼바람·무한한 탐욕·무너진 경계·수호자·아귀), 중위권 딜러가 1브 10억일 때 <b>사제는 15억을 넘긴다</b>는 비교가 나왔다. 유튜브 심화 정리에서는 <b>심판(3번)을 메인으로 신규 스킬 베네딕션과 1·2번을 섞어 심판을 빨리 재사용</b>하는 사이클, <b>강타 강화 5,000</b> 세팅(시즌 스킬 발동 주기 최대화), <b>뼈인장 종결 + 무너진 경계로 추가타 보충 → 타오르는 빛 발동 빈도 상승</b>이 제시됐다. 어비스는 8/8 <b>47,530(서폿 2위)</b>. <b>8/13 힐러 궁밥 조정이 확정된 만큼, 다음 주 서폿 1황 자리는 사제 쪽으로 넘어올 가능성이 높다</b>는 관측이 갤·유튜브 양쪽에서 나왔다.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1246864" target="_blank" rel="noopener"><span class="n">#1246864</span> 사제 무기룬 — 바위 칼날 / 죽음 분기</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1246517" target="_blank" rel="noopener"><span class="n">#1246517</span> 사제 옷룬 — 뼈인장·칼바람·긍지·경계·갈퀴</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1246990" target="_blank" rel="noopener"><span class="n">#1246990</span> 잠든 땅 실험 (연타·강타 +13% / 회복 −60%)</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1245557" target="_blank" rel="noopener"><span class="n">#1245557</span> 뽀삐사제 1브딜 로그</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1243129" target="_blank" rel="noopener"><span class="n">#1243129</span> 브레이크 성능 순위 — 사제 2위</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=g_DSFFfKofQ" target="_blank" rel="noopener"><span class="n">YT</span> 시웅 · 시즌2 사제 스킬·스탯·룬 세팅</a>
-    </div>
-  </div>
 </section>
 
 <div class="ornament">✦ ✦ ✦</div>
@@ -467,7 +504,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="chead">
     <div class="kicker">제 2 장 · 貳</div>
     <h3>빌드 선택</h3>
-    <p>먼저 “뭘 하고 싶은지”부터 정하자 — 세 갈래로 갈린다</p>
+    <p>먼저 하고 싶은 역할부터 정하자 — 세 갈래로 갈린다</p>
   </div>
 
   <div class="card">
@@ -483,16 +520,16 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
         </tbody>
       </table>
     </div>
-    <p>집행 사제는 딜 지분의 <b>80% 이상이 저지먼트+심판</b>에 몰리고 둘 다 강보방 태그라, 세공을 하나로 통일할 수 있는 게 큰 장점. 그래서 “딜도 집행, 힐도 집행”이라 부른다.</p>
-    <div class="quote">“전처럼 2줄작으로 서브딜러 하고 싶으면 홀스 / 힐사제 하고 싶으면 집행 / 힐딜 둘 다면 집행 + 강보방 20개.”
-      <span class="who">— 「사제 이번 시즌 요약 이거인듯」</span></div>
+    <p>집행 사제는 딜 지분의 <b>80% 이상이 저지먼트+심판</b>에 몰리고 둘 다 강보방 태그라, 세공을 하나로 통일할 수 있는 게 큰 장점. 그래서 딜도 집행, 힐도 집행이라는 말이 나온다.</p>
+    <div class="quote">시즌 요약 글의 결론 — 전처럼 2줄작 서브딜러를 원하면 홀스, 힐사제를 원하면 집행, 힐·딜 둘 다 원하면 집행에 강보방 20개를 더하라는 것.
+      <span class="who">— 「사제 이번 시즌 요약 이거인듯」 요지</span></div>
     <div class="refs"><span class="rl">근거</span>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132766" target="_blank" rel="noopener"><span class="n">#1132766</span> 시즌 요약</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142274" target="_blank" rel="noopener"><span class="n">#1142274</span> 3스 지분 50~60%</a>
     </div>
   </div>
 
-  <div class="note info"><b>용어 짚기.</b> 흔히 “집행 빌드”라 부르지만 <b>집행은 무기룬이 아니라 악세(장신구) 스킬룬</b>이다. 집행·심판·성전·날개·결속이 전부 장신구 스킬룬이고, 무기룬은 따로(5장 참고).</div>
+  <div class="note info"><b>용어 짚기.</b> 흔히 집행 빌드라 부르지만 <b>집행은 무기룬이 아니라 악세(장신구) 스킬룬</b>이다. 집행·심판·성전·날개·결속이 전부 장신구 스킬룬이고, 무기룬은 따로(5장 참고).</div>
 </section>
 
 <div class="ornament">✦ ✦ ✦</div>
@@ -507,9 +544,9 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
   <div class="card">
     <h4><span class="tag">핵심</span>집행이 빠른 이유 — 강타 쿨감 + 저지먼트</h4>
-    <p>집행(스킬룬)은 <b>강타가 뜰 때마다 스킬 쿨이 감소</b>한다. 그래서 강타 5,000 + 장비 피증으로 보스 강타율을 90%대로 올리면 때리는 족족 쿨이 당겨진다. 여기에 <b>저지먼트가 심판 쿨을 거의 초기화급으로</b> 되돌려 “심판 → 저지먼트 → 심판” 회전이 성립한다. “스킬 쓰는 속도가 쿨을 못 따라간다”는 말이 나올 정도.</p>
-    <div class="quote">딜 사이클 예시: 1(링크) → 5(베네딕션) → 3 → 4 → 2 → 2 → 3, 이후 베네딕션 유지 + 심판 주딜. “저지먼트는 추가타 조금 챙기면 심판을 쿨초기화급으로 돌려줘서 심판–저지먼트–심판이 좋다.”
-      <span class="who">— 「사제 집행 메모장」</span></div>
+    <p>집행(스킬룬)은 <b>강타가 뜰 때마다 스킬 쿨이 감소</b>한다. 그래서 강타 5,000 + 장비 피증으로 보스 강타율을 90%대로 올리면 때리는 족족 쿨이 당겨진다. 여기에 <b>저지먼트가 심판 쿨을 거의 초기화급으로</b> 되돌려 심판 → 저지먼트 → 심판 회전이 성립한다. 스킬 쓰는 속도가 쿨 회전을 못 따라간다는 말이 나올 정도.</p>
+    <div class="quote">딜 사이클 예시: 1(링크) → 5(베네딕션) → 3 → 4 → 2 → 2 → 3, 이후 베네딕션 유지 + 심판 주딜. 저지먼트에 추가타를 조금 챙기면 심판 쿨이 초기화급으로 돌아와 심판–저지먼트–심판 회전이 좋다는 조언이 붙었다.
+      <span class="who">— 「사제 집행 메모장」 요약</span></div>
     <div class="refs"><span class="rl">근거</span>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1116858" target="_blank" rel="noopener"><span class="n">#1116858</span> 집행 메모장</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1097569" target="_blank" rel="noopener"><span class="n">#1097569</span> 강타 프록 쿨감</a>
@@ -529,7 +566,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
     <h4>스킬별 포인트</h4>
     <p class="plain"><b>3스 심판</b> — 캐스팅·차징이 아니라 모션만 긴 즉발기. 캐차 스탯은 홀스 쓸 때만 필요. 브레이크딜 주력이라 칼바람·뼈인장과 궁합.</p>
     <p class="plain"><b>2스(비둘기)</b> — 신규 시즌 룬으로 사실상 무한 시전, 힐 회전의 핵심.</p>
-    <p class="plain"><b>장판(생츄어리)</b> — 논쟁. “솔플이면 생츄 깔 시간에 비둘기+심판 한 번 더”가 낫다는 파와, <b>밤의축복 세트는 생츄어리가 버프 트리거</b>라 쿨마다 써야 한다는 파.</p>
+    <p class="plain"><b>장판(생츄어리)</b> — 논쟁. 솔플이면 생츄 깔 시간에 비둘기+심판을 한 번 더 돌리는 게 낫다는 파와, <b>밤의축복 세트는 생츄어리가 버프 트리거</b>라 쿨마다 써야 한다는 파.</p>
     <div class="refs"><span class="rl">근거</span>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138229" target="_blank" rel="noopener"><span class="n">#1138229</span> 심판=즉발</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140226" target="_blank" rel="noopener"><span class="n">#1140226</span> 생츄어리 논쟁</a>
@@ -539,7 +576,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
   <div class="card">
     <h4>필드·오토 몹밀이 = 신규 5스룬 + 수레바퀴</h4>
-    <p>집행이 강타마다 수레 쿨을 줄여줘 “무한 수레”가 돈다. 신성력·강타 수급용이라 오토·솔플 몹밀이에 최적 — “집수 오토는 쿨삑 없이 무한으로 돌아간다(딜은 땅바닥이지만 안 죽음)”.</p>
+    <p>집행이 강타마다 수레 쿨을 줄여줘 사실상 무한 수레가 돈다. 신성력·강타 수급용이라 오토·솔플 몹밀이에 최적 — 집수 오토는 쿨삑 없이 무한으로 돌아가고, 딜은 낮지만 죽지 않는다는 인증이 올라왔다.</p>
     <div class="note"><b>주의.</b> 파티에선 넉백으로 몹을 밀어 민폐 — “수레바퀴 사제면 강퇴” 소리가 나온다. 레이드 힐사제는 수레 대신 심판. 즉 수레는 <b>솔플·오토 전용</b>.</div>
     <div class="refs"><span class="rl">근거</span>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135434" target="_blank" rel="noopener"><span class="n">#1135434</span> 오토 수레 인증</a>
@@ -613,9 +650,9 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
   <div class="card hl">
     <h4><span class="tag">정배</span>악세(스킬룬): 집행+심판 고정 + @ → 결집심</h4>
-    <p>장신구 스킬룬은 <b>집행·심판 2개 고정 + 나머지 한 자리</b> 구조. 7/5 시점엔 <b>결집심(결속+집행+심판)이 사실상 고정</b>이라는 평이 강하다. <b>결속</b>이 ① 신성력 자동회복 ② 스킬 사용 시 확률 재발동으로 “집행이 가끔 찐빠 나는 걸 보완”해주고, 피증이 많아 성전 효율이 떨어지니 결속으로 신성력을 채우는 게 이득. 역할에 따라 <b>날집심 / 성집심 / 축집심</b>으로 갈린다(파티 솔힐 축심집, 서폿 많으면 성심집).</p>
-    <div class="quote">“해보니까 결집심이 고정이야. 결속이 가끔 집행 찐빠나는 거 보완해줌. 2스는 그냥 디바인윙 날리는 게 저지먼트 잘 터져서 좋아.”
-      <span class="who">— 「사제 세팅 이제 어떻게」·「보방→강 순임?」</span></div>
+    <p>장신구 스킬룬은 <b>집행·심판 2개 고정 + 나머지 한 자리</b> 구조. 7/5 시점엔 <b>결집심(결속+집행+심판)이 사실상 고정</b>이라는 평이 강하다. <b>결속</b>이 ① 신성력 자동회복 ② 스킬 사용 시 확률 재발동으로 집행이 가끔 찐빠 나는 걸 보완해 주고, 피증이 많아 성전 효율이 떨어지니 결속으로 신성력을 채우는 게 이득. 역할에 따라 <b>날집심 / 성집심 / 축집심</b>으로 갈린다(파티 솔힐 축심집, 서폿 많으면 성심집).</p>
+    <div class="quote">직접 써 본 결론으로 결집심이 굳어졌다는 사용기가 근거다 — 결속이 집행의 간헐적 찐빠를 메워 주고, 2스는 디바인윙을 날리는 쪽이 저지먼트가 잘 터진다는 조언이 붙었다.
+      <span class="who">— 「사제 세팅 이제 어떻게」·「보방→강 순임?」 요지</span></div>
     <div class="refs"><span class="rl">근거</span>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142506" target="_blank" rel="noopener"><span class="n">#1142506</span> 결집심 고정</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138235" target="_blank" rel="noopener"><span class="n">#1138235</span> 성전 vs 결속</a>
@@ -625,9 +662,9 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
   <div class="card">
     <h4>무기룬: 바위칼날 · 광채 · 죽음 (홀스면 계시)</h4>
-    <p>집행 빌드 기준 무기룬 후보는 <b>바위칼날·광채·죽음</b>. 억눌린충동은 “죽음보다 별로”라 탈락. 스위가 안 먹히는 게 확인되며 <b>광채가 죽음보다 나을 수도</b> 있다는 재평가. 홀스 빌드면 <b>계시</b>. 집행 사제라면 <b>오랜광기</b>(서리바람 피증 버전, 피가 까이지만 장판 깔면 고행 패시브로 감당)도 쓸 만.</p>
-    <div class="quote">“바위칼날, 억눌린충동, 광채, 죽음 이 중에 쓸 듯 (집행 기준임). 홀스면 계시가 나을 듯?”
-      <span class="who">— 「사제 무기룬 최종으론 머쓰려나」</span></div>
+    <p>집행 빌드 기준 무기룬 후보는 <b>바위칼날·광채·죽음</b>. 억눌린충동은 죽음보다 못하다는 평으로 탈락. 스위가 안 먹히는 게 확인되며 <b>광채가 죽음보다 나을 수도</b> 있다는 재평가. 홀스 빌드면 <b>계시</b>. 집행 사제라면 <b>오랜광기</b>(서리바람 피증 버전, 피가 까이지만 장판 깔면 고행 패시브로 감당)도 쓸 만.</p>
+    <div class="quote">집행 기준 후보는 바위칼날·억눌린충동·광채·죽음 네 가지로 좁혀지고, 홀스라면 계시 쪽이 낫겠다는 것이 질문글의 결론이다.
+      <span class="who">— 「사제 무기룬 최종으론 머쓰려나」 요지</span></div>
     <div class="refs"><span class="rl">근거</span>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139992" target="_blank" rel="noopener"><span class="n">#1139992</span> 무기룬 후보</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141587" target="_blank" rel="noopener"><span class="n">#1141587</span> 오랜광기</a>
@@ -637,7 +674,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   <div class="card">
     <h4><span class="tag">수저</span>핵심템: 뼈인장 + 칼바람</h4>
     <p>사제의 <b>수저 조합은 뼈인장 + 칼바람</b>. 집행 사제는 3스(심판)가 브레이크딜 주력이라, 브레이크 스킬피해+크뎀을 주는 <b>칼바람</b>과 주력기 딜을 폭발시키는 <b>뼈인장</b>을 받으면 “3무한난사”로 미터기가 터진다. 3스 딜 지분이 뼈인장 없이도 50~60%, 뼈인장을 먹으면 더 오른다.</p>
-    <div class="note info"><b>참고.</b> 뼈인장의 정확한 분류(룬/인장/인챈트)는 갤 내에서도 표현이 엇갈려 이 공략집에선 “핵심 강화 요소”로만 표기한다. 효과(주력 스킬 딜을 크게 키움)는 이견이 없다.</div>
+    <div class="note info"><b>참고.</b> 뼈인장의 정확한 분류(룬/인장/인챈트)는 갤 내에서도 표현이 엇갈려 이 공략집에선 핵심 강화 요소로만 표기한다. 효과(주력 스킬 딜을 크게 키움)는 이견이 없다.</div>
     <div class="refs"><span class="rl">근거</span>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143569" target="_blank" rel="noopener"><span class="n">#1143569</span> 뼈인장·칼바람 수저</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142274" target="_blank" rel="noopener"><span class="n">#1142274</span> 3스 지분</a>
@@ -646,7 +683,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
   <div class="card">
     <h4>방어구 · 엠블럼 · 날개룬 주의</h4>
-    <p>방어구는 <b>밤의축복 세트 +@</b>. 엠블럼(무방엠)은 “다들 연구 중”이라 미확정. <b>날개룬은 주의</b> — 집행+날개 시 2스 비둘기 메커니즘이 꼬인다는 설(문 생기고 거기서만 비둘기)과, 집날심으로 잘 쓰는 사람도 있어 논쟁 중이다.</p>
+    <p>방어구는 <b>밤의축복 세트 +@</b>. 엠블럼(무방엠)은 다들 연구 중이라 미확정. <b>날개룬은 주의</b> — 집행+날개 시 2스 비둘기 메커니즘이 꼬인다는 설(문 생기고 거기서만 비둘기)과, 집날심으로 잘 쓰는 사람도 있어 논쟁 중이다.</p>
     <div class="refs"><span class="rl">근거</span>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140414" target="_blank" rel="noopener"><span class="n">#1140414</span> 방어구·장신구 선호</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142042" target="_blank" rel="noopener"><span class="n">#1142042</span> 날개룬 주의</a>
@@ -666,10 +703,10 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 
   <div class="card hl">
     <h4>불사 패시브 — 사실상 상시 죽음 면제</h4>
-    <p>“심판 타이밍만 맞추면 파티원 전원 불사”, 사실상 상시 <b>죽음 1회 면제권</b>. 메커니즘 확정: 3스·궁에 묻은 <b>소생은 파티 전원 생존, 개별 쿨타임 180초</b>. 소생 지속(약 20초) 안에 위험 패턴을 넘긴다.</p>
+    <p>심판 타이밍만 맞추면 파티원 전원이 불사라는 평 그대로, 사실상 상시 <b>죽음 1회 면제권</b>. 메커니즘 확정: 3스·궁에 묻은 <b>소생은 파티 전원 생존, 개별 쿨타임 180초</b>. 소생 지속(약 20초) 안에 위험 패턴을 넘긴다.</p>
     <p class="plain"><b>결정타</b> — 사제 부활이 있으면 파티원의 <b>불사룬이 무의미</b>해진다(쿨 공유). 부캐 GOAT룬이던 불사룬을 사제가 통째로 대체하는 셈이라, “불사룬 이제 필요 없냐? 사기”라는 반응.</p>
-    <div class="quote">“어비스 틱택토 패턴 때 오토충 있어도 겜 안 터짐 ㅋㅋㅋ” · “사제가 공팟에서 진짜 개고트임.”
-      <span class="who">— 「사제 불사 패시브 좋네」</span></div>
+    <div class="quote">어비스 틱택토 패턴에서 오토 유저가 섞여 있어도 판이 안 터진다는 경험담과, 공팟에서 사제가 최고의 존재라는 반응이 대표적이다.
+      <span class="who">— 「사제 불사 패시브 좋네」 요지</span></div>
     <div class="refs"><span class="rl">근거</span>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143213" target="_blank" rel="noopener"><span class="n">#1143213</span> 소생 전원·쿨180</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143964" target="_blank" rel="noopener"><span class="n">#1143964</span> 불사룬 무의미</a>
@@ -689,10 +726,10 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 
   <div class="card">
-    <p><b>보스 딜 고점은 홀스, 범용성·편의성은 집행(집심).</b> 엔드 세팅은 결국 홀스로 갈 수도 있다는 유보가 있지만, 대부분은 “힐이 되면서 스트레스 없이 딜이 나오는” 집행을 재밌어한다. 홀스는 555라 사이클이 쉽고, 집행 사이클도 다른 딜러에 비하면 쉬운 편.</p>
+    <p><b>보스 딜 고점은 홀스, 범용성·편의성은 집행(집심).</b> 엔드 세팅은 결국 홀스로 갈 수도 있다는 유보가 있지만, 대부분은 힐이 되면서 스트레스 없이 딜이 나온다는 이유로 집행을 재밌어한다. 홀스는 555라 사이클이 쉽고, 집행 사이클도 다른 딜러에 비하면 쉬운 편.</p>
     <p class="plain">한 줄 요약 — <b>서폿·유틸·재미까지 원하면 집행(결집심), 순수 보스 딜 고점만 보면 홀스.</b> 둘 다 룬이 없다면 집행/폭격 먹을 때까지 하던 거 하며 대기.</p>
-    <div class="quote">“홀스는 555라 쉽고 집행 사이클도 딜러 중엔 쉬운 편. 집행도 뼈인장 세팅하면 홀스랑 비빌 것 같은데 이건 힐이 돼서 좋음. 근데 엔드 딜 세팅은 결국 홀스가 될 수도.”
-      <span class="who">— 「사제 개재밌네 그냥」</span></div>
+    <div class="quote">체감기 요지 — 홀스는 555라 쉽고 집행 사이클도 딜러 중엔 쉬운 편이며, 집행에 뼈인장을 세팅하면 홀스와 비빌 만한데 힐까지 돼서 좋다는 것. 다만 엔드 딜 세팅은 결국 홀스가 될 수 있다는 유보가 붙었다.
+      <span class="who">— 「사제 개재밌네 그냥」 요지</span></div>
     <div class="refs"><span class="rl">근거</span>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136327" target="_blank" rel="noopener"><span class="n">#1136327</span> 홀스 vs 집행 체감</a>
       <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1142506" target="_blank" rel="noopener"><span class="n">#1142506</span> 범용성은 집심</a>
@@ -723,7 +760,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
   </div>
 </section>
 
-  <div class="card">
+  <div class="card" style="scroll-margin-top:24px">
     <h4>⛪ 11주차 갱신 — 집행 사제의 확치·드릴 24층 사례<span class="tag">2026-09-19</span></h4>
     <p class="plain"><b>사제는 집행과 홀스의 치명타 조건을 구분해야 한다는 기존 결론이 유지됐다.</b> 집행 사제는 홀스처럼 확정 치명이 아니므로 치명타를 챙겨야 한다는 갤 답변이 반복됐고, 바칼·위대함·뼈인장·용사냥꾼·긍지·오팔·무너진 경계 조합과 7,200급 힐러의 드릴 24층 클리어 사례가 공유됐다. 사제의 드릴 고점 상승으로 일반적인 “힐만 하는 직업” 평가와 실제 딜·지원 기여 사이의 간극도 커졌다.</p><div class="refs"><span class="rl">근거</span><a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1372564" target="_blank" rel="noopener"><span class="n">#1372564</span> 사제 위대함·오팔·경계 세팅</a><a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1372489" target="_blank" rel="noopener"><span class="n">#1372489</span> 7200 힐러 드릴 24층 룬 조합</a><a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1372445" target="_blank" rel="noopener"><span class="n">#1372445</span> 집행 사제 쿨감 사례</a></div>
   </div>
@@ -738,7 +775,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
     <li><span class="num">◇#1246517</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1246517" target="_blank" rel="noopener">사제 옷룬 걍 이렇게 끼는거 ㅇㄸ</a><span class="d">08/08 · 뼈인장·칼바람·긍지·경계·갈퀴</span></li>
     <li><span class="num">◇#1246990</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1246990" target="_blank" rel="noopener">사제 방어구룬 마스터피스 찾았다</a><span class="d">08/08 · 잠든 땅 −60% 실험</span></li>
     <li><span class="num">◇#1245557</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1245557" target="_blank" rel="noopener">뽀삐사제 1브딜 몇개</a><span class="d">08/08 · 정박지·물길 1브 로그</span></li>
-    <li><span class="num">◇#1243129</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1243129" target="_blank" rel="noopener">직업별 브레이크 성능 순위</a><span class="d">08/07 · 사제 2위 “브렉 머신”</span></li>
+    <li><span class="num">◇#1243129</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1243129" target="_blank" rel="noopener">직업별 브레이크 성능 순위</a><span class="d">08/07 · 사제 2위, 브렉 머신 평</span></li>
     <li><span class="num">#1144938</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144938" target="_blank" rel="noopener">이번 시즌 사제 미만잡인듯?</a><span class="d">07/05 · 딜 2500만+부활 인정</span></li>
     <li><span class="num">#1144675</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144675" target="_blank" rel="noopener">사제들 추가타 최소 몇까지?</a><span class="d">07/05 · 스탯 목표치</span></li>
     <li><span class="num">#1143964</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143964" target="_blank" rel="noopener">사제는 불사룬 더 필요없나</a><span class="d">07/05 · 불사룬 무의미화</span></li>
@@ -759,7 +796,7 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
     <li><span class="num">#1140414</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140414" target="_blank" rel="noopener">사제 룬 1티어가 뭔가요?</a><span class="d">07/04 · 장신구·방어구</span></li>
     <li><span class="num">#1140226</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140226" target="_blank" rel="noopener">집행 사제 장판 안쓰는게 나은가</a><span class="d">07/03 · 생츄어리 논쟁</span></li>
     <li><span class="num">#1140070</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140070" target="_blank" rel="noopener">사제 신규룬 개좋은데?</a><span class="d">07/03 · 2스 무한</span></li>
-    <li><span class="num">#1140057</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140057" target="_blank" rel="noopener">사제놈들 팁준다 (정보글)</a><span class="d">07/03 · 피증 40% 실측</span></li>
+    <li><span class="num">#1140057</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1140057" target="_blank" rel="noopener">사제들 팁준다 (정보글)</a><span class="d">07/03 · 피증 40% 실측</span></li>
     <li><span class="num">#1139992</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1139992" target="_blank" rel="noopener">사제 무기룬 최종으론 머쓰려나</a><span class="d">07/03 · 무기룬 후보</span></li>
     <li><span class="num">#1138235</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138235" target="_blank" rel="noopener">사제는 보방→강 순임?</a><span class="d">07/03 · 성전 vs 결속·축복</span></li>
     <li><span class="num">#1138229</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138229" target="_blank" rel="noopener">사제 3스 심판 질문</a><span class="d">07/03 · 심판=즉발</span></li>
@@ -788,10 +825,26 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeBo
 <footer>
   <div class="sign">✚ 육육이의 탄붕을 위한 사제 공략모음 ✚</div>
   정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-09-19 (11주차 갱신)<br>
-  시즌 2 초기 여론이라 엠블럼·뼈인장 분류 등 미확정 항목은 추후 갱신 필요 · 인용문은 원문 표현 유지
+  시즌 2 초기 여론이라 엠블럼·뼈인장 분류 등 미확정 항목은 추후 갱신 필요 · 갤러리 여론은 요약·재구성해 정리
 </footer>
 
 </div>
+</div></details><details><summary>이 페이지의 자료 범위</summary><p>검토일은 2026년 9월 20일입니다. 채용 수치는 9월 7일 자료이고, 스탯 예시는 8월 25일 공략입니다. 갤러리 검색은 최근 결과 수 제한이 있어 7일 전체를 망라하지 않습니다. 유튜브는 설명과 제작자 자료를 확인했으며 이번 재수집에서 영상 자막은 확보하지 못했습니다.</p></details></div></section>
+<footer class="bottom"><span>육육이의 공략 서재 &nbsp; / &nbsp; PRIEST GUIDE</span><span>2026.09.20 업데이트 · 비공식 공략</span></footer>
+</main></div></div>
+<script>
+const tabs=[...document.querySelectorAll('[role="tab"]')];
+function selectTab(tab){for(const t of tabs){const selected=t===tab;t.setAttribute('aria-selected',String(selected));t.tabIndex=selected?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!selected}}
+tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>selectTab(tab));tab.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight')next=(i+1)%tabs.length;else if(e.key==='ArrowLeft')next=(i-1+tabs.length)%tabs.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=tabs.length-1;else return;e.preventDefault();selectTab(tabs[next]);tabs[next].focus()})});
+const nav=[...document.querySelectorAll('.sidebar nav a')];
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){nav.forEach(a=>a.classList.toggle('active',a.hash==='#'+entry.target.id))}}},{rootMargin:'-15% 0px -65% 0px',threshold:0});document.querySelectorAll('main>section').forEach(s=>observer.observe(s))}
+
+function openLinkedHistory(){let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{return}const target=document.getElementById(id);if(!target)return;let ancestor=target.parentElement,opened=false;while(ancestor){if(ancestor.tagName==='DETAILS'){ancestor.open=true;opened=true}ancestor=ancestor.parentElement}if(opened)requestAnimationFrame(()=>target.scrollIntoView({block:'start'}))}
+window.addEventListener('hashchange',openLinkedHistory);openLinkedHistory();
+document.querySelector('.brand').addEventListener('click',event=>{if(window.parent!==window){try{if(typeof window.parent.closeBook==='function'){event.preventDefault();window.parent.closeBook()}}catch{}}});
+</script>
+</body>
+</html>
 
 </template>
 
