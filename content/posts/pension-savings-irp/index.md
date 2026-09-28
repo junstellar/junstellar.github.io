@@ -4,6 +4,7 @@ description: "연금저축 600만원·IRP 합산 900만원 세액공제와 연 1
 slug: "pension-savings-irp"
 date: 2026-09-22T09:00:00+09:00
 draft: false
+image: "tax-series-5-cover.jpg"
 categories: ["AI 투자"]
 tags: ["AI 투자", "계좌와 세금", "연금저축 세액공제", "IRP 세액공제", "연금저축 IRP 차이", "연금계좌 중도인출"]
 ---

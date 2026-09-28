@@ -4,6 +4,7 @@ description: "2026년 ISA 개편의 현재 상태를 살펴봅니다. 9월 정�
 slug: "isa-tax-benefits"
 date: 2026-09-18T20:00:00+09:00
 draft: false
+image: "tax-series-3-cover.jpg"
 categories: ["AI 투자"]
 tags: ["AI 투자", "계좌와 세금", "중개형 ISA", "ISA 비과세", "ISA 납입한도", "생산적금융 ISA"]
 ---

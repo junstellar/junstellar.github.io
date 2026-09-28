@@ -4,6 +4,7 @@ description: "2026년 국내시장복귀계좌(RIA)의 5,000만원 한도, 기�
 slug: "ria-tax-deduction"
 date: 2026-09-22T09:00:00+09:00
 draft: false
+image: "tax-series-4-cover.jpg"
 categories: ["AI 투자"]
 tags: ["AI 투자", "계좌와 세금", "RIA 계좌", "국내시장복귀계좌", "해외주식 양도소득세", "RIA 소득공제"]
 ---

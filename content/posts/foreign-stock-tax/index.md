@@ -4,6 +4,7 @@ description: "해외주식 양도소득세 22%와 연 250만원 기본공제, �
 slug: "foreign-stock-tax"
 date: 2026-09-17T20:00:00+09:00
 draft: false
+image: "tax-series-2-cover.jpg"
 categories: ["AI 투자"]
 tags: ["AI 투자", "계좌와 세금", "해외주식 양도소득세", "250만원 기본공제", "손익통산", "해외주식 세금 신고"]
 ---

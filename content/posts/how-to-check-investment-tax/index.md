@@ -4,6 +4,7 @@ description: "주식 세금과 절세 계좌 정보를 직접 확인하는 순�
 slug: "how-to-check-investment-tax"
 date: 2026-09-28T09:00:00+09:00
 draft: false
+image: "tax-series-6-cover.jpg"
 categories: ["AI 투자"]
 tags: ["AI 투자", "계좌와 세금", "주식 세금", "국세청 홈택스", "세법 확인", "절세 계좌"]
 ---
