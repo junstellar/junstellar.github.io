@@ -89,10 +89,12 @@ const TESTS = [
     meta:{ko:["정방향+역방향","3분 내외","전연령"],en:["Fwd + Bwd","~3 min","All ages"],ja:["順唱+逆唱","約3分","全年齢"],zh:["顺背+倒背","约3分钟","全年龄"]} },
 ];
 
-const SOON = [
-  { emoji:"🎨", name:{ko:"스트룹 집중력 테스트",en:"Stroop Test",ja:"ストループテスト",zh:"斯特鲁普测试"},
-    desc:{ko:"글자의 뜻과 색이 다를 때, 당신의 주의력은 몇 초나 버틸까요?",en:"When word and color disagree, how well does your attention hold up?",ja:"文字の意味と色が違うとき、あなたの注意力は?",zh:"当字义与颜色冲突时，你的注意力能撑多久？"} },
-];
+// 새 테스트는 한국어만 제공. 기존 다국어 테스트는 유지한다.
+TESTS.push({slug:"stroop", koreanOnly:true, emoji:"🎨",
+  name:{ko:"스트룹 주의력 테스트"},
+  desc:{ko:"글자의 뜻 대신 잉크 색에 반응하는 인지 과제. 정확도 점수, 조건별 반응시간과 스트룹 간섭량을 확인합니다."},
+  meta:{ko:["연습 8회 + 본검사 48회","3–5분","한국어"]}});
+const SOON = [];
 
 const UI = {
 ko:{ docTitle:"생각별 연구소 — 연구 기반 인지·심리 테스트 모음", tag:"연구 기반 테스트 시리즈", brand:"생각별 연구소",
@@ -152,12 +154,12 @@ function render() {
   document.documentElement.lang = lang;
   document.title = t.docTitle;
   const live = TESTS.map(x => `
-    <a class="card" href="/tools/${x.slug}/?lang=${lang}">
+    <a class="card" href="/tools/${x.slug}/${x.koreanOnly ? '' : '?lang='+lang}">
       <span class="bar"></span>
       <span class="emoji">${x.emoji}</span>
-      <h2>${x.name[lang]}</h2>
-      <p>${x.desc[lang]}</p>
-      <div class="meta">${x.meta[lang].map(m => `<span>${m}</span>`).join("")}</div>
+      <h2>${x.name[lang] || x.name.ko}</h2>
+      <p>${x.desc[lang] || x.desc.ko}</p>
+      <div class="meta">${(x.meta[lang] || x.meta.ko).map(m => `<span>${m}</span>`).join("")}</div>
     </a>`).join("");
   const soon = SOON.map(x => `
     <div class="card soon">
@@ -179,8 +181,7 @@ function render() {
     <p class="introCopy">${t.intro}</p>
     <div class="secT">${t.secLive}</div>
     <div class="grid">${live}</div>
-    <div class="secT">${t.secSoon}</div>
-    <div class="grid">${soon}</div>
+    ${SOON.length ? `<div class="secT">${t.secSoon}</div><div class="grid">${soon}</div>` : ''}
     <div class="principles">
       <div><strong>${t.p1T}</strong><p>${t.p1}</p></div>
       <div><strong>${t.p2T}</strong><p>${t.p2}</p></div>
