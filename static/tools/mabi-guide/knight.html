@@ -1,422 +1,141 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>육육이의 프렌즈를 위한 기사 공략모음</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>기사 · 룬·스탯·운용 가이드 — 육육이의 공략 서재</title>
 <style>
-  :root{
-    --paper:#eff1f4;
-    --card:#f9fafb;
-    --ink:#232830;
-    --ink-soft:#636b78;
-    --steel:#4a5a78;
-    --steel-deep:#33405a;
-    --steel-soft:#e1e6ef;
-    --steel-line:#bcc7da;
-    --line:#dde1e8;
-    --warn:#8c3b2e;
-    --warn-soft:#f5e5df;
-    --gold:#8a6d2f;
-    --gold-soft:#f1e9d5;
-    --serif:'Nanum Myeongjo','Batang','AppleMyungjo',Georgia,serif;
-    --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{
-    background:radial-gradient(120% 60% at 50% -10%, #f6f8fa 0%, var(--paper) 55%);
-    color:var(--ink);font-family:var(--sans);line-height:1.78;font-size:16px;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:760px;margin:0 auto;padding:0 20px 90px}
 
-  header.mast{text-align:center;padding:56px 0 30px}
-  .sigil{font-size:26px;color:var(--steel);line-height:1;margin-bottom:14px}
-  .byline{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--steel-deep);margin-bottom:6px}
-  h1.title{font-family:var(--serif);font-size:clamp(30px,6.5vw,46px);line-height:1.18;margin:0;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
-  .mast .rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:22px auto 16px;max-width:440px;color:var(--steel)}
-  .mast .rule::before,.mast .rule::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--steel-line))}
-  .mast .rule::after{background:linear-gradient(90deg,var(--steel-line),transparent)}
-  .mast .rule span{font-size:13px}
-  .submeta{font-size:13px;color:var(--ink-soft);max-width:560px;margin:0 auto;line-height:1.6}
-  .submeta a{color:var(--steel-deep);font-weight:600;text-decoration:none}
-  .submeta b{color:var(--ink)}
-  .verdict-strip{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 0}
-  .badge{font-size:13px;font-weight:700;padding:5px 14px;border-radius:999px;background:var(--steel-soft);color:var(--steel-deep);border:1px solid var(--steel-line)}
-  .badge.down{background:var(--warn-soft);color:var(--warn);border-color:#e5cec5}
+:root{--bg:#f8f3ec;--paper:#fffaf5;--ink:#3a281f;--muted:#786b62;--green:#a8431c;--mint:#f6e3d3;--line:#e8ddcc;--gold:#b96c32;--sand:#f7ead8;--radius:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard","Segoe UI","Malgun Gothic",sans-serif;line-height:1.7;letter-spacing:-.025em}a{color:inherit}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #c39647;outline-offset:4px}h1,h2,h3,p{margin:0}h2{font-size:27px;line-height:1.4;letter-spacing:-.05em}h3{font-size:18px}p{color:var(--muted)}svg{display:block}.shell{max-width:1200px;margin:auto;padding:0 34px}.top{border-bottom:1px solid var(--line);background:rgba(248,243,236,.97);position:sticky;top:0;z-index:10}.top .shell{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:800;display:flex;align-items:center;gap:10px;font-size:17px}.brand-icon{width:29px;height:29px;background:var(--green);color:white;border-radius:8px;text-align:center;line-height:28px}.top-right{display:flex;align-items:center;gap:18px;font-size:12px;color:var(--muted)}.draft{border:1px solid #d6c9ad;color:#80632c;border-radius:6px;padding:3px 9px;background:#faf5e8}.crumb{font-size:12px;color:var(--muted);margin:31px 0 27px;display:flex;gap:12px}.layout{display:grid;grid-template-columns:180px minmax(0,1fr);gap:42px}.sidebar{align-self:start;position:sticky;top:103px;padding-top:9px}.smallcap{font-size:10px;letter-spacing:.17em;font-weight:800;color:var(--muted)}.sidebar nav{margin:20px 0 28px;display:grid;gap:4px}.sidebar nav a{text-decoration:none;color:var(--muted);padding:9px 12px;border-radius:8px;font-size:13px}.sidebar nav a:hover,.sidebar nav a.active{background:var(--mint);color:var(--green);font-weight:700}.side-meta{border-top:1px solid var(--line);padding:20px 12px;font-size:11px;line-height:1.9;color:var(--muted)}.side-meta b{display:block;font-size:12px;color:var(--ink)}main{min-width:0}.hero{display:grid;grid-template-columns:1fr 140px;gap:15px;align-items:center;padding-bottom:29px}.eyebrow{font-size:11px;letter-spacing:.13em;color:var(--green);font-weight:700;margin-bottom:12px}.hero h1{font-size:58px;line-height:1.1;letter-spacing:-.06em;font-weight:800;display:flex;align-items:baseline;gap:15px}.hero h1 span{font-size:14px;font-weight:400;letter-spacing:.12em;color:#8c9a91}.hero p{margin-top:17px;font-size:15px}.tags{display:flex;gap:6px;margin-top:18px;flex-wrap:wrap}.tag{font-size:11px;line-height:1.5;background:#f5e9df;border:1px solid var(--line);padding:4px 9px;border-radius:5px;color:#53675c}.sigil{width:128px;height:128px;color:var(--green)}.hero-art{justify-self:end}.update{display:flex;gap:14px;padding:14px 18px;background:var(--mint);border-radius:10px;align-items:baseline;font-size:12px;margin-bottom:23px}.update strong{white-space:nowrap;color:var(--green)}.update span{color:#4e6858}.featured{background:var(--green);border-radius:var(--radius);padding:28px 30px;color:#fff;position:relative;overflow:hidden}.featured .smallcap{color:#f2c2a5}.featured h2{margin-top:8px;font-size:29px;color:#fff}.featured p{color:#f5d7c5;font-size:13px;margin-top:9px}.rune-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0 20px}.rune{padding:14px;background:#ffffff0c;border:1px solid #ffffff2e;border-radius:12px;display:flex;align-items:center;gap:12px}.rune-symbol{font-size:23px;color:#ead19b;border:1px solid #ffffff25;display:grid;place-items:center;width:41px;height:41px;border-radius:50%;flex-shrink:0}.rune small{display:block;font-size:10px;color:#f1cfb9}.rune b{font-size:18px;font-weight:600}.recommend-bottom{display:flex;gap:20px;flex-wrap:wrap;border-top:1px solid #ffffff24;padding-top:15px;font-size:12px;color:#f7e0d1}.recommend-bottom span:before{content:'↗';margin-right:7px;color:#ead19b}.section{padding-top:44px}.section-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:18px}.section-head small{font-size:11px;color:var(--muted)}.intro{font-size:13px;margin-top:7px}.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.quick{background:white;border:1px solid var(--line);border-radius:12px;padding:18px}.quick small{font-size:11px;color:var(--muted)}.quick b{display:block;font-size:16px;margin:6px 0}.quick p{font-size:11px}.tabs{display:flex;gap:5px;background:#e9eee7;padding:5px;border-radius:10px;margin:20px 0 14px}.tabs button{border:0;background:transparent;color:var(--muted);border-radius:7px;padding:10px 14px;flex:1;font-size:13px}.tabs button[aria-selected=true]{background:white;box-shadow:0 2px 5px #203d3010;color:var(--green);font-weight:700}.panel{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:25px}.compare-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:30px}.chip{display:inline-block;font-size:10px;background:var(--mint);color:var(--green);border-radius:5px;padding:3px 7px;margin-bottom:9px}.panel h3{font-size:21px}.panel p{font-size:13px;margin-top:9px}.build-names{color:var(--green);font-size:14px;font-weight:700;margin:8px 0 16px}.use-note{font-size:12px;border-left:2px solid #d6a78a;padding-left:12px;color:var(--muted)}.adoption{padding:5px 0}.bar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:7px}.bar-track{height:7px;border-radius:7px;background:#edf0eb;margin-bottom:18px}.bar-fill{background:#b45727;height:100%;border-radius:7px}.bar-fill.alt{background:#d5b6a0}.adoption p{font-size:10px;margin-top:8px}.link{color:var(--green);text-decoration:underline;text-underline-offset:3px}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.stat{background:white;border:1px solid var(--line);border-radius:14px;padding:20px}.stat-head{display:flex;justify-content:space-between;font-size:12px;align-items:center}.stat-head span{font-size:10px;color:#758378}.value{font-size:32px;letter-spacing:-.04em;line-height:1.3;margin:12px 0 7px;font-weight:750}.value small{font-size:12px;font-weight:400;color:var(--muted)}.stat p{font-size:12px}.notice{font-size:12px;padding:14px 17px;background:var(--sand);border-radius:9px;margin:13px 0 18px;color:#80633e}.gem-row{display:flex;align-items:center;gap:20px;background:#f6e7dc;padding:19px 22px;border-radius:12px}.gem-row>div{flex:1}.gem-row small{font-size:11px;color:var(--muted);display:block}.gem-row strong{font-size:15px;display:block;margin-top:3px}.gem-arrow{color:#b9947a;font-size:20px}.note{font-size:11px;color:var(--muted);margin-top:10px}.gear{width:100%;border-collapse:collapse;font-size:13px}.gear th{text-align:left;font-size:10px;font-weight:600;color:var(--muted);padding:12px 15px;background:#faf2e8}.gear td{padding:16px 15px;border-top:1px solid var(--line);vertical-align:top}.gear td:first-child{width:85px;color:var(--muted)}.gear td:nth-child(2){font-weight:700;min-width:150px}.gear td:last-child{font-size:12px;color:var(--muted)}.table-wrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:white}.steps{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0}.step{border:1px solid var(--line);border-radius:8px;min-width:45px;text-align:center;padding:10px;font-weight:750;background:#fbf1e7;font-size:19px}.step.em{background:var(--green);color:#fff}.arr{font-size:13px;color:#a28b7e}.cycle-footer{border-top:1px solid var(--line);padding-top:14px;font-size:12px;color:var(--muted)}.cycle-footer strong{color:var(--green)}.source-list{display:grid;gap:10px}.source{display:block;padding:18px 20px;border:1px solid var(--line);background:white;border-radius:12px;text-decoration:none;transition:border-color .15s}.source:hover{border-color:var(--green)}.source small{font-size:10px;color:var(--muted);display:flex;gap:10px}.source strong{display:flex;justify-content:space-between;font-size:14px;margin:5px 0}.source p{font-size:12px}.source strong span{color:#a87d65}.archive{margin-top:25px;border-top:1px solid var(--line)}details{border-bottom:1px solid var(--line);padding:17px 2px}summary{cursor:pointer;list-style:none;font-size:13px;font-weight:700;display:flex;justify-content:space-between}summary::-webkit-details-marker{display:none}summary:after{content:'＋';color:var(--muted)}details[open] summary:after{content:'−'}details p{font-size:12px;margin-top:12px}.bottom{margin-top:45px;padding:23px 0 35px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;font-size:11px;color:var(--muted)}[hidden]{display:none!important}.mobile-nav{display:none}
+@media(max-width:1000px){.layout{grid-template-columns:140px minmax(0,1fr);gap:24px}.shell{padding:0 24px}.rune{padding:12px 9px;gap:8px}.rune-symbol{width:32px;height:32px}.rune b{font-size:16px}.featured{padding:25px}.value{font-size:28px}}
+@media(max-width:760px){html{scroll-padding-top:130px}.shell{padding:0 18px}.top .shell{height:61px}.top-right>span:first-child{display:none}.brand{font-size:14px}.layout{display:block}.sidebar{display:none}.crumb{margin:23px 0;font-size:11px}.mobile-nav{display:flex;gap:22px;overflow:auto;white-space:nowrap;padding:0 18px 11px;font-size:12px}.mobile-nav a{text-decoration:none;color:var(--muted)}.hero{grid-template-columns:1fr 70px;padding-bottom:24px}.hero h1{font-size:46px}.hero h1 span{font-size:11px}.hero p{font-size:13px}.sigil{width:72px;height:72px}.eyebrow{font-size:9px}.update{display:block;padding:13px 15px}.update strong{display:block;margin-bottom:3px}.featured{padding:22px 19px}.featured h2{font-size:24px}.rune-row{gap:7px;margin-top:20px}.rune{display:block;text-align:center;padding:12px 5px}.rune-symbol{margin:0 auto 8px;width:34px;height:34px;font-size:21px}.rune small{font-size:9px}.rune b{font-size:17px}.recommend-bottom{gap:7px 14px;font-size:11px}.quick-grid{grid-template-columns:1fr;gap:8px}.quick{display:grid;grid-template-columns:85px 1fr;padding:13px 16px;align-items:center}.quick b{font-size:14px;margin:0}.quick p{grid-column:2}.section{padding-top:33px}h2{font-size:23px}.section-head{align-items:center}.section-head small{font-size:10px}.compare-grid{grid-template-columns:1fr;gap:22px}.panel{padding:21px}.stat-grid{gap:7px}.stat{padding:15px 10px}.stat-head{display:block}.stat-head span{display:block;font-size:9px}.value{font-size:23px}.value small{font-size:10px;display:block}.stat p{font-size:10px}.gem-row{padding:16px 14px;gap:8px}.gem-row strong{font-size:13px}.gear th{padding:10px}.gear td{padding:13px 10px}.gear td:first-child{width:60px;font-size:11px}.gear td:nth-child(2){min-width:0;font-size:12px}.gear td:last-child{font-size:11px}.source strong{font-size:13px}.bottom{display:block;font-size:10px}.bottom span{display:block}.hero-art{align-self:start;margin-top:26px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
-  .summary{background:var(--card);border:1px solid var(--steel-line);border-radius:14px;padding:26px 28px;margin:36px 0 14px;box-shadow:0 1px 0 #fff inset, 0 6px 22px -18px rgba(40,60,100,.5)}
-  .summary h2{font-family:var(--serif);font-size:19px;margin:0 0 4px;color:var(--steel-deep);display:flex;gap:9px}
-  .summary .lead{font-size:13px;color:var(--ink-soft);margin:0 0 16px}
-  .checklist{list-style:none;margin:0;padding:0;display:grid;gap:11px}
-  .checklist li{display:flex;gap:11px;align-items:baseline;font-size:15px}
-  .checklist .k{flex:0 0 76px;font-weight:700;color:var(--steel-deep);font-size:13px;text-align:right;padding-top:1px}
-  .checklist .v{flex:1}
-  .checklist .v b{color:var(--ink)}
+/* Monk: evidence-led reading layout */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:fixed;top:-100px;left:18px;z-index:30;background:white;padding:10px 16px;border-radius:8px}.skip-link:focus{top:10px}
+.brand{text-decoration:none}.crumb a{text-underline-offset:3px}.evidence{display:inline-block;border-radius:5px;padding:2px 7px;background:#efe8dd;color:#62503e;font-size:10px;font-weight:700;letter-spacing:0}
+.evidence.official{background:#e4ede7;color:#315b40}.evidence.community{background:#f8ead6;color:#7c5629}
+.mechanics-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}.mechanics-grid.two-col{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mechanic{padding:22px;background:white;border:1px solid var(--line);border-radius:14px}.mechanic h3{font-size:17px;margin:12px 0 9px;line-height:1.5}.mechanic p{font-size:13px}
+.ref-link{display:inline-block;font-size:12px;color:var(--green);text-underline-offset:4px;margin-top:13px;font-weight:600;line-height:1.7}
+.check-list{padding-left:19px;margin:10px 0 0;font-size:13px;color:var(--muted)}.check-list li+li{margin-top:8px}
+.monk-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.monk-stats .stat{padding:23px}.monk-stats .stat p{font-size:13px}.value-text{font-size:25px}
+.history-note{padding:18px;margin-top:14px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}.history-note p{font-size:13px}
+.subsection-head{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:25px 0 13px}
+.gear tbody th{font-size:12px;vertical-align:top;border-top:1px solid var(--line);background:white;padding:16px 15px;width:88px}
+.gear tbody td:nth-child(2){min-width:170px}.gear tbody td:last-child{width:auto}.table-wrap{overflow:auto}
+.rotation-list{list-style:none;counter-reset:rotation;padding:0;margin:20px 0 0}.rotation-list li{position:relative;counter-increment:rotation;padding:0 0 20px 42px}.rotation-list li:before{content:counter(rotation);position:absolute;left:0;top:0;width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--mint);color:var(--green);font-size:13px;font-weight:700}.rotation-list li:not(:last-child):after{content:"";position:absolute;left:13px;top:33px;bottom:5px;width:1px;background:var(--line)}.rotation-list p{margin-top:5px}
+.patch-panel{padding:28px;background:#f2e9dc;border:1px solid #dac4a5;border-left:4px solid var(--gold);border-radius:14px}.patch-panel h3{margin:15px 0 9px}.patch-panel p{font-size:13px}.patch-divider{height:1px;background:#ddcbb3;margin:23px 0}
+.source-list{margin-top:18px}.source small{align-items:center;flex-wrap:wrap}.source strong{gap:14px}.source strong>span{flex-shrink:0}
+#patch,#source-cheatsheet{scroll-margin-top:100px}p,li,td{overflow-wrap:anywhere}summary{gap:14px}summary:after{flex-shrink:0}
+@media(max-width:1000px){.mechanics-grid{grid-template-columns:1fr}.mechanic{padding:20px}}
+@media(max-width:760px){.mechanics-grid.two-col{grid-template-columns:1fr}.monk-stats{grid-template-columns:1fr}.monk-stats .stat{padding:20px}.monk-stats .stat-head{display:flex}.monk-stats .stat-head span{font-size:10px}.monk-stats .value{font-size:29px}.monk-stats .value-text{font-size:24px}.subsection-head{align-items:flex-start;flex-wrap:wrap}.gem-row{flex-wrap:wrap}.gem-row>div{min-width:65px}.gear tbody th{padding:12px 9px;font-size:11px;width:60px}.gear tbody td:nth-child(2){min-width:90px}.gear tbody td:last-child{min-width:160px}.patch-panel{padding:21px}.quick{grid-template-columns:92px minmax(0,1fr)}.section-head{flex-wrap:wrap}#patch,#source-cheatsheet{scroll-margin-top:125px}.hero h1{flex-wrap:wrap;gap:8px}}
 
-  nav.toc{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 4px;margin:34px 0 8px}
-  nav.toc .toch{font-family:var(--serif);font-size:14px;letter-spacing:.14em;color:var(--steel-deep);text-transform:uppercase;margin-bottom:12px;text-align:center}
-  nav.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 26px}
-  nav.toc a{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink);font-size:14.5px;padding:5px 6px;border-radius:7px}
-  nav.toc a:hover{background:var(--steel-soft);color:var(--steel-deep)}
-  nav.toc .cn{font-family:var(--serif);color:var(--steel);font-size:13px;min-width:20px}
-  @media(max-width:560px){nav.toc ol{grid-template-columns:1fr}}
 
-  .chapter{margin:56px 0 0;scroll-margin-top:16px}
-  .chapter .kicker{font-family:var(--serif);font-size:13px;letter-spacing:.22em;color:var(--steel);text-transform:uppercase;margin-bottom:4px}
-  .chapter h3{font-family:var(--serif);font-size:clamp(22px,4vw,28px);margin:0;color:var(--ink);font-weight:700;line-height:1.25}
-  .chapter .chead{margin-bottom:22px}
-  .chapter .chead p{font-size:14px;color:var(--ink-soft);margin:7px 0 0}
-  .ornament{text-align:center;color:var(--steel-line);font-size:15px;margin:52px 0 0;letter-spacing:.6em}
+/* Shared reading order and responsive fixes · 2026-09-28 */
+.brand{text-decoration:none}.crumb a{text-underline-offset:3px}
+.skip-link{position:fixed;top:-100px;left:18px;z-index:30;background:white;padding:10px 16px;border-radius:8px}.skip-link:focus{top:10px}
+.stat-grid:not(.monk-stats){grid-template-columns:repeat(3,minmax(0,1fr))}
+.stat{min-width:0}.section-head{flex-wrap:wrap;align-items:flex-start}.section-head h2{word-break:keep-all;overflow-wrap:anywhere}
+.table-wrap{overflow-x:auto}.gear caption{text-align:left;padding:12px 15px;font-size:12px;color:var(--muted)}
+.advanced-guide{border:1px solid var(--line);border-radius:14px;background:var(--paper);padding:18px 20px}
+.advanced-guide>summary{gap:16px;line-height:1.7;color:var(--green)}.advanced-content{padding-top:20px}
+.advanced-guide:not([open])>.advanced-content{display:none}
+.evidence-date{line-height:1.8}.gem-row+.gem-row{margin-top:10px}#gear>.quick-grid{margin:0 0 16px}
+.anchor-alias{display:block;scroll-margin-top:130px}
+@media(max-width:760px){
+  .stat-grid,.stat-grid.monk-stats,.stat-grid:not(.monk-stats){grid-template-columns:minmax(0,1fr);gap:12px}
+  .stat,.monk-stats .stat{padding:18px 20px}.stat-head{display:flex;gap:12px;align-items:baseline}
+  .stat-head span{font-size:11px}.stat p,.monk-stats .stat p{font-size:13px}.value{font-size:30px;margin:9px 0}.value small{font-size:11px}
+  .hero h1{flex-wrap:wrap;gap:6px 12px}.hero p{line-height:1.8}.hero-art{margin-top:10px}
+  .section-head small{font-size:11px}.source p,.note{font-size:12px}.advanced-guide{padding:16px}
+}
+@media(max-width:420px){.gem-row{flex-direction:column;align-items:stretch;gap:12px}.gem-arrow{display:none}.gem-row>div+div{padding-top:10px;border-top:1px solid var(--line)}}
 
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
-  .card.hl{border-color:var(--steel-line);background:linear-gradient(180deg,#eef2f8,#f9fafb)}
-  .card h4{margin:0 0 9px;font-size:16.5px;font-weight:800;color:var(--ink);display:flex;gap:8px;align-items:baseline}
-  .card h4 .tag{font-size:11px;font-weight:700;color:var(--steel-deep);background:var(--steel-soft);border-radius:5px;padding:2px 7px;flex:0 0 auto}
-  .card p{margin:0 0 10px}
-  .card p:last-of-type{margin-bottom:0}
-  .card b{color:var(--steel-deep)}
-  .card .plain b{color:var(--ink)}
-
-  .quote{border-left:3px solid var(--steel);background:#e8ecf3;padding:11px 16px;border-radius:0 9px 9px 0;font-size:14.5px;color:#3b4a66;margin:12px 0}
-  .quote .who{display:block;font-size:11.5px;color:#7c88a0;margin-top:5px}
-
-  .note{font-size:13.5px;border-radius:9px;padding:11px 15px;margin:12px 0;background:var(--warn-soft);color:var(--warn);border:1px solid #e8d1c8}
-  .note.info{background:var(--gold-soft);color:var(--gold);border-color:#e0d3b2}
-  .note b{color:inherit;font-weight:800}
-
-  .tablebox{overflow-x:auto;margin:14px 0 4px;border-radius:10px;border:1px solid var(--line)}
-  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:440px}
-  th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
-  th{background:#e5e9f0;font-weight:800;color:var(--steel-deep);font-size:13px}
-  tr:last-child td{border-bottom:none}
-  td b{color:var(--steel-deep)}
-  tbody tr:nth-child(even){background:#fbfcfd}
-  .tnum{font-variant-numeric:tabular-nums}
-
-  .refs{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px;padding-top:12px;border-top:1px dashed var(--line)}
-  .refs .rl{font-size:11px;letter-spacing:.1em;color:var(--ink-soft);font-weight:700;align-self:center;margin-right:3px}
-  a.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--steel-deep);text-decoration:none;background:#e8ecf3;border:1px solid var(--steel-line);border-radius:999px;padding:3px 10px;line-height:1.5}
-  a.chip:hover{background:var(--steel);color:#fff;border-color:var(--steel)}
-  a.chip .n{font-variant-numeric:tabular-nums;font-weight:700;opacity:.85}
-
-  .appendix{margin-top:54px}
-  .srclist{list-style:none;margin:0;padding:0}
-  .srclist li{display:flex;gap:11px;align-items:baseline;padding:8px 2px;border-bottom:1px solid var(--line);font-size:13.5px}
-  .srclist li:last-child{border-bottom:none}
-  .srclist .num{color:var(--steel);font-weight:700;font-variant-numeric:tabular-nums;min-width:66px;font-size:12.5px}
-  .srclist a{color:var(--ink);text-decoration:none;font-weight:600}
-  .srclist a:hover{color:var(--steel-deep)}
-  .srclist .d{color:var(--ink-soft);font-size:12.5px;font-weight:400}
-
-  footer{margin-top:52px;padding-top:22px;border-top:2px solid var(--steel-line);text-align:center;font-size:12.5px;color:var(--ink-soft);line-height:1.7}
-  footer .sign{font-family:var(--serif);font-size:15px;color:var(--steel-deep);margin-bottom:4px}
-  a:focus-visible{outline:2px solid var(--steel);outline-offset:2px;border-radius:4px}
-  @media (prefers-reduced-motion:no-preference){
-    .card,.summary{animation:rise .5s ease both}
-    @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  }
+:root{--bg:#f1f3f8;--paper:#fffdfa;--ink:#26352e;--muted:#67736c;--green:#475e89;--mint:#e5eaf5;--line:#dfe4dc;--gold:#ad8745;--sand:#f6eddb}.top{background:var(--bg)}.hero h1{font-size:clamp(34px,4.5vw,58px);flex-wrap:wrap}.featured .smallcap,.featured p,.rune small,.recommend-bottom{color:#fff}.update span{color:var(--ink)}.rune b{font-size:clamp(15px,1.6vw,19px);overflow-wrap:anywhere}.tag{background:var(--paper);color:var(--muted)}.rune-row{grid-template-columns:repeat(3,minmax(0,1fr))}.stat-head{gap:8px}.value-text{font-size:25px;overflow-wrap:anywhere}.new12-note{font-size:12px;margin:12px 0 0}.reading-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.reading-links a{border:1px solid var(--line);background:var(--paper);border-radius:7px;padding:6px 10px;text-decoration:none;font-size:12px}.reading-links a:hover{border-color:var(--green)}.compact-details{margin-top:16px}.compact-details .advanced-content p+p{margin-top:10px}.adoption-table td:nth-child(2){font-weight:600}.subgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.subgrid .quick{margin:0}.quick b{overflow-wrap:anywhere}.gear td:first-child{min-width:80px}.source p{line-height:1.8}.source-list{margin-top:15px}.data-date{font-variant-numeric:tabular-nums}.hero-icon{height:116px;width:116px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;background:var(--mint);font-size:48px}.section p,.panel p{line-height:1.85}.stat p{line-height:1.85}.panel+.panel{margin-top:12px}details>summary{cursor:pointer;font-weight:700}.section-head small{max-width:300px}.patch-panel h3{margin-top:0}.proof-line{display:flex;flex-wrap:wrap;gap:5px 12px;font-size:11px;color:var(--muted);margin-top:12px}.proof-line a{color:var(--green)}.return-link{color:var(--green);text-underline-offset:4px}.history-note .source{margin-top:12px}@media(max-width:760px){.hero-icon{width:72px;height:72px;font-size:32px}.rune-row{grid-template-columns:1fr;gap:8px}.rune{padding:11px 14px}.rune b{font-size:18px}.stat-grid .stat{display:block}.quick-grid .quick{display:block}.quick-grid .quick b{margin:6px 0}.subgrid{grid-template-columns:1fr}.featured{padding:23px 20px}.featured h2{font-size:25px}.reading-links a{font-size:11px}.value-text{font-size:25px}.hero h1 span{font-size:11px}.update{flex-wrap:wrap;gap:5px}.gear th,.gear td{padding:12px}.table-wrap .gear{min-width:480px}.evidence-date{font-size:11px}.top-right .draft{white-space:nowrap}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.footer{margin:42px 0 36px;padding-top:22px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.footer strong{display:block;color:var(--green);margin-bottom:8px}.footer p{font-size:11px;line-height:1.85}
 </style>
-<script data-goatcounter="https://junstellar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<meta name="robots" content="noindex">
 </head>
 <body>
-
-<div class="wrap">
-
-<header class="mast">
-  <div class="sigil">⚜</div>
-  <div class="byline">육육이의</div>
-  <h1 class="title">프렌즈를 위한 기사 공략모음</h1>
-  <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 · 신규 클래스 ✦</span></div>
-  <p class="submeta">
-    <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
-    기사 글 23건(후보 178건 중)을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-09-19 (11주차 갱신)
-  </p>
-  <div class="verdict-strip">
-    <span class="badge down">B급 · 기대→실망</span>
-    <span class="badge">1·3·5 + 쿨감 축</span>
-    <span class="badge">빠스 5,000</span>
-  </div>
-</header>
-
-<section class="summary">
-  <h2>⚜ 한눈에 보는 결론</h2>
-  <p class="lead">바쁜 사람은 이것만 — 자세한 근거는 아래 각 장에.</p>
-  <ul class="checklist">
-    <li><span class="k">티어</span><span class="v">갤 티어표 <b>B급</b>. 시즌1 대비 2.5배 세졌지만 다른 직업이 더 세졌다는 실측 — 시즌스킬(기사단 소집)이 약한 게 문제</span></li>
-    <li><span class="k">스킬</span><span class="v"><b>1·3·5 주력 + 쿨감 세팅</b>, 4스(차징) 기피. 공허룬 = 1스를 계속 찌르기 위한 쿨감 수단이라는 정리</span></li>
-    <li><span class="k">개조</span><span class="v"><b>135</b> (156 실측 비교에서 135 우세 — 궁은 써도 DPS 하락이라 봉인)</span></li>
-    <li><span class="k">세공</span><span class="v">2줄 <b>강타 · 보조</b>, 1스 위주면 보조연타까지 1.5줄 유효</span></li>
-    <li><span class="k">스탯</span><span class="v"><b>빠스(빠른 시전) 5,000</b> 통설 — 시즌스킬 요구. 프리즘은 치명 우선</span></li>
-    <li><span class="k">룬</span><span class="v"><b>물결</b>(메타의 축) + 잔영(광역화) / 엠블럼 <b>백금천칭</b> / 방어구 열의·공허·금간봉인·교차사슬 / 장신구 <b>돌파·지진·용기</b></span></li>
-  </ul>
+<a class="skip-link" href="#overview">본문 바로가기</a>
+<header class="top"><div class="shell"><a class="brand" href="./index.html"><span class="brand-icon">✦</span> 육육이의 공략 서재</a><div class="top-right"><span>마비노기 모바일 · 시즌 2</span><span class="draft">10.16 개편</span></div></div><nav class="mobile-nav" aria-label="모바일 목차"><a href="#overview">추천 장신구</a><a href="#stats">스탯·세공·개조</a><a href="#gear">장비 선택</a><a href="#rotation">실전 운용</a><a href="#patch">패치·선택 근거</a><a href="#sources">출처·기록</a></nav></header>
+<div class="shell">
+<div class="crumb"><a href="./index.html">공략 서재</a><span>/</span><span>근접 · 전사</span><span>/</span><strong>기사</strong></div>
+<div class="layout">
+<aside class="sidebar"><div class="smallcap">KNIGHT FIELD GUIDE</div><nav aria-label="페이지 목차"><a href="#overview" class="active">01 &nbsp; 추천 장신구</a><a href="#stats">02 &nbsp; 스탯·세공·개조</a><a href="#gear">03 &nbsp; 장비 선택</a><a href="#rotation">04 &nbsp; 실전 운용</a><a href="#patch">05 &nbsp; 패치·선택 근거</a><a href="#sources">06 &nbsp; 출처·기록</a></nav><div class="side-meta">작성·검토일<b>2026.10.16</b><br>룬 통계<b>2026.10.12</b><br>세팅 제보 자료<b>10.10 보완본</b><br>공식 패치 확인<b>2026.10.15까지</b>과거 참고값은 항목마다<br>날짜를 따로 표시합니다.</div></aside>
+<main>
+<section id="overview">
+<div class="hero"><div><div class="eyebrow">SEASON 02 / PRACTICAL BUILD GUIDE</div><h1>기사<span>KNIGHT</span></h1><p>찌르기를 직접 챙기는 반자동 운용. 장신구는 유지하고 개조·엠블럼을 목적에 맞춰 고릅니다.</p><div class="tags"><span class="tag">돌파 · 지진 · 용기</span><span class="tag">추천 → 스탯 → 장비 → 운용</span></div></div><div class="hero-art"><div class="hero-icon" aria-hidden="true">🛡️</div></div></div>
+<div class="update" id="u20261016" style="scroll-margin-top:24px"><strong>10.16 내용·구성 개편</strong><span>장신구 명칭·개조 156/135 비교, 빠른 스킬 목표와 엠블럼 조건 정리.</span></div>
+<div class="featured"><div class="smallcap">통계 10/12 · 개별 룬 채용률</div><h2>돌파 · 지진 · 용기</h2><p>돌파·지진·용기를 기본으로, 10월 제보의 개조 156과 과거 135를 비교합니다. 백금 천칭은 가장 많이 쓰이지만 잔영 중심 세팅의 유일한 답은 아닙니다.</p>
+<div class="rune-row"><div class="rune"><span class="rune-symbol" aria-hidden="true">✦</span><div><small>개별 채용률 96.5%</small><b>돌파</b></div></div><div class="rune"><span class="rune-symbol" aria-hidden="true">◈</span><div><small>개별 채용률 95.6%</small><b>지진</b></div></div><div class="rune"><span class="rune-symbol" aria-hidden="true">✧</span><div><small>개별 채용률 96.1%</small><b>용기</b></div></div></div>
+<div class="recommend-bottom"><span>개조 1 · 5 · 6</span><span>세공 강타 → 보조 → 연타</span></div></div>
+<p class="note evidence-date">검토 10/16 · 통계 10/12 · 세팅 제보 자료 10/10 보완본. 개별 채용률은 동시 장착률·DPS 순위가 아닙니다. 자동 자막의 룬명은 작성자 웹 자료·공식 패치와 대조했습니다.</p>
+<div class="reading-links"><a href="#stats">스탯·보석부터 보기 →</a><a href="#gear">장비 선택 →</a><a href="#rotation">운용 보기 →</a></div>
 </section>
 
-<nav class="toc">
-  <div class="toch">목 차 · Contents</div>
-  <ol>
-    <li><a href="#c1"><span class="cn">壹</span> 티어 — 기대에서 실망으로</a></li>
-    <li><a href="#c2"><span class="cn">貳</span> 스킬 — 1·3·5와 공허</a></li>
-    <li><a href="#c3"><span class="cn">參</span> 세공 · 스탯 — 빠스 5,000</a></li>
-    <li><a href="#c4"><span class="cn">肆</span> 룬 세팅</a></li>
-    <li><a href="#c5"><span class="cn">伍</span> 마무리 · 미확정 항목</a></li>
-    <li><a href="#src"><span class="cn">附</span> 출처</a></li>
-  </ol>
-</nav>
-
-<section class="chapter" id="c1">
-  <div class="chead">
-    <div class="kicker">제 1 장 · 壹</div>
-    <h3>티어 — 기대에서 실망으로</h3>
-    <p>시즌 초 낙관 → 실측 후 기대치 하향</p>
-  </div>
-
-  <div class="card hl">
-    <p>출시 직후엔 낙관이 많았다 — 핵심룬인 물결 기준으로 <b>파괴자는 삭제되고 물결은 시즌2에 유지</b>된 데다 지진룬까지 추가돼 시즌1보다 상당히 좋아지리라는 전망이 우세했다. 그러나 7/1 갤 티어표에서 <b>B급</b>(파티 기여가 약한 점을 감안한 평가) 판정을 받았고, 7/3 실측글이 결정타를 날렸다.</p>
-    <div class="quote">함수 기준 시즌1 대비 2.5배 강해졌지만 다른 직업의 상승 폭이 그 이상이었고, 시즌스킬 <b>기사단 소집이 예상보다 매우 약한 것</b>이 원인이라는 실측 결론. 댓글에서는 사실상 “탱이면 올라오지 마”에 가까운 처지라, 유틸룬을 끼고 탱 역할을 하다 브익을 걸어주는 게 현실적이라는 반응이 붙었다.
-      <span class="who">— 「기사 올 시즌2룬 함수 2000만 주작딜」 본문·댓글 (소야_) 요지</span></div>
-    <p class="plain">해결사를 빼고 나니 기사가 급격히 약해진 것 같다는 체감 하락 글엔 백금천칭을 쓰라는 답과, 열의가 나오기 전까진 해결사를 유지하라는 처방이 달렸다.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132961" target="_blank" rel="noopener"><span class="n">#1132961</span> 시즌초 낙관론</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132101" target="_blank" rel="noopener"><span class="n">#1132101</span> 갤 티어표 B급</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137157" target="_blank" rel="noopener"><span class="n">#1137157</span> 함수 실측·기사단 소집 혹평</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133953" target="_blank" rel="noopener"><span class="n">#1133953</span> 해결사 이탈 체감</a>
-    </div>
-  </div>
-
-  <div class="card" id="u20260803" style="scroll-margin-top:24px">
-    <h4>🔧 5주차 갱신 — ‘빠브’ 구조 한계 규명 + 방패돌격 도발룬 수정<span class="tag">2026-08-03</span></h4>
-    <p>기사의 핵심 역할인 <b>빠른 브레이크(빠브)</b>가 왜 안 되는지 이번 주 계산으로 정리됐다. <b>브레이크 대미지 효율은 추가타가 브레이크 스탯의 약 2배</b>여서, <b>추가타를 확보하지 못하면 브레이크 스탯을 올려도 의미가 없다</b>. 계산 예시: 궁 3칸 기준 추가타가 터지면 (3+3)×1.24×1.19 ≈ <b>8.85칸</b>.</p>
-    <p class="plain">문제는 룬 자리다 — 방패강타를 빨리 터뜨리려면 <b>공허·열의</b>가 먼저 들어가고, 빠브 조건까지 맞추려면 <b>백금 천칭·갈퀴·무너진 경계</b>가 추가로 요구되어 슬롯이 사실상 전부 소진된다(빠브 하나를 위해 온갖 것을 내줘야 한다는 평이 많다). 실측 제보로는 <b>백금 천칭 + 추가타 3,900 + 무너진 경계 + 도시락이면 추가타 85% 이상</b>이 나오고, 그 세팅의 함선 허수는 약 <b>1,438만</b>이며 레이드에서는 기억 각인으로 스왑이 권장된다. <b>7/30 패치</b>로 방패돌격의 지진 적용 시 <b>도발 관련 룬 효과가 발동하지 않던 현상이 수정</b>됐다. 종결 세팅 기준 카브락 타임어택은 2분 12초 — 세다고도 약하다고도 하기 애매한 수준이라는 자평이 붙었다.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1230615" target="_blank" rel="noopener"><span class="n">#1230615</span> 브레이크 스탯 무용론 · 추가타 계산</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1231902" target="_blank" rel="noopener"><span class="n">#1231902</span> 종결 세팅 타임어택</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1229345" target="_blank" rel="noopener"><span class="n">#1229345</span> 한 방 딜 체감</a>
-      <a class="chip" href="https://youtu.be/kTcLNsjsA80" target="_blank" rel="noopener"><span class="n">YT</span> 빙식이 · 7/30 업데이트 노트</a>
-      <a class="chip" href="https://youtu.be/n7PqoxX16JA" target="_blank" rel="noopener"><span class="n">YT</span> 황산갈매기 · 21직업 컨닝페이퍼</a>
-    </div>
-  </div>
-  <div class="card" id="u20260808" style="scroll-margin-top:24px">
-    <h4>🔺 6주차 갱신 — 점수는 올랐지만 기갱 문은 그대로<span class="tag">2026-08-08</span></h4>
-    <p>어비스 점수는 <b>47,347 → 47,439</b>로 올랐다(8/6→8/8). 그러나 <b>탱커 3종 중 여전히 최하위</b>이고 빙결(47,578)·전사(47,537)와의 격차가 100점 안팎으로 유지된다. 현장 체감은 점수보다 나쁘다 — 기갱 브익을 구하는 파티에서 <b>전사·빙결이 아니면 자리를 얻기 어렵다</b>는 경험담이 올라왔고, 댓글 여론은 단일딜은 전사, 브레이크는 빙결이 가져간 만큼 <b>버프는 기사에게 몰아줘야</b> 한다는 쪽으로 모였다. 8/4 커피 LIVE에서도 기사 관련 언급은 없었다 — <b>8/13 밸런스 패치 대상에 기사는 예고되지 않았다.</b></p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1245263" target="_blank" rel="noopener"><span class="n">#1245263</span> 기사도 상향해줘 (기갱 브익팟 거절)</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1245878" target="_blank" rel="noopener"><span class="n">#1245878</span> 8/8 어비스 순위 (기사 47,439)</a>
-    </div>
-  </div>
-  <div class="card" id="u20260819" style="scroll-margin-top:24px">
-    <h4>🔻 7주차 갱신 — 백금 천칭 1픽 유지, 신규 레이드 방어구는 «빛 계열 깔맞춤»<span class="tag">2026-08-19</span></h4>
-    <p class="plain"><b>이번 주 전제 — 8/13 패치로 «스킬 주는 피해»(스주피) 계열 룬 효과가 2배로 적용되는 버그가 있었고, 8/20 점검에서 수정된다.</b> 전격 유저의 실측 검증에 따르면 스주피 룬끼리는 원래 <b>합연산</b>이 맞고, 버그는 각 룬의 수치가 두 배로 들어간 것이다 — 무한한 탐욕+봉인술사를 함께 끼면 아무것도 없을 때 대비 <b>2.36배</b>(=1+0.8+0.56)가 나왔고, 정상화되면 <b>1.68배</b>로 떨어진다(해당 스킬 대미지가 현재의 <b>71.2%</b> 수준). 따라서 <b>8/13~8/19 사이에 나온 어비스 점수·함수 기록·티어표는 모두 버그 구간의 수치</b>이며, 그대로 믿으면 안 된다. 스주피 룬을 많이 낀 직업일수록 낙폭이 크다. <b>계승자·끓는 피는 버그가 아니라는 것</b>이 실측자들의 공통 견해다.</p><p>기사는 <b>엠블럼 «백금 천칭»의 1픽을 유지</b>했다. 백금 천칭은 평균 채용률이 하락 중이지만 <b>기사와 수도사가 1위로 채용</b>하는 룬으로, 범용룬에서 직업 전용룬으로 성격이 굳어가는 사례다. 무기룬 쪽에서는 <b>두 갈래뿔</b>의 기사 채용률이 확인됐고, <b>눈보라·잔영</b>이 기사의 코어룬으로 분류됐다.</p><p class="plain">8/17 오픈한 <b>카브락 레이드 어려움</b>의 신규 방어구 중 기사와 직접 엮이는 것은 <b>기본 공격 시 장착한 빛 계열 룬 수에 따라 추가타율·치명률이 오르는 룬</b>이다(추가타율 18%·치명률 18%·공속 증가). 옵션 자체는 훌륭하지만 <b>빛 계열 룬으로만 채워야 해서 침식룬을 포기해야 하는</b> 제약이 걸린다 — 기본 공격 기반인 기사·도적에게 공속 이득이 크지만, 실제 채택 여부는 연구가 필요하다는 것이 분석 채널의 유보적 평가다. 기사는 <b>8/20 수정 영향 직업으로도 거론</b>됐다. 8/18 어비스 평균은 <b>17위(74,322.5)</b>. 갤에서는 «탱커는 최약체 딜러보다 약해야 한다»는 원론과 «탱커 어비스 점수는 결국 파티 딜러가 좌우한다»는 회의론이 함께 나왔다.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1276285" target="_blank" rel="noopener"><span class="n">#1276285</span> 8/18 어비스 랭킹</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1281741" target="_blank" rel="noopener"><span class="n">#1281741</span> 탱커 어비스 점수 무의미론</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1282876" target="_blank" rel="noopener"><span class="n">#1282876</span> 8/20 수정 영향 직업 목록 — 기사 거론</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=LWLT9lgKMMA" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「신규 레이드 방어구 검토」</a>
-    </div>
-  </div>
-  <div class="card" id="u20260829" style="scroll-margin-top:24px">
-    <h4>🔺 8주차 갱신 — 레이드룬 «작열» 준필수, 그리고 «열의» 추가타 논란의 당사자<span class="tag">2026-08-29</span></h4>
-    <p class="plain"><b>이번 주 전제 — 8/24 레이드룬 정가 교환으로 «오팔 성배»가 대량 보급됐고, 치명타 피해 증가가 2회 적용되는 버그가 확인돼 8/27 점검에서 수정됐다.</b> 그 여파로 <b>지옥2 어비스 랭킹이 2주 연속 초기화</b>됐는데, 이번엔 <b>오팔 성배를 낀 캐릭터뿐 아니라 같은 파티 전원의 기록</b>이 대상이라 본인이 끼지 않았어도 삭제된 사례가 많다. 따라서 <b>8/24~8/26 사이의 지옥2 기록은 근거로 쓸 수 없다</b>. 아래 채용률은 <b>8/25 집계</b>이며 <b>레이드룬은 아직 0~0.4%</b>(드랍분만)라 다음 주 리포트에 처음 반영된다.</p><p>기사에게 이번 주의 핵심은 <b>레이드룬 «작열»</b>이다. 공속 18% + 기본 공격으로 주는 피해·추가타 확률 증가에 더해 <b>기본 공격 시 장착한 빛 계열 룬 수에 비례해 치명타 확률이 최대 18%</b>까지 오르는데, 기사는 이미 <b>백금 천칭 · 첫 번째 서약 · 열의</b>로 빛 계열이 채워져 있어 <b>조건을 거의 공짜로 만족한다</b>. 분석 채널들이 «기사·수도사는 작열, 생각할 것도 없다»고 입을 모은 이유다. 반대로 오팔 성배는 <b>용 계열 2개</b>가 걸려 기사에겐 부담이 크다.</p><p class="plain"><b>그런데 «열의»에 논란이 붙었다.</b> 툴팁은 «기본 공격으로 주는 피해 30% 증가»인데, 실측에서는 피해가 아니라 <b>추가타 확률이 약 30% 오르는</b> 것으로 나왔다(무옵션 대비 찌르기 추가타 <b>11% → 55%</b>). 다만 실험자 본인이 «공격 속도에는 캡이 있고, 캡을 넘긴 만큼이 추가타율로 전환되는 설계로 보인다»고 덧붙이면서 <b>버그인지 의도된 숨은 시스템인지가 갈렸다</b>. 8/29 기준 <b>공식 입장은 없다.</b> 갤에서는 오팔 초기화 전례를 들어 «기사·수도사·도적은 보균자» 식의 과열된 반응까지 나왔지만, 어느 쪽도 확정이 아니므로 <b>현 시점에서 세팅을 미리 바꿀 이유는 없다</b>. 다만 열의가 코어룬인 만큼 <b>수정될 경우 기사 세팅이 통째로 흔들릴 수 있는 리스크</b>는 인지해 둘 필요가 있다.</p><p>채용률 쪽은 조용하다. <b>눈부신 자영</b>이 계속 오르며 두 갈래뿔과의 격차를 벌렸고(두 갈래뿔은 상승률이 꺾였다), <b>백금 천칭</b>도 상승을 유지한다. 펫은 랭커마다 세팅이 갈려 분석 채널이 <b>결론을 유보</b>했다 — 논리적으로는 추치(시추)가 범용적이지만 <b>기본 공격 추가타 100% 세팅</b>이 나오면서 시추를 안 쓴다는 제보가 있었다.</p><p class="plain"><b>갤 실측 — 기사 함선 허수 2,675만</b>(8/29). 첫 번째 서약 스택을 0에서 4까지 채우고 2분간 측정한 값이며 보라색 도시락 하나만 먹은 조건이다. 작성자는 <b>«용사냥꾼 덕분에 잘 나온 것 같다»</b>고 평했고, 목표 세팅으로 <b>백금 천칭 또는 첫 번째 서약 / 용사냥꾼 · 공허 · 작열 · 열의</b>를 제시했다 — <b>기사 쪽에서도 작열을 최종 세팅에 넣고 계산하고 있다</b>는 뜻이다. 다만 초월·백금 천칭 미보유로 엠블럼 비교는 아직 못 했다고 밝혔다.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1309701" target="_blank" rel="noopener"><span class="n">#1309701</span> 기사 함선 허수 2,675만 + 작열 목표 세팅</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1311171" target="_blank" rel="noopener"><span class="n">#1311171</span> «열의가 버그, 작열은 문제없음»</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1311177" target="_blank" rel="noopener"><span class="n">#1311177</span> «공속 캡 초과분이 추가타로 전환 — 버그 아님» 반론</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=HJGgsXodYNg" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「레이드룬 7종 전부 살펴봤습니다」</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=hAMnh3X6Rg4" target="_blank" rel="noopener"><span class="n">▶</span> 꾸도현 「열의 추가타 실측」</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=cC3qP4e-vj8" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「8월 4주차 룬 채용률 리포트」</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=T5wSydnrBos" target="_blank" rel="noopener"><span class="n">▶</span> 새크리마 「어비스·레이드 직업별 펫 추천」</a>
-    </div>
-  </div>
-  <div class="card" id="u20260908" style="scroll-margin-top:24px">
-    <h4>🔥 9주차 갱신 — 작열 64% 방어구 1픽 · 어비스 최고점은 하위권<span class="tag">2026-09-08</span></h4>
-    <p class="plain"><b>이번 주 전제 — 레이드룬 채용률이 2주치 쌓이며 자리가 확정됐다.</b> <b>«작열»은 수도사·기사·도적 3직업의 코어룬</b>이 됐고(그 외 직업은 쓰지 않는다), <b>«오팔 성배»는 평균 20.8%의 범용룬</b>으로 굳었다. 나머지 5종은 두 자릿수 진입에 실패했다. 아래 채용률은 <b>9/07 집계</b>이며, 갤 자료는 <b>9/07~9/08 2일치</b>다(디시 키워드 검색의 구조적 한계).</p>
-    <p>기사도 <b>«작열»이 55.6% → 64%</b>로 올라 <b>방어구 1픽</b>이 됐다. 수도사와 마찬가지로 <b>작열과 열의를 함께 쓴다</b>. 작열을 넣기 위해 빠진 자리는 <b>별바라기·흐릿한 영상·뼈인장</b>이다.</p>
-    <p>무기룬 <b>«눈부신 자영»은 60.9% → 62%</b>로, 시즌 시작 이후 <b>한 번도 꺾이지 않은 네 자리 전용 무기룬</b> 중 하나다(나머지는 법사 개시·음유 대군주·전격 개시). 엠블럼 <b>«백금 천칭»은 50%에 근접</b>했다.</p>
-    <p>다만 성능 지표는 여전히 아쉽다. 9/08 <b>어비스 최고점 76,321</b>로 <b>21직업 중 19위</b>다. 갤에서 «기사·장궁·댄서·악사·도적·격가·듀블은 버프가 필요하다»고 지목된 직업군에 포함됐다. 룬 채용률 1위와 실제 상한 성능이 따로 노는 구간이 이어지고 있다.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1332824" target="_blank" rel="noopener"><span class="n">#1332824</span> 09.08 전직업 어비스 1위 컷</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1333251" target="_blank" rel="noopener"><span class="n">#1333251</span> 어비스 직업별 최고 점수 — 버프 필요 직업 지목</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=wAbE6SIrtTY" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「9/07 룬 채용률」</a>
-    </div>
-  </div>
-
+<section class="section" id="stats">
+<div class="section-head"><h2>스탯 · 세공 · 개조</h2><small>제보의 목표값과 개인 사례를 구분합니다.</small></div>
+<div class="stat-grid"><article class="stat"><div class="stat-head"><strong>빠른 스킬</strong><span>근거 범위 확인</span></div><div class="value value-text">5,000</div><p>10월 정리 제보의 목표값. 실제 최적점·상한으로 검증된 값은 아닙니다.</p></article>
+<article class="stat"><div class="stat-head"><strong>추가타</strong><span>근거 범위 확인</span></div><div class="value value-text">7,000+</div><p>같은 제보의 참고 목표. 무너진 경계·작열과 현재 적용 확률을 함께 확인합니다.</p></article>
+<article class="stat"><div class="stat-head"><strong>치명타</strong><span>근거 범위 확인</span></div><div class="value value-text">9,000+</div><p>정리 제보의 참고 목표이며 상한이 아닙니다. 비약·빛 계열 조건에 따라 필요한 수치가 달라집니다.</p></article></div>
+<p class="notice">빠른 스킬 5,000을 참고하되 치명·추가타에 고정 비율을 강요하지 않습니다. 백금 천칭 세팅과 2침식 세팅은 같은 스탯표를 그대로 공유하지 않습니다.</p>
+<div class="subgrid"><article class="quick"><small>보석 세공 · 피해 태그</small><b>강타 → 보조 → 연타</b><p>2줄은 강타·보조, 3줄은 연타 추가를 출발점으로 삼습니다. 세공 피해 태그와 시즌 능력치 ‘빠른 스킬’을 구분하세요.</p></article><article class="quick"><small>개조 번호</small><b>1 · 5 · 6</b><p>10월 어비스·기록 갱신 제보 기준. 1·3·5도 남아 있어 같은 조건에서 비교하세요. 6개조는 시즌 스킬의 궁극기 취급을 고려한 선택입니다.</p></article></div>
+<div class="proof-line"><a href="#source-cheat">10월 제보·정정 근거</a><a href="#source-video">영상 해당 구간</a><a href="#source-dashboard">10/12 채용 통계</a></div>
 </section>
 
-<div class="ornament">⚜ ⚜ ⚜</div>
-
-<section class="chapter" id="c2">
-  <div class="chead">
-    <div class="kicker">제 2 장 · 貳</div>
-    <h3>스킬 — 1·3·5와 공허</h3>
-    <p>4스 차징은 버리고, 찌르기를 계속 찌른다</p>
-  </div>
-
-  <div class="card">
-    <h4>주력 구성: 1·3·5 + 쿨감</h4>
-    <p>4스 차징의 답답함은 널리 공유되는 불만이고, 2스는 백합 힐이 은근히 쏠쏠하다는 평. 뼈인장+지진 135 제안 글의 요지는 <b>1·3·5 주력기 + 쿨감 세팅을 맞춘 뒤 스킬 쿨탐 3초 감소를 계속 돌리면 쾌적</b>하다는 것이다. 운용의 축은 <b>공허룬</b> — 공허룬은 1스 찌르기를 반복하기 위한 룬이고 다른 스킬들은 1스 쿨감을 위한 버튼에 가깝다는 정리가 나왔다. 다만 시즌1 무한/망각 유저 사이에선 템포가 죽어 재미가 크게 떨어졌다는 역체감 호소도 있다.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138880" target="_blank" rel="noopener"><span class="n">#1138880</span> 뼈인장+지진 135 제안</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137157" target="_blank" rel="noopener"><span class="n">#1137157</span> 공허=1스 쿨감 버튼</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135965" target="_blank" rel="noopener"><span class="n">#1135965</span> 공허 역체감 호소</a>
-    </div>
-  </div>
-
-  <div class="card hl">
-    <h4><span class="tag">실측</span>개조 135 vs 156</h4>
-    <p>지진룬 획득자의 비교 실측 — <b>궁은 156에서도 쓰면 DPS가 떨어져 봉인</b>했다는 보고다. 궁 비율은 18→12%로 내려간 반면 3스 비율은 12.1→22.7%로 올랐고, 실측 당시 빠스 4,391로 소환 확률 54%였는데 60%가 돼도 3스로 올라가는 비율이 더 크다는 계산이 붙었다. → <b>135 개조 + 궁 봉인</b>이 현재 결론.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133871" target="_blank" rel="noopener"><span class="n">#1133871</span> 개조 156/135 비교 실측</a>
-    </div>
-  </div>
+<section class="section" id="gear">
+<div class="section-head"><h2>장비 선택</h2><small>무기 · 방어구 · 엠블럼을 구분해 봅니다.</small></div>
+<div class="table-wrap"><table class="gear"><caption>기사 — 통계와 실전 제보에 따른 선택</caption><thead><tr><th scope="col">부위·목적</th><th scope="col">선택지</th><th scope="col">적용 조건</th></tr></thead><tbody><tr><th scope="row">무기</th><td>눈부신 잔영</td><td>10/12 채용률 79.6%. 잔영 중심 운용의 기준 무기입니다.</td></tr>
+<tr><th scope="row">방어구</th><td>작열 · 열의 · 첫 번째 서약</td><td>통계상 상위 선택. 1스킬 집중 여부에 따라 열의를 빼고 위엄 등을 넣는 실전 제보도 있습니다.</td></tr>
+<tr><th scope="row">방어구 선택</th><td>무너진 경계 / 금 간 봉인 / 공허</td><td>2침식으로 치명·추가타를 보완하거나, 공허로 쿨 관리를 택합니다. 효과 발동 조건까지 함께 맞춥니다.</td></tr>
+<tr><th scope="row">엠블럼</th><td>백금 천칭 / 영원한 밤 / 초월</td><td>백금 천칭 71.7%로 통계 1위. 1스 집중이 아닌 잔영 운영에서는 영원한 밤·초월을 쓰는 제보가 있어 일괄 교체를 권하지 않습니다.</td></tr></tbody></table></div>
+<p class="note">오팔 성배·작열·밤의 축복은 현재 장착 룬의 계열·발동 조건을 함께 확인하세요. 신화 보유자의 예시를 미보유자에게 필수 세팅으로 요구하지 않습니다.</p>
+<div class="proof-line"><a href="#source-cheat">10월 제보·정정 근거</a><a href="#source-video">영상 해당 구간</a><a href="#source-dashboard">10/12 채용 통계</a></div>
 </section>
 
-<div class="ornament">⚜ ⚜ ⚜</div>
-
-<section class="chapter" id="c3">
-  <div class="chead">
-    <div class="kicker">제 3 장 · 參</div>
-    <h3>세공 · 스탯 — 빠스 5,000</h3>
-    <p>시즌스킬이 빠스를 요구한다는 사실에 갤 반응은 냉소적이었다</p>
-  </div>
-
-  <div class="card">
-    <div class="tablebox">
-      <table>
-        <thead><tr><th>항목</th><th>기준</th><th>비고</th></tr></thead>
-        <tbody>
-          <tr><td>세공 2줄</td><td><b>강타 · 보조</b></td><td>1스 위주 운용이면 보조연타까지 1.5줄 유효작이라는 평</td></tr>
-          <tr><td>세공 3줄</td><td>미확정</td><td>강보생 3줄 인정 여부 질문엔 답변 없음 (자료 없음)</td></tr>
-          <tr><td>빠스</td><td class="tnum"><b>5,000</b></td><td>시즌스킬 요구 — “스탯 남아돌아서 고민 없이 올려도 됨”. 실측: 빠스 4,391 → 소환 확률 54%. 고점 세팅은 빠스 8,200 사례도</td></tr>
-          <tr><td>프리즘</td><td>치명 우선</td><td>장신구·무기는 걍치+콤치+추치+빠스치+강, 방어구는 1줄 치명 — 여기에 빠스 5천을 맞추라는 답변</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">회의론도 있음 — 기사 메타가 어차피 물결·잔영딜인데 빠스로 투자가 분산되는 게 맞느냐, 무한·망각이 있었으면 고민 없이 줬을 것이라는 지적이 나왔다. 7/5에도 빠른 스킬 투자 질문에 연구를 기다리라는 답이 달린 상태라, 빠스 투자 폭은 지켜볼 것.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132888" target="_blank" rel="noopener"><span class="n">#1132888</span> 세공 강타+보조</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1128624" target="_blank" rel="noopener"><span class="n">#1128624</span> 빠스 5천? 회의론</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138890" target="_blank" rel="noopener"><span class="n">#1138890</span> 프리즘 답변</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136040" target="_blank" rel="noopener"><span class="n">#1136040</span> 냉소 반응 (시즌스킬=빠스)</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144656" target="_blank" rel="noopener"><span class="n">#1144656</span> 빠스 투자 고민 (7/5)</a>
-    </div>
-  </div>
+<section class="section" id="rotation">
+<div class="section-head"><h2>실전 운용</h2><small>주력 구성과 다른 빌드의 사이클을 섞지 않습니다.</small></div>
+<div class="panel"><span class="chip">먼저 익힐 흐름</span><h3 class="rotation-line">1 · 2 · 3 · 5 반자동 → 1 쿨마다 직접</h3><ol class="rotation-list"><li><h3>반자동 시작</h3><p>어시스트 1·2·3·5를 켜고 4를 제외하는 10월 제보가 있습니다. 1은 쿨이 돌아오면 직접 눌러 자동 사용의 지연을 줄입니다.</p></li><li><h3>잔영 동작 확인</h3><p>1 외 스킬 사이에 방패 강타를 섞는 수동 제보가 있습니다. 입력 횟수보다 실제 모션과 쿨을 먼저 확인하세요.</p></li><li><h3>브레이크 구간</h3><p>궁극기는 중간 보스·보스 입장 브레이크용으로 쓰는 제보가 있습니다. ‘궁은 항상 봉인’이라는 과거 결론을 기본 규칙으로 두지 않습니다.</p></li></ol></div>
+<p class="note">번호는 아래 자료의 스킬 배치를 따릅니다. ‘평’은 평타, 괄호는 조건부 입력입니다. 자동·수동·짧은 전투 예시는 동일한 성능 보장이 아닙니다.</p>
+<div class="proof-line"><a href="#source-cheat">10월 제보·정정 근거</a><a href="#source-video">영상 해당 구간</a><a href="#source-dashboard">10/12 채용 통계</a></div>
 </section>
 
-<div class="ornament">⚜ ⚜ ⚜</div>
-
-<section class="chapter" id="c4">
-  <div class="chead">
-    <div class="kicker">제 4 장 · 肆</div>
-    <h3>룬 세팅</h3>
-    <p>물결이 축, 백금천칭이 국민 엠블</p>
-  </div>
-
-  <div class="card hl">
-    <h4><span class="tag">호평</span>이번 시즌 기사 룬 풀은 알짜가 많다는 평</h4>
-    <p>1스만 찔러도 바로 옵션이 터지는 <b>백금천칭</b>, 시즌2 물결 격인데 광역딜이 된 <b>잔영</b>, 시즌2 해결사 격인 <b>열의</b>가 호평받았고, 그 밖에도 탱커 전용 룬 중 센 것이 많아 룬 자리가 몹시 비좁아 보인다는 관찰이 나왔다. 방어구 유력 조합은 <b>열의 + 공허 + 금간봉인 + 교차사슬 + @</b> — “아직 이것보다 좋은 조합을 못 찾겠다”(연구자 코멘트). 장신구는 개조 135에 맞춰 <b>돌파 · 지진 · 용기</b>가 정배.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1129447" target="_blank" rel="noopener"><span class="n">#1129447</span> 룬 풀 호평</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137157" target="_blank" rel="noopener"><span class="n">#1137157</span> 방어구 조합 연구</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135517" target="_blank" rel="noopener"><span class="n">#1135517</span> 장신구 돌파·지진·용기</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1130914" target="_blank" rel="noopener"><span class="n">#1130914</span> 개조 135 ↔ 장신구</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <h4>엠블럼 · 신화방어룬 · 마도저항</h4>
-    <p><b>엠블럼</b>: 백금천칭이 현 국민이지만, 효과만 봐도 아득을 넘기 어렵다는 빠스 8,200 실측자의 평가와, 백금천칭 대신 <b>밤의 축복 발동 시 세지는 각성룬 메타</b>로 넘어가야 한다는 연구 의견이 병존. <b>신화방어룬</b>은 탱커 종결이라는 쪽과, 함선 허수·솔플용일 뿐 각 잡는 레이드·어비스 기갱엔 쓸모없다는 쪽이 맞서는 논쟁 중. <b>마도저항</b> 때문에 시즌1 룬을 억지로 빼는 건 금물 — 유효옵룬을 빼고 무옵룬을 끼면 오히려 약해지니 아득 정도는 유지하라는 권고가 붙었다.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136333" target="_blank" rel="noopener"><span class="n">#1136333</span> 빠스8200 함수 2분 실측</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141782" target="_blank" rel="noopener"><span class="n">#1141782</span> 신화방어룬 논쟁</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136040" target="_blank" rel="noopener"><span class="n">#1136040</span> 마도저항·아득 유지</a>
-    </div>
-  </div>
+<section class="section" id="patch">
+<div class="section-head"><h2>패치 · 선택 근거</h2><small>필요할 때 펼쳐보는 추가 설명</small></div>
+<div class="patch-panel"><span class="evidence official">공식 패치 · 10/15</span><h3 style="margin-top:10px">10/15 이후 확인할 것</h3><p>10/15 공통 변경으로 에이렐 매우 어려움이 100레벨이 되며 시즌1 룬이 비활성화됩니다. 구시즌 장비 사례를 해당 콘텐츠에 그대로 적용하지 마세요.</p><a class="ref-link" href="#source-patch">공식 원문 근거 →</a></div>
+<details class="advanced-guide compact-details"><summary>세팅 선택이 갈리는 이유 · 통계 전체 보기</summary><div class="advanced-content"><p>백금 천칭의 높은 채용률과 영원한 밤·초월의 실전 제보는 함께 성립할 수 있습니다. 장신구·잔영 비중·빛/어둠 구성이 다른 세팅을 한 줄 성능 순위로 합치지 않습니다.</p><div class="table-wrap" style="margin-top:16px"><table class="gear adoption-table"><caption>10/12 집계 · 부위별 상위 5개 개별 채용률</caption><thead><tr><th scope="col">부위</th><th scope="col">개별 채용률 · 성능 순위 아님</th></tr></thead><tbody><tr><th scope="row">장신구</th><td>돌파 <span class="data-date">96.5%</span> · 용기 <span class="data-date">96.1%</span> · 지진 <span class="data-date">95.6%</span> · 격돌 <span class="data-date">2.0%</span> · 헌신 <span class="data-date">1.5%</span></td></tr><tr><th scope="row">무기</th><td>눈부신 잔영 <span class="data-date">79.6%</span> · 두 갈래 뿔 <span class="data-date">9.6%</span> · 죽음 <span class="data-date">5.6%</span> · 바위 칼날 <span class="data-date">2.2%</span> · 계시 <span class="data-date">0.6%</span></td></tr><tr><th scope="row">방어구</th><td>작열 <span class="data-date">81.4%</span> · 열의 <span class="data-date">69.1%</span> · 첫 번째 서약 <span class="data-date">57.4%</span> · 무너진 경계 <span class="data-date">49.3%</span> · 위엄 <span class="data-date">37.7%</span></td></tr><tr><th scope="row">엠블럼</th><td>백금 천칭 <span class="data-date">71.7%</span> · 영원한 밤 <span class="data-date">14.4%</span> · 초월 <span class="data-date">6.8%</span> · 위대함 <span class="data-date">3.6%</span> · 빛바랜 별 <span class="data-date">1.6%</span></td></tr></tbody></table></div><p class="note">세부 세팅 제보는 일부 플레이어의 경험이며, 보유율·콘텐츠·버프가 다릅니다. 통계와 제보가 다를 때 둘 중 하나를 숨기지 않고 조건을 함께 표시했습니다.</p></div></details>
 </section>
 
-<div class="ornament">⚜ ⚜ ⚜</div>
+<section class="section" id="sources">
+<div class="section-head"><h2>출처 · 기록</h2><small>영상 구간 · 공식 변경 · 통계 원본</small></div>
+<p class="intro">추천은 아래 근거를 요약·재구성했습니다. 숫자만 남은 이미지, 음악 자막, 접근을 검증할 수 없는 영상 분석은 세팅 근거에서 제외했습니다.</p>
+<div class="source-list">
+<a class="source" id="source-cheat" href="https://erinndata.pages.dev/cheatsheet/#c-%EA%B8%B0%EC%82%AC" target="_blank" rel="noopener"><small>황산갈매기 · 세팅 제보·정정 · 10/10 보완</small><strong>10월 전직업 컨닝페이퍼 · 기사<span aria-hidden="true">↗</span></strong><p>채용률은 10/5, 세팅·제보는 항목별 날짜가 다릅니다. 영상 이후 정정된 장신구·시작 동작은 웹 보완본을 우선했습니다.</p></a>
+<a class="source" id="source-video" href="https://www.youtube.com/watch?v=7Fuf8Icl5Wo&amp;t=192s" target="_blank" rel="noopener"><small>황산갈매기 · 2026-10-09 · 자동 자막</small><strong>황산갈매기 · [마비노기 모바일] 10월 전 직업 룬 세팅 총정리! 채용률·실전 세팅·콤보까지<span aria-hidden="true">↗</span></strong><p>03:12 기사 — 장신구, 엠블럼 차이와 반자동 운용. 웹 자료의 10/10 보완 내용도 함께 확인했습니다.</p></a>
 
-<section class="chapter" id="c5">
-  <div class="chead">
-    <div class="kicker">제 5 장 · 伍</div>
-    <h3>마무리 · 미확정 항목</h3>
-    <p>신규 클래스는 아직 공사 중</p>
-  </div>
-
-  <div class="card">
-    <p>기사는 시즌 2 신규 클래스라 세팅 연구가 가장 유동적이다. 현재 확정에 가까운 건 <b>1·3·5 주력 + 135 개조 + 공허 쿨감 + 강타·보조 세공 + 빠스 5,000 + 돌파·지진·용기</b>까지. 딜 기대치는 B급이지만 물결·잔영으로 탱 역할을 하며 브익을 걸어주는 유틸 탱커로서의 자리는 유지된다.</p>
-    <p class="note info"><b>자료 없음 항목</b> — 무기룬 구체 추천(물결 외 슬롯 구성), 연타트리거 필수 여부, 강보생 3줄 인정 여부, 물결 없는 부캐 세팅(질문 글에 댓글 0). 갤 연구 진행에 따라 갱신 필요.</p>
-    <div class="refs"><span class="rl">근거</span>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136339" target="_blank" rel="noopener"><span class="n">#1136339</span> 물결 없는 세팅? (무응답)</a>
-      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133442" target="_blank" rel="noopener"><span class="n">#1133442</span> 연타트리거? (무응답)</a>
-    </div>
-  </div>
-</section>
-
-<div class="ornament">🎬 🎬 🎬</div>
-
-<section class="chapter" id="yt">
-  <div class="chead">
-    <div class="kicker">부록 · 유튜브</div>
-    <h3>🎬 시즌2 영상 크로스체크</h3>
-    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
-  </div>
-  <div class="card">
-    <p><b>삼신기(장신구)</b> — 용기·돌파·지진</p>
-    <p><b>무기룬</b> 눈부신 자영·거대한 분노 &nbsp;·&nbsp; <b>엠블럼</b> 영원한 밤·백금 천칭 &nbsp;·&nbsp; <b>세공 정배</b> 강타·보조</p>
-    <p><b>신규 장신구 ‘지진’</b> — 3번 방패돌격 범위↑·끌어당김, 5번 사기진작 강화 시 충격파+브레이크 1칸 → 핵심 스킬 평가. <b>6번 패시브 ‘무거운 방패’</b> 신규(방패 강타 강화). 룬 <b>135 정배</b>, 스탯은 빠른 스킬 5,000 → 치명타 6~7천 → 연타.</p>
-    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
-    <div class="refs"><span class="rl">영상</span>
-      <a class="chip" href="https://www.youtube.com/watch?v=T_wauTluFos" target="_blank" rel="noopener"><span class="n">▶</span> 엽이·기사 룬세팅</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
-      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
-    </div>
-  </div>
-</section>
-
-  <div class="card" id="u20260919" style="scroll-margin-top:24px">
-    <h4>🛡️ 11주차 갱신 — 9/17 패치로 기사 시너지·생존 상향<span class="tag">2026-09-19</span></h4>
-    <p class="plain"><b>9/17 패치에서 기사가 직접 상향됐다.</b> 제한 명령 사용 시 주변 아군의 스킬·캐스팅·공격 속도가 10초 동안 15% 증가하고, 체력 35% 이하 보호막과 지역 이동 시 자원 초기화가 추가됐다. 곰서약 활성화 시 브레이크 피해 증가도 붙어, 이전의 예열 부담이 완화됐다. 신규 나이트메어 드릴에서는 탱커이면서도 딜 기여를 기대하는 흐름이 생겼지만, 갤 여론상 최상위 랭킹은 여전히 검방·대검·궁수 등과 경쟁 중이다.</p><div class="refs"><span class="rl">근거</span><a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1372554" target="_blank" rel="noopener"><span class="n">#1372554</span> 패치 후 기사 질문</a><a class="chip" href="https://www.youtube.com/watch?v=WwIjPDSIFfg" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「9/17 대규모 업데이트 총정리」</a></div>
-  </div>
-<section class="chapter appendix" id="src">
-  <div class="chead">
-    <div class="kicker">부록 · 附</div>
-    <h3>출처 19건</h3>
-    <p>번호 클릭 시 디시 원문으로</p>
-  </div>
-  <ul class="srclist">
-    <li><span class="num">◇#1245263</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1245263" target="_blank" rel="noopener">기사도 상향해줘!!!!!</a><span class="d">08/07 · 기갱 브익팟 진입 거부</span></li>
-    <li><span class="num">◇#1245878</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1245878" target="_blank" rel="noopener">8/8 어비스 순위</a><span class="d">08/08 · 기사 47,439 탱커 3위</span></li>
-    <li><span class="num">#1144656</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144656" target="_blank" rel="noopener">기사 빠른 스킬 ← 이거 올려야 함?</a><span class="d">07/05 · 빠스 투자 고민</span></li>
-    <li><span class="num">#1141782</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1141782" target="_blank" rel="noopener">신화방어룬 이거 쓸만한 거임?</a><span class="d">07/04 · 탱 종결 논쟁</span></li>
-    <li><span class="num">#1138890</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138890" target="_blank" rel="noopener">기사 방어구 프리즘 뭐 가져감?</a><span class="d">07/03 · 프리즘·빠스 5천</span></li>
-    <li><span class="num">#1138880</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1138880" target="_blank" rel="noopener">기사 뼈인장 + 지진 135 괜찮을 듯</a><span class="d">07/03 · 1·3·5 제안</span></li>
-    <li><span class="num">#1137157</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1137157" target="_blank" rel="noopener">기사 올 시즌2룬 함수 2000만</a><span class="d">07/03 · 실측·약함 결론</span></li>
-    <li><span class="num">#1136958</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136958" target="_blank" rel="noopener">기사는 스텟 뭐 찍어야 하나?;</a><span class="d">07/03 · 빠스 5000 불만</span></li>
-    <li><span class="num">#1136339</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136339" target="_blank" rel="noopener">물결 없는데 신화룬/장신구 뭐함?</a><span class="d">07/02 · 부캐 세팅(무응답)</span></li>
-    <li><span class="num">#1136333</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136333" target="_blank" rel="noopener">빠스8200 기사 뻥딜제로 함수 2분</a><span class="d">07/02 · 10성 실측</span></li>
-    <li><span class="num">#1136040</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1136040" target="_blank" rel="noopener">시즌 2 룬에 따른 스탯 분배 팁</a><span class="d">07/02 · 시즌스킬=빠스 확인</span></li>
-    <li><span class="num">#1135965</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135965" target="_blank" rel="noopener">기사 공허룬 쓰면 쿨 커버 댐?</a><span class="d">07/02 · 역체감 호소</span></li>
-    <li><span class="num">#1135517</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1135517" target="_blank" rel="noopener">기사 장신구룬 뭐 쓰나요</a><span class="d">07/02 · 돌파·지진·용기</span></li>
-    <li><span class="num">#1133953</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133953" target="_blank" rel="noopener">기사 왜 이렇게 최악 같지</a><span class="d">07/02 · 해결사 이탈 체감</span></li>
-    <li><span class="num">#1133871</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1133871" target="_blank" rel="noopener">지진 먹어서 개조 156 135 비교</a><span class="d">07/02 · 개조 실측</span></li>
-    <li><span class="num">#1132961</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132961" target="_blank" rel="noopener">이번 시즌 기사는 상당히 쌜 거 같은데</a><span class="d">07/02 · 시즌초 낙관</span></li>
-    <li><span class="num">#1132888</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132888" target="_blank" rel="noopener">기사 보석 어떻게 맞춰야 돼?</a><span class="d">07/02 · 세공 기준</span></li>
-    <li><span class="num">#1132101</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1132101" target="_blank" rel="noopener">지금 현재 시즌2 직업 티어</a><span class="d">07/01 · B급 판정</span></li>
-    <li><span class="num">#1129447</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1129447" target="_blank" rel="noopener">기사는 이번 시즌 룬들 맛있는 게 있네</a><span class="d">07/01 · 백금천칭·잔영·열의</span></li>
-  </ul>
-</section>
-
-<footer>
-  <div class="sign">⚜ 육육이의 프렌즈를 위한 기사 공략모음 ⚜</div>
-  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-09-19 (11주차 갱신)<br>
-  신규 클래스라 세팅 유동성이 큼 — 무기룬·3줄 세공 등 미확정 항목은 갱신 필요 · 갤러리 여론은 요약·재구성해 정리
-</footer>
-
+<a class="source" id="source-dashboard" href="https://erinndata.pages.dev/dashboard/" target="_blank" rel="noopener"><small>황산갈매기 · 10/12 집계</small><strong>룬 채용률 대시보드 · 기사<span aria-hidden="true">↗</span></strong><p>원본 집계의 개별 룬 채용률을 사용했습니다. 동시 장착률·전체 성능·패치 후 실측을 뜻하지 않습니다.</p></a>
+<a class="source" id="source-patch" href="https://mabinogimobile.nexon.com/News/Update/3563175" target="_blank" rel="noopener"><small>넥슨 · 공식 업데이트</small><strong>10/15 업데이트 노트<span aria-hidden="true">↗</span></strong><p>10/15 공통 변경으로 에이렐 매우 어려움이 100레벨이 되며 시즌1 룬이 비활성화됩니다. 구시즌 장비 사례를 해당 콘텐츠에 그대로 적용하지 마세요.</p></a>
 </div>
+<details class="advanced-guide compact-details"><summary>최근 갤러리 제보 1건 · 조건과 미확인 항목</summary><div class="advanced-content"><p>최근 7일 키워드 수집 120건과 연결 글 3건 중 관련 글을 선별했습니다. 질문·소수 댓글은 새 종결 세팅의 증거로 단정하지 않았습니다.</p><div class="source-list"><a class="source" href="https://m.dcinside.com/board/enban/1441264" target="_blank" rel="noopener"><small>커뮤니티 · 개인 제보 #1441264</small><strong>10/15 죽음·용 사냥꾼 조합 질문<span aria-hidden="true">↗</span></strong><p>실제 장비 질문은 있지만 상세 세팅 답변이 부족해 두 신화를 모두 전제한 새 종결표는 만들지 않았습니다.</p></a></div></div></details>
+<details class="advanced-guide compact-details"><summary>이전 공략 · 과거 업데이트 기록</summary><div class="advanced-content"><p>7~9월의 평가·구시즌 룬·옛 실측은 당시 조건의 기록입니다. 현재 추천과 혼동하지 않도록 별도 보관했습니다.</p><p><a class="return-link" href="./knight-legacy.html">개편 전 기사 공략 보관본 보기 →</a> · <a class="return-link" href="./changelog.html">서재 변경 기록 →</a> · <a class="return-link" href="./youtube-season2.html#update-20261016">이번 영상 요약 →</a></p></div></details>
+</section>
+<footer class="footer"><strong>육육이의 공략 서재 · 기사</strong><p>작성·검토 2026.10.16 · 통계 10.12 · 세팅 제보 자료 10.10 보완본 · 직업별 항목의 기준일 별도<br>비공식 팬 공략 · 넥슨·데브캣과 무관합니다. <a href="./index.html">서재로 돌아가기</a></p></footer>
+</main></div></div>
+<script>
 
+const tabs=[...document.querySelectorAll('[role="tab"]')];
+function selectTab(tab){for(const t of tabs){const selected=t===tab;t.setAttribute('aria-selected',String(selected));t.tabIndex=selected?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!selected}}
+tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>selectTab(tab));tab.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight')next=(i+1)%tabs.length;else if(e.key==='ArrowLeft')next=(i-1+tabs.length)%tabs.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=tabs.length-1;else return;e.preventDefault();selectTab(tabs[next]);tabs[next].focus()})});
+const nav=[...document.querySelectorAll('.sidebar nav a')];
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){nav.forEach(a=>a.classList.toggle('active',a.hash==='#'+entry.target.id))}}},{rootMargin:'-15% 0px -65% 0px',threshold:0});document.querySelectorAll('main>section').forEach(s=>observer.observe(s))}
+function openLinkedHistory(){let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{return}const target=document.getElementById(id);if(!target)return;let ancestor=target.parentElement,opened=false;while(ancestor){if(ancestor.tagName==='DETAILS'){ancestor.open=true;opened=true}ancestor=ancestor.parentElement}if(opened)requestAnimationFrame(()=>target.scrollIntoView({block:'start'}))}
+window.addEventListener('hashchange',openLinkedHistory);openLinkedHistory();
+document.querySelector('.brand').addEventListener('click',event=>{if(window.parent!==window){try{if(typeof window.parent.closeBook==='function'){event.preventDefault();window.parent.closeBook()}}catch{}}});
+
+</script>
 </body>
 </html>

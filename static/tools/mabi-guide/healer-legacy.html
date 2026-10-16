@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>육육이의 프렌즈를 위한 힐러 공략모음</title>
+<style>
+  :root{
+    --paper:#edf3ef;
+    --card:#f8fbf9;
+    --ink:#1f2e27;
+    --ink-soft:#5e7167;
+    --jade:#2e8a6e;
+    --jade-deep:#1c6450;
+    --jade-soft:#daeee5;
+    --jade-line:#a8d5c2;
+    --line:#d9e3dd;
+    --warn:#8c3b2e;
+    --warn-soft:#f5e5df;
+    --gold:#8a6d2f;
+    --gold-soft:#f1e9d5;
+    --serif:'Nanum Myeongjo','Batang','AppleMyungjo',Georgia,serif;
+    --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:radial-gradient(120% 60% at 50% -10%, #f3f9f5 0%, var(--paper) 55%);color:var(--ink);font-family:var(--sans);line-height:1.78;font-size:16px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 90px}
+  header.mast{text-align:center;padding:56px 0 30px}
+  .sigil{font-size:26px;color:var(--jade);line-height:1;margin-bottom:14px}
+  .byline{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--jade-deep);margin-bottom:6px}
+  h1.title{font-family:var(--serif);font-size:clamp(30px,6.5vw,46px);line-height:1.18;margin:0;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+  .mast .rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:22px auto 16px;max-width:440px;color:var(--jade)}
+  .mast .rule::before,.mast .rule::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--jade-line))}
+  .mast .rule::after{background:linear-gradient(90deg,var(--jade-line),transparent)}
+  .mast .rule span{font-size:13px}
+  .submeta{font-size:13px;color:var(--ink-soft);max-width:560px;margin:0 auto;line-height:1.6}
+  .submeta a{color:var(--jade-deep);font-weight:600;text-decoration:none}
+  .submeta b{color:var(--ink)}
+  .verdict-strip{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 0}
+  .badge{font-size:13px;font-weight:700;padding:5px 14px;border-radius:999px;background:var(--jade-soft);color:var(--jade-deep);border:1px solid var(--jade-line)}
+  .badge.down{background:var(--warn-soft);color:var(--warn);border-color:#e5cec5}
+  .summary{background:var(--card);border:1px solid var(--jade-line);border-radius:14px;padding:26px 28px;margin:36px 0 14px;box-shadow:0 1px 0 #fff inset, 0 6px 22px -18px rgba(20,90,70,.5)}
+  .summary h2{font-family:var(--serif);font-size:19px;margin:0 0 4px;color:var(--jade-deep);display:flex;gap:9px}
+  .summary .lead{font-size:13px;color:var(--ink-soft);margin:0 0 16px}
+  .checklist{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+  .checklist li{display:flex;gap:11px;align-items:baseline;font-size:15px}
+  .checklist .k{flex:0 0 76px;font-weight:700;color:var(--jade-deep);font-size:13px;text-align:right;padding-top:1px}
+  .checklist .v{flex:1}
+  .checklist .v b{color:var(--ink)}
+  nav.toc{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 4px;margin:34px 0 8px}
+  nav.toc .toch{font-family:var(--serif);font-size:14px;letter-spacing:.14em;color:var(--jade-deep);text-transform:uppercase;margin-bottom:12px;text-align:center}
+  nav.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 26px}
+  nav.toc a{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink);font-size:14.5px;padding:5px 6px;border-radius:7px}
+  nav.toc a:hover{background:var(--jade-soft);color:var(--jade-deep)}
+  nav.toc .cn{font-family:var(--serif);color:var(--jade);font-size:13px;min-width:20px}
+  @media(max-width:560px){nav.toc ol{grid-template-columns:1fr}}
+  .chapter{margin:56px 0 0;scroll-margin-top:16px}
+  .chapter .kicker{font-family:var(--serif);font-size:13px;letter-spacing:.22em;color:var(--jade);text-transform:uppercase;margin-bottom:4px}
+  .chapter h3{font-family:var(--serif);font-size:clamp(22px,4vw,28px);margin:0;color:var(--ink);font-weight:700;line-height:1.25}
+  .chapter .chead{margin-bottom:22px}
+  .chapter .chead p{font-size:14px;color:var(--ink-soft);margin:7px 0 0}
+  .ornament{text-align:center;color:var(--jade-line);font-size:15px;margin:52px 0 0;letter-spacing:.6em}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+  .card.hl{border-color:var(--jade-line);background:linear-gradient(180deg,#eaf5ef,#f8fbf9)}
+  .card h4{margin:0 0 9px;font-size:16.5px;font-weight:800;color:var(--ink);display:flex;gap:8px;align-items:baseline}
+  .card h4 .tag{font-size:11px;font-weight:700;color:var(--jade-deep);background:var(--jade-soft);border-radius:5px;padding:2px 7px;flex:0 0 auto}
+  .card p{margin:0 0 10px}
+  .card p:last-of-type{margin-bottom:0}
+  .card b{color:var(--jade-deep)}
+  .card .plain b{color:var(--ink)}
+  .quote{border-left:3px solid var(--jade);background:#e4f1ea;padding:11px 16px;border-radius:0 9px 9px 0;font-size:14.5px;color:#1f5443;margin:12px 0}
+  .quote .who{display:block;font-size:11.5px;color:#6f9484;margin-top:5px}
+  .note{font-size:13.5px;border-radius:9px;padding:11px 15px;margin:12px 0;background:var(--warn-soft);color:var(--warn);border:1px solid #e8d1c8}
+  .note.info{background:var(--gold-soft);color:var(--gold);border-color:#e0d3b2}
+  .note b{color:inherit;font-weight:800}
+  .tablebox{overflow-x:auto;margin:14px 0 4px;border-radius:10px;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:420px}
+  th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{background:#e2eee8;font-weight:800;color:var(--jade-deep);font-size:13px}
+  tr:last-child td{border-bottom:none}
+  td b{color:var(--jade-deep)}
+  tbody tr:nth-child(even){background:#fafcfb}
+  .refs{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px;padding-top:12px;border-top:1px dashed var(--line)}
+  .refs .rl{font-size:11px;letter-spacing:.1em;color:var(--ink-soft);font-weight:700;align-self:center;margin-right:3px}
+  a.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--jade-deep);text-decoration:none;background:#e5f1ea;border:1px solid var(--jade-line);border-radius:999px;padding:3px 10px;line-height:1.5}
+  a.chip:hover{background:var(--jade);color:#fff;border-color:var(--jade)}
+  a.chip .n{font-variant-numeric:tabular-nums;font-weight:700;opacity:.85}
+  .appendix{margin-top:54px}
+  .srclist{list-style:none;margin:0;padding:0}
+  .srclist li{display:flex;gap:11px;align-items:baseline;padding:8px 2px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .srclist li:last-child{border-bottom:none}
+  .srclist .num{color:var(--jade);font-weight:700;font-variant-numeric:tabular-nums;min-width:66px;font-size:12.5px}
+  .srclist a{color:var(--ink);text-decoration:none;font-weight:600}
+  .srclist a:hover{color:var(--jade-deep)}
+  .srclist .d{color:var(--ink-soft);font-size:12.5px;font-weight:400}
+  footer{margin-top:52px;padding-top:22px;border-top:2px solid var(--jade-line);text-align:center;font-size:12.5px;color:var(--ink-soft);line-height:1.7}
+  footer .sign{font-family:var(--serif);font-size:15px;color:var(--jade-deep);margin-bottom:4px}
+  a:focus-visible{outline:2px solid var(--jade);outline-offset:2px;border-radius:4px}
+  @media (prefers-reduced-motion:no-preference){.card,.summary{animation:rise .5s ease both}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+</style>
+<script data-goatcounter="https://junstellar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<meta name="robots" content="noindex">
+</head>
+<body>
+<div class="legacy-notice" style="padding:16px 20px;background:#f6eddb;color:#57462a;text-align:center;font:14px/1.7 sans-serif">이 페이지는 개편 전 과거 기록입니다. 최신 추천은 <a href="./healer.html">힐러 개편 공략</a>에서 확인하세요. · 보관일 2026-10-16</div>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="sigil">❁</div>
+  <div class="byline">육육이의</div>
+  <h1 class="title">프렌즈를 위한 힐러 공략모음</h1>
+  <div class="rule"><span>✦ 마비노기 모바일 시즌 2 · 빛과 어둠 ✦</span></div>
+  <p class="submeta">
+    <a href="https://gall.dcinside.com/mgallery/board/lists/?id=enban" target="_blank" rel="noopener">에반(마비노기 모바일) 마이너 갤러리</a>
+    힐러 글을 참고해 정리한 비공식 공략집 · 마지막 업데이트: 2026-09-08 (9주차 갱신)
+  </p>
+  <div class="verdict-strip">
+    <span class="badge">궁극기가 본체</span>
+    <span class="badge">가호 사기</span>
+    <span class="badge down">8인 랏힐 왕좌 수성 중</span>
+  </div>
+</header>
+
+<section class="summary">
+  <h2>❁ 한눈에 보는 결론</h2>
+  <p class="lead">바쁜 사람은 이것만 — 자세한 근거는 아래 각 장에.</p>
+  <ul class="checklist">
+    <li><span class="k">티어</span><span class="v">힐러가 약해졌다기보다 다른 힐 직군이 올라왔다는 정리가 우세. <b>8인 레이드 랏힐 자리는 힐러가 굳건</b></span></li>
+    <li><span class="k">정체성</span><span class="v"><b>“이번 시즌 힐러는 궁극기가 본체”</b> — 궁 스택 쌓고 굴리는 재미</span></li>
+    <li><span class="k">신규 룬</span><span class="v">장신구 <b>가호 = 사기</b> — 계수가 워낙 높아 사실상 강제 채용이라는 평</span></li>
+    <li><span class="k">장신구</span><span class="v"><b>물 · 광륜 · 가호(물광가)</b></span></li>
+    <li><span class="k">무기</span><span class="v"><b>칼날</b> · 3스 쿨 공백엔 <b>고동침+햇살</b> 가동률 좋음</span></li>
+    <li><span class="k">세공</span><span class="v"><b>보보연</b> 유지 — 가호 채용 후 <b>보연소</b> 선호 전환 의견도 (논쟁 중)</span></li>
+    <li><span class="k">개조</span><span class="v"><b>356</b> — 궁 위주 세팅</span></li>
+    <li><span class="k">불만</span><span class="v">3스 고동 시간 너프 실존 · 궁이 찰 때마다 소모를 강제하는 신규룬 구조가 불쾌 포인트</span></li>
+  </ul>
+</section>
+
+<nav class="toc">
+  <div class="toch">목 차 · Contents</div>
+  <ol>
+    <li><a href="#c1"><span class="cn">壹</span> 티어 — 왕좌는 지켰다</a></li>
+    <li><a href="#c2"><span class="cn">貳</span> 궁극기 본체 메타</a></li>
+    <li><a href="#c3"><span class="cn">參</span> 가호와 세팅</a></li>
+    <li><a href="#c4"><span class="cn">肆</span> 불만 사항 · 마무리</a></li>
+    <li><a href="#src"><span class="cn">附</span> 출처</a></li>
+  </ol>
+</nav>
+
+<section class="chapter" id="c1">
+  <div class="chead">
+    <div class="kicker">제 1 장 · 壹</div>
+    <h3>티어 — 왕좌는 지켰다</h3>
+    <p>사제가 올라와도, 8인 랏힐은 힐러다</p>
+  </div>
+
+  <div class="card hl">
+    <p>사제 급부상으로 힐러가 구려진 것 아니냐는 말이 돌지만, 갤 정리는 <b>다른 힐 직군들이 어느 정도 올라온 것일 뿐 힐러 자체가 나빠진 게 아니라는 쪽</b>이다. 다만 시즌 2에서 새로 받은 것들이 아쉽다는 지적과, 3스 고동 지속시간이 실제로 너프됐다는 확인도 함께 나와 단순 엄살로만 치부할 순 없다.</p>
+    <div class="quote">사제가 좋아져도 어비스·4인 콘텐츠 정도까지라는 전망이 우세하고, <b>“8인 레이드 랏힐 자리는 힐러가 굳건”</b>이라는 문장이 여론을 대변한다. 붉라리 사제 1힐 영상을 근거로 한 반론도 있었지만, 힐이 안정적이고 버프까지 더 좋은 힐러를 두고 굳이 바꿀 이유가 없다는 재반박으로 정리됐다.
+      <span class="who">— 「사제가 좋아져봤자 힐러한텐 안될듯」 스레드 요약</span></div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144339" target="_blank" rel="noopener"><span class="n">#1144339</span> 구려졌나 논쟁</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144302" target="_blank" rel="noopener"><span class="n">#1144302</span> 8인 랏힐 왕좌</a>
+    </div>
+  </div>
+
+  <div class="card" id="u20260803" style="scroll-margin-top:24px">
+    <h4>🔍 5주차 갱신 — ‘3궁밥’ 메커니즘 규명 — 딜 지분 50%+ · 정상화 리스크<span class="tag">2026-08-03</span></h4>
+    <p>어비스 1위를 고정시킨 <b>힐러 궁밥 딜의 작동 원리</b>가 이번 주 공개적으로 정리됐다. <b>가호</b> 룬은 궁 게이지 3당 1중첩(최대 300중첩)이 쌓이고 <b>중첩당 피해 3% 증가</b>. 궁 게이지는 비전투 중에도 음식으로 채울 수 있어, <b>송어·메기·토마토 3종(3궁밥)으로 전투 진입 전에 300중첩을 채워두고</b> 보스 브레이크 순간 5번 스킬(서먼 루미너스)을 터뜨리는 방식이다.</p>
+    <p class="plain">증폭 구조는 <b>300중첩(≈9배) → 소생 40중첩(중첩당 1.5%) → 오토 실드 유지 시 공증 15% → 치명타 비약</b>. 실측으로 <b>0중첩 700만 → 7,000만 → 1억 초과</b>까지 올라간다. 소생 40중첩을 안정적으로 쌓으려면 <b>추가타 100%</b>가 전제라 추가타 약 4,800 + 교차하는 사슬 + 무너진 경계(침식 100↑) 세팅이 따라붙는다. 결과적으로 <b>피통 3,400줄 보스가 브레이크 후 1~3초에 사라지고, 힐러 딜 지분이 50%를 넘는다</b>.</p>
+    <p class="plain"><b>리스크</b> — 7/30 패치에 이 건은 <b>포함되지 않았다</b>(공지·제재도 없음). 다만 갤·유튜브 모두 비정상 동작이라는 판단에 무게가 실려 있고, 정상화되면 <b>가호 스택이 1회성으로 바뀌며 체급이 크게 내려갈 수 있다</b>는 경고가 붙는다 — 궁밥·가호를 빼고 보면 힐러 자체 체급은 높지 않다는 관찰이 근거다. 룬은 <b>긍지 41.0%(▲6.5%p)</b>가 코어, <b>비늘 덮인 현자 24.3%</b>가 뒤를 잇는다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1231718" target="_blank" rel="noopener"><span class="n">#1231718</span> 궁밥 정상화 시 나락 우려</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1226179" target="_blank" rel="noopener"><span class="n">#1226179</span> 사제 1티어 논쟁 속 힐러 구조 언급</a>
+      <a class="chip" href="https://youtu.be/u67P7guuVXM" target="_blank" rel="noopener"><span class="n">YT</span> 센터로드TV · 힐러 3궁밥 지옥1 2초컷</a>
+      <a class="chip" href="https://youtu.be/kTcLNsjsA80" target="_blank" rel="noopener"><span class="n">YT</span> 빙식이 · 7/30 업데이트 노트</a>
+      <a class="chip" href="https://youtu.be/bswVvDOiC6Q" target="_blank" rel="noopener"><span class="n">YT</span> 황산갈매기 · 8/3 룬 리포트</a>
+    </div>
+  </div>
+  <div class="card" id="u20260808" style="scroll-margin-top:24px">
+    <h4>🚨 6주차 갱신 — 8/13 궁밥 조정 확정 (개발진 직접 확언)<span class="tag">2026-08-08</span></h4>
+    <p>5주차에 정상화 리스크로 경고했던 항목이 <b>공식 확정</b>됐다. 8/4 커피 LIVE에서 디렉터는 <b>“궁극기 회복 효과가 과도해지는 부분을 8월 13일에 조정하겠다”</b>고 명시했다. 재연 방법은 악용 우려로 비공개하되 문제 상황 자체는 정확히 파악하고 있다고 못박았고, 방향에 대해서는 <b>힐러를 약화시키거나 역할을 죽이려는 것이 아니라 특정 조건에서 의도보다 지나치게 높은 효율이 나오는 부분만 조정하는 것</b>이라고 선을 그었다. 업데이트 이후에도 전투 데이터를 계속 보며 보강하겠다는 단서가 붙었다. 커뮤니티에서 도는 <b>가호 스택 100 상한설</b>은 개발진 발언이 아니라 갤 추측이므로 <b>미확정</b>으로 표기한다.</p>
+    <p class="plain">조정 전 마지막 주의 실측도 남았다. <b>시즌2룬만으로는 1브 힐 12~16억(평균 14억 전후)</b>이 한계이고, <b>20억 이상은 파괴자+아득한 빛이 사실상 전제</b>다 — 아득한 빛만 껴도 가호로 18억이 나오고, 파괴자 없이 정박지·물길 조합 27억, 광기 26억까지 봤다는 실측 보고가 이어졌다. 정박지에서는 일렁임보다 <b>분쇄·갈퀴</b>가 낫고, <b>무너진 경계·교차하는 사슬로 추가타를 터뜨려 소생 스택을 쌓는 것</b>이 고점의 조건이다. 한편 힐러 자체에 대한 냉정한 평가도 함께 올라왔다 — 궁밥을 빼고 보면 <b>고동 무한 지속 불가, 소생 스택 압수, 카브락 덩치 때문에 팀 케어 곤란</b>으로, 순수 힐 성능만 놓고는 수도사가 오히려 낫다는 평까지 나온 상태다. 그래서 조정 이후 시나리오는 두 갈래로 갈린다 — <b>어비스가 1브 메타로 남으면 힐러는 여전히 최상위</b>, <b>지옥2가 2~3브 메타로 가면 시즌1 수도사급으로 전락할 수 있다</b>. 8/8 어비스는 여전히 <b>47,592로 석궁과 함께 전체 공동 1위</b>이며, 기갱 고인물의 정리는 <b>힐러 없이도 47,300은 찍히지만 궁3밥이 없으면 리트 횟수가 확 늘어난다</b>는 것이었다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=AxGn8LLEKNU" target="_blank" rel="noopener"><span class="n">YT</span> 공식 커피 LIVE 26.08.04 — 8/13 궁극기 회복 효과 조정 확언</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1243694" target="_blank" rel="noopener"><span class="n">#1243694</span> 힐 20억+은 파괴자·아득 전제</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1242969" target="_blank" rel="noopener"><span class="n">#1242969</span> 궁밥 정상화 이후 시나리오 논쟁</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1243494" target="_blank" rel="noopener"><span class="n">#1243494</span> 기갱판 이모저모 — 힐러 없이도 47,300 언급</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1245878" target="_blank" rel="noopener"><span class="n">#1245878</span> 8/8 어비스 순위 (힐러 47,592 공동 1위)</a>
+    </div>
+  </div>
+  <div class="card" id="u20260819" style="scroll-margin-top:24px">
+    <h4>🔺 7주차 갱신 — 궁밥 차단 확정 시행, 그런데 가호는 안 빠졌다<span class="tag">2026-08-19</span></h4>
+    <p class="plain"><b>이번 주 전제 — 8/13 패치로 «스킬 주는 피해»(스주피) 계열 룬 효과가 2배로 적용되는 버그가 있었고, 8/20 점검에서 수정된다.</b> 전격 유저의 실측 검증에 따르면 스주피 룬끼리는 원래 <b>합연산</b>이 맞고, 버그는 각 룬의 수치가 두 배로 들어간 것이다 — 무한한 탐욕+봉인술사를 함께 끼면 아무것도 없을 때 대비 <b>2.36배</b>(=1+0.8+0.56)가 나왔고, 정상화되면 <b>1.68배</b>로 떨어진다(해당 스킬 대미지가 현재의 <b>71.2%</b> 수준). 따라서 <b>8/13~8/19 사이에 나온 어비스 점수·함수 기록·티어표는 모두 버그 구간의 수치</b>이며, 그대로 믿으면 안 된다. 스주피 룬을 많이 낀 직업일수록 낙폭이 크다. <b>계승자·끓는 피는 버그가 아니라는 것</b>이 실측자들의 공통 견해다.</p><p>예고됐던 <b>궁밥 차단이 8/13에 실제로 시행</b>됐다. 패치 내용은 두 가지다 — <b>서먼 루미너스의 가호 중첩이 순삭(소멸)</b>되도록 변경, 그리고 <b>궁극기 게이지로 얻는 강화 효과를 전투 중에만 얻을 수 있도록</b> 변경. 후자가 핵심으로, <b>음식을 먹어도 궁 게이지가 오르지 않게</b> 되어 «전투 진입 전 300중첩»이라는 3궁밥 메커니즘 자체가 막혔다.</p><p class="plain">주목할 점은 <b>가호 룬의 채용률이 거의 변하지 않았다</b>는 것이다. 채용률 분석에서는 «궁밥 용도가 아니어도 가호는 쓴다, 가호 말고 대안이 없다»로 해석했다 — 이번 패치의 일반 법칙으로 <b>버프는 채용률에 즉각 반영됐지만 너프는 큰 영향을 주지 않았다</b>는 정리도 함께 나왔다. 실전 체감도 예상보다 완만하다. <b>가호가 3분의 1토막 났는데도 1브레이크 20억을 넣는 사례</b>가 보고됐는데, 단서가 붙는다 — <b>드래케인 무기에 8성룬을 낀 최고점 기록</b>이며, 파괴자·아득함·갈퀴 없이는 재현되지 않고, 보스방 도착 전까지 아무것도 하지 않고 스택만 쌓아야 하는 조건이라 <b>실전 딜은 아니라는 반론</b>이 우세했다. 8/18 어비스 평균은 <b>10위(74,914.5)</b>. 힐러는 이번 <b>2배 버그 대상에서 제외</b>라는 것이 갤의 정리라, 8/20 이후 상대 순위는 오히려 올라갈 여지가 있다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1276285" target="_blank" rel="noopener"><span class="n">#1276285</span> 8/18 어비스 랭킹</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1280418" target="_blank" rel="noopener"><span class="n">#1280418</span> 가호 1/3토막 후에도 1브 20억 — 조건부</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1282876" target="_blank" rel="noopener"><span class="n">#1282876</span> 8/20 수정 영향 직업 목록 — 힐러 제외</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=1OX-o13RDIc" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「8월 3주차 룬 리포트」</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=LWLT9lgKMMA" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「직업 밸런스 패치」</a>
+    </div>
+  </div>
+  <div class="card" id="u20260829" style="scroll-margin-top:24px">
+    <h4>📘 8주차 갱신 — 브레이크 스탯의 재발견, 원정대 엠블럼 역주행<span class="tag">2026-08-29</span></h4>
+    <p class="plain"><b>이번 주 전제 — 8/24 레이드룬 정가 교환으로 «오팔 성배»가 대량 보급됐고, 치명타 피해 증가가 2회 적용되는 버그가 확인돼 8/27 점검에서 수정됐다.</b> 그 여파로 <b>지옥2 어비스 랭킹이 2주 연속 초기화</b>됐는데, 이번엔 <b>오팔 성배를 낀 캐릭터뿐 아니라 같은 파티 전원의 기록</b>이 대상이라 본인이 끼지 않았어도 삭제된 사례가 많다. 따라서 <b>8/24~8/26 사이의 지옥2 기록은 근거로 쓸 수 없다</b>. 아래 채용률은 <b>8/25 집계</b>이며 <b>레이드룬은 아직 0~0.4%</b>(드랍분만)라 다음 주 리포트에 처음 반영된다.</p><p>힐러는 <b>«원정대» 엠블럼이 역주행</b>한 두 직업 중 하나다. 도입 2주차에 전체 평균 채용률은 떨어졌는데 <b>힐러와 격투가만 오히려 올랐다</b> — 완전 힐 세팅으로 가는 유저들이 공격력 34%를 그대로 받아가기 때문이고, 1픽이라기보다 <b>대안이 없어서 쓰는 룬</b>이라는 것이 리포트의 해석이다. <b>긍지</b>는 40~50%대 코어룬을 유지한다. 8/13 «궁밥 차단»(가호 중첩 순삭 + 궁극기 게이지는 전투 중에만)은 그대로 유지되고 있다.</p><p class="plain"><b>이번 주의 실질적 발견은 «브레이크 스탯의 재발견»이다.</b> 힐러는 <b>추가타 적중 시 중첩당 피해 1.5%가 오르는 패시브</b>를 갖고 있고, 시즌2 들어 <b>한 방 데미지가 중요한 캐릭터</b>가 되면서 브레이크 스탯을 올리는 것이 유효해졌다. 카브락 레이드에서 <b>브레이크·무방비 구간의 딜 점유율이 60% 이상</b>이라는 점도 같은 방향이다. 권장은 <b>추가타를 풀스택 기준 3,000 정도 주고 나머지는 룬으로 메우는</b> 구성이며, 첫 전설 펫은 연치 또는 추치, <b>두 번째 전설 펫으로 브펫</b>을 만드는 순서가 제시됐다. 레서판다를 쓰느니 <b>브치 돼지에 신신</b>을 넣는 편이 낫다는 것이 분석 채널의 의견이다. 갤에서도 «가호가 너프돼서 신신신 포메를 만들기 애매하니 치브 돼지에 방방방이 낫지 않나»라는 논의가 같은 맥락으로 올라왔다.</p><p><b>레이드룬은 «굳이 쓰는가»부터가 쟁점이다.</b> 갤에서는 «힐러는 오팔을 안 쓰고 그냥 엠블럼이나 사서 채우는 게 낫지 않나»라는 글이 올라왔고, 힐 세팅에서는 공격 계열 레이드룬의 효용이 낮은 것이 사실이다. 다만 <b>딜힐 겸업</b> 구성이라면 오팔 성배의 공격력 17.5%가 유효하다. 한편 «기갱 최고점은 힐러인데 왜 음유가 더 인기인가»라는 질문도 나왔는데, <b>조합상 유불리와 길드 내 서폿 인원 문제</b>가 답으로 제시됐다.</p><p class="plain"><b>기갱 세팅 기준선</b> — <b>바위 칼날 + 해방 + 침식 2개</b>가 무난한 구성으로 통용되며, 이 세팅의 고점은 <b>정박지·동굴 12~13억, 흩어진 물길 16억</b> 정도로 보고됐다. 다만 «정리본이라고 올라오는 것이나 유튜브에 떠도는 세팅에는 오류가 많으니 전 서버 랭커에게 직접 물어보는 편이 낫다»는 조언이 함께 달렸다 — <b>이 페이지를 포함해 2차 정리물은 교차 확인용으로 쓰는 것이 안전하다.</b></p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1309827" target="_blank" rel="noopener"><span class="n">#1309827</span> 기갱 세팅 기준선 — 바칼·해방·2침식</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1310662" target="_blank" rel="noopener"><span class="n">#1310662</span> 힐러는 오팔을 굳이 쓰는가</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1311006" target="_blank" rel="noopener"><span class="n">#1311006</span> 치브 돼지 방방방 검토</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1311073" target="_blank" rel="noopener"><span class="n">#1311073</span> 기갱 최고점은 힐러인데 왜 음유인가</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=cC3qP4e-vj8" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「8월 4주차 룬 채용률 리포트」</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=T5wSydnrBos" target="_blank" rel="noopener"><span class="n">▶</span> 새크리마 「어비스·레이드 직업별 펫 추천」</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=HJGgsXodYNg" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「레이드룬 7종 전부 살펴봤습니다」</a>
+    </div>
+  </div>
+  <div class="card" id="u20260908" style="scroll-margin-top:24px">
+    <h4>💚 9주차 갱신 — 긍지 코어 유지 · 원정대 엠블럼은 «대안 없을 때»<span class="tag">2026-09-08</span></h4>
+    <p class="plain"><b>이번 주 전제 — 레이드룬 채용률이 2주치 쌓이며 자리가 확정됐다.</b> <b>«작열»은 수도사·기사·도적 3직업의 코어룬</b>이 됐고(그 외 직업은 쓰지 않는다), <b>«오팔 성배»는 평균 20.8%의 범용룬</b>으로 굳었다. 나머지 5종은 두 자릿수 진입에 실패했다. 아래 채용률은 <b>9/07 집계</b>이며, 갤 자료는 <b>9/07~9/08 2일치</b>다(디시 키워드 검색의 구조적 한계).</p>
+    <p>방어구 <b>«긍지»가 코어룬 지위를 유지</b>한다(사제·수도사·음유와 함께, 40~50%대). 레이드룬은 조건이 맞는 직업 위주로 갈렸는데, 힐러는 <b>«작열» 대상이 아니고 오팔 성배도 중하위권 채용</b>에 머물렀다.</p>
+    <p>8주차에 확인된 <b>원정대 엠블럼의 위치</b>는 이번 주에도 유지됐다 — 평균 채용률은 낮지만 <b>격투가·힐러에서만 상승</b>하는 패턴으로, 1픽이 아니라 «다른 대안이 없을 때 쓰는 룬»으로 자리를 잡았다.</p>
+    <p>9/08 <b>어비스 최고점 76,987</b>(9위)로 서포터 치고는 상한이 준수한 편이다. 갤에서는 «심층 매칭을 돌리는데 힐러 직군이 죄다 똥무기로 온다»는 불만이 나올 만큼 <b>힐러 부캐 수요는 여전히 높다</b>.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1332824" target="_blank" rel="noopener"><span class="n">#1332824</span> 09.08 전직업 어비스 1위 컷</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=wAbE6SIrtTY" target="_blank" rel="noopener"><span class="n">▶</span> 황산갈매기 「9/07 룬 채용률」</a>
+    </div>
+  </div>
+
+</section>
+
+<div class="ornament">❁ ❁ ❁</div>
+
+<section class="chapter" id="c2">
+  <div class="chead">
+    <div class="kicker">제 2 장 · 貳</div>
+    <h3>궁극기 본체 메타</h3>
+    <p>전 시즌과 달리 궁 스택을 쌓고 굴리는 재미가 생겼다는 반응이 많다</p>
+  </div>
+
+  <div class="card">
+    <p>시즌 2 힐러의 플레이 축은 <b>궁극기</b>다 — 궁극기가 본체이니 <b>개조 356, 궁 위주 세팅</b>으로 굴리라는 답이 정석으로 통한다. 신규 장신구 룬(가호)이 궁 게이지와 연동되면서 궁 회전이 곧 성능이 됐다. 3스 쿨이 비는 구간은 <b>고동침에 햇살</b>을 붙이면 생각보다 가동률이 좋다는 실전 보고가 있다 — 평타만 치는 구간이 괴롭다는 고민에 대한 처방이다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144925" target="_blank" rel="noopener"><span class="n">#1144925</span> 세팅 답 (궁 본체·356)</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144901" target="_blank" rel="noopener"><span class="n">#1144901</span> 3스 공백 — 고동침+햇살</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">❁ ❁ ❁</div>
+
+<section class="chapter" id="c3">
+  <div class="chead">
+    <div class="kicker">제 3 장 · 參</div>
+    <h3>가호와 세팅</h3>
+    <p>계수부터가 채용을 강제하는 수준이라는 평가가 지배적이다</p>
+  </div>
+
+  <div class="card hl">
+    <h4><span class="tag">사기</span>신규 장신구 룬 — 가호</h4>
+    <p>툴팁만 읽으면 애매해 보인다는 질문에 돌아온 답은 <b>“사기”</b> 한 단어였다. 스킬 계수를 보면 <b>선택이 아니라 사실상 필수</b>라는 평이고, 심지어 너무 좋아서 보연강보다 <b>보연소</b>를 더 선호하게 됐다는 세공 판도 변화 이야기까지 나왔다. 10성 가호는 신규룬 목록 아래쪽에 섞여 있으니 항아리에서 찾을 것.</p>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>항목</th><th>기준</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>장신구</td><td><b>물 · 광륜 · 가호 (물광가)</b></td><td>가호·광륜·서약 조합도 거론</td></tr>
+          <tr><td>무기</td><td><b>칼날</b></td><td>—</td></tr>
+          <tr><td>세공</td><td><b>보보연</b> ↔ <b>보연소</b></td><td>보보연 유지파(보연소는 섞어봐도 체감이 없다는 실측) vs 가호 이후 보연소 선호파 — <b>논쟁 중</b></td></tr>
+          <tr><td>개조</td><td><b>356</b></td><td>궁 위주</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143830" target="_blank" rel="noopener"><span class="n">#1143830</span> 가호 사기 판정</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144925" target="_blank" rel="noopener"><span class="n">#1144925</span> 물광가·칼날·보보연</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144193" target="_blank" rel="noopener"><span class="n">#1144193</span> 10성 가호 위치</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">❁ ❁ ❁</div>
+
+<section class="chapter" id="c4">
+  <div class="chead">
+    <div class="kicker">제 4 장 · 肆</div>
+    <h3>불만 사항 · 마무리</h3>
+    <p>성능은 지켰지만 손맛이 아프다</p>
+  </div>
+
+  <div class="card">
+    <p>힐러들의 불만은 성능보다 <b>조작 스트레스</b>다 — 신규룬이 궁이 찰 때마다 궁을 써서 게이지를 비워야 하는 구조인데 궁 선딜이 길다 보니, <b>궁 선딜 제거 or 궁 시전 중 스킬 사용 가능</b> 중 하나는 필요하다는 요구가 나온다. 이대로면 힐러 인구가 크게 줄 것이라는 경고가 따라붙는다. 3스 고동 시간 너프도 실존하는 아픔.</p>
+    <p class="plain">결론 — <b>가호를 먹는 순간 힐러의 시즌 2가 시작된다.</b> 물광가+칼날+356 궁 세팅이면 그럭저럭 버티는 수준을 넘어 궁 굴리는 재미가 있는 직업이고, 8인 레이드 랏힐 왕좌는 여전히 힐러의 것이다.</p>
+    <div class="refs"><span class="rl">근거</span>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144251" target="_blank" rel="noopener"><span class="n">#1144251</span> 궁 게이지 강제 불만</a>
+      <a class="chip" href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144345" target="_blank" rel="noopener"><span class="n">#1144345</span> 신규룬 수용 논쟁</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">🎬 🎬 🎬</div>
+
+<section class="chapter" id="yt">
+  <div class="chead">
+    <div class="kicker">부록 · 유튜브</div>
+    <h3>🎬 시즌2 영상 크로스체크</h3>
+    <p>공략 유튜버 영상 요약 — 자동자막 기반이라 룬·수치는 원본 영상 재확인 권장</p>
+  </div>
+  <div class="card">
+    <p><b>삼신기(장신구)</b> — 광륜·가호·물결</p>
+    <p><b>무기룬</b> 바위 칼날·개시 &nbsp;·&nbsp; <b>엠블럼</b> 해방·초월·영원한 밤 &nbsp;·&nbsp; <b>세공 정배</b> 보조·연타</p>
+    <p><b>가호(루미너스) 패치</b>: 궁극기 게이지 3당 1중첩·중첩당 +3%·최대 300(총 +900%) → <b>대군주</b>로 게이지 빠르게 채워 극대화. 시즌2엔 <b>연타·보조·소환 빌드</b>가 강타보다 부상. 긍지·전투년지원 필수급.</p>
+    <p style="font-size:13px;margin-top:12px">전 직업 티어리스트·룬 표·다른 직업 요약 → <a href="./youtube-season2.html"><b>🎬 시즌2 유튜브 공략 총정리</b></a></p>
+    <div class="refs"><span class="rl">영상</span>
+      <a class="chip" href="https://www.youtube.com/watch?v=gB-BeGeDMcQ" target="_blank" rel="noopener"><span class="n">▶</span> 두나비·힐러 가이드</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=lX4ckURkVY0" target="_blank" rel="noopener"><span class="n">▶</span> 컨닝페이퍼1.0</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=eTooSc8H2zI" target="_blank" rel="noopener"><span class="n">▶</span> 룬채용률</a>
+      <a class="chip" href="https://www.youtube.com/watch?v=gz_6fNR3Nyg" target="_blank" rel="noopener"><span class="n">▶</span> 상위권세팅</a>
+    </div>
+  </div>
+</section>
+
+<section class="chapter appendix" id="src">
+  <div class="chead">
+    <div class="kicker">부록 · 附</div>
+    <h3>출처 12건</h3>
+    <p>번호 클릭 시 디시 원문으로</p>
+  </div>
+  <ul class="srclist">
+    <li><span class="num">◇#1243694</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1243694" target="_blank" rel="noopener">힐 20억+ 은 파괴 아득 일렁 껴야 가능한거지?</a><span class="d">08/07 · 시즌2룬 한계 14~16억</span></li>
+    <li><span class="num">◇#1242969</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1242969" target="_blank" rel="noopener">힐러 13일에 가호 정상화하면</a><span class="d">08/07 · 1브/2브 메타별 시나리오</span></li>
+    <li><span class="num">◇#1243710</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1243710" target="_blank" rel="noopener">힐러 떡너프받고 스택 100 상한 생기면</a><span class="d">08/07 · 상한설은 갤 추측(미확정)</span></li>
+    <li><span class="num">◇#1245878</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1245878" target="_blank" rel="noopener">8/8 어비스 순위</a><span class="d">08/08 · 힐러 47,592 전체 공동 1위</span></li>
+    <li><span class="num">#1144925</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144925" target="_blank" rel="noopener">힐러 세팅 슬슬 답이 보이네</a><span class="d">07/05 · 물광가·356·궁 본체</span></li>
+    <li><span class="num">#1144901</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144901" target="_blank" rel="noopener">힐러 이제 3스 쿨 비는 거 어떡함?</a><span class="d">07/05 · 고동침+햇살</span></li>
+    <li><span class="num">#1144345</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144345" target="_blank" rel="noopener">힐러 신규장신구룬 갖다버리는 거 맞지?</a><span class="d">07/05 · 수용 논쟁</span></li>
+    <li><span class="num">#1144339</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144339" target="_blank" rel="noopener">힐러 지금 구려졌다는 사람들은 뭐임?</a><span class="d">07/05 · 티어 논쟁</span></li>
+    <li><span class="num">#1144302</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144302" target="_blank" rel="noopener">사제가 좋아져봤자 힐러한텐 안될듯</a><span class="d">07/05 · 8인 랏힐</span></li>
+    <li><span class="num">#1144251</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144251" target="_blank" rel="noopener">신규룬 궁 찰 때마다 써야 댐?</a><span class="d">07/05 · 게이지 강제</span></li>
+    <li><span class="num">#1144193</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1144193" target="_blank" rel="noopener">이번시즌 힐러 10성룬 가호 나온 거 아님?</a><span class="d">07/05 · 가호 위치</span></li>
+    <li><span class="num">#1143830</span><a href="https://gall.dcinside.com/mgallery/board/view/?id=enban&no=1143830" target="_blank" rel="noopener">힐러들 장신구 가호 쓸만해??</a><span class="d">07/05 · 가호 사기 판정</span></li>
+  </ul>
+</section>
+
+<footer>
+  <div class="sign">❁ 육육이의 프렌즈를 위한 힐러 공략모음 ❁</div>
+  정리: 육육이 · 출처: 에반(마비노기 모바일) 마이너 갤러리 · 기준일 2026-09-08 (9주차 갱신)<br>
+  보보연 vs 보연소는 논쟁 중 — 갱신 필요 · 갤러리 여론은 요약·재구성해 정리
+</footer>
+
+</div>
+
+</body>
+</html>
