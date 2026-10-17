@@ -1,0 +1,14 @@
+/* Static introductions are reused on each test's home screen. */
+.page-guide{box-sizing:border-box;width:calc(100% - 56px);max-width:1124px;margin:36px auto;padding:28px;border:1px solid #c2cbbf;border-radius:10px;background:#fffdf7;color:#18221c;font:15px/1.8 Arial,"Malgun Gothic",sans-serif;text-align:left;overflow-wrap:anywhere}
+.page-guide h1,.page-guide h2{font:700 25px/1.35 Arial,"Malgun Gothic",sans-serif;letter-spacing:-.04em;margin:0 0 12px;color:#18221c}
+.page-guide h3{font-size:17px;line-height:1.5;margin:24px 0 8px;color:#18221c}
+.page-guide p{margin:0 0 12px;color:#435047}
+.page-guide ol,.page-guide ul{padding-left:22px;margin:8px 0 16px;list-style:revert}
+.page-guide li{margin:7px 0}
+.page-guide a{color:#31592a;text-decoration:underline;text-underline-offset:3px}
+.page-guide a:hover{color:#18221c}
+.page-guide a:focus-visible{outline:2px solid #31592a;outline-offset:4px}
+.page-guide .guide-links{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:12px}
+.wrap>.page-guide,main>.page-guide{width:100%;margin:32px 0}
+.page-fallback-title{font:700 30px/1.4 Arial,"Malgun Gothic",sans-serif;letter-spacing:-.04em;margin:32px 28px 0}
+@media(max-width:600px){.page-guide{width:calc(100% - 32px);padding:20px;margin:24px auto}.page-guide h1,.page-guide h2{font-size:22px}.page-fallback-title{font-size:26px;margin:24px 16px 0}}
