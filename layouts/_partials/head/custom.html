@@ -4,10 +4,14 @@
 {{ end }}{{ with site.Params.bingSiteVerification }}<meta name="msvalidate.01" content="{{ . }}">
 {{ end }}
 
-{{/* Google AdSense — 사이트 연결·광고 스크립트 (운영 빌드에서만 로드) */}}
+{{/* Google AdSense — 사이트 소유권 확인과 광고 로드를 분리 */}}
 {{ if hugo.IsProduction }}
+<meta name="google-adsense-account" content="ca-pub-8537655417588698">
+{{/* 목록에 공개된 게시글 상세에서만 허용. 개별 글은 adsense: false로 제외 가능. */}}
+{{ if and .IsPage (eq .Section "posts") (not .Draft) (in site.RegularPages .) (ne .Params.adsense false) }}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8537655417588698"
         crossorigin="anonymous"></script>
+{{ end }}
 {{ end }}
 
 {{/* favicon — assets/img/avatar.png(초승달)을 Hugo가 작게 리사이즈해 생성 */}}
