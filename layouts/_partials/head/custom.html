@@ -45,7 +45,11 @@
   "inLanguage" .Language.Lang
   "author" (dict "@type" "Person" "name" $author)
   "publisher" (dict "@type" "Organization" "name" site.Title) }}
-{{ with .Params.image }}{{ $ld = merge $ld (dict "image" (. | absURL)) }}{{ end }}
+{{ with .Params.image }}
+{{ $imageURL := . | absURL }}
+{{ with $.Resources.Get . }}{{ $imageURL = .Permalink }}{{ end }}
+{{ $ld = merge $ld (dict "image" $imageURL) }}
+{{ end }}
 <script type="application/ld+json">
 {{ $ld | jsonify | safeJS }}
 </script>
